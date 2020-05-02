@@ -1,0 +1,24 @@
+
+.MyNav{
+  grid-area: m_N;
+  background-color: magenta;
+}
+.item{
+  color: whitesmoke;
+  text-decoration: none;
+  height:40px;
+	width: 200px;
+    border: none;
+    border-radius: 2px;
+background-color: rgba(0, 120, 201, 0.3);
+transition-duration: 0.4s;
+cursor:pointer;
+color:white;
+font-family:verdana;
+font-size:14px;
+user-select: none;
+text-align: center;
+margin-top:5px;
+margin-right: 5px;
+margin-bottom: 5px;
+}

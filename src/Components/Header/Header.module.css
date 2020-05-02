@@ -1,0 +1,11 @@
+
+.MyHeader{
+    grid-area: m_H;
+    /* background-image: url("./Picture/logo.png"); */
+    background-color: lightcoral;
+    }
+    .MyHeader img{
+      width: 160px;
+      
+    }
+
