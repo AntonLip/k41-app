@@ -1,13 +1,17 @@
 import React from 'react';
 import classes from './MyNews.module.css'
 
-const MyNews = () => {
-
+const MyNews = (props) => {
+  let newPostElement = React.createRef();
+let AddCallBack = () =>{
+  let textNewPost = newPostElement.current.value;
+  props.addNews(textNewPost);
+}
   return (
     <div className={classes.MyNews}>
       <div>My News</div>
-      <textarea></textarea>
-      <button>Add News</button>
+      <textarea ref={newPostElement}></textarea>
+      <button onClick={AddCallBack}>Add News</button>
     </div>
   );
 }

@@ -22,24 +22,23 @@ const Group = (props) => {
 }
 
 
-let LessonData = [{ name: "УЭСПД", Auditore: "239", Lectural: "Liplianin" },
-                    { name: "ФК", Auditore: "213", Lectural: "Sidorov" },
-                    { name: "Д444", Auditore: "239", Lectural: "Palchev" }
-                ];
 
- let lessons = LessonData.map((l) => { return <Lesson name={l.name} Auditore={l.Auditore} Lectural={l.Lectural}/>});
+ 
 
 const Timetable = (props) => {
-
+    
+     let Lessons = props.dataLesson.map((l) =>
+      { return <Lesson name={l.name} Auditore={l.Auditore} Lectural={l.Lectural}/>});
+      debugger;
+     let Grups = props.dataGroups.map((g) => 
+     {return <Group name={g.name}/>});
     return (
         <div className={classes.TimetableClass}>
             <div className={classes.Groups}>
-                <Group name="442" />
-                <Group name="442" />
-                <Group name="453" />
+             {Grups} 
             </div>
             <div className={classes.TimetableEachGroup}>
-                {lessons}
+             {Lessons}
             </div>
         </div>
     );

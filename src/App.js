@@ -7,15 +7,17 @@ import Timetable from './Components/MyBody/Timetable/Timetable';
 import { Route, BrowserRouter } from 'react-router-dom';
 
 
-const App = () => {
+const App = (props) => {
+  debugger;
   return (
     <BrowserRouter>
     <div className='app-wrapper'>
       <Header />
       <Navbar />
       <div className='.app-wrapper-content'>
-        <Route path="/Timetable" component={Timetable}  />
-        <Route path="/MyBody" component={MyBody} />
+        <Route path="/Timetable" render={() =>
+           {return <Timetable dataLesson={props.state.LessonData}  dataGroups={props.state.Groups}/>}}/>
+        <Route path="/MyBody" render={() => {return <MyBody News={props.state.News} addNews={props.addNews}/>}}/>
       </div>
     </div>
     </BrowserRouter>
