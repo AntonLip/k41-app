@@ -13,6 +13,9 @@ const Navbar = () => {
       <div>
         <NavLink to="/MyBody" className={classes.item}>Новости</NavLink>
       </div>
+      <div>
+        <NavLink to="/MyBody" className={classes.item}>Аудитории</NavLink>
+      </div>
     </nav>
   );
 }

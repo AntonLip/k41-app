@@ -5,6 +5,8 @@ import Navbar from './Components/Navbar/Navbar';
 import MyBody from './Components/MyBody/MyBody';
 import Timetable from './Components/MyBody/Timetable/Timetable';
 import { Route, BrowserRouter } from 'react-router-dom';
+import Footer from './Components/Footer/Footer';
+import LeftSide from './Components/LeftSide/LeftSide';
 
 
 const App = (props) => {
@@ -19,6 +21,8 @@ const App = (props) => {
            {return <Timetable dataLesson={props.state.LessonData}  dataGroups={props.state.Groups}/>}}/>
         <Route path="/MyBody" render={() => {return <MyBody News={props.state.News} addNews={props.addNews}/>}}/>
       </div>
+      <LeftSide/>
+      <Footer/>
     </div>
     </BrowserRouter>
   );
