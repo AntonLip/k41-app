@@ -19,7 +19,7 @@ const App = (props) => {
       <div className='.app-wrapper-content'>
         <Route path="/Timetable" render={() =>
            {return <Timetable dataLesson={props.state.LessonData}  dataGroups={props.state.Groups}/>}}/>
-        <Route path="/MyBody" render={() => {return <MyBody News={props.state.News} addNews={props.addNews}/>}}/>
+        <Route path="/MyBody" render={() => {return <MyBody state={props.state} dispatch={props.dispatch}/>}}/>
       </div>
       <LeftSide/>
       <Footer/>
