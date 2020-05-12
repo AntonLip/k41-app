@@ -18,7 +18,21 @@ const Header = () => {
                     <NavLink to="/Timetable" className={classes.buttomHeader}>ЭУМК</NavLink>
                 </div>
                 <div className={classes.AuthHeader}>
-                        Auth block
+                    <div className={classes.AuthField}>
+                        <form>
+                            <input/>
+                        </form>
+                    </div>
+                    <div className={classes.AuthField}>
+                        <form>
+                            <input/>
+                        </form>
+                    </div>
+                    <div className={classes.buttonContainer}>
+                        <form>
+                            <button ></button>
+                        </form>
+                    </div>
                 </div>
             </div>
 

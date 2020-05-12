@@ -8,7 +8,7 @@ const MyBody = (props) => {
   return (
     <div>
       Main Content
-      <MyNews addNews={props.addNews}/>
+      <MyNews dispatch={props.dispatch} NewPostText={props.NewPostText}/>
       <div className={classes.MyBodyClass}>
         {AllNews}
       </div>
