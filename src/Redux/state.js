@@ -1,22 +1,30 @@
+import { newsReduser } from "./news-reduser";
+import { timetableReduser } from "./timetable-reduser";
+
 let store = {
     _state: {
-        LessonData: [
-            { name: "УЭСПД", Auditore: "239", Lectural: "Liplianin" },
-            { name: "ФК", Auditore: "213", Lectural: "Sidorov" },
-            { name: "Д444", Auditore: "239", Lectural: "Palchev" }
-        ],
-        Groups: [
-            { name: "442" },
-            { name: "443" },
-            { name: "423" },
-            { name: "453" },
-            { name: "452" }
-        ],
-        News: [
-            { newM: "I am a free man", id: 1 },
-            { newM: "Glory MU", id: 2 },
-        ],
-        newPostText : "add news"
+        timetablePage: {
+            dataLesson: [
+                { id: 1, time: "1th", name: "УЭСПД", Auditore: "239", Lectural: "Liplianin", type: "lecture" },
+                { id: 2, time: "2th", name: "ФК", Auditore: "213", Lectural: "Sidorov", type: "practice" },
+                { id: 3, time: "3th", name: "Д444", Auditore: "239", Lectural: "Palchev", type: "laboratry" }
+            ],
+            newLesson: { id: 0, time: " ", name: " ", Auditore: " ", Lectural: " ", type: " " },
+            dataGroups: [
+                { name: "442" },
+                { name: "443" },
+                { name: "423" },
+                { name: "453" },
+                { name: "452" }
+            ],
+        },
+        newsPage: {
+            News: [
+                { newM: "I am a free man", id: 1 },
+                { newM: "Glory MU", id: 2 },
+            ],
+            newPostText: "add news"
+        },
     },
     GoToWork() {
         console.log('State change');
@@ -27,35 +35,16 @@ let store = {
     GetState() {
         return this._state;
     },
+    GetTimetablePage() {
+        return this._state.timetablePage;
+    },
     dispatch(action) {
-        if (action.type === 'ADD-POST'){
-            
-            let newM = {
-                id: 5,
-                newM: this._state.newPostText,
-            };
-            this._state.News.push(newM);
-            this.GoToWork(this._state);
-        }else if(action.type === 'UPDATE-NEW-TEXT'){
-            
-            this._state.newPostText = action.newText;
-            this.GoToWork(this._state);
-        }
+        this._state.newsPage = newsReduser(this.GetState().newsPage, action);
+        this._state.timetablePage = timetableReduser(this.GetState().timetablePage, action)
+        this.GoToWork();
     }
 }
 
-export const addPostActionCreator=()=>{
-    return{
-      type:'ADD-POST'
-    }
-  }
-  
- export const updateTexttActionCreator=(newText)=>{
-    return{
-      type:'UPDATE-NEW-TEXT',
-      newText
-      }
-  }
 
 window.store = store;
 export default store;

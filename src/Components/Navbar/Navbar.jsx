@@ -11,9 +11,6 @@ const Navbar = () => {
         <NavLink to="/Timetable" className={classes.item}>Расписание занятий</NavLink>
       </div>
       <div>
-        <NavLink to="/MyBody" className={classes.item}>Новости</NavLink>
-      </div>
-      <div>
         <NavLink to="/MyBody" className={classes.item}>Аудитории</NavLink>
       </div>
     </nav>

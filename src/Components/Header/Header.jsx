@@ -12,7 +12,7 @@ const Header = () => {
                       
                 </div>
                 <div className={classes.buttonContainer}>
-                    <NavLink to="/Timetable" className={classes.buttomHeader}>Новости</NavLink>
+                    <NavLink to="/MyBody" className={classes.buttomHeader}>Новости</NavLink>
                     <NavLink to="/Timetable" className={classes.buttomHeader}>Кафедра</NavLink>
                     <NavLink to="/Timetable" className={classes.buttomHeader}>Фотогалерея</NavLink>
                     <NavLink to="/Timetable" className={classes.buttomHeader}>ЭУМК</NavLink>

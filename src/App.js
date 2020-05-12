@@ -10,16 +10,16 @@ import LeftSide from './Components/LeftSide/LeftSide';
 
 
 const App = (props) => {
-  debugger;
-  return (
+
+ return (
     <BrowserRouter>
     <div className='app-wrapper'>
       <Header />
       <Navbar />
       <div className='.app-wrapper-content'>
         <Route path="/Timetable" render={() =>
-           {return <Timetable dataLesson={props.state.LessonData}  dataGroups={props.state.Groups}/>}}/>
-        <Route path="/MyBody" render={() => {return <MyBody News={props.state.News} NewPostText={props.state.newPostText} dispatch={props.dispatch}/>}}/>
+           {return <Timetable dataPage={props.state.timetablePage} dispatch={props.dispatch.bind(props.state)}/>}}/>
+        <Route path="/MyBody" render={() => {return <MyBody News={props.state.newsPage}  dispatch={props.dispatch}/>}}/>
       </div>
       <LeftSide/>
       <Footer/>

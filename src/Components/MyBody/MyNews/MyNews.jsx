@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './MyNews.module.css'
-import { addPostActionCreator, updateTexttActionCreator } from '../../../Redux/state';
+import { addPostActionCreator, updateTexttActionCreator } from '../../../Redux/news-reduser';
 
 
 
