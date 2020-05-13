@@ -3,8 +3,8 @@ import classes from './MyBody.module.css'
 import MyNews from './MyNews/MyNews';
 import MyNew from './MyNews/MyNew/MyNew';
 const MyBody = (props) => {
-
-  let AllNews = props.News.map((n) => {return <MyNew message={n.newM}/>});
+debugger;
+  let AllNews = props.News.News.map((n) => {return <MyNew message={n.newM}/>});
   return (
     <div>
       Main Content

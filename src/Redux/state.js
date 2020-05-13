@@ -41,7 +41,8 @@ let store = {
     dispatch(action) {
         this._state.newsPage = newsReduser(this.GetState().newsPage, action);
         this._state.timetablePage = timetableReduser(this.GetState().timetablePage, action)
-        this.GoToWork();
+        debugger;
+        this.GoToWork( this._state);
     }
 }
 

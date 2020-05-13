@@ -7,14 +7,13 @@ import { addPostActionCreator, updateTexttActionCreator } from '../../../Redux/n
 const MyNews = (props) => {
   let newPostElement = React.createRef();
 
-let AddCallBack = () =>{
- 
-  props.dispatch(addPostActionCreator());
-}
-let ChangeCallBack= ()=>{
-  let action = updateTexttActionCreator(newPostElement.current.value);
-  props.dispatch(action);
-}
+  let AddCallBack = () => {
+    props.dispatch(addPostActionCreator());
+  }
+  let ChangeCallBack = () => {
+    let action = updateTexttActionCreator(newPostElement.current.value);
+    props.dispatch(action);
+  }
   return (
     <div className={classes.MyNews}>
       <div>My News</div>

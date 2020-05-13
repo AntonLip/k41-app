@@ -10,7 +10,7 @@ import LeftSide from './Components/LeftSide/LeftSide';
 
 
 const App = (props) => {
-
+debugger;
  return (
     <BrowserRouter>
     <div className='app-wrapper'>
@@ -18,8 +18,9 @@ const App = (props) => {
       <Navbar />
       <div className='.app-wrapper-content'>
         <Route path="/Timetable" render={() =>
-           {return <Timetable dataPage={props.state.timetablePage} dispatch={props.dispatch.bind(props.state)}/>}}/>
-        <Route path="/MyBody" render={() => {return <MyBody News={props.state.newsPage}  dispatch={props.dispatch}/>}}/>
+            {return <Timetable dataPage={props.state.timetableReduser.timetablePage} dispatch={props.dispatch}/>}}/>
+        <Route path="/MyBody" render={() => 
+            {return <MyBody News={props.state.newsReduser.newsPage}  dispatch={props.dispatch}/>}}/>
       </div>
       <LeftSide/>
       <Footer/>

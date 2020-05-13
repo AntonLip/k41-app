@@ -40,7 +40,7 @@ const Timetable = (props) => {
     let newAuditore = React.createRef();
     let newLectural = React.createRef();
     let newtype = React.createRef();
-    //debugger;
+    debugger;
     let Lessons = props.dataPage.dataLesson.map((l) => {
         return <Lesson id={l.id} time={l.time} name={l.name} Auditore={l.Auditore} Lectural={l.Lectural} type={l.type} />
     });
