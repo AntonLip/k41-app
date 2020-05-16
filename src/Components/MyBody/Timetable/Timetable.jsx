@@ -41,13 +41,13 @@ const Timetable = (props) => {
     let newLectural = React.createRef();
     let newtype = React.createRef();
     debugger;
-    let Lessons = props.dataPage.dataLesson.map((l) => {
+    let Lessons = props.dataLessons.map((l) => {
         return <Lesson id={l.id} time={l.time} name={l.name} Auditore={l.Auditore} Lectural={l.Lectural} type={l.type} />
     });
-    let Grups = props.dataPage.dataGroups.map((g) => { return <Group name={g.name} /> });
+    let Grups = props.dataGroups.map((g) => { return <Group name={g.name} /> });
 
-    let clickCallback = () => {
-        props.dispatch(addTimetableCreator());
+    let onClickCallback = () => {
+        props.addLesson(addTimetableCreator());
     };
     let onChangeCallBack = () =>{
         let newLesson = {
@@ -58,7 +58,7 @@ const Timetable = (props) => {
             Lectural : newLectural.current.value,
             type : newtype.current.value
         }
-        props.dispatch(updateTimetableTextCreator(newLesson));
+        props.changeLessonTexts(newLesson);
 
     };
     
@@ -66,12 +66,12 @@ const Timetable = (props) => {
         <div>
             <div>
                 <form>
-                    <input onChange={onChangeCallBack} ref={newTime} value={props.dataPage.newLesson.time}/>
-                    <input onChange={onChangeCallBack} ref={newName}  value={props.dataPage.newLesson.name}/>
-                    <input onChange={onChangeCallBack} ref={newAuditore}  value={props.dataPage.newLesson.Auditore}/>
-                    <input onChange={onChangeCallBack} ref={newLectural}  value={props.dataPage.newLesson.Lectural}/>
-                    <input onChange={onChangeCallBack} ref={newtype}  value={props.dataPage.newLesson.type}/>
-                    <button onClick={clickCallback}>Enter changes</button>
+                    <input onChange={onChangeCallBack} ref={newTime} value={props.newLesson.time}/>
+                    <input onChange={onChangeCallBack} ref={newName}  value={props.newLesson.name}/>
+                    <input onChange={onChangeCallBack} ref={newAuditore}  value={props.newLesson.Auditore}/>
+                    <input onChange={onChangeCallBack} ref={newLectural}  value={props.newLesson.Lectural}/>
+                    <input onChange={onChangeCallBack} ref={newtype}  value={props.newLesson.type}/>
+                    <button onClick={onClickCallback}>Enter changes</button>
                 </form>
             </div>
             <div className={classes.TimetableClass}>

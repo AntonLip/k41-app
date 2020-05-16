@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './MyNews.module.css'
-import { addPostActionCreator, updateTexttActionCreator } from '../../../Redux/news-reduser';
 
 
 
@@ -8,11 +7,13 @@ const MyNews = (props) => {
   let newPostElement = React.createRef();
 
   let AddCallBack = () => {
-    props.dispatch(addPostActionCreator());
+    debugger;
+    props.addNews();
   }
   let ChangeCallBack = () => {
-    let action = updateTexttActionCreator(newPostElement.current.value);
-    props.dispatch(action);
+    debugger;
+    let Text = newPostElement.current.value;
+    props.changeText(Text);
   }
   return (
     <div className={classes.MyNews}>
