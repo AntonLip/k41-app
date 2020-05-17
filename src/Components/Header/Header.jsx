@@ -9,10 +9,10 @@ const Header = () => {
         <header className={classes.MyHeader}>
             <div className={classes.headerContent}>
                 <div className={classes.headerXZ}>
-                      
+
                 </div>
                 <div className={classes.buttonContainer}>
-                    <NavLink to="/MyBody" className={classes.buttomHeader}>Новости</NavLink>
+                    <NavLink to="/MyNews" className={classes.buttomHeader}>Новости</NavLink>
                     <NavLink to="/Timetable" className={classes.buttomHeader}>Кафедра</NavLink>
                     <NavLink to="/Timetable" className={classes.buttomHeader}>Фотогалерея</NavLink>
                     <NavLink to="/Timetable" className={classes.buttomHeader}>ЭУМК</NavLink>
@@ -20,12 +20,12 @@ const Header = () => {
                 <div className={classes.AuthHeader}>
                     <div className={classes.AuthField}>
                         <form>
-                            <input/>
+                            <input />
                         </form>
                     </div>
                     <div className={classes.AuthField}>
                         <form>
-                            <input/>
+                            <input />
                         </form>
                     </div>
                     <div className={classes.buttonContainer}>

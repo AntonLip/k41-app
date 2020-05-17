@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './Timetable.module.css'
 import { NavLink } from 'react-router-dom';
-import { addTimetableCreator, updateTimetableTextCreator } from '../../../Redux/timetable-reduser';
 
 
 const Lesson = (props) => {
@@ -35,6 +34,7 @@ const Group = (props) => {
 
 
 const Timetable = (props) => {
+    debugger;
     let newTime = React.createRef();
     let newName = React.createRef();
     let newAuditore = React.createRef();
@@ -47,7 +47,7 @@ const Timetable = (props) => {
     let Grups = props.dataGroups.map((g) => { return <Group name={g.name} /> });
 
     let onClickCallback = () => {
-        props.addLesson(addTimetableCreator());
+        props.addLesson();
     };
     let onChangeCallBack = () =>{
         let newLesson = {

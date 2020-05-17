@@ -2,30 +2,25 @@ import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import Navbar from './Components/Navbar/Navbar';
-import MyBody from './Components/MyBody/MyBody';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import LeftSide from './Components/LeftSide/LeftSide';
-import TimetibleContainer, { TimetableComponenta } from './Components/MyBody/Timetable/TimetableComponenta';
+import TimetibleContainer from './Components/MyBody/Timetable/TimetableComponenta';
+import { MyNewsContainer } from './Components/MyBody/MyNews/MyNewsComponenta';
 
 
 const App = (props) => {
-debugger;
- return (
-    <BrowserRouter>
+  return (
     <div className='app-wrapper'>
       <Header />
       <Navbar />
       <div className='.app-wrapper-content'>
-        <Route path="/Timetable" render={() =>
-            {return <TimetibleContainer dataPage={props.state.timetableReduser.timetablePage} dispatch={props.dispatch}/>}}/>
-        <Route path="/MyBody" render={() => 
-            {return <MyBody News={props.state.newsReduser.newsPage}  dispatch={props.dispatch}/>}}/>
+        <Route path="/Timetable" render={() => { return <TimetibleContainer /> }} />
+        <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
       </div>
-      <LeftSide/>
-      <Footer/>
+      <LeftSide />
+      <Footer />
     </div>
-    </BrowserRouter>
   );
 }
 
