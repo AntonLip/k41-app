@@ -14,10 +14,7 @@ let initState =
 
 
 
-const UserReduser = (state = initState, action) => {
-
-
-
+export const UserReduser = (state = initState, action) => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -40,9 +37,9 @@ const UserReduser = (state = initState, action) => {
                 }),
             }
         case SET_USER:
-            return { ...state, users: [...state , action.users] }
+            return { ...state, users: [...state.users , action.users] }
         default:
-            return stateCopy;
+            return state;
     }
 
 }
@@ -60,7 +57,7 @@ export const unfollowAC = (userid) => {
     return action;
 }
 
-export const setUsersAC = () => {
+export const setUsersAC = (users) => {
     let action = { type: SET_USER, users }
     return action;
 }
