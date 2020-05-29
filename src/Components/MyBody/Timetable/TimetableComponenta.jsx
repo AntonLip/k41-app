@@ -42,7 +42,9 @@ let maptoStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
+        
         ChangeLessonTexts: (newLesson) => {
+            debugger;
             let Lesson = {
                 id: 0,
                 time: newLesson.newTime,
@@ -51,6 +53,7 @@ let mapDispatchToProps = (dispatch) => {
                 Lectural: newLesson.newLectural,
                 type: newLesson.newtype
             }
+            
             dispatch(updateTimetableTextCreator(Lesson));
         },
         AddLesson: () => {

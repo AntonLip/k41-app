@@ -7,6 +7,7 @@ import Footer from './Components/Footer/Footer';
 import LeftSide from './Components/LeftSide/LeftSide';
 import TimetibleContainer from './Components/MyBody/Timetable/TimetableComponenta';
 import { MyNewsContainer } from './Components/MyBody/MyNews/MyNewsComponenta';
+import { Users } from './Components/Users/UsersComponenta';
 
 
 const App = (props) => {
@@ -17,6 +18,7 @@ const App = (props) => {
       <div className='.app-wrapper-content'>
         <Route path="/Timetable" render={() => { return <TimetibleContainer /> }} />
         <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
+        <Route path="/Users" render={()=>{return <Users/>}}/>
       </div>
       <LeftSide />
       <Footer />

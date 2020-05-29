@@ -19,6 +19,7 @@ let initialState = {
 
 export const timetableReduser = (state = initialState, action) => {
 
+  debugger;
     switch (action.type) {
         case 'ADD':            
             state.timetablePage.dataLesson.push( state.timetablePage.newLesson);
