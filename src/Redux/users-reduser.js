@@ -4,40 +4,49 @@ const SET_USER = 'SET_USER'
 
 let initState =
 {
-    users: [
-        { id: 1, fullName: 'Anton', status: 'Im learning', Group: "433", followed: false },
-        { id: 2, fullName: 'Dmitry', status: 'Im working', Group: "453", followed: false },
-        { id: 3, fullName: 'Alex', status: 'Im silly', Group: "432", followed: true },
-    ]
+    usersPage: {
+        users: []
+    }
 }
 
 
 
 
 export const UserReduser = (state = initState, action) => {
+    let copyState = {
+        ...state
+    }
     switch (action.type) {
         case FOLLOW:
-            return {
-                ...state,
-                users: state.users.map(u => {
+            copyState.usersPage.users = [
+                ...state.usersPage.users.map(u => {
                     if (u.id === action.userid) {
-                        return { ...u, followed: false }
+                        return { ...u, followed: true }
+                    } else {
+                        return u;
                     }
-                    return u;
-                }),
-            }
+                })
+            ]
+            return copyState;
+
         case UN_FOLLOW:
-            return {
-                ...state,
-                users: state.users.map(u => {
+            debugger;
+            copyState.usersPage.users = [
+                ...state.usersPage.users.map(u => {
                     if (u.id === action.userid) {
                         return { ...u, followed: false }
+                    } else {
+                        return u;
                     }
-                    return u;
-                }),
-            }
+                })
+            ]
+            return copyState;
+
         case SET_USER:
-            return { ...state, users: [...state.users , action.users] }
+            debugger;
+            copyState.usersPage.users = [...action.users];
+            return copyState;
+            //return { ...state, users: [...state.users, action.users] }
         default:
             return state;
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { addTimetableCreator, updateTimetableTextCreator } from '../../../Redux/timetable-reduser';
+import { addTimetableCreator, updateTimetableTextCreator, setDataAC } from '../../../Redux/timetable-reduser';
 import Timetable from './Timetable';
 import { connect } from 'react-redux';
 import StoreContext from '../../../StoreContext';
@@ -41,23 +41,15 @@ let maptoStateToProps = (state) => {
     }
 }
 let mapDispatchToProps = (dispatch) => {
-    return {
-        
+    return {        
         ChangeLessonTexts: (newLesson) => {
-            debugger;
-            let Lesson = {
-                id: 0,
-                time: newLesson.newTime,
-                name: newLesson.newName,
-                Auditore: newLesson.newAuditore,
-                Lectural: newLesson.newLectural,
-                type: newLesson.newtype
-            }
-            
-            dispatch(updateTimetableTextCreator(Lesson));
+           dispatch(updateTimetableTextCreator(newLesson));
         },
         AddLesson: () => {
             dispatch(addTimetableCreator());
+        },
+        setData:(dataLesson, dataGroups)=>{
+            dispatch(setDataAC(dataLesson, dataGroups));
         }
     }
 }

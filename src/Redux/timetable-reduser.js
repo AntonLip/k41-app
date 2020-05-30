@@ -1,18 +1,10 @@
 
 let initialState = {
     timetablePage: {
-        dataLesson: [
-            { id: 1, time: "1th", name: "УЭСПД", Auditore: "239", Lectural: "Liplianin", type: "lecture" },
-            { id: 2, time: "2th", name: "ФК", Auditore: "213", Lectural: "Sidorov", type: "practice" },
-            { id: 3, time: "3th", name: "Д444", Auditore: "239", Lectural: "Palchev", type: "laboratry" }
-        ],
+        dataLesson: [],
         newLesson: { id: 0, time: " ", name: " ", Auditore: " ", Lectural: " ", type: " " },
         dataGroups: [
-            { name: "442" },
-            { name: "443" },
-            { name: "423" },
-            { name: "453" },
-            { name: "452" }
+           
         ],
     }
 }
@@ -20,18 +12,24 @@ let initialState = {
 export const timetableReduser = (state = initialState, action) => {
 
   debugger;
+
+    let stateCopy = {...state};
+    stateCopy.timetablePage = {...state.timetablePage};
     switch (action.type) {
-        case 'ADD':            
-            state.timetablePage.dataLesson.push( state.timetablePage.newLesson);
-            
-            return state;
-        case 'UPDATE-NEW-LESSON':
-            state.timetablePage.newLesson.time = action.newLesson.time;
-            state.timetablePage.newLesson.name = action.newLesson.name;
-            state.timetablePage.newLesson.Auditore = action.newLesson.Auditore;
-            state.timetablePage.newLesson.Lectural = action.newLesson.Lectural;
-            state.timetablePage.newLesson.type = action.newLesson.type;
-            return state;
+        case 'ADD':    
+        debugger;        
+            //state.timetablePage.dataLesson.push( state.timetablePage.newLesson);
+            stateCopy.timetablePage.dataLesson = [...state.timetablePage.dataLesson];
+            stateCopy.timetablePage.dataLesson.push( state.timetablePage.newLesson);
+            return stateCopy;
+        case 'UPDATE-NEW-LESSON':            
+            stateCopy.timetablePage.newLesson = {...state.timetablePage.newLesson};
+            stateCopy.timetablePage.newLesson = {...action.newLesson};
+            return stateCopy;
+        case 'SET_DATA':
+            stateCopy.timetablePage.dataGroups = [...action.dataGroups.dataGroups];
+            stateCopy.timetablePage.dataLesson = [...action.dataLesson.dataLesson];
+            return stateCopy;
         default:
             return state;
     }
@@ -47,5 +45,13 @@ export const updateTimetableTextCreator = (newLesson) => {
     return {
         type: 'UPDATE-NEW-LESSON',
         newLesson
+    }
+}
+
+export const setDataAC = (dataLesson, dataGroups) => {
+    return {
+        type: 'SET_DATA',
+        dataLesson,
+        dataGroups
     }
 }

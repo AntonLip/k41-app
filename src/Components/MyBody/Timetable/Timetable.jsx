@@ -30,24 +30,39 @@ const Group = (props) => {
 }
 
 const Timetable = (props) => {
-    //debugger;
+    debugger;
     let newTime = React.createRef();
     let newName = React.createRef();
     let newAuditore = React.createRef();
     let newLectural = React.createRef();
     let newtype = React.createRef();
-    debugger;
+    if ((props.dataLessons.length === 0) || (props.dataGroups.length === 0) ) {
+        props.setData({
+            dataLesson: [
+                { id: 1, time: "1th", name: "УЭСПД", Auditore: "239", Lectural: "Liplianin", type: "lecture" },
+                { id: 2, time: "2th", name: "ФК", Auditore: "213", Lectural: "Sidorov", type: "practice" },
+                { id: 3, time: "3th", name: "Д444", Auditore: "239", Lectural: "Palchev", type: "laboratry" }
+            ]
+        },
+        {
+            dataGroups: [
+                {id:1, name: "442" },
+                {id:2, name: "443" },
+                {id:3, name: "423" },
+                {id:4, name: "453" },
+                {id:5, name: "452" }
+            ]
+        })
+    }
     let Lessons = props.dataLessons.map((l) => {
         return <Lesson id={l.id} time={l.time} name={l.name} Auditore={l.Auditore} Lectural={l.Lectural} type={l.type} />
     });
     let Grups = props.dataGroups.map((g) => { return <Group name={g.name} /> });
 
     let onClickCallback = () => {
-        debugger;
-        props.addLesson();
+        props.AddLesson();
     };
     let onChangeCallBack = () =>{
-        //debugger;
         let newLesson = {
             id: 0,
             time : newTime.current.value,

@@ -9,21 +9,25 @@ let initialState = {
     }
 }
 
-
 export const newsReduser = (state = initialState, action) => {
-    debugger;
+    
+    let copyState = {
+        ...state
+    }
+    copyState.newsPage = {...state.newsPage};
     switch (action.type) {
         case 'ADD-POST':
             let newM = {
                 id: 5,
                 newM: state.newsPage.newPostText,
             };
-            state.newsPage.News.push(newM);
-            state.newsPage.newPostText = "X";
-            return state;
+            copyState.newsPage.News = [...state.newsPage.News];
+            copyState.newsPage.News.push(newM);
+            copyState.newsPage.newPostText = "enter text";
+            return copyState;
         case 'UPDATE-NEW-TEXT':
-            state.newsPage.newPostText = action.newText;
-            return state;
+            copyState.newsPage.newPostText = action.newText;
+            return copyState;
         default:
             return state;
         }
