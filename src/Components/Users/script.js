@@ -10,6 +10,7 @@ function openBigCard() {
    card.style.display = 'none';
    cardBig.style.display = 'flex';
 }
+
 function closeBigCard() {
    card.style.display = 'flex';
    cardBig.style.display = 'none';
