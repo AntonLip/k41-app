@@ -1,35 +1,26 @@
 
+const GET_TIMETABLE = 'GET_TIMETABLE'
+
 let initialState = {
-    timetablePage: {
-        dataLesson: [],
-        newLesson: { id: 0, time: " ", name: " ", Auditore: " ", Lectural: " ", type: " " },
-        dataGroups: [
-           
-        ],
-    }
+    timetablePage: []
 }
 
 export const timetableReduser = (state = initialState, action) => {
 
-  debugger;
-
-    let stateCopy = {...state};
-    stateCopy.timetablePage = {...state.timetablePage};
+    let copyState = {
+        ...state
+    }
     switch (action.type) {
-        case 'ADD':    
-        debugger;        
-            //state.timetablePage.dataLesson.push( state.timetablePage.newLesson);
-            stateCopy.timetablePage.dataLesson = [...state.timetablePage.dataLesson];
-            stateCopy.timetablePage.dataLesson.push( state.timetablePage.newLesson);
-            return stateCopy;
-        case 'UPDATE-NEW-LESSON':            
-            stateCopy.timetablePage.newLesson = {...state.timetablePage.newLesson};
-            stateCopy.timetablePage.newLesson = {...action.newLesson};
-            return stateCopy;
-        case 'SET_DATA':
-            stateCopy.timetablePage.dataGroups = [...action.dataGroups.dataGroups];
-            stateCopy.timetablePage.dataLesson = [...action.dataLesson.dataLesson];
-            return stateCopy;
+
+        case GET_TIMETABLE:
+            copyState.timetablePage = [...action.data];
+            if (action.data.lenght != 0) {
+                for (let i = 0; i < action.data.lenght; i++) {
+                    copyState.timetablePage[i] = {...action.data[i]}
+                }
+            }
+
+            return copyState;
         default:
             return state;
     }
@@ -48,10 +39,9 @@ export const updateTimetableTextCreator = (newLesson) => {
     }
 }
 
-export const setDataAC = (dataLesson, dataGroups) => {
+export const setDataAC = (data) => {
     return {
-        type: 'SET_DATA',
-        dataLesson,
-        dataGroups
+        type: GET_TIMETABLE,
+        data
     }
 }
