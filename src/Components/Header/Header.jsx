@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Header.module.css'
 import { NavLink } from 'react-router-dom';
+import { AuthClass } from './Auth/Auth';
+import AuthComponent from './Auth/AuthComponent';
 
 
 const Header = () => {
@@ -17,23 +19,7 @@ const Header = () => {
                     <NavLink to="/Timetable" className={classes.buttomHeader}>Фотогалерея</NavLink>
                     <NavLink to="/Timetable" className={classes.buttomHeader}>ЭУМК</NavLink>
                 </div>
-                <div className={classes.AuthHeader}>
-                    <div className={classes.AuthField}>
-                        <form>
-                            <input />
-                        </form>
-                    </div>
-                    <div className={classes.AuthField}>
-                        <form>
-                            <input />
-                        </form>
-                    </div>
-                    <div className={classes.buttonContainer}>
-                        <form>
-                            <button ></button>
-                        </form>
-                    </div>
-                </div>
+                <AuthComponent/>
             </div>
 
         </header>

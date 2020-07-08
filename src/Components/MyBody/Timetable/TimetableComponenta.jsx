@@ -1,26 +1,19 @@
-import React from 'react';
-import { addTimetableCreator, updateTimetableTextCreator, setDataAC } from '../../../Redux/timetable-reduser';
-import Timetable from './Timetable';
+
+import { setDataAC } from '../../../Redux/timetable-reduser';
+import {Timetable} from './TimetableClass';
 import { connect } from 'react-redux';
 
 
 let maptoStateToProps = (state) => {
+    debugger;
     return {
-        dataGroups: state.timetableReduser.timetablePage.dataGroups,
-        dataLessons: state.timetableReduser.timetablePage.dataLesson,
-        newLesson: state.timetableReduser.timetablePage.newLesson
+        timetable: state.timetableReduser.timetablePage.timetable
     }
 }
 let mapDispatchToProps = (dispatch) => {
-    return {        
-        ChangeLessonTexts: (newLesson) => {
-           dispatch(updateTimetableTextCreator(newLesson));
-        },
-        AddLesson: () => {
-            dispatch(addTimetableCreator());
-        },
-        setData:(dataLesson, dataGroups)=>{
-            dispatch(setDataAC(dataLesson, dataGroups));
+    return {                
+        setData:(data)=>{
+            dispatch(setDataAC(data));
         }
     }
 }
