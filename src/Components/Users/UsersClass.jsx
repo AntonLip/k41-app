@@ -1,8 +1,7 @@
 import React from 'react'
 import * as axios from 'axios'
 import classes from './Users.module.css'
-import { NavLink } from 'react-router-dom';
-import {getUsersAPI} from './../../API/api'
+import { NavLink, Redirect } from 'react-router-dom';
 export class Users extends React.Component {
 
     componentDidMount() {
@@ -10,6 +9,7 @@ export class Users extends React.Component {
     }
 
     render() {
+      
         return (
             <div>
                 {
@@ -42,3 +42,4 @@ export class Users extends React.Component {
             </div>);
     }
 }
+

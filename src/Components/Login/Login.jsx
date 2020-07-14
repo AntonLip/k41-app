@@ -26,7 +26,7 @@ export class Login extends React.Component {
                             <input type="text" placeholder="Enter your password." required />
                         </form>
                     </div>
-                    <div className={classes.button}>
+                    <div >
 
                         <button className={classes.button}></button>
                     </div>

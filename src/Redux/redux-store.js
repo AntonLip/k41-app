@@ -5,12 +5,14 @@ import {UserReduser} from './users-reduser'
 import {ProfileReduser} from './profile-reduser'
 import {AuthUserReduser} from './auth-reduser'
 import thunkMiddleware from 'redux-thunk'
+import {LoginReduser} from './login-reduser'
 let redusersBatch = combineReducers({
     newsReduser,
     timetableReduser,
     UserReduser,
     ProfileReduser,
-    AuthUserReduser
+    AuthUserReduser,
+    LoginReduser
 });
 
 

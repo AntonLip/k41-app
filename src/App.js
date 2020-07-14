@@ -10,6 +10,7 @@ import { MyNewsContainer } from './Components/MyBody/MyNews/MyNewsComponenta';
 import UsersContainer from './Components/Users/UsersContainer';
 import ProfileComponenta from './Components/Users/Profile/ProfileComponenta';
 import { ProfileClass } from './Components/Users/Profile/ProfileClass';
+import LoginContainer from './Components/Login/LoginContainer';
 
 
 const App = (props) => {
@@ -22,7 +23,7 @@ const App = (props) => {
         <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
         <Route path="/Users" render={()=>{return <UsersContainer/>}}/>
         <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />
-        <Route path="/Login"  render={()=>{return <Login />} } />
+        <Route path="/Login"  render={()=>{return <LoginContainer />} } />
       </div>
       <LeftSide />
       <Footer />

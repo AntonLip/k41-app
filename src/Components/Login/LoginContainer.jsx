@@ -1,6 +1,8 @@
 
 
-import { setDataAC, getTimetableThunkCreator } from '../../../Redux/timetable-reduser';
+import { Login } from './Login';
+import { changePasswdAC, changeLoginAC } from '../../Redux/login-reduser';
+import { connect } from 'react-redux';
 
 
 
@@ -12,14 +14,14 @@ let maptoStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {                
-        setData:(data)=>{
-            dispatch(setDataAC(data));
+        changeLogin:(data)=>{
+            dispatch(changeLoginAC(data));
         },
-        getTimetable:()=>{
-            dispatch(getTimetableThunkCreator());
+        changePassword:()=>{
+            dispatch(changePasswdAC());
         }
     }
 }
-const TimetibleContainer = connect(maptoStateToProps, mapDispatchToProps)(Timetable);
+const LoginContainer = connect(maptoStateToProps, mapDispatchToProps)(Login);
 
-export default TimetibleContainer;
+export default LoginContainer;

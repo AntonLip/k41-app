@@ -1,12 +1,15 @@
-
+import react from 'react'
 import { connect } from 'react-redux'
 import { followAC, unfollowAC, setUsersAC, getUsersThunkCreator } from '../../Redux/users-reduser'
 import { Users } from './UsersClass'
+import { withAuthRedirect } from '../../hoc/AuthRedirect';
+import { compose } from 'redux';
 
 let maptoStateToProps = (state) => {
     debugger;
     return {
         users: state.UserReduser.usersPage.users
+       
     }
 }
 
@@ -28,5 +31,7 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 
-
-export default connect(maptoStateToProps, mapDispatchToProps)(Users);
+export default compose(
+    connect(maptoStateToProps, mapDispatchToProps),
+    withAuthRedirect
+    )(Users);

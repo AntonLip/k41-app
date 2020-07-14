@@ -24,7 +24,7 @@ user-select: none;
 	*/
 	height:400px;
 	width: 651px;
-	background-image: url("Pictures/FonAut.png");
+	background-image: url("./../../Picture/FonAut.png");
 	margin: auto;
 	margin-top:10px;
 	background-repeat: no-repeat;
@@ -33,7 +33,7 @@ user-select: none;
 .login {
 height:52px;
 	width: 394px;
-	background-image: url("Pictures/Login.png");
+	background-image: url("./../../Picture/Login.png");
 	margin: auto;
 	margin-top:60px;
 	background-repeat: no-repeat;
@@ -43,7 +43,7 @@ height:52px;
 .password {
 height:52px;
 	width: 394px;
-	background-image: url("Pictures/Пароль.png");
+	background-image: url("./../../Picture/Пароль.png");
 	margin: auto;
 	margin-top:20px;
 	background-repeat: no-repeat;
@@ -55,6 +55,7 @@ height:52px;
 	width: 394px;
 	margin: auto;
 	margin-top:20px;
+	background-image: url("./../../Picture/Knopka.png");
 	background-repeat: no-repeat;
 	box-sizing: border-box;
 }
