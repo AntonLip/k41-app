@@ -1,3 +1,5 @@
+import Oidc from 'oidc-client'
+
 const GET_AUTH = 'GET AUTH'
 
 let initState =
@@ -6,6 +8,18 @@ let initState =
     }
 }
 
+var config = {
+    authority: "http://localhost:5001",
+    client_id: "SPA.client",
+    ClientSecrets : "SecretSPA",
+    redirect_uri: "http://localhost:3000",
+    response_type: "code",
+    scope:"openid profile api1",
+    post_logout_redirect_uri : "http://localhost:3000",
+
+}
+
+var mgr = new Oidc.UserManager(config);
 
 
 
@@ -17,8 +31,8 @@ export const AuthUserReduser = (state = initState, action) => {
     switch (action.type) {
         
         case GET_AUTH:
-            debugger;
-            copyState.Auth_User = {...action.Auth_User}
+            debugger;           
+            copyState.Auth_User = {...action.user}
             return copyState;
             //return { ...state, users: [...state.users, action.users] }
         default:
@@ -28,7 +42,9 @@ export const AuthUserReduser = (state = initState, action) => {
 }
 
 
-export const getAuthAC = (Auth_User) => {
-    let action = { type: GET_AUTH, Auth_User }
+export const getAuthAC = () => {
+    debugger;
+    var user =  mgr.getUser();
+    let action = { type: GET_AUTH, user }
     return action;
 }

@@ -1,3 +1,4 @@
+import { getTimetableAPI } from "../API/TimetibleAPI";
 
 const GET_TIMETABLE = 'GET_TIMETABLE'
 
@@ -8,8 +9,7 @@ let initialState = {
 }
 
 export const timetableReduser = (state = initialState, action) => {
-debugger;
-    let copyState = {
+  let copyState = {
         ...state
     }
     switch (action.type) {
@@ -23,7 +23,13 @@ debugger;
     }
 }
 
-
+export const getTimetableThunkCreator = () => {
+    return (dispatch) => {
+        getTimetableAPI().then(data => {
+            dispatch(setDataAC(data));
+        });
+    }
+}
 export const setDataAC = (data) => {
     return {
         type: GET_TIMETABLE,

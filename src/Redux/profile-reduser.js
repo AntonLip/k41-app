@@ -1,3 +1,4 @@
+import { getUserbyIdAPI } from "../API/api";
 
 const SET_PROFILE = 'SET_USER_DATA_PROFILE'
 
@@ -14,18 +15,24 @@ export const ProfileReduser = (state = initState, action) => {
         ...state
     }
     switch (action.type) {
-        
+
         case SET_PROFILE:
             debugger;
-            copyState.ProfilePage = {...action.profile};
+            copyState.ProfilePage = { ...action.profile };
             return copyState;
-            //return { ...state, users: [...state.users, action.users] }
+        //return { ...state, users: [...state.users, action.users] }
         default:
             return state;
     }
 
 }
-
+export const getUserbyIdThunkCreator = (id) => {
+    return (dispatch) => {
+        getUserbyIdAPI(id).then(data => {
+            dispatch(setProfileAC(data));
+        });
+    }
+}
 
 export const setProfileAC = (profile) => {
     let action = { type: SET_PROFILE, profile }

@@ -1,3 +1,7 @@
+
+ import {getUsersAPI} from './../API/api.js'
+import { useDispatch } from 'react-redux'
+
 const FOLLOW = 'FOLLOW'
 const UN_FOLLOW = 'UNFOLLOW'
 const SET_USER = 'SET_USER'
@@ -53,6 +57,14 @@ export const UserReduser = (state = initState, action) => {
 
 }
 
+export const getUsersThunkCreator = () =>{
+    return (dispatch) => {
+        getUsersAPI().then(data => {
+            dispatch(setUsersAC(data));
+    });
+}
+
+}
 
 export const followAC = (userid) => {
     let action = { type: FOLLOW, userid }

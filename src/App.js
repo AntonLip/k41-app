@@ -22,6 +22,7 @@ const App = (props) => {
         <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
         <Route path="/Users" render={()=>{return <UsersContainer/>}}/>
         <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />
+        <Route path="/Login"  render={()=>{return <Login />} } />
       </div>
       <LeftSide />
       <Footer />

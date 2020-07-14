@@ -2,26 +2,11 @@ import React from 'react'
 import * as axios from 'axios'
 import classes from './Users.module.css'
 import { NavLink } from 'react-router-dom';
- 
+import {getUsersAPI} from './../../API/api'
 export class Users extends React.Component {
 
-    stringOfEndPoint = "https://localhost:44351/api/Lecturals/Min";
-
-    
- 
-    getUsers() {
-
-       if (this.props.users.length === 0) {
-            axios.get(this.stringOfEndPoint).then(Response => {
-                this.props.setUsers(Response.data);
-            })
-        }
-    }
-
     componentDidMount() {
-        axios.get(this.stringOfEndPoint).then(Response => {
-            this.props.setUsers(Response.data);
-        });
+        this.props.getUser();
     }
 
     render() {

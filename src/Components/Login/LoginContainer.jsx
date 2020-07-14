@@ -1,7 +1,7 @@
 
+
 import { setDataAC, getTimetableThunkCreator } from '../../../Redux/timetable-reduser';
-import {Timetable} from './TimetableClass';
-import { connect } from 'react-redux';
+
 
 
 let maptoStateToProps = (state) => {

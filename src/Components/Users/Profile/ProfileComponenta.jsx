@@ -1,6 +1,6 @@
 
 import { connect } from 'react-redux'
-import { setProfileAC } from '../../../Redux/profile-reduser'
+import { setProfileAC, getUserbyIdThunkCreator } from '../../../Redux/profile-reduser'
 import { ProfileClass } from './ProfileClass'
 import { withRouter } from 'react-router-dom';
 
@@ -15,6 +15,9 @@ let mapDispatchToProps = (dispatch) => {
     return {        
         setProfile: (ProfilePage) => {
             dispatch(setProfileAC(ProfilePage));
+        },
+        getUserbyId: (id) =>{
+            dispatch(getUserbyIdThunkCreator(id));
         }
     }
 }

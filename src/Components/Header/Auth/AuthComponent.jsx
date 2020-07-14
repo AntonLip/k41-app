@@ -12,8 +12,9 @@ let maptoStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {        
-        getAuthUser: (Auth_user) => {
-            dispatch(getAuthAC(Auth_user));
+        getAuthUser: () => {
+            debugger;
+            dispatch(getAuthAC());
         }
     }
 }

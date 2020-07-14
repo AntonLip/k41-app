@@ -1,6 +1,6 @@
 
 import { connect } from 'react-redux'
-import { followAC, unfollowAC, setUsersAC } from '../../Redux/users-reduser'
+import { followAC, unfollowAC, setUsersAC, getUsersThunkCreator } from '../../Redux/users-reduser'
 import { Users } from './UsersClass'
 
 let maptoStateToProps = (state) => {
@@ -20,6 +20,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setUsers: (users) => {
             dispatch(setUsersAC(users));
+        },
+        getUser: () =>{
+            dispatch(getUsersThunkCreator());
         }
     }
 }
