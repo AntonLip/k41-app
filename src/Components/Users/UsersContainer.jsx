@@ -6,7 +6,6 @@ import { withAuthRedirect } from '../../hoc/AuthRedirect';
 import { compose } from 'redux';
 
 let maptoStateToProps = (state) => {
-    debugger;
     return {
         users: state.UserReduser.usersPage.users
        
@@ -33,5 +32,5 @@ let mapDispatchToProps = (dispatch) => {
 
 export default compose(
     connect(maptoStateToProps, mapDispatchToProps),
-    withAuthRedirect
+  //  withAuthRedirect
     )(Users);

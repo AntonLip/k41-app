@@ -1,62 +1,51 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Login.module.css';
+import { reduxForm, Field } from 'redux-form';
+import { getUserbyIdAPI } from '../../API/api';
+import { getUsersAuthAPI, authMe, callApi } from '../../API/authAPI';
 
 
-const LoginFrorm = () => {
+const LoginFrorm = (props) => {
     return (
-        <form>
+        <form onSubmit={props.handleSubmit}>
+            <div className={classes.text2}>
             <div className={classes.login}>
-                <input placeholder="Enter your email address." required />
+                <Field placeholder={"Login"} name={"login"} component={'input'}  />
+            </div>
             </div>
             <div className={classes.password}>
-                <input placeholder="Enter your password." required />
+                <Field placeholder={"password"} name={"password"} component={'input'}  />
             </div>
             <div >
-                <input type={"checkbox"} placeholder="Enter your password." required />Remember me
+                <Field type={"checkbox"} component={'input'} name={"rememderMe"}  />Remember me
             </div>
             <button className={classes.button}></button>
         </form>
     );
 }
 
+const LoginReduxForm = reduxForm({
+form:'login'
+})(LoginFrorm)
 
 
 
-
-export class Login extends React.Component {
-
-
-
-    componentDidMount() {
-
+export const Login =() => {
+    
+    const onSubmit = (formData) =>{
+    console.log(formData);
+    authMe(formData);
     }
-
-
-    render() {
+   
         return (
             <div className={classes.okno}>
-                <LoginFrorm />
-            </div>
-           /* <div className={classes.okno}>
                 <div className={classes.aut} >
-                    <div className={classes.text2}>Авторизация</div>
-                    <div className={classes.login}>
-                        <input type="email"  placeholder="Enter your email address." required />
-                    </div>
-                    <div className={classes.password}>
-                        <form action="Адрес сервера для отправки данных" method="post">
-                            <input type="text" placeholder="Enter your password." required />
-                        </form>
-                    </div>      
-                    <div >
-                        <button className={classes.button}></button>
-                    </div>
+                <LoginReduxForm onSubmit={onSubmit.bind(this)}/>
                 </div>
-            </div>*/);
-    }
+            </div>
+        );   
 
 }
-
 
 

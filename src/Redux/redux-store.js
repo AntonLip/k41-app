@@ -6,13 +6,15 @@ import {ProfileReduser} from './profile-reduser'
 import {AuthUserReduser} from './auth-reduser'
 import thunkMiddleware from 'redux-thunk'
 import {LoginReduser} from './login-reduser'
+import {reducer as formReducer} from 'redux-form'
 let redusersBatch = combineReducers({
     newsReduser,
     timetableReduser,
     UserReduser,
     ProfileReduser,
     AuthUserReduser,
-    LoginReduser
+    LoginReduser,
+    form: formReducer
 });
 
 

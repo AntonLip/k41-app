@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 
 let maptoStateToProps = (state) => {
-    debugger;
     return {
         timetable: state.timetableReduser.timetablePage.timetable
     }
