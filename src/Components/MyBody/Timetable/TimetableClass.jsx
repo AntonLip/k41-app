@@ -10,12 +10,12 @@ export class Timetable extends React.Component {
     
     getTimetable(props) {
         if (this.props.timetable.lenght === 0) {
-            this.props.getTimetable();
+            this.props.getTimetable(442, "2020-09-03 00:00:00.0000000");
         }
     }
 
     componentDidMount() {
-        this.props.getTimetable();
+        this.props.getTimetable(442, "2020-09-03 00:00:00.0000000");
     }
 
 
@@ -27,17 +27,14 @@ export class Timetable extends React.Component {
                         return (
                             <div class={classes.card__lessons} key={u.id}>
                                 <div class={classes.card__lesson_item}>
-                                    <div class={classes.card__lesson_number}>1</div>
+                        <           div class={classes.card__lesson_number}>{u.numberOfLessonInDay}</div>
                                     <div class={classes.titles}>
-                                        <div class={classes.card__lesson_title}>{u.disciplineName}</div>
-                                        <div class={classes.card__lesson_title}>{u.lessonType}</div>
-                                        <div class={classes.card__lesson_title}>{u.auditoreNumber}</div>
-                                        <div class={classes.card__lesson_title}>{u.lecturalName}</div>
+                                        <div class={classes.card__lesson_title}>{u.nameOfDiscipline}</div>
+                                        <div class={classes.card__lesson_title}>{u.typeOfLesson}</div>
+                                        <div class={classes.card__lesson_title}>{u.auditore}</div>
+                                        <div class={classes.card__lesson_title}>{u.lectural}</div>
                                     </div>
-                                    <div class={classes.card__lesson_content}>
-                                        <div class={classes.card__lesson_more}>{u.infoForCadets}</div>
-                                        <input class={classes.card__lesson_more} type="text" required placeholder="просьба преподавателю"></input>
-                                    </div>
+                                    <div class={classes.card__lesson_content}> </div>
                                 </div>
                             </div>
                         );

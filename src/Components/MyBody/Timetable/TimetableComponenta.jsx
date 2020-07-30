@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 
 let maptoStateToProps = (state) => {
-    debugger;
+   
     return {
         timetable: state.timetableReduser.timetablePage.timetable
     }
@@ -15,8 +15,9 @@ let mapDispatchToProps = (dispatch) => {
         setData:(data)=>{
             dispatch(setDataAC(data));
         },
-        getTimetable:()=>{
-            dispatch(getTimetableThunkCreator());
+        getTimetable:(group, dateTime)=>{
+            debugger;
+            dispatch(getTimetableThunkCreator(group, dateTime));
         }
     }
 }
