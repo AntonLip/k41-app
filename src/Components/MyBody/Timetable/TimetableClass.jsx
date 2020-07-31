@@ -1,14 +1,13 @@
 import React from 'react';
 import classes from './Timetable.module.css'
 import { reduxForm, Field } from 'redux-form';
-import 'react-widgets/dist/css/react-widgets.css'
-import DateTimePicker from 'react-widgets/lib/DateTimePicker'
-import moment from 'moment'
 
-//moment.setDefault('America/New_York')
+
+
+
 export class Timetable extends React.Component {
 
-    
+
 
     getTimetable(props) {
         if (this.props.timetable.lenght === 0) {
@@ -27,17 +26,18 @@ export class Timetable extends React.Component {
         this.props.getTimetable(this.props.currGroup, "2020-09-03 00:00:00.0000000");
     }
 
-    getTT = (props) => {
+    getTT = (group, fullDate) => {
         debugger;
-        this.props.getTimetable(props.group, props.fullDate);
+        this.props.getTimetable(group, fullDate);
     }
 
     submit = values => {
         // print the form values to the console
-        var fullDate = "2020-09-03 00:00:00.0000000"
-
+        var fullDate = values.date + " 00:00:00.0000000";
+        var group = values.group;
+        debugger;
         console.log(values)
-        this.getTT(values.group, fullDate)
+        this.getTT(group, fullDate)
     }
     render() {
         return (
@@ -83,7 +83,6 @@ const TT = (props) => {
 
 
 const TimetableFormRedux = (props) => {
-    const { handleSubmit, pristine, reset, submitting } = props
     return (
         <form onSubmit={props.handleSubmit}>
             <div >
@@ -91,17 +90,10 @@ const TimetableFormRedux = (props) => {
                     <Field placeholder={"Enter number of group"} name={"group"} component={'input'} />
                 </div>
                 <div>
-
-                    <Field 
-                        name="date"
-                        showTime={false}
-                        component={renderDateTimePicker}
-                    />
+                    <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"date"} />
                 </div>
             </div>
-            <button className={classes.button} type="submit" disabled={pristine || submitting}>Расписание</button>
-            <button type="button" disabled={pristine || submitting} onClick={reset}>Reset Values
-        </button>
+            <button className={classes.button}>Расписание</button>
         </form>
     );
 }
@@ -109,10 +101,3 @@ const TimetableReduxForm = reduxForm({
     form: 'group'
 })(TimetableFormRedux)
 
-const renderDateTimePicker = ({ input: { onChange, value }, showTime }) =>
-    <DateTimePicker
-        onChange={onChange}
-        format="YYYY MMM DD"
-        time={showTime}
-        value={!value ? null : new Date(value)}
-    />
