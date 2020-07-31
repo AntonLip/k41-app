@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 import classes from './Login.module.css';
 import { reduxForm, Field } from 'redux-form';
-import { getUserbyIdAPI } from '../../API/api';
-import { getUsersAuthAPI, authMe, callApi } from '../../API/authAPI';
+import {  authMe } from '../../API/authAPI';
 
 
 const LoginFrorm = (props) => {

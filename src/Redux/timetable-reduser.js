@@ -37,3 +37,9 @@ export const setDataAC = (data) => {
         data
     }
 }
+export const setGroupAC = (data) => {
+    return {
+        type: GET_TIMETABLE,
+        data
+    }
+}
