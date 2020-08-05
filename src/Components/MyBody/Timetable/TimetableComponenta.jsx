@@ -2,12 +2,14 @@
 import { setDataAC, getTimetableThunkCreator } from '../../../Redux/timetable-reduser';
 import {Timetable} from './TimetableClass';
 import { connect } from 'react-redux';
+import { getUserInfoThunkCreator } from '../../../Redux/login-reduser';
 
 
 let maptoStateToProps = (state) => {
    
     return {
-        timetable: state.timetableReduser.timetablePage.timetable
+        timetable: state.timetableReduser.timetablePage.timetable,
+        user: state.LoginReduser
     }
 }
 let mapDispatchToProps = (dispatch) => {
@@ -15,9 +17,11 @@ let mapDispatchToProps = (dispatch) => {
         setData:(data)=>{
             dispatch(setDataAC(data));
         },
+        getUser:()=>{
+            dispatch(getUserInfoThunkCreator());
+        },
         getTimetable:(group, dateTime)=>{
-            debugger;
-            dispatch(getTimetableThunkCreator(group, dateTime));
+           dispatch(getTimetableThunkCreator(group, dateTime));
         }
     }
 }

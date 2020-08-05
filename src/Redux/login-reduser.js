@@ -1,7 +1,6 @@
-import { GetUser } from "../API/authAPI"
+import { GetUser, RedirectAuth } from "../API/authAPI"
 
 const SET_USER = 'GET_USER'
-const IS_AUTH = 'IS_AUTH'
 
 let initState =
 {
@@ -11,8 +10,6 @@ let initState =
     }
 }
 
-
-
 export const LoginReduser = (state = initState, action) => {
     let copyState = {
         ...state
@@ -20,22 +17,18 @@ export const LoginReduser = (state = initState, action) => {
     switch (action.type) {
 
         case SET_USER:
-            copyState.loginPage = { ...action.loginPage };
-            if (action.data) {
+            debugger;
+            copyState.loginPage = { ...action.userInfo };
+            if (action.userInfo) {
                 copyState.loginPage.isLoadingUser = true;
             }
             return copyState;
-        //return { ...state, users: [...state.users, action.users] }
-        case IS_AUTH:
-            copyState.loginPage = { ...action.loginPage };
-            copyState.loginPage.passwd = action.passwd;
-            return copyState;
-
-
+        
         default:
             return state;
     }
 }
+
 export const getUserInfoThunkCreator = () => {
 
     return (dispatch) => {
@@ -45,7 +38,14 @@ export const getUserInfoThunkCreator = () => {
     }
 }
 
+export const RedirectCallback = () => {
+
+    RedirectAuth();
+    
+}
+
 const setUserInfoAC = (userInfo) => {
+    debugger;
     let action = { type: SET_USER, userInfo }
     return action;
 }

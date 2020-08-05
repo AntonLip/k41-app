@@ -20,21 +20,31 @@ const config = {
 // initialise!
 const userManager = new createUserManager(config)
 
-export var AuthMe = (props) => {
-  debugger;
+export var AuthMe = (props) => {  
   userManager.signinRedirect();
 }
-
 export var LogOutMe = () => {
   userManager.signoutRedirect();
 }
 
 export var GetUser = () => {
-  debugger;
+ 
   return userManager.getUser().then(responce => {
-    if (responce) {
-      return responce.data
+    if (responce) {  
+      return responce.profile
+    }
+    else
+    {      
+      console.log("User is null");
     }
   });
+}
 
+
+export var RedirectAuth = () => {
+  userManager.signinRedirectCallback().then(function () {
+    window.location = "/Timetable";
+  }).catch(function (e) {
+    console.error(e);
+  });
 }

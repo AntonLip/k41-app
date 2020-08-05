@@ -10,9 +10,8 @@ import { AuthMe } from '../../API/authAPI';
 export class LoginSuccess extends React.Component {
 
 
-    componentDidMount() {
-        debugger;
-        this.props.getUserInfo();
+    componentDidMount() {      
+        this.props.redie();
     }
     render() {
         return (

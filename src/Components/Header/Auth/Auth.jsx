@@ -18,7 +18,7 @@ export class AuthClass extends React.Component {
         LogOutMe();
     }
     render() {
-        debugger;
+        debugger;        
         if (this.props.AuthClass.loginPage.isLoadingUser) {
             return (
                 <button onClick={this.logout} >Logout</button>
