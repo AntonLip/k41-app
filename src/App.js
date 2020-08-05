@@ -9,7 +9,8 @@ import TimetibleContainer from './Components/MyBody/Timetable/TimetableComponent
 import { MyNewsContainer } from './Components/MyBody/MyNews/MyNewsComponenta';
 import UsersContainer from './Components/Users/UsersContainer';
 import ProfileComponenta from './Components/Users/Profile/ProfileComponenta';
-import LoginContainer from './Components/Login/LoginContainer';
+import LoginSuccessContainer from './Components/Login/LoginContainer';
+import { LoginSuccess } from './Components/Login/Login';
 
 
 const App = (props) => {
@@ -22,7 +23,7 @@ const App = (props) => {
         <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
         <Route path="/Users" render={()=>{return <UsersContainer/>}}/>
         <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />
-        <Route path="/Login"  render={()=>{return <LoginContainer />} } />
+        <Route path="/signin-oidc"  render={()=>{return <LoginSuccessContainer />} } />
       </div>
       <LeftSide />
       <Footer />

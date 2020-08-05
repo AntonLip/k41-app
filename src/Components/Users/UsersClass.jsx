@@ -5,6 +5,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 export class Users extends React.Component {
 
     componentDidMount() {
+        debugger;
         this.props.getUser();
     }
 

@@ -1,17 +1,13 @@
+import { GetUser } from "../API/authAPI"
 
-const CHANGE_LOGIN = 'CHANGE_LOGIN'
-const CHANGE_PASSWD = 'CHANGE_PASSWD'
-const AUTH = 'AUTH'
+const SET_USER = 'GET_USER'
+const IS_AUTH = 'IS_AUTH'
 
 let initState =
 {
     loginPage: {
-        login : "",
-        passwd : "",
-        isAuth : false,
-        usersData : {
-
-        }
+        user: null,
+        isLoadingUser: false
     }
 }
 
@@ -23,32 +19,33 @@ export const LoginReduser = (state = initState, action) => {
     }
     switch (action.type) {
 
-        case CHANGE_LOGIN:
+        case SET_USER:
             copyState.loginPage = { ...action.loginPage };
-            copyState.loginPage.login = action.login;
+            if (action.data) {
+                copyState.loginPage.isLoadingUser = true;
+            }
             return copyState;
         //return { ...state, users: [...state.users, action.users] }
-        case CHANGE_PASSWD:
+        case IS_AUTH:
             copyState.loginPage = { ...action.loginPage };
             copyState.loginPage.passwd = action.passwd;
             return copyState;
-        case AUTH :
+
 
         default:
             return state;
     }
 }
+export const getUserInfoThunkCreator = () => {
 
-export const changeLoginAC = (login) => {
-    let action = { type: CHANGE_LOGIN, login }
-    return action;
+    return (dispatch) => {
+        GetUser().then(data => {
+            dispatch(setUserInfoAC(data));
+        });
+    }
 }
 
-export const changePasswdAC = (passwd) => {
-    let action = { type: CHANGE_PASSWD, passwd }
-    return action;
-}
-export const doAuthAC = () => {
-    let action = { type: AUTH }
+const setUserInfoAC = (userInfo) => {
+    let action = { type: SET_USER, userInfo }
     return action;
 }

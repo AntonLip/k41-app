@@ -1,39 +1,39 @@
 import React from 'react'
 import classes from "./auth.module.css"
-import Oidc from 'oidc-client'
-
-import userManager from './userManager.js'
-import { CallbackComponent } from 'redux-oidc'
+import { NavLink } from 'react-router-dom'
+import { LogOutMe, AuthMe } from '../../../API/authAPI';
 
 export class AuthClass extends React.Component {
-     successCallback = (user) => {
+    successCallback = (user) => {
         console.log(user);
-      };
-     
-       errorCallback = (error) => {
-        console.error(error);
-      };
+    };
 
-    render(){
-        return (            
-            <div className={classes.AuthHeader}>
-                    <div className={classes.AuthField}>
-                        <form>
-                            <input />
-                        </form>
-                    </div>
-                    <div className={classes.AuthField}>
-                        <form>
-                            <input />
-                        </form>
-                    </div>
+    errorCallback = (error) => {
+        console.error(error);
+    };
+    login(){
+        AuthMe();
+    }
+    logout(){
+        LogOutMe();
+    }
+    render() {
+        debugger;
+        if (this.props.AuthClass.loginPage.isLoadingUser) {
+            return (
+                <button onClick={this.logout} >Logout</button>
+            );
+        }
+        else {
+            return (
+                <div className={classes.AuthHeader}>
                     <div className={classes.buttonContainer}>
-                        <form>
-                            <button >Войти</button>
-                        </form>
-                    </div>
+                    <button onClick={this.login} >Login</button>
+                    <button onClick={this.logout} >logout</button>
                 </div>
-        );
+               </div >
+            );
+        }
     }
 
 

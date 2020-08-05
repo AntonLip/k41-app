@@ -1,26 +1,22 @@
-
-
-import { Login } from './Login';
-import { changePasswdAC, changeLoginAC } from '../../Redux/login-reduser';
+import React from 'react'
 import { connect } from 'react-redux';
-
+import { LoginSuccess } from './Login';
+import { getUserInfoThunkCreator } from '../../Redux/login-reduser';
 
 
 let maptoStateToProps = (state) => {
     return {
-        timetable: state.timetableReduser.timetablePage.timetable
+        AuthClass: state.LoginReduser
     }
 }
+
 let mapDispatchToProps = (dispatch) => {
-    return {                
-        changeLogin:(data)=>{
-            dispatch(changeLoginAC(data));
-        },
-        changePassword:()=>{
-            dispatch(changePasswdAC());
+    return {        
+        getUserInfo: () => {
+           dispatch(getUserInfoThunkCreator());
         }
     }
 }
-const LoginContainer = connect(maptoStateToProps, mapDispatchToProps)(Login);
+const LoginSuccessContainer = connect(maptoStateToProps, mapDispatchToProps)(LoginSuccess);
 
-export default LoginContainer;
+export default LoginSuccessContainer;

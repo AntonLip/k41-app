@@ -5,7 +5,7 @@ import { AuthClass } from './Auth.jsx'
 
 let maptoStateToProps = (state) => {
     return {
-        AuthClass: state.AuthUserReduser.Auth_User
+        AuthClass: state.LoginReduser
     }
 }
 

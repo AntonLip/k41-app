@@ -32,5 +32,5 @@ let mapDispatchToProps = (dispatch) => {
 
 export default compose(
     connect(maptoStateToProps, mapDispatchToProps),
-  //  withAuthRedirect
+    //withAuthRedirect
     )(Users);
