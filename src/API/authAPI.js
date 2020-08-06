@@ -20,7 +20,7 @@ const config = {
 // initialise!
 const userManager = new createUserManager(config)
 
-export var AuthMe = (props) => {  
+export var AuthMe = (props) => {
   userManager.signinRedirect();
 }
 export var LogOutMe = () => {
@@ -28,18 +28,25 @@ export var LogOutMe = () => {
 }
 
 export var GetUser = () => {
- 
+
   return userManager.getUser().then(responce => {
-    if (responce) {  
+    if (responce) {
       return responce.profile
     }
-    else
-    {      
+    else {
       console.log("User is null");
     }
   });
 }
 
+export const GetTokens = () => {
+  return userManager.getUser().then(responce => {
+    debugger;
+    if (responce) {
+      return responce
+    }
+  })
+}
 
 export var RedirectAuth = () => {
   userManager.signinRedirectCallback().then(function () {

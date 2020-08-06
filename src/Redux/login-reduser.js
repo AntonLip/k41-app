@@ -23,7 +23,7 @@ export const LoginReduser = (state = initState, action) => {
                 copyState.loginPage.isLoadingUser = true;
             }
             return copyState;
-        
+
         default:
             return state;
     }
@@ -39,13 +39,11 @@ export const getUserInfoThunkCreator = () => {
 }
 
 export const RedirectCallback = () => {
-
     RedirectAuth();
-    
 }
 
 const setUserInfoAC = (userInfo) => {
-    debugger;
     let action = { type: SET_USER, userInfo }
     return action;
 }
+

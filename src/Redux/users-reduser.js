@@ -59,7 +59,9 @@ export const UserReduser = (state = initState, action) => {
 
 export const getUsersThunkCreator = () =>{
     return (dispatch) => {
+        debugger;   
         getUsersAPI().then(data => {
+            
             dispatch(setUsersAC(data));
     });
 }
@@ -79,6 +81,7 @@ export const unfollowAC = (userid) => {
 }
 
 export const setUsersAC = (users) => {
+    debugger;
     let action = { type: SET_USER, users }
     return action;
 }
