@@ -9,25 +9,23 @@ const instance = axios.create(
     }
 );
 
-/*
-export const getUsers = () => {
-    return instance.get()
-        .then(response => {
-            return response.data;
-        });
-}
-
-*/
-
 export const getUsersAPI = () => {
     return GetTokens().then(
         (user) => {
             if (user) {
-                debugger;
+               console.log(user)
                 var config = {
                     method: 'get',
                     url: 'https://localhost:44351/api/Lecturals/Min',
-                    headers: { Authorization: 'Bearer ' + user.access_token  },
+                    headers:
+                     { 
+                        Authorization: 'Bearer ' + user.access_token,
+                        Profile : 
+                        [
+                            user.profile.name,
+                            user.profile.email,
+                        ]
+                     },
                     };
 
                 return axios(config)

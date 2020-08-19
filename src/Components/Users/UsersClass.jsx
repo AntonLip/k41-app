@@ -5,7 +5,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 export class Users extends React.Component {
 
     componentDidMount() {
-        debugger;
+        console.log(this.props);
         this.props.getUser();
     }
 
@@ -38,8 +38,6 @@ export class Users extends React.Component {
                     }
                     )
                 }
-                <script src="./script.js"></script>
-                
             </div>);
     }
 }

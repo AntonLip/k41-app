@@ -15,8 +15,9 @@ const Header = () => {
                 </div>
                 <div className={classes.buttonContainer}>
                     <NavLink to="/MyNews" className={classes.buttomHeader}>Новости</NavLink>
+                    <NavLink to="/EducationPage" className={classes.buttomHeader}>Учеба</NavLink>
+                    <NavLink to="/Users" className={classes.buttomHeader}>Наука</NavLink>
                     <NavLink to="/Timetable" className={classes.buttomHeader}>Кафедра</NavLink>
-                    <NavLink to="/Timetable" className={classes.buttomHeader}>Фотогалерея</NavLink>
                     <NavLink to="/Timetable" className={classes.buttomHeader}>ЭУМК</NavLink>
                 </div>
                 <AuthComponent/>

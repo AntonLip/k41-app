@@ -10,22 +10,21 @@ import { MyNewsContainer } from './Components/MyBody/MyNews/MyNewsComponenta';
 import UsersContainer from './Components/Users/UsersContainer';
 import ProfileComponenta from './Components/Users/Profile/ProfileComponenta';
 import LoginSuccessContainer from './Components/Login/LoginContainer';
-import { LoginSuccess } from './Components/Login/Login';
+import { EducationPart } from './Components/MyBody/EducationalPart/EducationalPart';
 
 
 const App = (props) => {
   return (
     <div className='app-wrapper'>
       <Header />
-      <Navbar />
       <div className='.app-wrapper-content'>
-        <Route path="/Timetable" render={() => { return <TimetibleContainer/> }} />
+        <Route path="/EducationPage" render={() => { return <EducationPart/> }} />
         <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
         <Route path="/Users" render={()=>{return <UsersContainer/>}}/>
         <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />
         <Route path="/signin-oidc"  render={()=>{return <LoginSuccessContainer />} } />
+
       </div>
-      <LeftSide />
       <Footer />
     </div>
   );

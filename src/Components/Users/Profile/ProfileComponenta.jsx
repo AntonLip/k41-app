@@ -5,7 +5,7 @@ import { ProfileClass } from './ProfileClass'
 import { withRouter } from 'react-router-dom';
 
 let maptoStateToProps = (state) => {
-    debugger;
+    console.log(state);
     return {
         ProfilePage: state.ProfileReduser.ProfilePage
     }

@@ -1,5 +1,4 @@
 import { createUserManager } from 'redux-oidc'
-import * as axios from "axios"
 
 const config = {
   // the URL of our identity server
@@ -41,7 +40,7 @@ export var GetUser = () => {
 
 export const GetTokens = () => {
   return userManager.getUser().then(responce => {
-    debugger;
+    console.log(responce)
     if (responce) {
       return responce
     }

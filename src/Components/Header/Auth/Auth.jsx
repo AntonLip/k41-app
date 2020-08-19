@@ -1,6 +1,5 @@
 import React from 'react'
 import classes from "./auth.module.css"
-import { NavLink } from 'react-router-dom'
 import { LogOutMe, AuthMe } from '../../../API/authAPI';
 
 export class AuthClass extends React.Component {
@@ -18,7 +17,7 @@ export class AuthClass extends React.Component {
         LogOutMe();
     }
     render() {
-        debugger;        
+        console.log(this.props);    
         if (this.props.AuthClass.loginPage.isLoadingUser) {
             return (
                 <button onClick={this.logout} >Logout</button>

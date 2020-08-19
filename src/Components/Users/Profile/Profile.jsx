@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 export const Profile = (props) => {
 
-    debugger;
+    console.log(props);
     return (
         <div key={props.ProfilePage.id}>
             <div className={classes.container}></div>

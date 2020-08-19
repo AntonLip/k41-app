@@ -8,9 +8,9 @@
   background-repeat: no-repeat;
   
   grid-template-areas: 
-    "m_H m_H    m_H    m_H"
-    "m_N m_Body m_Body m_L"
-    "m_F m_F    m_F    m_F";
+    "m_H    m_H    m_H    m_H"
+    "m_Body m_Body m_Body  m_Body"
+    "m_F    m_F    m_F    m_F";
 
   grid-template-rows: 360px 3fr 2fr;
   grid-template-columns: 2fr 10fr 0px 3fr ;

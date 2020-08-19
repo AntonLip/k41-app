@@ -15,8 +15,10 @@ export const timetableReduser = (state = initialState, action) => {
     switch (action.type) {
 
         case GET_TIMETABLE:
-            debugger;
+            console.log('timetableReduser GET TIMETABLE');
             copyState.timetablePage.timetable = [...action.data];
+            console.log(...action.data);
+
             return copyState;
         default:
             return state;

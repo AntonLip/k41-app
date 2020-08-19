@@ -34,7 +34,6 @@ export const UserReduser = (state = initState, action) => {
             return copyState;
 
         case UN_FOLLOW:
-            debugger;
             copyState.usersPage.users = [
                 ...state.usersPage.users.map(u => {
                     if (u.id === action.userid) {
@@ -47,22 +46,23 @@ export const UserReduser = (state = initState, action) => {
             return copyState;
 
         case SET_USER:
-            debugger;
             copyState.usersPage.users = [...action.users];
             return copyState;
             //return { ...state, users: [...state.users, action.users] }
         default:
             return state;
     }
-
 }
 
 export const getUsersThunkCreator = () =>{
-    return (dispatch) => {
-        debugger;   
+    return (dispatch) => {      
         getUsersAPI().then(data => {
-            
-            dispatch(setUsersAC(data));
+            console.log("getUsersThunkCreator");
+            console.log(data);
+            if(data)
+            {
+                dispatch(setUsersAC(data));
+            }
     });
 }
 
@@ -81,7 +81,8 @@ export const unfollowAC = (userid) => {
 }
 
 export const setUsersAC = (users) => {
-    debugger;
-    let action = { type: SET_USER, users }
+   console.log('setUsersAC');
+   console.log(users);
+   let action = { type: SET_USER, users }
     return action;
 }

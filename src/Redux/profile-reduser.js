@@ -17,7 +17,6 @@ export const ProfileReduser = (state = initState, action) => {
     switch (action.type) {
 
         case SET_PROFILE:
-            debugger;
             copyState.ProfilePage = { ...action.profile };
             return copyState;
         //return { ...state, users: [...state.users, action.users] }
@@ -28,7 +27,9 @@ export const ProfileReduser = (state = initState, action) => {
 }
 export const getUserbyIdThunkCreator = (id) => {
     return (dispatch) => {
-        getUserbyIdAPI(id).then(data => {
+        getUserbyIdAPI(id).then(data => {            
+            console.log("getUserbyIdThunkCreator");
+            console.log(data);
             dispatch(setProfileAC(data));
         });
     }
