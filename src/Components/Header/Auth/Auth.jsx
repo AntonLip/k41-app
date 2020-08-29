@@ -16,6 +16,9 @@ export class AuthClass extends React.Component {
     logout(){
         LogOutMe();
     }
+    Register(){
+        window.location.href = "http://localhost:5001/Account/Register";
+    }
     render() {
         console.log(this.props);    
         if (this.props.AuthClass.loginPage.isLoadingUser) {
@@ -29,11 +32,10 @@ export class AuthClass extends React.Component {
                     <div className={classes.buttonContainer}>
                     <button onClick={this.login} >Login</button>
                     <button onClick={this.logout} >logout</button>
+                    <button onClick={this.Register}>Register</button>
                 </div>
                </div >
             );
         }
     }
-
-
 }

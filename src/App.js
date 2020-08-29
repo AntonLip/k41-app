@@ -23,6 +23,7 @@ const App = (props) => {
         <Route path="/Users" render={()=>{return <UsersContainer/>}}/>
         <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />
         <Route path="/signin-oidc"  render={()=>{return <LoginSuccessContainer />} } />
+        <Route path="/Timetable"  render={()=>{return <TimetibleContainer />} } />
 
       </div>
       <Footer />

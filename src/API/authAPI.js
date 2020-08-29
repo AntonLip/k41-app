@@ -10,7 +10,7 @@ const config = {
   response_type: "id_token token",
   // the scopes or resources we would like access to
   scope: "openid profile email api1",
-  // URL to redirect to after logouthttp://localhost:3000/signout-callback-oidc
+  // URL to redirect to after logout http://localhost:3000/signout-callback-oidc
   client_secret: "secret",
   post_logout_redirect_uri: "http://localhost:3000/signout-callback-oidc",
   loadUserInfo: true
@@ -30,7 +30,7 @@ export var GetUser = () => {
 
   return userManager.getUser().then(responce => {
     if (responce) {
-      return responce.profile
+      return responce
     }
     else {
       console.log("User is null");
