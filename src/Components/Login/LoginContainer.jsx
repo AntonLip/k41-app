@@ -7,7 +7,8 @@ import { RedirectAuth } from '../../API/authAPI';
 
 
 let maptoStateToProps = (state) => {
-    return {
+    
+    return {        
         AuthClass: state.LoginReduser
     }
 }

@@ -16,6 +16,7 @@
   grid-template-columns: 2fr 10fr 0px 3fr ;
   /* grid-gap: 10px; */
 }
-.app-wrapper-content{
+.app_wrapper_content{
   grid-area: m_Body;
+  
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import * as axios from 'axios'
 import classes from './EducationalPart.module.css'
-import { NavLink, Redirect, Route, BrowserRouter } from 'react-router-dom';
-import TimetibleContainer from '../Timetable/TimetableComponenta';
+import { NavLink} from 'react-router-dom';
 export class EducationPart extends React.Component {
 
     componentDidMount() {
@@ -20,17 +19,7 @@ export class EducationPart extends React.Component {
                     <div>
                         <NavLink to="/Users" className={classes.item}>Дисциплины кафедры</NavLink>
                     </div>
-
                 </div>
-                <BrowserRouter>
-                    <div className={classes.Body}>
-                        <div>ghbdtn</div>
-                        <Route path="/EducationPage/Timetable/" render={() => { return <TimetibleContainer /> }} />
-                        <Route path="/Disciplines" render={() => { return <TimetibleContainer /> }} />
-                    </div>
-                </BrowserRouter>
-
-
             </div>);
     }
 }

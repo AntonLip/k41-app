@@ -26,7 +26,7 @@ export const timetableReduser = (state = initialState, action) => {
 }
 
 export const getTimetableThunkCreator = (group, dateTime) => {
-    debugger;
+   
     return (dispatch) => {
         getTimetableAPI(group, dateTime).then(data => {
             dispatch(setDataAC(data));

@@ -13,10 +13,7 @@ export class Timetable extends React.Component {
         var day = new Date().getDay();
         var month = new Date().getMonth();
         var year = new Date().getFullYear();
-        var fullDate = year + "-" + month + "-" + day + " 00:00:00.0000000"
-        
-
-        //var currentTimeDate = new Date()
+        var fullDate = year + "-" + month + "-" + day + " 00:00:00.0000000"        
         this.props.getTimetable(this.props.currGroup, fullDate);
     }
 
@@ -33,10 +30,10 @@ export class Timetable extends React.Component {
         console.log(values)
         this.getTT(group, fullDate)
     }
-    render() {
+    render() {        
         return (
             <div>
-                <TimetableReduxForm onSubmit={this.submit} />
+                <TimetableReduxForm onSubmit={this.submit} role={this.props.user.profile}/>
                 <TT timetable={this.props.timetable} />
             </div>
         );
@@ -77,6 +74,7 @@ const TT = (props) => {
 
 
 const TimetableFormRedux = (props) => {
+   
     return (
         <form onSubmit={props.handleSubmit}>
             <div >

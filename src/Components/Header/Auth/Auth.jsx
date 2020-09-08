@@ -21,17 +21,20 @@ export class AuthClass extends React.Component {
     }
     render() {
         console.log(this.props);    
+        var name = this.props.AuthClass.loginPage.user.name;        
         if (this.props.AuthClass.loginPage.isLoadingUser) {
             return (
+                <div className={classes.AuthHeader}>
+                <div>{name}</div>
                 <button onClick={this.logout} >Logout</button>
+                </div>
             );
         }
         else {
             return (
                 <div className={classes.AuthHeader}>
                     <div className={classes.buttonContainer}>
-                    <button onClick={this.login} >Login</button>
-                    <button onClick={this.logout} >logout</button>
+                    <button onClick={this.login} >Login</button>                    
                     <button onClick={this.Register}>Register</button>
                 </div>
                </div >

@@ -5,8 +5,17 @@ const SET_USER = 'GET_USER'
 let initState =
 {
     loginPage: {
-        user: null,
-        isLoadingUser: false
+        user: {
+            name: null,
+            email: null,
+            role: [
+
+            ]
+        },
+        isLoadingUser: false,
+        access_token: null,
+        id_token: null,
+        refresh_token: null
     }
 }
 
@@ -15,12 +24,16 @@ export const LoginReduser = (state = initState, action) => {
         ...state
     }
     switch (action.type) {
-
         case SET_USER:
-            debugger;
-            copyState.loginPage = { ...action.userInfo };
             if (action.userInfo) {
                 copyState.loginPage.isLoadingUser = true;
+                copyState.loginPage.access_token = action.userInfo.access_token;
+                copyState.loginPage.id_token = action.userInfo.id_token;
+                copyState.loginPage.refresh_token = action.userInfo.refresh_token;
+                copyState.loginPage.user.name = action.userInfo.profile.name;
+                copyState.loginPage.user.email = action.userInfo.profile.email;
+                copyState.loginPage.user.role = { ...action.userInfo.profile.role }
+
             }
             return copyState;
 

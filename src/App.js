@@ -12,19 +12,24 @@ import ProfileComponenta from './Components/Users/Profile/ProfileComponenta';
 import LoginSuccessContainer from './Components/Login/LoginContainer';
 import { EducationPart } from './Components/MyBody/EducationalPart/EducationalPart';
 
+import { HistoryOfChief } from './Components/MyBody/Chief/History/history';
+import  ChiefComponent  from './Components/MyBody/Chief/chiefComponent';
+
 
 const App = (props) => {
   return (
     <div className='app-wrapper'>
       <Header />
-      <div className='.app-wrapper-content'>
+      <div className='app_wrapper_content'>
         <Route path="/EducationPage" render={() => { return <EducationPart/> }} />
+        <Route path="/Chief" render={() => { return <ChiefComponent/> }} />
         <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
         <Route path="/Users" render={()=>{return <UsersContainer/>}}/>
         <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />
         <Route path="/signin-oidc"  render={()=>{return <LoginSuccessContainer />} } />
         <Route path="/Timetable"  render={()=>{return <TimetibleContainer />} } />
-
+        <Route path="/Cadets" render={()=>{return <TimetibleContainer />} }/>
+        <Route path="/History" render={()=>{return <HistoryOfChief />} }/>
       </div>
       <Footer />
     </div>

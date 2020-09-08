@@ -204,3 +204,9 @@ border-radius: 20px;
       background-repeat: no-repeat;
       box-sizing: border-box;
    }
+
+
+   .head_timetable
+   {
+      justify-content: center;
+   }

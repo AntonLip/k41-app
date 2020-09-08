@@ -8,7 +8,7 @@ const instance = axios.create(
     }
 );
 export const getTimetableAPI = (group, dateTime) =>{
-    debugger;
+   
 var path = "/forGroup?groupDTO=" + group + "&dateTime=" + dateTime;
     return instance.get(path).then(responce =>{
          return responce.data
