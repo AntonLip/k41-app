@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './chief.module.css'
 import { Redirect } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 export class Chief extends React.Component {
 
     componentDidMount() {
@@ -8,41 +9,28 @@ export class Chief extends React.Component {
         if (!this.props.isAuth)
         this.toHistory();
     }
-
-    toCadets() {
-        window.location = "/Cadets";
-    }
-    toOfficers() {
-        window.location = "/Users";
-    }
-    toAuditore() {
-        window.location = "/Auditore";
-    }
-    toTecknik() {
-        window.location = "/Tecknik";
-    }
-
+ 
     toHistory() {
         window.location = "/History";
     }
     render() {
         
         return (
-            <div >
-                <div>
-                    <button onClick={this.toCadets}>Курсанты</button>
+            <div className={classes.mainContaineer}>
+                <div className={classes.app_Cadets}>
+                <NavLink  to="/Cadets">Курсанты</NavLink>
                 </div>
-                <div>
-                    <button onClick={this.toOfficers}>Офицеры</button>
+                <div className={classes.app_Officer}>
+                    <NavLink to="/Users">Офицеры</NavLink>
                 </div>
-                <div>
-                    <button onClick={this.toAuditore}>Аудитории</button>
+                <div className={classes.app_Aud}>
+                    <NavLink to="/Auditore">Аудитории</NavLink>
                 </div>
-                <div>
-                    <button onClick={this.toTecknik}>Техника</button>
+                <div className={classes.app_Technick}>
+                <NavLink to="/Tecknik">Техника</NavLink>
                 </div>
-                <div>
-                    <button onClick={this.toHistory}>История</button>
+                <div className={classes.app_Hist}>
+                <NavLink to="/History">История</NavLink>
                 </div>
             </div>
         );

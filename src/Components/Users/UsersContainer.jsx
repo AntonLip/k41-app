@@ -7,22 +7,16 @@ import { compose } from 'redux';
 
 let maptoStateToProps = (state) => {
     return {
-        users: state.UserReduser.usersPage.users
+        users: state.UserReduser.usersPage.users,
+        isAuth: state.LoginReduser.loginPage.isLoadingUser,
+        role: state.LoginReduser.loginPage.user.role
        
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        follow: (userid) => {
-            dispatch(followAC(userid));
-        },
-        unfollow: (userid) =>{
-            dispatch(unfollowAC(userid));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users));
-        },
+        
         getUser: () =>{
             dispatch(getUsersThunkCreator());
         }
