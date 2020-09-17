@@ -20,6 +20,7 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+<<<<<<< HEAD
     "react-widgets": "^4.5.0",
     "react-widgets-globalize": "^5.0.21",
     "react-widgets-moment-localizer": "^1.0.2",
@@ -27,6 +28,9 @@
     "redux-form": "^8.3.6",
     "redux-oidc": "^4.0.0-beta1",
     "redux-thunk": "^2.3.0"
+=======
+    "redux": "^4.0.5"
+>>>>>>> ff124fc1224dc40581d431a99573a211878982c7
   },
   "scripts": {
     "start": "react-scripts start",
