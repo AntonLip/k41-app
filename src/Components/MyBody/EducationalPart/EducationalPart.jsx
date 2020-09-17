@@ -11,15 +11,15 @@ export class EducationPart extends React.Component {
     render() {
 
         return (
-            <div className={classes.grid_container}>
-                <div className={classes.MyNav}>
+            <div className={classes.mainContaineer}>
+                
                     <div>
-                        <NavLink to="/Timetable/" className={classes.item}>Расписание занятий</NavLink>
+                        <NavLink to="/Timetable/" className={classes.app_Timetable}>Расписание занятий</NavLink>
                     </div>
                     <div>
-                        <NavLink to="/Users" className={classes.item}>Дисциплины кафедры</NavLink>
+                        <NavLink to="/Users" className={classes.app_Disciplines}>Дисциплины кафедры</NavLink>
                     </div>
-                </div>
+               
             </div>);
     }
 }
