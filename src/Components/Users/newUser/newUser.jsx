@@ -19,9 +19,11 @@ export class NewUsers extends React.Component {
         this.props.setAcademicTittes();
     }
     submit = values => {
-         console.log(values)
-         
-         this.props.createUser(values)
+         console.log(values);
+         values.countOfChildren = parseInt(values.countOfChildren);
+         values.FormSec = parseInt(values.FormSec);
+         debugger
+        this.props.createUser(values)
     }
     render() {      
         debugger
@@ -71,7 +73,7 @@ const NewUserReduxForm = (props) => {
                 </div>
                 <div >
                     <label>Имя  </label>
-                    <Field placeholder={"Enter number of name"} name={"Name"} component={'input'} />
+                    <Field placeholder={"Enter number of name"} name={"firstName"} component={'input'} />
                 </div>
                 <div >
                     <label>Отчество  </label>
@@ -119,10 +121,28 @@ const NewUserReduxForm = (props) => {
                     <label>Серия и номер служебного удостоверения  </label>
                     <Field  name={"serialAndNumderMilitaryDocs"} component={'input'} />
                 </div>
+                <div >
+                    <label>Фото большое</label>
+                    <Field  name={"pathPhotoBig"} component={'input'} />
+                </div>
+                <div >
+                    <label>Фото маленькое</label>
+                    <Field  name={"pathPhotoSmall"} component={'input'} />
+                </div>
                 <div>
                     <label>Форма</label>
                     <div>
-                        <Field name="formSec" component="select">
+                        <Field name="FormSec" component="select">
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        </Field>
+                    </div>
+                </div>
+                <div>
+                    <label>Дети</label>
+                    <div>
+                        <Field name="countOfChildren" component="select">
                         <option value={1}>1</option>
                         <option value={2}>2</option>
                         <option value={3}>3</option>
@@ -131,12 +151,12 @@ const NewUserReduxForm = (props) => {
                 </div>
                 <div>
                     <label>До какого действует форма</label>
-                    <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"dateFormSec"} />
+                    <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"DateFormSec"} />
                 </div>
                 <div>
                     <label>воинское звание</label>
                     <div>
-                        <Field name="militaryRank" component="select">
+                        <Field name="MilitaryRank" component="select">
                              {militaryRankOptions} 
                         </Field>
                     </div>
@@ -144,7 +164,7 @@ const NewUserReduxForm = (props) => {
                 <div>
                     <label>должность</label>
                     <div>
-                        <Field name="position" component="select">
+                        <Field name="Position" component="select">
                              {positionOptions} 
                         </Field>
                     </div>
@@ -152,7 +172,7 @@ const NewUserReduxForm = (props) => {
                 <div>
                     <label>Научная степень</label>
                     <div>
-                        <Field name="academicDegree" component="select">
+                        <Field name="AcademicDegree" component="select">
                              {academicDegreeOptions} 
                         </Field>
                     </div>
@@ -160,7 +180,7 @@ const NewUserReduxForm = (props) => {
                 <div>
                     <label>Научное звание</label>
                     <div>
-                        <Field name="academicTitle" component="select">
+                        <Field name="AcademicTitle" component="select">
                              {academicTitleOptions} 
                         </Field>
                     </div>

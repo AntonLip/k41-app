@@ -45,6 +45,7 @@ export const getUserbyIdAPI = (id) => {
     });
 }
 export const createUserAPI = (newUser) => {
+    debugger;
     return instance.post("Lecturals/?", JSON.stringify(newUser)).then(responce => {
         if(responce.data!=null)
         window.location ="/Users"

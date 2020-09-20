@@ -1,24 +1,27 @@
 import React from 'react'
 import classes from './chief.module.css'
 import { Redirect } from 'react-router-dom';
-import { NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 export class Chief extends React.Component {
 
-    componentDidMount() {
-      
+    constructor(props) {
+        super(props);
         if (!this.props.isAuth)
-        this.toHistory();
+            this.toHistory();
     }
- 
+    componentDidMount() {
+
+    }
+
     toHistory() {
         window.location = "/History";
     }
     render() {
-        
+
         return (
             <div className={classes.mainContaineer}>
                 <div className={classes.app_Cadets}>
-                <NavLink  to="/Cadets">Курсанты</NavLink>
+                    <NavLink to="/Cadets">Курсанты</NavLink>
                 </div>
                 <div className={classes.app_Officer}>
                     <NavLink to="/Users">Офицеры</NavLink>
@@ -27,10 +30,10 @@ export class Chief extends React.Component {
                     <NavLink to="/Auditore">Аудитории</NavLink>
                 </div>
                 <div className={classes.app_Technick}>
-                <NavLink to="/Tecknik">Техника</NavLink>
+                    <NavLink to="/Tecknik">Техника</NavLink>
                 </div>
                 <div className={classes.app_Hist}>
-                <NavLink to="/History">История</NavLink>
+                    <NavLink to="/History">История</NavLink>
                 </div>
             </div>
         );

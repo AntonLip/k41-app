@@ -29,6 +29,7 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(setAcademicTitleThunkCreator());
         },
         createUser:(data)=>{
+            debugger
             dispatch(createUserThunkCreator(data));
         }
     }
