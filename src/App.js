@@ -11,7 +11,7 @@ import UsersContainer from './Components/Users/UsersContainer';
 import ProfileComponenta from './Components/Users/Profile/ProfileComponenta';
 import LoginSuccessContainer from './Components/Login/LoginContainer';
 import { EducationPart } from './Components/MyBody/EducationalPart/EducationalPart';
-
+import NewUserContainer from './Components/Users/newUser/newUserContainer'
 import { HistoryOfChief } from './Components/MyBody/Chief/History/history';
 import  ChiefComponent  from './Components/MyBody/Chief/chiefComponent';
 
@@ -30,6 +30,7 @@ const App = (props) => {
         <Route path="/Timetable"  render={()=>{return <TimetibleContainer />} } />
         <Route path="/Cadets" render={()=>{return <TimetibleContainer />} }/>
         <Route path="/History" render={()=>{return <HistoryOfChief />} }/>
+        <Route path="/newUser" render={()=>{return <NewUserContainer />} }/>
       </div>
       <Footer />
     </div>
