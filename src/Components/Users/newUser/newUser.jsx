@@ -43,7 +43,6 @@ export class NewUsers extends React.Component {
 }
 
 const NewUserReduxForm = (props) => {
-    debugger;
     let militaryRankOptions = props.optionsMilitaryRank.map(u => {
         return(
             <option value={u.name}>{u.name}</option>
@@ -105,8 +104,7 @@ const NewUserReduxForm = (props) => {
                 <div>
                     <label>До какого действует</label>
                     <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"dateOfExpiry"} />
-                </div>
-            
+                </div>          
 
 
                 <div>

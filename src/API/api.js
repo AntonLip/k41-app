@@ -5,9 +5,9 @@ import { GetUser, GetTokens } from "./authAPI";
 const instance = axios.create(
     {
         //withCredentials :true,
-        headers: { 
+        headers: {
             'Content-Type': 'application/json'
-          },
+        },
         baseURL: "https://localhost:44351/api/"
     }
 );
@@ -16,20 +16,20 @@ export const getUsersAPI = () => {
     return GetTokens().then(
         (user) => {
             if (user) {
-               console.log(user)
+                console.log(user)
                 var config = {
                     method: 'get',
                     url: 'https://localhost:44351/api/Lecturals/Min',
                     headers:
-                     { 
+                    {
                         Authorization: 'Bearer ' + user.access_token,
-                        Profile : 
-                        [
-                            user.profile.name,
-                            user.profile.email,
-                        ]
-                     },
-                    };
+                        Profile:
+                            [
+                                user.profile.name,
+                                user.profile.email,
+                            ]
+                    },
+                };
 
                 return axios(config)
                     .then(responce => {
@@ -47,8 +47,8 @@ export const getUserbyIdAPI = (id) => {
 export const createUserAPI = (newUser) => {
     debugger;
     return instance.post("Lecturals/?", JSON.stringify(newUser)).then(responce => {
-        if(responce.data!=null)
-        window.location ="/Users"
+        if (responce.data != null)
+            window.location = "/Users"
     });
 }
 
@@ -69,6 +69,15 @@ export const getPositionAPI = () => {
 }
 export const getMilitaryRanksAPI = () => {
     return instance.get("MilitaryRanks/").then(responce => {
+        return responce.data
+    });
+}
+export const getUserDataByFilter = (filters) => {
+    debugger;
+    var path = "/Lecturals/filtered?firstName=" + filters.firstName + "&middleName=" + filters.middleName +
+        "&lastName=" + filters.lastName + "&militaryRank=" + filters.militaryRank + "&position=" + filters.position
+        + "&academicTitle=" + filters.academicTitle + "&academicDegree=" + filters.academicDegree + "&formSec=" + filters.formSec;
+    return instance.get(path).then(responce => {
         return responce.data
     });
 }

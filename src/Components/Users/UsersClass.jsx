@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './Users.module.css'
 import { NavLink } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
 
 
 const UsersDisplay = (props) => {
@@ -28,26 +29,116 @@ const UsersDisplay = (props) => {
     );
 }
 
-const SetFilter = () => {
+const SetFilter = (props) => {
+    let militaryRankOptions = props.optionsMilitaryRank.map(u => {
+        return(
+            <option value={u.name}>{u.name}</option>
+        )
+    });
+    let positionOptions = props.optionsPositions.map(u => {
+        return(
+            <option value={u.name}>{u.name}</option>
+        )
+    });
+    let academicTitleOptions = props.optionsAcademicTitle.map(u => {
+        return(
+            <option value={u.name}>{u.name}</option>
+        )
+    });
+    let academicDegreeOptions = props.optionsAcademicDegree.map(u => {
+        return(
+            <option value={u.name}>{u.name}</option>
+        )
+    });
     return (
-        <div>
+        <form onSubmit={props.handleSubmit}>
+            <div >
+                    <label>Фимилия  </label>
+                    <Field placeholder={"Enter number of lastname"} name={"lastName"} component={'input'} />
+                </div>
+                <div >
+                    <label>Имя  </label>
+                    <Field placeholder={"Enter number of name"} name={"firstName"} component={'input'} />
+                </div>
+                <div >
+                    <label>Отчество  </label>
+                    <Field placeholder={"Enter number of middleName"} name={"middleName"} component={'input'} />
+                </div>
+
             <div>
-                <label for="firstName">Имя</label>
-                <input type="text" name="firstName" />
-            </div>
-            <div>
-                <label for="middleName">Отчество</label>
-                <input type="text" name="middleName" />
-            </div>
-        </div>);
+                    <label>воинское звание</label>
+                    <div>
+                        <Field name="militaryRank" component="select">
+                             {militaryRankOptions} 
+                        </Field>
+                    </div>
+                </div>
+                <div>
+                    <label>должность</label>
+                    <div>
+                        <Field name="position" component="select">
+                             {positionOptions} 
+                        </Field>
+                    </div>
+                </div>
+                <div>
+                    <label>Форма</label>
+                    <div>
+                        <Field name="formSec" component="select">
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        </Field>
+                    </div>
+                </div>
+                <div>
+                    <label>Научная степень</label>
+                    <div>
+                        <Field name="academicDegree" component="select">
+                             {academicDegreeOptions} 
+                        </Field>
+                    </div>
+                </div>
+                <div>
+                    <label>Научное звание</label>
+                    <div>
+                        <Field name="academicTitle" component="select">
+                             {academicTitleOptions} 
+                        </Field>
+                    </div>
+                </div>
+                <button className={classes.button}>Show</button>
+        </form>);
 }
+
+const SetFilterR = reduxForm({
+    form: 'Filter'
+})(SetFilter)
+
+
+
+
+
+
+
 export class Users extends React.Component {
 
-    componentDidMount() {
-        console.log(this.props);
+    componentDidMount() {        
         this.props.getUser();
+        this.getData();
     }
-
+    getData() {
+        this.props.setPosition();
+        this.props.setMilitaryRank();
+        this.props.setAcademicDegree();
+        this.props.setAcademicTittes();
+    }
+    submit = values => {
+        debugger
+        console.log(values);       
+        values.FormSec = parseInt(values.FormSec);
+        this.props.getFilteredUser(values)
+   }
     render() {
         console.log(this.props);
         let AllUsers = this.props.users.map((u) => { return <UsersDisplay u={u} /> });
@@ -55,14 +146,18 @@ export class Users extends React.Component {
         if (!this.props.isAuth) {
             window.location = "/AccessDenided";
         }
-        if (this.props.role === "cadets") {
+        if (this.props.role === "cadet") {
             return (<div>{AllUsers}</div>)
         }
         return (
             <div className={classes.gridMain}>
                 <div className={classes.gridLeftSide}>
                     <NavLink to="/newUser" className={classes.card__more_btn}>Добавить</NavLink>
-                    <SetFilter />
+                    <SetFilterR onSubmit={this.submit}
+                     optionsMilitaryRank={this.props.militaryRank}
+                     optionsPositions={this.props.position}
+                     optionsAcademicTitle={this.props.academicTitle}
+                     optionsAcademicDegree={this.props.academicDegree}/>
                 </div>
                 <div>
                     {AllUsers}

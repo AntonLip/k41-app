@@ -1,88 +1,61 @@
 
- import {getUsersAPI} from './../API/api.js'
+import { getUserDataByFilter, getUsersAPI } from './../API/api.js'
 import { useDispatch } from 'react-redux'
 
-const FOLLOW = 'FOLLOW'
-const UN_FOLLOW = 'UNFOLLOW'
 const SET_USER = 'SET_USER'
-
+const SET_FILTERED_USER_DATA = 'SET_FILTERED_USER_DATA'
 let initState =
 {
     usersPage: {
         users: []
     }
 }
-
-
-
-
 export const UserReduser = (state = initState, action) => {
     let copyState = {
         ...state
     }
     switch (action.type) {
-        case FOLLOW:
-            copyState.usersPage.users = [
-                ...state.usersPage.users.map(u => {
-                    if (u.id === action.userid) {
-                        return { ...u, followed: true }
-                    } else {
-                        return u;
-                    }
-                })
-            ]
-            return copyState;
-
-        case UN_FOLLOW:
-            copyState.usersPage.users = [
-                ...state.usersPage.users.map(u => {
-                    if (u.id === action.userid) {
-                        return { ...u, followed: false }
-                    } else {
-                        return u;
-                    }
-                })
-            ]
-            return copyState;
-
         case SET_USER:
             copyState.usersPage.users = [...action.users];
             return copyState;
-            //return { ...state, users: [...state.users, action.users] }
+        case SET_FILTERED_USER_DATA:
+            copyState.usersPage.users.length = 0;
+            copyState.usersPage.users = [...action.users];
         default:
             return state;
     }
 }
-
-export const getUsersThunkCreator = () =>{
-    return (dispatch) => {      
+export const getUsersThunkCreator = () => {
+    return (dispatch) => {
         getUsersAPI().then(data => {
             console.log("getUsersThunkCreator");
             console.log(data);
-            if(data)
-            {
+            if (data) {
                 dispatch(setUsersAC(data));
             }
-    });
+        });
+    }
 }
-
+export const getFilteredUsersThunkCreator = (filter) => {
+    return (dispatch) => {
+        getUserDataByFilter(filter).then(data => {
+            console.log("getFilteredUsersThunkCreator");
+            console.log(data);
+            if (data) {
+                dispatch(setFilteredDataUsersAC(data));
+            }
+        });
+    }
 }
-
-export const followAC = (userid) => {
-    let action = { type: FOLLOW, userid }
+const setUsersAC = (users) => {
+    console.log('setUsersAC');
+    console.log(users);
+    let action = { type: SET_USER, users }
     return action;
 }
-
-
-export const unfollowAC = (userid) => {
-
-    let action = { type: UN_FOLLOW, userid }
-    return action;
-}
-
-export const setUsersAC = (users) => {
-   console.log('setUsersAC');
-   console.log(users);
-   let action = { type: SET_USER, users }
+const setFilteredDataUsersAC = (users) => {
+    console.log('setFilteredDataUsersAC');
+    console.log(users);
+    let action = { type: SET_FILTERED_USER_DATA, users }
     return action;
 }
