@@ -81,3 +81,11 @@ export const getUserDataByFilter = (filters) => {
         return responce.data
     });
 }
+export const deleteUserAPI = (id) =>{
+    
+    var path = "Lecturals/" + id;
+    return instance.delete(path).then(responce => {
+        
+        return responce.data
+    });
+}

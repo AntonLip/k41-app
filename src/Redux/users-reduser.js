@@ -1,7 +1,7 @@
 
-import { getUserDataByFilter, getUsersAPI } from './../API/api.js'
+import { getUserDataByFilter, getUsersAPI, deleteUserAPI } from './../API/api.js'
 import { useDispatch } from 'react-redux'
-
+const DELETE_USER = 'DELETE_USER'
 const SET_USER = 'SET_USER'
 const SET_FILTERED_USER_DATA = 'SET_FILTERED_USER_DATA'
 let initState =
@@ -10,6 +10,7 @@ let initState =
         users: []
     }
 }
+
 export const UserReduser = (state = initState, action) => {
     let copyState = {
         ...state
@@ -21,6 +22,16 @@ export const UserReduser = (state = initState, action) => {
         case SET_FILTERED_USER_DATA:
             copyState.usersPage.users.length = 0;
             copyState.usersPage.users = [...action.users];
+            return copyState;
+        case DELETE_USER:
+            debugger
+            copyState.usersPage.users = [...state.usersPage.users]
+            for (let i = 0; i < copyState.usersPage.users.length; i++) {
+                if (copyState.usersPage.users[i].id === action.id) {
+                    copyState.usersPage.users.splice(i, 1);
+                }
+            }
+            return copyState;
         default:
             return state;
     }
@@ -46,6 +57,20 @@ export const getFilteredUsersThunkCreator = (filter) => {
             }
         });
     }
+}
+export const deleteUserThunkCreator = (id) => {
+    return (dispatch) => {        
+        deleteUserAPI(id).then(data => {            
+            if (data === id)
+                dispatch(deleteUserAC(data));
+        })
+    }
+
+}
+const deleteUserAC = (id) => {
+    console.log('deleteUserAC ' + id);
+    let action = { type: DELETE_USER, id }
+    return action;
 }
 const setUsersAC = (users) => {
     console.log('setUsersAC');

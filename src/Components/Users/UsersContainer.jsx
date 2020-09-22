@@ -1,6 +1,6 @@
 import react from 'react'
 import { connect } from 'react-redux'
-import { getUsersThunkCreator, getFilteredUsersThunkCreator } from '../../Redux/users-reduser'
+import { getUsersThunkCreator, getFilteredUsersThunkCreator, deleteUserThunkCreator } from '../../Redux/users-reduser'
 import { Users } from './UsersClass'
 import { withAuthRedirect } from '../../hoc/AuthRedirect';
 import { compose } from 'redux';
@@ -37,6 +37,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         getFilteredUser: (filter) => {
             dispatch(getFilteredUsersThunkCreator(filter));
+        },
+        deleteUser:(id)=>{
+            dispatch(deleteUserThunkCreator(id));
         }
     }
 }

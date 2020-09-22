@@ -20,6 +20,7 @@ const config = {
 const userManager = new createUserManager(config)
 
 export var AuthMe = (props) => {
+  debugger
   userManager.signinRedirect();
 }
 export var LogOutMe = () => {
@@ -29,6 +30,7 @@ export var LogOutMe = () => {
 export var GetUser = () => {
 
   return userManager.getUser().then(responce => {
+    debugger;
     if (responce) {
       return responce
     }
@@ -53,4 +55,9 @@ export var RedirectAuth = () => {
   }).catch(function (e) {
     console.error(e);
   });
+}
+
+export const GetUserInfo = () =>{
+
+
 }

@@ -1,14 +1,27 @@
 import React from 'react'
 import classes from './newUser.module.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
+const renderInput = field => (
+    <div>
+      <input {...field.input} type={field.type}/>
+      {
+        field.meta.touched &&
+        field.meta.error &&
+        <span >{field.meta.error}</span>
+      }
+    </div>
+  );
 
 
 
 export class NewUsers extends React.Component {
-    
-    
+    state = {
+        redirect: false
+    }
+
+
     componentDidMount() {
         this.getData();
     }
@@ -19,24 +32,29 @@ export class NewUsers extends React.Component {
         this.props.setAcademicTittes();
     }
     submit = values => {
-         console.log(values);
-         values.countOfChildren = parseInt(values.countOfChildren);
-         values.FormSec = parseInt(values.FormSec);
-         debugger
-        this.props.createUser(values)
+        console.log(values);
+        values.countOfChildren = parseInt(values.countOfChildren);
+        values.FormSec = parseInt(values.FormSec);
+        this.props.createUser(values).then(
+            () => this.setState({ redirect: true })
+        );
     }
-    render() {      
-        debugger
+    render() {
+        const { redirect } = this.state;
+
+        if (redirect) {
+            return <Redirect to='/Users' />;
+        }        
         console.log(this.props);
         return (
             <div>
                 <div >
                     <NewUserReduxFormR onSubmit={this.submit}
-                     optionsMilitaryRank={this.props.militaryRank}
-                     optionsPositions={this.props.position}
-                     optionsAcademicTitle={this.props.academicTitle}
-                     optionsAcademicDegree={this.props.academicDegree}
-                     />
+                        optionsMilitaryRank={this.props.militaryRank}
+                        optionsPositions={this.props.position}
+                        optionsAcademicTitle={this.props.academicTitle}
+                        optionsAcademicDegree={this.props.academicDegree}
+                    />
                 </div>
             </div>);
     }
@@ -44,25 +62,26 @@ export class NewUsers extends React.Component {
 
 const NewUserReduxForm = (props) => {
     let militaryRankOptions = props.optionsMilitaryRank.map(u => {
-        return(
+        return (
             <option value={u.name}>{u.name}</option>
         )
     });
     let positionOptions = props.optionsPositions.map(u => {
-        return(
+        return (
             <option value={u.name}>{u.name}</option>
         )
     });
     let academicTitleOptions = props.optionsAcademicTitle.map(u => {
-        return(
+        return (
             <option value={u.name}>{u.name}</option>
         )
     });
     let academicDegreeOptions = props.optionsAcademicDegree.map(u => {
-        return(
+        return (
             <option value={u.name}>{u.name}</option>
         )
     });
+   
     return (
         <form onSubmit={props.handleSubmit}>
             <div >
@@ -104,7 +123,7 @@ const NewUserReduxForm = (props) => {
                 <div>
                     <label>До какого действует</label>
                     <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"dateOfExpiry"} />
-                </div>          
+                </div>
 
 
                 <div>
@@ -117,23 +136,23 @@ const NewUserReduxForm = (props) => {
                 </div>
                 <div >
                     <label>Серия и номер служебного удостоверения  </label>
-                    <Field  name={"serialAndNumderMilitaryDocs"} component={'input'} />
+                    <Field name={"serialAndNumderMilitaryDocs"} component={'input'} />
                 </div>
                 <div >
                     <label>Фото большое</label>
-                    <Field  name={"pathPhotoBig"} component={'input'} />
+                    <Field name={"pathPhotoBig"} component={renderInput} type="file"/>
                 </div>
                 <div >
                     <label>Фото маленькое</label>
-                    <Field  name={"pathPhotoSmall"} component={'input'} />
+                    <Field name={"pathPhotoSmall"} component={'input'} />
                 </div>
                 <div>
                     <label>Форма</label>
                     <div>
                         <Field name="FormSec" component="select">
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                            <option value={3}>3</option>
                         </Field>
                     </div>
                 </div>
@@ -141,9 +160,9 @@ const NewUserReduxForm = (props) => {
                     <label>Дети</label>
                     <div>
                         <Field name="countOfChildren" component="select">
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                            <option value={3}>3</option>
                         </Field>
                     </div>
                 </div>
@@ -155,7 +174,7 @@ const NewUserReduxForm = (props) => {
                     <label>воинское звание</label>
                     <div>
                         <Field name="MilitaryRank" component="select">
-                             {militaryRankOptions} 
+                            {militaryRankOptions}
                         </Field>
                     </div>
                 </div>
@@ -163,7 +182,7 @@ const NewUserReduxForm = (props) => {
                     <label>должность</label>
                     <div>
                         <Field name="Position" component="select">
-                             {positionOptions} 
+                            {positionOptions}
                         </Field>
                     </div>
                 </div>
@@ -171,7 +190,7 @@ const NewUserReduxForm = (props) => {
                     <label>Научная степень</label>
                     <div>
                         <Field name="AcademicDegree" component="select">
-                             {academicDegreeOptions} 
+                            {academicDegreeOptions}
                         </Field>
                     </div>
                 </div>
@@ -179,7 +198,7 @@ const NewUserReduxForm = (props) => {
                     <label>Научное звание</label>
                     <div>
                         <Field name="AcademicTitle" component="select">
-                             {academicTitleOptions} 
+                            {academicTitleOptions}
                         </Field>
                     </div>
                 </div>
@@ -189,10 +208,10 @@ const NewUserReduxForm = (props) => {
                         <Field name="info" component="textarea" />
                     </div>
                 </div>
-            
-               
-               
-                
+
+
+
+
             </div>
             <button className={classes.button}>Create</button>
         </form>
