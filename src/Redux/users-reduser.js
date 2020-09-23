@@ -1,9 +1,11 @@
 
-import { getUserDataByFilter, getUsersAPI, deleteUserAPI } from './../API/api.js'
+import { getUserDataByFilter, getUsersAPI, deleteUserAPI, updateUserAPI } from './../API/api.js'
 import { useDispatch } from 'react-redux'
 const DELETE_USER = 'DELETE_USER'
 const SET_USER = 'SET_USER'
 const SET_FILTERED_USER_DATA = 'SET_FILTERED_USER_DATA'
+const UPDATE_USER_DATA = 'UPDATE_USER_DATA'
+
 let initState =
 {
     usersPage: {
@@ -32,10 +34,13 @@ export const UserReduser = (state = initState, action) => {
                 }
             }
             return copyState;
+        case UPDATE_USER_DATA:
+            
         default:
             return state;
     }
 }
+
 export const getUsersThunkCreator = () => {
     return (dispatch) => {
         getUsersAPI().then(data => {
@@ -47,6 +52,19 @@ export const getUsersThunkCreator = () => {
         });
     }
 }
+
+export const  updateUserThunkCreator = (data) => {
+    return (dispatch) => {
+        updateUserAPI(data).then(data => {
+            console.log("updateUserThunkCreator");
+            console.log(data);
+            if (data) {
+                dispatch(updateDataAC(data));
+            }
+        });
+    }
+}
+
 export const getFilteredUsersThunkCreator = (filter) => {
     return (dispatch) => {
         getUserDataByFilter(filter).then(data => {
@@ -67,6 +85,7 @@ export const deleteUserThunkCreator = (id) => {
     }
 
 }
+
 const deleteUserAC = (id) => {
     console.log('deleteUserAC ' + id);
     let action = { type: DELETE_USER, id }
@@ -82,5 +101,11 @@ const setFilteredDataUsersAC = (users) => {
     console.log('setFilteredDataUsersAC');
     console.log(users);
     let action = { type: SET_FILTERED_USER_DATA, users }
+    return action;
+}
+const updateDataAC = (data) => {
+    console.log('updateDataAC');
+    console.log(data);
+    let action = { type: UPDATE_USER_DATA, data }
     return action;
 }

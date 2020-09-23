@@ -15,7 +15,6 @@ export const ProfileReduser = (state = initState, action) => {
         ...state
     }
     switch (action.type) {
-
         case SET_PROFILE:
             copyState.ProfilePage = { ...action.profile };
             return copyState;
@@ -25,17 +24,18 @@ export const ProfileReduser = (state = initState, action) => {
     }
 
 }
-export const getUserbyIdThunkCreator = (id) => {
+export const getUserbyIdThunkCreator = (id) => {    
     return (dispatch) => {
         getUserbyIdAPI(id).then(data => {            
             console.log("getUserbyIdThunkCreator");
             console.log(data);
+            
             dispatch(setProfileAC(data));
         });
     }
 }
 
-export const setProfileAC = (profile) => {
+export const setProfileAC = (profile) => {    
     let action = { type: SET_PROFILE, profile }
     return action;
 }

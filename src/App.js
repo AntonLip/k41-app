@@ -14,6 +14,7 @@ import { EducationPart } from './Components/MyBody/EducationalPart/EducationalPa
 import NewUserContainer from './Components/Users/newUser/newUserContainer'
 import { HistoryOfChief } from './Components/MyBody/Chief/History/history';
 import  ChiefComponent  from './Components/MyBody/Chief/chiefComponent';
+import UpdateUserContainer from './Components/Users/updateUser/updateUserContaineer';
 
 
 const App = (props) => {
@@ -31,6 +32,7 @@ const App = (props) => {
         <Route path="/Cadets" render={()=>{return <TimetibleContainer />} }/>
         <Route path="/History" render={()=>{return <HistoryOfChief />} }/>
         <Route path="/newUser" render={()=>{return <NewUserContainer />} }/>
+        <Route path="/updateUser/:id" render={()=>{return <UpdateUserContainer />} }/>
       </div>
       <Footer />
     </div>

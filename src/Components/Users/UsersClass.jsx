@@ -125,11 +125,6 @@ const SetFilterR = reduxForm({
 })(SetFilter)
 
 
-
-
-
-
-
 export class Users extends React.Component {
 
     componentDidMount() {

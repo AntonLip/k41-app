@@ -44,6 +44,10 @@ export const getUserbyIdAPI = (id) => {
         return responce.data
     });
 }
+
+export const updateUserAPI = (data) => {
+    
+}
 export const createUserAPI = (newUser) => {
     debugger;
     return instance.post("Lecturals/?", JSON.stringify(newUser)).then(responce => {

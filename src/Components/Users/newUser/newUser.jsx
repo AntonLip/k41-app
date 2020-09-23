@@ -31,7 +31,7 @@ export class NewUsers extends React.Component {
         this.props.setAcademicDegree();
         this.props.setAcademicTittes();
     }
-    submit = values => {
+    submit = values => {        
         console.log(values);
         values.countOfChildren = parseInt(values.countOfChildren);
         values.FormSec = parseInt(values.FormSec);
@@ -81,17 +81,18 @@ const NewUserReduxForm = (props) => {
             <option value={u.name}>{u.name}</option>
         )
     });
-   
+    debugger
     return (
+       
         <form onSubmit={props.handleSubmit}>
             <div >
                 <div >
                     <label>Фимилия  </label>
-                    <Field placeholder={"Enter number of lastname"} name={"lastName"} component={'input'} />
+                    <Field placeholder={props.user.lastName}  name={"lastName"} value={props.user.lastName} component={'input'} />
                 </div>
                 <div >
                     <label>Имя  </label>
-                    <Field placeholder={"Enter number of name"} name={"firstName"} component={'input'} />
+                    <Field placeholder={"Enter number of name"} name={"firstName"} value={props.user.firstName} component={'input'} />
                 </div>
                 <div >
                     <label>Отчество  </label>
@@ -218,7 +219,7 @@ const NewUserReduxForm = (props) => {
     );
 }
 
-const NewUserReduxFormR = reduxForm({
+export const NewUserReduxFormR = reduxForm({
     form: 'newUser'
 })(NewUserReduxForm)
 
