@@ -22,7 +22,6 @@ const UsersDisplay = (props) => {
                             <div className={classes.card__descr_block}>{props.u.middleName}</div>
                             <div className={classes.card__descr_block}>{props.u.lastName}</div>
                             <div className={classes.card__descr_block}>{props.u.position}</div>
-                            <div className={classes.card__descr_block}>{props.u.birthDay}</div>
                         </div>
                         <button id="btn-more" className={classes.card__more_btn}>подробнее</button>
                         <NavLink to={'/Profile/' + props.u.id}
@@ -131,11 +130,6 @@ export class Users extends React.Component {
         this.props.getUser();
         this.getData();
     }
-    componentShouldUpdate(nextProps, nextState){
-        debugger
-        return this.props.name !== nextProps.name ||
-          this.state.count !== nextState.count;
-      }
     getData() {
         this.props.setPosition();
         this.props.setMilitaryRank();
@@ -143,7 +137,6 @@ export class Users extends React.Component {
         this.props.setAcademicTittes();
     }
     submit = values => {
-        debugger
         console.log(values);
         values.FormSec = parseInt(values.FormSec);
         this.props.getFilteredUser(values)
@@ -152,7 +145,7 @@ export class Users extends React.Component {
 
         console.log(this.props);
         let AllUsers = this.props.users.map((u) => { return <UsersDisplay u={u} delUser={this.props.deleteUser} /> });
-        debugger;
+        
         if (!this.props.isAuth) {
             window.location = "/AccessDenided";
         }

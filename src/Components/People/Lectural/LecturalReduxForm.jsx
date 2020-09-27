@@ -1,98 +1,65 @@
 import React from 'react'
-import classes from './newUser.module.css'
-import { NavLink, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { getLecturalForUpdateThunkCreator } from './../../../Redux/updateuser-reduser';
+
+
+
+
+
+
 
 const renderInput = field => (
     <div>
-      <input {...field.input} type={field.type}/>
-      {
-        field.meta.touched &&
-        field.meta.error &&
-        <span >{field.meta.error}</span>
-      }
+        <input {...field.input} type={field.type} />
+        {
+            field.meta.touched &&
+            field.meta.error &&
+            <span >{field.meta.error}</span>
+        }
     </div>
-  );
+);
 
-
-
-export class NewUsers extends React.Component {
-    state = {
-        redirect: false
-    }
-
-
-    componentDidMount() {
-        this.getData();
-    }
-    getData() {
-        this.props.setPosition();
-        this.props.setMilitaryRank();
-        this.props.setAcademicDegree();
-        this.props.setAcademicTittes();
-    }
-    submit = values => {        
-        console.log(values);
-        values.countOfChildren = parseInt(values.countOfChildren);
-        values.FormSec = parseInt(values.FormSec);
-        this.props.createUser(values).then(
-            () => this.setState({ redirect: true })
-        );
-    }
-    render() {
-        const { redirect } = this.state;
-
-        if (redirect) {
-            return <Redirect to='/Users' />;
-        }        
-        console.log(this.props);
-        return (
-            <div>
-                <div >
-                    <NewUserReduxFormR onSubmit={this.submit}
-                        optionsMilitaryRank={this.props.militaryRank}
-                        optionsPositions={this.props.position}
-                        optionsAcademicTitle={this.props.academicTitle}
-                        optionsAcademicDegree={this.props.academicDegree}
-                    />
-                </div>
-            </div>);
-    }
-}
-
-const NewUserReduxForm = (props) => {
-    let militaryRankOptions = props.optionsMilitaryRank.map(u => {
+let NewUserReduxForm = (props) => {
+    let _positionOptions = props.optionsPositions.map(u => {
         return (
             <option value={u.name}>{u.name}</option>
         )
     });
-    let positionOptions = props.optionsPositions.map(u => {
+    let _academicTitleOptions = props.optionsAcademicTitle.map(u => {
         return (
             <option value={u.name}>{u.name}</option>
         )
     });
-    let academicTitleOptions = props.optionsAcademicTitle.map(u => {
+    let _academicDegreeOptions = props.optionsAcademicDegree.map(u => {
         return (
             <option value={u.name}>{u.name}</option>
         )
     });
-    let academicDegreeOptions = props.optionsAcademicDegree.map(u => {
+    let _militaryRankOptions = props.optionsMilitaryRank.map(u => {
         return (
             <option value={u.name}>{u.name}</option>
         )
     });
-    debugger
+    if (props.id) {
+        debugger
+
+        props.getCurrLectural(props.id);
+
+    }
+
+
     return (
-       
         <form onSubmit={props.handleSubmit}>
             <div >
+
                 <div >
                     <label>Фимилия  </label>
-                    <Field placeholder={props.user.lastName}  name={"lastName"} value={props.user.lastName} component={'input'} />
+                    <Field placeholder={"Фамилия"} name={"lastName"} component={'input'} />
                 </div>
                 <div >
                     <label>Имя  </label>
-                    <Field placeholder={"Enter number of name"} name={"firstName"} value={props.user.firstName} component={'input'} />
+                    <Field placeholder={"Enter number of name"} name={"firstName"} component={'input'} />
                 </div>
                 <div >
                     <label>Отчество  </label>
@@ -103,7 +70,7 @@ const NewUserReduxForm = (props) => {
                     <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"birthDay"} />
                 </div>
                 <div>
-                    <label htmlFor="isMarried">Холост/Замужем</label>
+                    <label >Холост/Замужем</label>
                     <div>
                         <Field name="isMarried" id="isMarried" component="input" type="checkbox" />
                     </div>
@@ -125,8 +92,6 @@ const NewUserReduxForm = (props) => {
                     <label>До какого действует</label>
                     <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"dateOfExpiry"} />
                 </div>
-
-
                 <div>
                     <label>Дата начало службы  </label>
                     <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"dateOfStartService"} />
@@ -141,7 +106,7 @@ const NewUserReduxForm = (props) => {
                 </div>
                 <div >
                     <label>Фото большое</label>
-                    <Field name={"pathPhotoBig"} component={renderInput} type="file"/>
+                    <Field name={"pathPhotoBig"} component={renderInput} type="file" />
                 </div>
                 <div >
                     <label>Фото маленькое</label>
@@ -175,7 +140,7 @@ const NewUserReduxForm = (props) => {
                     <label>воинское звание</label>
                     <div>
                         <Field name="MilitaryRank" component="select">
-                            {militaryRankOptions}
+                            {_militaryRankOptions}
                         </Field>
                     </div>
                 </div>
@@ -183,7 +148,7 @@ const NewUserReduxForm = (props) => {
                     <label>должность</label>
                     <div>
                         <Field name="Position" component="select">
-                            {positionOptions}
+                            {_positionOptions}
                         </Field>
                     </div>
                 </div>
@@ -191,7 +156,7 @@ const NewUserReduxForm = (props) => {
                     <label>Научная степень</label>
                     <div>
                         <Field name="AcademicDegree" component="select">
-                            {academicDegreeOptions}
+                            {_academicDegreeOptions}
                         </Field>
                     </div>
                 </div>
@@ -199,7 +164,7 @@ const NewUserReduxForm = (props) => {
                     <label>Научное звание</label>
                     <div>
                         <Field name="AcademicTitle" component="select">
-                            {academicTitleOptions}
+                            {_academicTitleOptions}
                         </Field>
                     </div>
                 </div>
@@ -209,17 +174,29 @@ const NewUserReduxForm = (props) => {
                         <Field name="info" component="textarea" />
                     </div>
                 </div>
-
-
-
-
             </div>
-            <button className={classes.button}>Create</button>
+            <button >Create</button>
         </form>
     );
-}
+};
 
 export const NewUserReduxFormR = reduxForm({
     form: 'newUser'
 })(NewUserReduxForm)
+
+let maptoStateToProps = (state) => {
+    return {
+        initialValues: state.updateUserReduser.updateUserPage.lectural
+    }
+}
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        getCurrLectural: (id) => {
+            dispatch(getLecturalForUpdateThunkCreator(id));
+        }
+    }
+}
+
+export const UpdateUserReduxForm = connect(maptoStateToProps, mapDispatchToProps)(NewUserReduxFormR);
 

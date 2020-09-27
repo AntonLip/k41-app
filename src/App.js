@@ -4,17 +4,17 @@ import Header from './Components/Header/Header';
 import Navbar from './Components/Navbar/Navbar';
 import { Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
-import LeftSide from './Components/LeftSide/LeftSide';
 import TimetibleContainer from './Components/MyBody/Timetable/TimetableComponenta';
 import { MyNewsContainer } from './Components/MyBody/MyNews/MyNewsComponenta';
-import UsersContainer from './Components/Users/UsersContainer';
-import ProfileComponenta from './Components/Users/Profile/ProfileComponenta';
+import UsersContainer from './Components/People/Lectural/UsersContainer';
+import ProfileComponenta from './Components/People/Lectural/ProfileLectural/ProfileComponenta';
 import LoginSuccessContainer from './Components/Login/LoginContainer';
 import { EducationPart } from './Components/MyBody/EducationalPart/EducationalPart';
-import NewUserContainer from './Components/Users/newUser/newUserContainer'
+import NewUserContainer from './Components/People/Lectural/newLectural/newLecturalContainer'
 import { HistoryOfChief } from './Components/MyBody/Chief/History/history';
 import  ChiefComponent  from './Components/MyBody/Chief/chiefComponent';
-import UpdateUserContainer from './Components/Users/updateUser/updateUserContaineer';
+import UpdateUserContainer from './Components/People/Lectural/updateLectural/updateLecturalContaineer';
+import CadetsComponent from './Components/People/Cadets/CadetsComponent';
 
 
 const App = (props) => {
@@ -29,7 +29,7 @@ const App = (props) => {
         <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />
         <Route path="/signin-oidc"  render={()=>{return <LoginSuccessContainer />} } />
         <Route path="/Timetable"  render={()=>{return <TimetibleContainer />} } />
-        <Route path="/Cadets" render={()=>{return <TimetibleContainer />} }/>
+        <Route path="/Cadets" render={()=>{return <CadetsComponent />} }/>
         <Route path="/History" render={()=>{return <HistoryOfChief />} }/>
         <Route path="/newUser" render={()=>{return <NewUserContainer />} }/>
         <Route path="/updateUser/:id" render={()=>{return <UpdateUserContainer />} }/>

@@ -4,6 +4,7 @@ const SET_MILITARY_RANK = 'SET_MILITARY_RANK'
 const SET_ACAD_TITLE = 'SET_ACAD_TITLE'
 const SET_ACAD_DEGREE = 'SET_ACAD_DEGREE'
 const SET_POSITION = 'SET_POSITION'
+const GET_USER_FOR_UPDATE = 'GET_USER_FOR_UPDATE'
 
 let initState =
 {
@@ -21,23 +22,22 @@ export const newUserReduser = (state = initState, action) => {
     }
     switch (action.type) {
         case SET_POSITION:
-            copyState.newUserPage.position = [ ...action.data ];
+            copyState.newUserPage.position = [...action.data];
             return copyState;
         case SET_MILITARY_RANK:
-            copyState.newUserPage.militaryRank = [ ...action.data ];
+            copyState.newUserPage.militaryRank = [...action.data];
             return copyState;
         case SET_ACAD_TITLE:
-            copyState.newUserPage.academicTitle = [ ...action.data ];
+            copyState.newUserPage.academicTitle = [...action.data];
             return copyState;
         case SET_ACAD_DEGREE:
-            copyState.newUserPage.academicDegree = [ ...action.data ];
+            copyState.newUserPage.academicDegree = [...action.data];
             return copyState;
-
         default:
             return state;
     }
-
 }
+
 export const createUserThunkCreator = (newUser) => {
     return (dispatch) => {
         createUserAPI(newUser).then(data => {
@@ -63,14 +63,14 @@ export const setMilitaryRankThunkCreator = () => {
 }
 export const setAcademicDegreeThunkCreator = () => {
     return (dispatch) => {
-        getAcademicDegreesAPI().then(data => {            
+        getAcademicDegreesAPI().then(data => {
             dispatch(setAcadDegreeAC(data));
         });
     }
 }
 export const setAcademicTitleThunkCreator = () => {
     return (dispatch) => {
-        getAcademicTitlesAPI().then(data => {            
+        getAcademicTitlesAPI().then(data => {
             dispatch(setAcadTitleAC(data));
         });
     }

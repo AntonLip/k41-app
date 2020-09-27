@@ -1,46 +1,39 @@
-
 import React from 'react'
-import {NewUserReduxFormR} from './../newUser/newUser.jsx'
+import classes from './newLectural.module.css'
 import {  Redirect } from 'react-router-dom';
+import { NewUserReduxFormR } from '../LecturalReduxForm';
 
 
 
-export class UpdateUsers extends React.Component {
-    
+export class NewUsers extends React.Component {
     state = {
-        redirect: false,
-        user:{}
+        redirect: false
     }
-constructor(props){
-    super(props);    
-    let id = this.props.match.params.id;
-    this.props.getUserbyId(id);    
-}
-  
 
-    componentDidMount() {        
-       
+
+    componentDidMount() {
+        this.getData();
+    }
+    getData() {
+        this.props.setPosition();
+        this.props.setMilitaryRank();
+        this.props.setAcademicDegree();
+        this.props.setAcademicTittes();
     }
     submit = values => {
-        debugger
-        this.props.userData = 0;
         console.log(values);
         values.countOfChildren = parseInt(values.countOfChildren);
         values.FormSec = parseInt(values.FormSec);
-        this.props.updateUser(values).then(
+        this.props.createUser(values).then(
             () => this.setState({ redirect: true })
         );
     }
     render() {
-        
-        if(!this.props.isAuth)
-            return <Redirect to='/AccessDenided' />;
-
         const { redirect } = this.state;
 
         if (redirect) {
             return <Redirect to='/Users' />;
-        }        
+        }
         console.log(this.props);
         return (
             <div>
@@ -50,9 +43,9 @@ constructor(props){
                         optionsPositions={this.props.position}
                         optionsAcademicTitle={this.props.academicTitle}
                         optionsAcademicDegree={this.props.academicDegree}
-                        user={this.props.userData}
                     />
                 </div>
             </div>);
     }
 }
+

@@ -34,15 +34,24 @@ export const getUsersAPI = () => {
                 return axios(config)
                     .then(responce => {
                         return responce.data
-                    })
+                    }).catch((error)=>{
+                        console.log("Api call error");
+                        alert(error.message);
+                     });
             }
         })
 }
 
 export const getUserbyIdAPI = (id) => {
-    return instance.get("Lecturals/" + id).then(responce => {
+    let path = "Lecturals/" + id;
+    debugger
+    return instance.get(path).then(responce => {
+        debugger
         return responce.data
-    });
+    }).catch((error)=>{
+        console.log("Api call error");
+        alert(error.message);
+     });;
 }
 
 export const updateUserAPI = (data) => {
@@ -53,18 +62,27 @@ export const createUserAPI = (newUser) => {
     return instance.post("Lecturals/?", JSON.stringify(newUser)).then(responce => {
         if (responce.data != null)
             window.location = "/Users"
-    });
+    }).catch((error)=>{
+        console.log("Api call error");
+        alert(error.message);
+     });;
 }
 
 export const getAcademicDegreesAPI = () => {
     return instance.get("AcademicDegrees/").then(responce => {
         return responce.data
-    });
+    }).catch((error)=>{
+        console.log("Api call error");
+        alert(error.message);
+     });;
 }
 export const getAcademicTitlesAPI = () => {
     return instance.get("AcademicTitles/").then(responce => {
         return responce.data
-    });
+    }).catch((error)=>{
+        console.log("Api call error");
+        alert(error.message);
+     });;
 }
 export const getPositionAPI = () => {
     return instance.get("Positions/").then(responce => {
@@ -74,7 +92,10 @@ export const getPositionAPI = () => {
 export const getMilitaryRanksAPI = () => {
     return instance.get("MilitaryRanks/").then(responce => {
         return responce.data
-    });
+    }).catch((error)=>{
+        console.log("Api call error");
+        alert(error.message);
+     });;
 }
 export const getUserDataByFilter = (filters) => {
     debugger;
@@ -83,7 +104,10 @@ export const getUserDataByFilter = (filters) => {
         + "&academicTitle=" + filters.academicTitle + "&academicDegree=" + filters.academicDegree + "&formSec=" + filters.formSec;
     return instance.get(path).then(responce => {
         return responce.data
-    });
+    }).catch((error)=>{
+        console.log("Api call error");
+        alert(error.message);
+     });;
 }
 export const deleteUserAPI = (id) =>{
     
@@ -91,5 +115,8 @@ export const deleteUserAPI = (id) =>{
     return instance.delete(path).then(responce => {
         
         return responce.data
-    });
+    }).catch((error)=>{
+        console.log("Api call error");
+        alert(error.message);
+     });;
 }

@@ -1,10 +1,10 @@
 import react from 'react'
 import { connect } from 'react-redux'
-import { getUsersThunkCreator, getFilteredUsersThunkCreator, deleteUserThunkCreator } from '../../Redux/users-reduser'
+import { getUsersThunkCreator, getFilteredUsersThunkCreator, deleteUserThunkCreator } from './../../../Redux/users-reduser'
 import { Users } from './UsersClass'
-import { withAuthRedirect } from '../../hoc/AuthRedirect';
+import { withAuthRedirect } from './../../../hoc/AuthRedirect';
 import { compose } from 'redux';
-import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator } from "./../../Redux/newUser-reduser.js";
+import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator } from "./../../../Redux/newUser-reduser";
 
 let maptoStateToProps = (state) => {
     return {

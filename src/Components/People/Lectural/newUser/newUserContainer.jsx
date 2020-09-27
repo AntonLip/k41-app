@@ -1,7 +1,7 @@
 
 
 import { connect } from 'react-redux';
-import { createUserThunkCreator, setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setDataThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator } from '../../../Redux/newUser-reduser';
+import { createUserThunkCreator, setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setDataThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator } from '../../../../Redux/newUser-reduser';
 import { NewUsers } from './newUser';
 
 let maptoStateToProps = (state) => {   

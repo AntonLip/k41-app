@@ -1,6 +1,6 @@
 
 import { connect } from 'react-redux'
-import { setProfileAC, getUserbyIdThunkCreator } from '../../../Redux/profile-reduser'
+import { setProfileAC, getUserbyIdThunkCreator } from '../../../../Redux/profile-reduser'
 import { ProfileClass } from './ProfileClass'
 import { withRouter } from 'react-router-dom';
 
