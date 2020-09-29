@@ -45,48 +45,12 @@ const SetFilterCadets = (props) => {
             <option value={u.name}>{u.name}</option>
         )
     });
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <div >
-                <label>Фимилия  </label>
-                <Field placeholder={"Enter number of lastname"} name={"lastName"} component={'input'} />
-            </div>
-            <div >
-                <label>Имя  </label>
-                <Field placeholder={"Enter number of name"} name={"firstName"} component={'input'} />
-            </div>
-            <div >
-                <label>Отчество  </label>
-                <Field placeholder={"Enter number of middleName"} name={"middleName"} component={'input'} />
-            </div>
-            <div>
-                <label>воинское звание</label>
-                <div>
-                    <Field name="militaryRank" component="select">
-                        {militaryRankOptions}
-                    </Field>
-                </div>
-            </div>
-            <div>
-                <label>должность</label>
-                <div>
-                    <Field name="position" component="select">
-                        {positionOptions}
-                    </Field>
-                </div>
-            </div>
-            <div >
-                <label>Учебная группа  </label>
-                <Field placeholder={"Enter number of middleName"} name={"groupNumber"} component={'input'} />
-            </div>
-            <button className={classes.button}>Show</button>
-        </form>);
-}
-
-const SetFilterCadetsR = reduxForm({
-    formCadets: 'FilterForCadets'
-})(SetFilterCadets)
-
+return(
+    <div>
+       
+    </div>
+);
+    }
 export class CadetsClass extends React.Component {
 
     componentDidMount() {
@@ -122,7 +86,7 @@ debugger;
                 <div className={classes.gridMain}>
                     <div className={classes.gridLeftSide}>
                         <NavLink to="/newUser" className={classes.card__more_btn}>Добавить</NavLink>
-                        <SetFilterCadetsR optionsMilitaryRank={this.props.militaryRank}
+                        <SetFilterCadets optionsMilitaryRank={this.props.militaryRank}
                             optionsPositions={this.props.position} />
                     </div>
                     <div>
@@ -134,7 +98,7 @@ debugger;
             return (
                 <div className={classes.gridMain}>
                     <div className={classes.gridLeftSide}>
-                        <SetFilterCadetsR optionsMilitaryRank={this.props.militaryRank}
+                        <SetFilterCadets optionsMilitaryRank={this.props.militaryRank}
                             optionsPositions={this.props.position} />
                     </div>
                     <div>

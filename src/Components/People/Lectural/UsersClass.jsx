@@ -37,13 +37,7 @@ if(!props.role === "Admin"){
                             <div className={classes.card__descr_block}>{props.u.position}</div>
                             <div className={classes.card__descr_block}>{props.u.birthDay}</div>
                         </div>
-                        <button id="btn-more" className={classes.card__more_btn}>подробнее</button>
-                        <NavLink to={'/Profile/' + props.u.id}
-                            className={classes.card__more_btn} >подробнее</NavLink>
-                        <button id="btn-more" className={classes.card__update_btn}>изменить</button>
-                        <NavLink to={'/updateUser/' + props.u.id}
-                            className={classes.card__update_btn} >изменить</NavLink>
-                        <button id="btn-more" className={classes.card__del_btn} onClick={delUser}>удалить</button>
+                     
                     </div>
                 </div>
             </div>
@@ -56,20 +50,21 @@ else{
             <div key={props.u.id}>
                 <div className={classes.container}>
                     <div id="card" className={classes.card}>
-                        <div className={classes.card__img}>
-                            <div className={classes.card__descr}>
-                                <div className={classes.card__descr_block}>{props.u.militaryRank}</div>
-                                <div className={classes.card__descr_block}>{props.u.firstName}</div>
-                                <div className={classes.card__descr_block}>{props.u.middleName}</div>
-                                <div className={classes.card__descr_block}>{props.u.lastName}</div>
-                                <div className={classes.card__descr_block}>{props.u.position}</div>
-                            </div>
+                        <div className={classes.card__img}></div>
+                        <div className={classes.card__descr}>
+                            <div className={classes.card__descr_block}>{props.u.militaryRank}</div>
+                            <div className={classes.card__descr_block}>{props.u.firstName}</div>
+                            <div className={classes.card__descr_block}>{props.u.middleName}</div>
+                            <div className={classes.card__descr_block}>{props.u.lastName}</div>
+                            <div className={classes.card__descr_block}>{props.u.position}</div>
+                            <div className={classes.card__descr_block}>{props.u.birthDay}</div>
+                        </div>
                             <DisplayControl man={props.u} delUser={delUser}/>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>);
+        );
 }
 }
 
