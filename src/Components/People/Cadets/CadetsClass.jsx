@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
 
 import classes from './Cadets.module.css'
 
@@ -24,6 +25,7 @@ const CadetsDisplay = (props) => {
                         <NavLink to={'/updateUser/' + props.u.id}
                             className={classes.card__update_btn} >изменить</NavLink>
                         <button id="btn-more" className={classes.card__del_btn} >удалить</button>
+                        
                     </div>
                 </div>
             </div>
@@ -32,7 +34,58 @@ const CadetsDisplay = (props) => {
 }
 
 
+const SetFilterCadets = (props) => {
+    let militaryRankOptions = props.optionsMilitaryRank.map(u => {
+        return (
+            <option value={u.name}>{u.name}</option>
+        )
+    });
+    let positionOptions = props.optionsPositions.map(u => {
+        return (
+            <option value={u.name}>{u.name}</option>
+        )
+    });
+     return (
+        <form onSubmit={props.handleSubmit}>
+            <div >
+                <label>Фимилия  </label>
+                <Field placeholder={"Enter number of lastname"} name={"lastName"} component={'input'} />
+            </div>
+            <div >
+                <label>Имя  </label>
+                <Field placeholder={"Enter number of name"} name={"firstName"} component={'input'} />
+            </div>
+            <div >
+                <label>Отчество  </label>
+                <Field placeholder={"Enter number of middleName"} name={"middleName"} component={'input'} />
+            </div>
+            <div>
+                <label>воинское звание</label>
+                <div>
+                    <Field name="militaryRank" component="select">
+                        {militaryRankOptions}
+                    </Field>
+                </div>
+            </div>
+            <div>
+                <label>должность</label>
+                <div>
+                    <Field name="position" component="select">
+                        {positionOptions}
+                    </Field>
+                </div>
+            </div>
+            <div >
+                <label>Учебная группа  </label>
+                <Field placeholder={"Enter number of middleName"} name={"groupNumber"} component={'input'} />
+            </div>
+            <button className={classes.button}>Show</button>
+        </form>);
+}
 
+const SetFilterCadetsR = reduxForm({
+    formCadets: 'Filter'
+})(SetFilterCadets)
 
 export class CadetsClass extends React.Component {
 
@@ -54,7 +107,8 @@ export class CadetsClass extends React.Component {
             <div className={classes.gridMain}>
                 <div className={classes.gridLeftSide}>
                     <NavLink to="/newUser" className={classes.card__more_btn}>Добавить</NavLink>
-                    
+                    <SetFilterCadetsR  optionsMilitaryRank={this.props.militaryRank}
+                                       optionsPositions={this.props.position}/>
                 </div>
                 <div>
                     {AllCadtes}
