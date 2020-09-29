@@ -8,7 +8,7 @@ let initState =
         user: {
             name: null,
             email: null,
-            role: null
+            role: []
         },
         isLoadingUser: false,
         access_token: null,
@@ -31,7 +31,7 @@ export const LoginReduser = (state = initState, action) => {
                 copyState.loginPage.user.name = action.userInfo.profile.name;
                 copyState.loginPage.user.email = action.userInfo.profile.email;
                 if (Array.isArray(action.userInfo.profile.role)) {
-                    copyState.loginPage.user.role = { ...action.userInfo.profile.role };
+                    copyState.loginPage.user.role = [ ...action.userInfo.profile.role ];
                 } else {
                     copyState.loginPage.user.role = action.userInfo.profile.role;
                 }

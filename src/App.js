@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import Navbar from './Components/Navbar/Navbar';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import TimetibleContainer from './Components/MyBody/Timetable/TimetableComponenta';
 import { MyNewsContainer } from './Components/MyBody/MyNews/MyNewsComponenta';
@@ -22,6 +22,7 @@ const App = (props) => {
     <div className='app-wrapper'>
       <Header />
       <div className='app_wrapper_content'>
+        <Route exact path='/'  render={() => <Redirect to={"/MyNews"}/>}/>
         <Route path="/EducationPage" render={() => { return <EducationPart/> }} />
         <Route path="/Chief" render={() => { return <ChiefComponent/> }} />
         <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
