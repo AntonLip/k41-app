@@ -10,11 +10,11 @@ let initialState = {
 }
 
 export const newsReduser = (state = initialState, action) => {
-    
+
     let copyState = {
         ...state
     }
-    copyState.newsPage = {...state.newsPage};
+    copyState.newsPage = { ...state.newsPage };
     switch (action.type) {
         case 'ADD-POST':
             let newM = {
@@ -30,7 +30,7 @@ export const newsReduser = (state = initialState, action) => {
             return copyState;
         default:
             return state;
-        }
+    }
 }
 
 export const addPostActionCreator = () => {

@@ -29,6 +29,8 @@ const MyNews = (props) => {
         {AllNews}
       </div>
     </div>
+
+
   );
 }
 
