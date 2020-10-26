@@ -4,7 +4,24 @@
    padding: 0;
    font-family: sans-serif;
 }
+.gridMain{
+   display: grid;
+  
+  /* background-image: url("./Picture/Fon.png") ;	 */
+  margin: 10px auto;  
+  grid-template-areas:   "m_1  m_2 ";  
+  grid-template-columns: 1fr 6fr;
+}
 
+.gridLeftSide{
+   grid-area: m_1;    
+}
+
+.container {
+   grid-area: m_2;    
+   max-width: 1140px;
+   margin: 0 auto;
+}
 .card__lessons {
 
    width: 890px;

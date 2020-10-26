@@ -6,19 +6,18 @@ import { reduxForm, Field } from 'redux-form';
 
 
 export class Timetable extends React.Component {
- 
 
     componentDidMount() {
         this.props.getUser();
         var day = new Date().getDay();
         var month = new Date().getMonth();
         var year = new Date().getFullYear();
-        var fullDate = year + "-" + month + "-" + day + " 00:00:00.0000000"        
+        var fullDate = year + "-" + month + "-" + day + " 00:00:00.0000000"
         this.props.getTimetable(this.props.currGroup, fullDate);
     }
 
     getTT = (group, fullDate) => {
-       
+
         this.props.getTimetable(group, fullDate);
     }
 
@@ -26,15 +25,20 @@ export class Timetable extends React.Component {
         // print the form values to the console
         var fullDate = values.date + " 00:00:00.0000000";
         var group = values.group;
-       
+
         console.log(values)
         this.getTT(group, fullDate)
     }
-    render() {        
+    render() {
         return (
-            <div>
-                <TimetableReduxForm onSubmit={this.submit} role={this.props.user.profile}/>
-                <TT timetable={this.props.timetable} />
+            <div className={classes.gridMain}>
+                <div className={classes.gridLeftSide}>
+                    <TimetableReduxForm onSubmit={this.submit} role={this.props.user.profile} />
+                </div>
+
+                <div className={classes.container}>
+                    <TT timetable={this.props.timetable} />
+                </div>
             </div>
         );
     }
@@ -74,7 +78,7 @@ const TT = (props) => {
 
 
 const TimetableFormRedux = (props) => {
-   
+
     return (
         <form onSubmit={props.handleSubmit}>
             <div >

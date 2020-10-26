@@ -20,8 +20,9 @@ let initState =
 export const LoginReduser = (state = initState, action) => {
     let copyState = {
         ...state
-    }
+    }    
     switch (action.type) {
+        
         case SET_USER:
             if (action.userInfo) {
                 copyState.loginPage.isLoadingUser = true;

@@ -18,5 +18,5 @@
 }
 .app_wrapper_content{
   grid-area: m_Body;
-  
+  background-image: url(./Picture/fon.jpg);
 }

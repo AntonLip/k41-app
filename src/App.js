@@ -21,9 +21,7 @@ const App = (props) => {
   return (
     <div className='app-wrapper'>
       <Header />
-      <div className='app_wrapper_content'>
-        <Route path="/EducationPage" render={() => { return <EducationPart/> }} />
-        <Route path="/Chief" render={() => { return <ChiefComponent/> }} />
+      <div className='app_wrapper_content'>             
         <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
         <Route path="/Users" render={()=>{return <UsersContainer/>}}/>
         <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />
