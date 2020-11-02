@@ -4,6 +4,12 @@ let initialState = {
         News: [
             { newsHeader : "Freedom", newM: "I am a free man", id: 1,data: "22.07.2020" },
             { newsHeader : "MU", newM: "Glory MU", id: 2, data: "22.07.2020" },
+            { newsHeader : "MU", newM: "Glory MU", id: 2, data: "22.07.2020" },
+            { newsHeader : "MU", newM: "Glory MU", id: 2, data: "22.07.2020" },
+            { newsHeader : "MU", newM: "Glory MU", id: 2, data: "22.07.2020" },
+            { newsHeader : "MU", newM: "Glory MU", id: 2, data: "22.07.2020" },
+            { newsHeader : "MU", newM: "Glory MU", id: 2, data: "22.07.2020" },
+
         ],
         newPostText: "add news"
     }

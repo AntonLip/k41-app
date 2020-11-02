@@ -3,6 +3,29 @@
 .MyNews{
   grid-area: m_B;
 }
-.News{
-  background-color:#1889FA;
+
+.card_many_news {
+  width: 1140px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap:20px;
+}
+
+.gridMain{
+  display: grid;
+ 
+ /* background-image: url("./Picture/Fon.png") ;	 */
+ margin: 10px auto;  
+ grid-template-areas:   "m_1  m_2 ";  
+ grid-template-columns: 1fr 8fr;
+}
+
+.gridLeftSide{
+  grid-area: m_1;    
+}
+
+.container {
+  grid-area: m_2;    
+  max-width: 1140px;
+  margin: 0 auto;
 }
