@@ -8,7 +8,7 @@ const MyNews = (props) => {
   
   let newPostElement = React.createRef();
 
-  let AllNews = props.allNews.map((n) => { return <MyNew message={n.newM} /> });
+  let AllNews = props.allNews.map((n) => { return <MyNew message={n} /> });
 
   let AddCallBack = () => {
     props.addNews();
