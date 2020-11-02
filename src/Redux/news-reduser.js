@@ -2,19 +2,19 @@
 let initialState = {
     newsPage: {
         News: [
-            { newM: "I am a free man", id: 1 },
-            { newM: "Glory MU", id: 2 },
+            { newsHeader : "Freedom", newM: "I am a free man", id: 1,data: "22.07.2020" },
+            { newsHeader : "MU", newM: "Glory MU", id: 2, data: "22.07.2020" },
         ],
         newPostText: "add news"
     }
 }
 
 export const newsReduser = (state = initialState, action) => {
-    
+
     let copyState = {
         ...state
     }
-    copyState.newsPage = {...state.newsPage};
+    copyState.newsPage = { ...state.newsPage };
     switch (action.type) {
         case 'ADD-POST':
             let newM = {
@@ -30,7 +30,7 @@ export const newsReduser = (state = initialState, action) => {
             return copyState;
         default:
             return state;
-        }
+    }
 }
 
 export const addPostActionCreator = () => {
