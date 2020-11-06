@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
-import Navbar from './Components/Navbar/Navbar';
 import { Redirect, Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import TimetibleContainer from './Components/MyBody/Timetable/TimetableComponenta';

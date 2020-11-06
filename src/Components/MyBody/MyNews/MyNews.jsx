@@ -53,36 +53,29 @@ const SetFilterR = reduxForm({
 
 
 
-const MyNews = (props) => {
+export class MyNews extends React.Component {
 
-  let newPostElement = React.createRef();
+  componentDidMount() {
+    debugger;
+    this.props.getNews();   
+}
 
-  let AllNews = props.allNews.map((n) => { return <MyNew message={n} /> });
-
-  let AddCallBack = () => {
-    props.addNews();
-  }
-  let ChangeCallBack = () => {
-    let Text = newPostElement.current.value;
-    props.changeText(Text);
-  }
-  debugger;
-
-
-  return (
+  
+  render()  {
+    debugger;
+    return(
     <div className={classes.gridMain}>
       <div className={classes.gridLeftSide}>
         <SetFilterR/>
       </div>
       <div className={classes.container}>
         <div className={classes.card_many_news} >
-          {AllNews}
+          {this.props.allNews.map((n) => { return <MyNew message={n} /> })} 
         </div>
       </div>
     </div>
 
 
-  );
+    )};
 }
 
-export default MyNews;

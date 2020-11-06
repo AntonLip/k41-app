@@ -8,10 +8,13 @@ const MyNew = (props) => {
     <div >
       <div className={classes.card_news}>
         <div className={classes.card_news_header}>
-          {props.message.newsHeader}
+          {props.message.Header}
+        </div>
+        <div className={classes.card_news_header}>
+          {props.message.From}
         </div>
         <div className={classes.card_news_descr}>
-          {props.message.newM}
+          {props.message.Text}
         </div>
         <div className={classes.card_news_footer}>
           <div className={classes.card_news_footer_data}>{props.message.data}</div>

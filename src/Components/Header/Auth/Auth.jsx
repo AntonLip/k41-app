@@ -21,7 +21,8 @@ export class AuthClass extends React.Component {
     }
     render() {
         console.log(this.props);
-        var name = this.props.AuthClass.loginPage.user.name;
+        var name = this.props.AuthClass.loginPage.user.given_name;
+        var family_name = this.props.AuthClass.loginPage.user.family_name;
         var role = this.props.AuthClass.loginPage.user.role
         if (this.props.AuthClass.loginPage.isLoadingUser) {
             return (
@@ -32,8 +33,10 @@ export class AuthClass extends React.Component {
                         </div>
                         <div class={classes.supper_right_user}>
                             <div><div class={classes.upper_right_user_icon}></div></div>
-                            <div class={classes.upper_right_user_information}>{name}<div>{role[0]}</div>
-                            </div>
+                            <div class={classes.upper_right_user_information}>{name}</div>
+                            <div class={classes.upper_right_user_information}>{family_name}</div>
+                            <div class={classes.upper_right_user_information}>{role[0]}</div>
+                            
                             <div class={classes.supper_right_aims}>Задачи на сегодня:</div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 
-import { addPostActionCreator, updateTexttActionCreator } from '../../../Redux/news-reduser';
-import MyNews from './MyNews';
+import { addPostActionCreator, getNewsAC, getNewsThunkCreator, updateTexttActionCreator } from '../../../Redux/news-reduser';
+import {MyNews} from './MyNews';
 import { connect } from 'react-redux';
 
 let maptoStateToProps = (state) => {
@@ -13,6 +13,9 @@ let maptoStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
+    getNews: () => {
+      dispatch(getNewsThunkCreator());
+    },
     addNews: () => {
       dispatch(addPostActionCreator());
     },

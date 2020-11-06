@@ -7,6 +7,8 @@ let initState =
     loginPage: {
         user: {
             name: null,
+            given_name: null,
+            family_name: null,
             email: null,
             role: []
         },
@@ -30,6 +32,8 @@ export const LoginReduser = (state = initState, action) => {
                 copyState.loginPage.id_token = action.userInfo.id_token;
                 copyState.loginPage.refresh_token = action.userInfo.refresh_token;
                 copyState.loginPage.user.name = action.userInfo.profile.name;
+                copyState.loginPage.user.given_name = action.userInfo.profile.given_name;
+                copyState.loginPage.user.family_name = action.userInfo.profile.family_name;
                 copyState.loginPage.user.email = action.userInfo.profile.email;
                 if (Array.isArray(action.userInfo.profile.role)) {
                     copyState.loginPage.user.role = [ ...action.userInfo.profile.role ];
@@ -48,6 +52,7 @@ export const getUserInfoThunkCreator = () => {
 
     return (dispatch) => {
         GetUser().then(data => {
+            debugger
             dispatch(setUserInfoAC(data));
         });
     }
@@ -58,6 +63,7 @@ export const RedirectCallback = () => {
 }
 
 const setUserInfoAC = (userInfo) => {
+    debugger
     let action = { type: SET_USER, userInfo }
     return action;
 }

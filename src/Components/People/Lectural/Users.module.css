@@ -16,9 +16,10 @@
    max-width: 1140px;
    margin: 0 auto;
 }
+
 .container .card {
    position: relative;
-   width: 820px;
+   width: 1020px;
    height: 300px;
    /* background-color: rgb(29, 46, 90); */
    background: url("../../../Picture/card-bg.jpg") 100% 100% no-repeat;
@@ -32,7 +33,7 @@
 }
 
 .container .card .card__img {
-   width: 180px;
+   width: 250px;
    height: 200px;
    background: url("../../../Picture/PainSmall.png") center center no-repeat;
    background-size: cover;
@@ -41,7 +42,7 @@
 }
 
 .container .card .card__descr {
-   width: 540px;
+   width: 1300px;
    height: 212px;
    background-color: rgb(132, 212, 243);
    display: flex;
@@ -54,7 +55,7 @@
 
 .container .card .card__descr .card__descr_block {
    min-height: 40px;
-   min-width: 220px;
+   min-width: 190px;
    background-color: rgb(19, 39, 65);
    margin: 15px 10px;
    display: flex;
