@@ -4,12 +4,16 @@ const GET_TIMETABLE = 'GET_TIMETABLE'
 
 let initialState = {
     timetablePage: {
-        timetable:[]
+        timetable: [
+            { numberOfLessonInDay: "1", nameOfDiscipline: "УЭСПД", nameOfLesson: "Лекция", numberOfLesson: "17", audienceNumber: "382", teacherName: "Липлянин А.Ю", infoForCadets: "Выучить уровни модели OSI" },
+            { numberOfLessonInDay: "2", nameOfDiscipline: "УЭСПД", nameOfLesson: "Лекция", numberOfLesson: "17", audienceNumber: "382", teacherName: "Липлянин А.Ю", infoForCadets: "Выучить уровни модели OSI" }
+        ]
+
     }
 }
 
 export const timetableReduser = (state = initialState, action) => {
-  let copyState = {
+    let copyState = {
         ...state
     }
     switch (action.type) {
@@ -26,7 +30,7 @@ export const timetableReduser = (state = initialState, action) => {
 }
 
 export const getTimetableThunkCreator = (group, dateTime) => {
-   
+
     return (dispatch) => {
         getTimetableAPI(group, dateTime).then(data => {
             dispatch(setDataAC(data));
