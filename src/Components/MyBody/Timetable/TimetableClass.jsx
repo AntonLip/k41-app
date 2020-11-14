@@ -67,10 +67,10 @@ const TT = (props) => {
                         </div>
                                     <div className={classes.card__lesson_title}>{u.auditore}</div>
                                     <div className={classes.card__lesson_title}>{u.lectural}</div>
-                                     <div className={classes.card__lesson_title}>
+                                     <div className={classes.card__lesson_title} style={{ backgroundColor:"#d9fbff" }}>
                                          <div className={classes.MoreInfo}>
                                         <div className={classes.a1}>
-                                            Подробнее
+                                            ПОДРОБНЕЕ
                                          </div>
                                          </div>
                                      </div>
@@ -78,6 +78,11 @@ const TT = (props) => {
                                 <div className={classes.card__lesson_content}>
                                     <div className={classes.card__lesson_more}>{u.infoForCadets}</div>
                                     <input className={classes.card__lesson_more} type="text" required placeholder="просьба преподавателю"></input>
+                                    <div className={classes.card__lesson_more} style={{ height:38, backgroundColor:"#d9fbff" }}><div className={classes.MoreInfo}>
+                                        <div className={classes.a1}>
+                                            ОТПРАВИТЬ
+                                         </div>
+                                         </div></div>
                                 </div>
                             </div>
                         </div>
