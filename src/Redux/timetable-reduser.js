@@ -5,8 +5,9 @@ const GET_TIMETABLE = 'GET_TIMETABLE'
 let initialState = {
     timetablePage: {
         timetable: [
-            { numberOfLessonInDay: "1", nameOfDiscipline: "УЭСПД", nameOfLesson: "Лекция", numberOfLesson: "17", audienceNumber: "382", teacherName: "Липлянин А.Ю", infoForCadets: "Выучить уровни модели OSI" },
-            { numberOfLessonInDay: "2", nameOfDiscipline: "УЭСПД", nameOfLesson: "Лекция", numberOfLesson: "17", audienceNumber: "382", teacherName: "Липлянин А.Ю", infoForCadets: "Выучить уровни модели OSI" }
+            { numberOfLessonInDay: "1", nameOfDiscipline: "УЭСПД", typeOfLesson: "Лекция", numberOfLesson: "17", auditore: "382", lectural: "Липлянин А.Ю", infoForCadets: "Выучить уровни модели OSI" },
+            { numberOfLessonInDay: "2", nameOfDiscipline: "УЭСПД", typeOfLesson: "Лекция", numberOfLesson: "17", auditore: "382", lectural: "Липлянин А.Ю", infoForCadets: "Выучить уровни модели OSI" },
+            { numberOfLessonInDay: "3", nameOfDiscipline: "УЭСПД", typeOfLesson: "Лекция", numberOfLesson: "17", auditore: "382", lectural: "Липлянин А.Ю", infoForCadets: "Выучить уровни модели OSI" }
         ]
 
     }

@@ -22,6 +22,9 @@
    max-width: 1140px;
    margin: 0 auto;
 }
+.AllLessons{
+background-color: rgb(72, 93, 212);
+}
 .card__lessons {
 
    width: 890px;

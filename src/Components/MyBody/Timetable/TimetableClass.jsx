@@ -31,6 +31,8 @@ export class Timetable extends React.Component {
     }
     render() {
         return (
+        <div>
+            
             <div className={classes.gridMain}>
                 <div className={classes.gridLeftSide}>
                     <TimetableReduxForm onSubmit={this.submit} role={this.props.user.profile} />
@@ -39,6 +41,7 @@ export class Timetable extends React.Component {
                 <div className={classes.container}>
                     <TT timetable={this.props.timetable} />
                 </div>
+            </div>
             </div>
         );
     }
@@ -51,13 +54,17 @@ const TT = (props) => {
             {
                 props.timetable.map(u => {
                     return (
-
+<div className={classes.AllLessons}>
                         <div className={classes.card__lessons} key={u.id}>
                             <div className={classes.card__lesson_item}>
                                 <div className={classes.card__lesson_number}>{u.numberOfLessonInDay}</div>
                                 <div className={classes.titles}>
                                     <div className={classes.card__lesson_title}>{u.nameOfDiscipline}</div>
+                                    
+                        <div className={classes.card__lesson_item2}>
                                     <div className={classes.card__lesson_title}>{u.typeOfLesson}</div>
+                                    <div className={classes.card__lesson_title2}>{u.numberOfLesson}</div>
+                        </div>
                                     <div className={classes.card__lesson_title}>{u.auditore}</div>
                                     <div className={classes.card__lesson_title}>{u.lectural}</div>
                                 </div>
@@ -66,6 +73,13 @@ const TT = (props) => {
                                     <input className={classes.card__lesson_more} type="text" required placeholder="просьба преподавателю"></input>
                                 </div>
                             </div>
+                        </div>
+                        <div>
+                            <button className={classes.send} type="submit">ввод</button>
+                        </div>
+       <div className={classes.enter}>
+<a href="#">Подробнее</a>
+</div>
                         </div>
                     );
                 }

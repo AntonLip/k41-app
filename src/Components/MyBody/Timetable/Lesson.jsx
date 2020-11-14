@@ -4,10 +4,10 @@ import classes from './Timetable.module.css'
 export const Lesson = (props) => {
     debugger;
     return (
-        <div>
+        <div>        
             <div className={classes.card__lessons} key={props.id}>
                 <div className={classes.card__lesson_item}>
-                    <div className={classes.card__lesson_number}>{props.numberOfLessonInDay}</div>
+                    <div className={classes.card__lesson_number}>{props.numberOfLessonInDay}ghfgjndgjnfg</div>
                     <div className={classes.titles}>
                         <div className={classes.card__lesson_title}>{props.nameOfDiscipline}</div>
                         <div className={classes.card__lesson_item2}>
