@@ -67,6 +67,13 @@ const TT = (props) => {
                         </div>
                                     <div className={classes.card__lesson_title}>{u.auditore}</div>
                                     <div className={classes.card__lesson_title}>{u.lectural}</div>
+                                     <div className={classes.card__lesson_title}>
+                                         <div className={classes.MoreInfo}>
+                                        <div className={classes.a1}>
+                                            Подробнее
+                                         </div>
+                                         </div>
+                                     </div>
                                 </div>
                                 <div className={classes.card__lesson_content}>
                                     <div className={classes.card__lesson_more}>{u.infoForCadets}</div>
@@ -74,12 +81,7 @@ const TT = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <button className={classes.send} type="submit">ввод</button>
-                        </div>
-       <div className={classes.enter}>
-<a href="#">Подробнее</a>
-</div>
+      
                         </div>
                     );
                 }

@@ -1,11 +1,15 @@
+import { getNewsAPI } from "../API/newsAPI";
+
+const GET_NEWS = 'GET_NEWS'
 
 let initialState = {
     newsPage: {
         News: [
-            { newM: "I am a free man", id: 1 },
-            { newM: "Glory MU", id: 2 },
-        ],
-        newPostText: "add news"
+            { Header : "Freedom", Text: "I am a free man", _id: 1, data: "22.07.2020", From: " ", To : " ", Link : "" },
+            { Header : "Freedom", Text: "I am a free man", _id: 2, data: "22.07.2020", From: " ", To : " ", Link : "" }
+            
+
+        ]
     }
 }
 
@@ -16,6 +20,17 @@ export const newsReduser = (state = initialState, action) => {
     }
     copyState.newsPage = { ...state.newsPage };
     switch (action.type) {
+        case GET_NEWS :
+            debugger
+            if(action.data === 'undefined')
+                return copyState;
+
+            if (Array.isArray(action.data)) {
+                copyState.newsPage.News = [...action.data];
+            } else {
+
+            }            
+            return copyState;
         case 'ADD-POST':
             let newM = {
                 id: 5,
@@ -32,6 +47,26 @@ export const newsReduser = (state = initialState, action) => {
             return state;
     }
 }
+export const  getNewsThunkCreator = () => {
+    
+    return (dispatch) => {
+        debugger;
+        getNewsAPI().then(data => {
+    debugger;
+
+            dispatch(getNewsAC(data));
+        });
+    }
+}
+export const getNewsAC = (data) => {
+    debugger
+    
+    return {
+        type: GET_NEWS,
+        data
+    }
+}
+
 
 export const addPostActionCreator = () => {
     return {

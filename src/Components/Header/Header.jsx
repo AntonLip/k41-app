@@ -10,19 +10,33 @@ const Header = () => {
     return (
         <header className={classes.MyHeader}>
             <div className={classes.headerContent}>
-                <div className={classes.headerXZ}>
-
+                <div className={classes.headerXZ}>                
+                            <ul class={classes.menu}>
+                                <li class={classes.l1}><NavLink to="/MyNews">Новости</NavLink></li>
+                                <li class={classes.l1}>
+                                    <a href="#">Учеба</a>
+                                    <ul class={classes.hidden}>
+                                        <li><NavLink to="/Timetable">Расписание занятий</NavLink></li>
+                                        <li><NavLink to="/Timetable">Дисциплины кафедры</NavLink></li>
+											</ul>
+                                </li>
+                                <li class={classes.l1}>
+                                    <NavLink to="/Timetable">Кафедра</NavLink>
+                                    <ul class={classes.hidden}>
+                                        <li><NavLink to="/Cadets">Курсанты</NavLink></li>
+                                        <li><NavLink to="/Users">Офицеры</NavLink></li>
+                                        <li><NavLink to="/Timetable">Аудитории</NavLink></li>
+                                        <li><NavLink to="/Timetable">Техника</NavLink></li>
+                                        <li><NavLink to="/History">История</NavLink></li>
+                                    </ul>
+                                </li>
+                                <li class={classes.l1}><a href="#">Наука</a></li>
+                            </ul>                        
                 </div>
-                <div className={classes.buttonContainer}>
-                    <NavLink to="/MyNews" className={classes.buttomHeader}>Новости</NavLink>
-                    <NavLink to="/EducationPage" className={classes.buttomHeader}>Учеба</NavLink>
-                    <NavLink to="/Users" className={classes.buttomHeader}>Наука</NavLink>
-                    <NavLink to="/Chief" className={classes.buttomHeader}>Кафедра</NavLink>
-                    <NavLink to="/Timetable" className={classes.buttomHeader}>ЭУМК</NavLink>
-                </div>
-                <AuthComponent/>
+                <AuthComponent/>                
+               
             </div>
-
+           
         </header>
     );
 }
