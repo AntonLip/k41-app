@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Timetable.module.css'
 import { reduxForm, Field } from 'redux-form';
+import Fileupload from '../../UploaderFile/Uploader';
 
 
 
@@ -30,12 +31,15 @@ export class Timetable extends React.Component {
         this.getTT(group, fullDate)
     }
     render() {
+        debugger;
         return (
             <div className={classes.gridMain}>
                 <div className={classes.gridLeftSide}>
                     <TimetableReduxForm onSubmit={this.submit} role={this.props.user.profile} />
                 </div>
-
+                <div>
+                   
+                </div>
                 <div className={classes.container}>
                     <TT timetable={this.props.timetable} />
                 </div>
@@ -62,6 +66,7 @@ const TT = (props) => {
                                     <div className={classes.card__lesson_title}>{u.lectural}</div>
                                 </div>
                                 <div className={classes.card__lesson_content}>
+                                    
                                     <div className={classes.card__lesson_more}>{u.infoForCadets}</div>
                                     <input className={classes.card__lesson_more} type="text" required placeholder="просьба преподавателю"></input>
                                 </div>

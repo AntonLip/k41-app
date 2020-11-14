@@ -10,16 +10,15 @@ class Fileupload extends React.Component {
 
         this.state = {
 
-            file: '',
-            url = props.url
+            file: ''
         };
     }
 
     async submit(e) {
 
         e.preventDefault();
-        if (url === 'undefined')
-            const url = `http://localhost:61331/api/Uploadfiles/Uploadfile`;
+      
+            let url = `http://localhost:61331/api/Uploadfiles/Uploadfile`;
         const formData = new FormData();
         formData.append('body', this.state.file);
         const config = {
