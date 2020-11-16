@@ -22,6 +22,40 @@
    max-width: 1140px;
    margin: 0 auto;
 }
+.MoreInfo
+{
+   display:flex;
+      align-items: center;
+      text-align:center;
+      margin:auto;
+      padding:auto;
+      font-family: "Century Gothic";
+      user-select:none;
+      font-size:18px;
+      transition: background-color 1s ease-out;
+      box-sizing:border-box;
+      height:100%;
+      width:100%; 
+       cursor: pointer;
+      
+
+}
+.MoreInfo:hover{
+   background-color: rgba(68, 174, 223, 0.699);
+   outline: none;
+   color: #fff;
+   text-decoration: none;
+   transition: background-color 1s ease-out;
+   border-bottom: 2px solid white;
+   box-sizing:border-box;
+}
+
+.a1{
+   margin:auto;
+}
+.AllLessons{
+background-color: rgb(72, 93, 212);
+}
 .card__lessons {
 
    width: 890px;
@@ -69,7 +103,6 @@
    min-height: 38px;
    border: 1px solid #000000;
    color: #000000;
-   padding: 0 10px;
    font-size: 16px;
    text-align: center;
 }
@@ -101,10 +134,9 @@
 
 .card__lessons .card__lesson_item .card__lesson_content .card__lesson_more {
    width: 100%;
-   min-height: 76px;
+   height: 76px;
    border: 1px solid #000000;
    color: #000000;
-   padding: 0 10px;
    font-size: 16px;
    display: flex;
    flex-direction: column;

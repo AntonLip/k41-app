@@ -6,7 +6,7 @@ export const Lesson = (props) => {
     return (
             <div className={classes.card__lessons} key={props.id}>
                 <div className={classes.card__lesson_item}>
-                    <div className={classes.card__lesson_number}>{props.numberOfLessonInDay}</div>
+                    <div className={classes.card__lesson_number}>{props.numberOfLessonInDay}ghfgjndgjnfg</div>
                     <div className={classes.titles}>
                         <div className={classes.card__lesson_title}>{props.nameOfDiscipline}</div>
                         <div className={classes.card__lesson_item2}>
