@@ -18,5 +18,5 @@ export const getNewsAPI = () => {
     }).catch((error)=>{
         console.log("Api news call error");
         alert(error.message);
-     });;
+     });
 }

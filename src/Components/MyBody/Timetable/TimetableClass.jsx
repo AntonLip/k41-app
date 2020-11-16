@@ -31,14 +31,13 @@ export class Timetable extends React.Component {
         this.getTT(group, fullDate)
     }
     render() {
-        debugger;
         return (
             <div className={classes.gridMain}>
                 <div className={classes.gridLeftSide}>
                     <TimetableReduxForm onSubmit={this.submit} role={this.props.user.profile} />
                 </div>
                 <div>
-                   
+                   <Fileupload></Fileupload>
                 </div>
                 <div className={classes.container}>
                     <TT timetable={this.props.timetable} />
@@ -79,8 +78,6 @@ const TT = (props) => {
         </div>
     );
 }
-
-
 
 const TimetableFormRedux = (props) => {
 
