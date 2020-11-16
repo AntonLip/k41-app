@@ -9,7 +9,7 @@ const config = {
   redirect_uri: "http://localhost:3000/signin-oidc",
   response_type: "code",
   // the scopes or resources we would like access to
-  scope: "openid profile email phone address api1 Role",
+  scope: "openid profile email phone address api1 Role family_name Gender",
   // URL to redirect to after logout http://localhost:3000/signout-callback-oidc
   client_secret: "secret",
   post_logout_redirect_uri: "http://localhost:3000/signout-callback-oidc",

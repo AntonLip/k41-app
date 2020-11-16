@@ -14,7 +14,8 @@ let maptoStateToProps = (state) => {
         academicDegree: state.newUserReduser.newUserPage.academicDegree,
         users: state.UserReduser.usersPage.users,
         isAuth: state.LoginReduser.loginPage.isLoadingUser,
-        role: state.LoginReduser.loginPage.user.role
+        role: state.LoginReduser.loginPage.user.role,
+        token: state.LoginReduser.loginPage.id_token
     }
 }
 
@@ -32,8 +33,8 @@ let mapDispatchToProps = (dispatch) => {
         setAcademicTittes: () => {
             dispatch(setAcademicTitleThunkCreator());
         },
-        getUser: () => {
-            dispatch(getUsersThunkCreator());
+        getUser: (token) => {
+            dispatch(getUsersThunkCreator(token));
         },
         getFilteredUser: (filter) => {
             dispatch(getFilteredUsersThunkCreator(filter));

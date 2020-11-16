@@ -12,35 +12,28 @@ const instance = axios.create(
     }
 );
 
-export const getUsersAPI = () => {
-    return GetTokens().then(
-        (user) => {
-            if (user) {
-                console.log(user)
-                var config = {
-                    method: 'get',
-                    url: 'https://localhost:44351/api/Lecturals/Min',
-                    headers:
-                    {
-                        Authorization: 'Bearer ' + user.access_token,
-                        Profile:
-                            [
-                                user.profile.name,
-                                user.profile.email,
-                            ]
-                    },
-                };
+export const getUsersAPI = (token) => {
 
-                return axios(config)
-                    .then(responce => {
-                        return responce.data
-                    }).catch((error)=>{
-                        console.log("Api call error");
-                        alert(error.message);
-                     });
-            }
-        })
+    var config = {
+        method: 'get',
+        url: 'https://localhost:44351/api/Lecturals/Min',
+        headers:
+        {
+            Authorization: 'Bearer ' + token,
+            
+        },
+    };
+
+    return axios(config)
+        .then(responce => {
+            return responce.data
+        }).catch((error) => {
+            console.log("Api call error");
+            alert(error.message);
+        });
 }
+      
+
 
 export const getUserbyIdAPI = (id) => {
     let path = "Lecturals/" + id;
@@ -48,41 +41,41 @@ export const getUserbyIdAPI = (id) => {
     return instance.get(path).then(responce => {
         debugger
         return responce.data
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log("Api call error");
         alert(error.message);
-     });;
+    });;
 }
 
 export const updateUserAPI = (data) => {
-    
+
 }
 export const createUserAPI = (newUser) => {
     debugger;
     return instance.post("Lecturals/?", JSON.stringify(newUser)).then(responce => {
         if (responce.data != null)
             window.location = "/Users"
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log("Api call error");
         alert(error.message);
-     });;
+    });;
 }
 
 export const getAcademicDegreesAPI = () => {
     return instance.get("AcademicDegrees/").then(responce => {
         return responce.data
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log("Api call error");
         alert(error.message);
-     });;
+    });;
 }
 export const getAcademicTitlesAPI = () => {
     return instance.get("AcademicTitles/").then(responce => {
         return responce.data
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log("Api call error");
         alert(error.message);
-     });;
+    });;
 }
 export const getPositionAPI = () => {
     return instance.get("Positions/").then(responce => {
@@ -92,10 +85,10 @@ export const getPositionAPI = () => {
 export const getMilitaryRanksAPI = () => {
     return instance.get("MilitaryRanks/").then(responce => {
         return responce.data
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log("Api call error");
         alert(error.message);
-     });;
+    });;
 }
 export const getUserDataByFilter = (filters) => {
     debugger;
@@ -104,19 +97,19 @@ export const getUserDataByFilter = (filters) => {
         + "&academicTitle=" + filters.academicTitle + "&academicDegree=" + filters.academicDegree + "&formSec=" + filters.formSec;
     return instance.get(path).then(responce => {
         return responce.data
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log("Api call error");
         alert(error.message);
-     });;
+    });;
 }
-export const deleteUserAPI = (id) =>{
-    
+export const deleteUserAPI = (id) => {
+
     var path = "Lecturals/" + id;
     return instance.delete(path).then(responce => {
-        
+
         return responce.data
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log("Api call error");
         alert(error.message);
-     });;
+    });;
 }

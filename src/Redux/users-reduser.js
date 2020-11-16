@@ -41,9 +41,9 @@ export const UserReduser = (state = initState, action) => {
     }
 }
 
-export const getUsersThunkCreator = () => {
+export const getUsersThunkCreator = (token ) => {
     return (dispatch) => {
-        getUsersAPI().then(data => {
+        getUsersAPI(token).then(data => {
             console.log("getUsersThunkCreator");
             console.log(data);
             if (data) {

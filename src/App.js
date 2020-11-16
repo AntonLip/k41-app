@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
-import Navbar from './Components/Navbar/Navbar';
 import { Redirect, Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import TimetibleContainer from './Components/MyBody/Timetable/TimetableComponenta';
@@ -21,10 +20,12 @@ const App = (props) => {
   return (
     <div className='app-wrapper'>
       <Header />
+
       <div className='app_wrapper_content'>
         <Route exact path='/'  render={() => <Redirect to={"/MyNews"}/>}/>
         <Route path="/EducationPage" render={() => { return <EducationPart/> }} />
         <Route path="/Chief" render={() => { return <ChiefComponent/> }} />
+
         <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
         <Route path="/Users" render={()=>{return <UsersContainer/>}}/>
         <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />

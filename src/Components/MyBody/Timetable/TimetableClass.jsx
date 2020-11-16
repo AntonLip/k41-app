@@ -54,32 +54,39 @@ const TT = (props) => {
             {
                 props.timetable.map(u => {
                     return (
-                        <div className={classes.AllLessons}>
-                            <div className={classes.card__lessons} key={u.id}>
-                                <div className={classes.card__lesson_item}>
-                                    <div className={classes.card__lesson_number}>{u.numberOfLessonInDay}</div>
-                                    <div className={classes.titles}>
-                                        <div className={classes.card__lesson_title}>{u.nameOfDiscipline}</div>
-
-                                        <div className={classes.card__lesson_item2}>
-                                            <div className={classes.card__lesson_title}>{u.typeOfLesson}</div>
-                                            <div className={classes.card__lesson_title2}>{u.numberOfLesson}</div>
-                                        </div>
-                                        <div className={classes.card__lesson_title}>{u.auditore}</div>
-                                        <div className={classes.card__lesson_title}>{u.lectural}</div>
-                                    </div>
-                                    <div className={classes.card__lesson_content}>
-                                        <div className={classes.card__lesson_more}>{u.infoForCadets}</div>
-                                        <input className={classes.card__lesson_more} type="text" required placeholder="просьба преподавателю"></input>
-                                    </div>
+<div className={classes.AllLessons}>
+                        <div className={classes.card__lessons} key={u.id}>
+                            <div className={classes.card__lesson_item}>
+                                <div className={classes.card__lesson_number}>{u.numberOfLessonInDay}</div>
+                                <div className={classes.titles}>
+                                    <div className={classes.card__lesson_title}>{u.nameOfDiscipline}</div>
+                                    
+                        <div className={classes.card__lesson_item2}>
+                                    <div className={classes.card__lesson_title}>{u.typeOfLesson}</div>
+                                    <div className={classes.card__lesson_title2}>{u.numberOfLesson}</div>
+                        </div>
+                                    <div className={classes.card__lesson_title}>{u.auditore}</div>
+                                    <div className={classes.card__lesson_title}>{u.lectural}</div>
+                                     <div className={classes.card__lesson_title} style={{ backgroundColor:"#d9fbff" }}>
+                                         <div className={classes.MoreInfo}>
+                                        <div className={classes.a1}>
+                                            ПОДРОБНЕЕ
+                                         </div>
+                                         </div>
+                                     </div>
+                                </div>
+                                <div className={classes.card__lesson_content}>
+                                    <div className={classes.card__lesson_more}>{u.infoForCadets}</div>
+                                    <input className={classes.card__lesson_more} type="text" required placeholder="просьба преподавателю"></input>
+                                    <div className={classes.card__lesson_more} style={{ height:38, backgroundColor:"#d9fbff" }}><div className={classes.MoreInfo}>
+                                        <div className={classes.a1}>
+                                            ОТПРАВИТЬ
+                                         </div>
+                                         </div></div>
                                 </div>
                             </div>
-                            <div>
-                                <button className={classes.send} type="submit">ввод</button>
-                            </div>
-                            <div className={classes.enter}>
-                                <a href="#">Подробнее</a>
-                            </div>
+                        </div>
+      
                         </div>
                     );
                 }
