@@ -13,7 +13,7 @@ class Fileupload extends React.Component {
 
         e.preventDefault();
       
-        let url = `https://localhost:44351/api/DisciplineDBs/PostUploadFiles`;
+        let url = `https://localhost:44351/api/DisciplineDBs/uploadfile?id=0F3FF685-05A4-40DF-35BF-08D88A5CCB61`;
         const formData = new FormData();
         formData.append('body', this.state.file);
         const config = {
