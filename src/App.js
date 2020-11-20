@@ -14,7 +14,7 @@ import { HistoryOfChief } from './Components/MyBody/Chief/History/history';
 import  ChiefComponent  from './Components/MyBody/Chief/chiefComponent';
 import UpdateUserContainer from './Components/People/Lectural/updateLectural/updateLecturalContaineer';
 import CadetsComponent from './Components/People/Cadets/CadetsComponent';
-
+import СlassroomsContainer from './Components/MyBody/Сlassrooms/СlassroomsContainer'
 
 const App = (props) => {
   return (
@@ -35,6 +35,7 @@ const App = (props) => {
         <Route path="/History" render={()=>{return <HistoryOfChief />} }/>
         <Route path="/newUser" render={()=>{return <NewUserContainer />} }/>
         <Route path="/updateUser/:id" render={()=>{return <UpdateUserContainer />} }/>
+        <Route path="/Сlassrooms" render={()=>{return <СlassroomsContainer/>} }/>
       </div>
       <Footer />
     </div>

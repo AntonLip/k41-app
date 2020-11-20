@@ -1,0 +1,78 @@
+.etaj{
+    display: grid;
+    padding: 100px;
+    gap: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: 1s ease all;
+    width: 900px;
+    height: 500px;
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-10deg) skewX(25deg);
+}
+
+#et1{
+    
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 2fr 1fr 1fr 2fr;
+}
+
+#et2{
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr; 
+}
+#et3{
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr;    
+}
+
+#k382,#k291{
+    grid-row: 1 / span 2;
+}
+
+.kor{
+    background-color: gray;
+}
+.korFull{
+    grid-column: 1 / -1;
+}
+
+#et3 .kor,#et2 .kor{
+    
+    grid-column: 2 / -1;
+}
+
+.kabPrepod{
+    background-color: rgb(100, 255, 107);
+}
+.kabPrepod:hover{
+    background-color:rgb(14, 252, 26);
+}
+
+.kabUch{
+    background-color: rgb(111, 120, 250);
+}
+.kabUch:hover{
+    background-color: rgb(21, 37, 255);
+}
+
+.openWindows, .openWindows:hover{
+    background-color: red;
+}
+
+.kab{
+    transition: 0.3s ease all;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kab:hover{
+    transform: translate(20px, -20px);
+    box-shadow: -20px 20px 10px rgba(0,0,0,0.5);
+    z-index: 10; 
+}
