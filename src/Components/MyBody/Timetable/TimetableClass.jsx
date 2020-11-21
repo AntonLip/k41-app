@@ -39,7 +39,7 @@ export class Timetable extends React.Component {
                 <div>
                     <Fileupload></Fileupload>
                 </div>
-                <div className={classes.container}>
+               <div className={classes.container}>
                     <TT timetable={this.props.timetable} />
                 </div>
             </div>
