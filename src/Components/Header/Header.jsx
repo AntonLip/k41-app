@@ -25,7 +25,7 @@ const Header = () => {
                                     <ul class={classes.hidden}>
                                         <li><NavLink to="/Cadets">Курсанты</NavLink></li>
                                         <li><NavLink to="/Users">Офицеры</NavLink></li>
-                                        <li><NavLink to="/Timetable">Аудитории</NavLink></li>
+                                        <li><NavLink to="/Сlassrooms">Аудитории</NavLink></li>
                                         <li><NavLink to="/Timetable">Техника</NavLink></li>
                                         <li><NavLink to="/History">История</NavLink></li>
                                     </ul>

@@ -14,8 +14,21 @@ class Fileupload extends React.Component {
     async submit(e) {
         debugger
         e.preventDefault();
-        let id = ''
-        uploadFilePlan(id, this.state.file, this.state.type);
+      
+        let url = `https://localhost:44351/api/DisciplineDBs/uploadfile?id=0F3FF685-05A4-40DF-35BF-08D88A5CCB61`;
+        const formData = new FormData();
+        formData.append('body', this.state.file);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data',
+            },
+        };
+        return post(url, formData, config).then(responce => {            
+            return responce.data
+        }).catch((error)=>{
+            console.log("upload files error");
+            alert(error.message);
+         });
     }
 
     setFile(e) {

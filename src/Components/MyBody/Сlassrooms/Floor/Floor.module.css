@@ -1,0 +1,162 @@
+.etaj{
+    display: grid;
+    padding: 100px;
+    gap: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: 1s ease all;
+    width: 900px;
+    height: 500px;
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-10deg) skewX(25deg);
+}
+
+#et1{
+    
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 2fr 1fr 1fr 2fr;
+}
+
+#et2{
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr; 
+}
+#et3{
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr;    
+}
+
+#k382,#k291{
+    grid-row: 1 / span 2;
+}
+
+.kor{
+    background-color: gray;
+    position: relative;
+}
+
+.kor:after{
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 2px;
+    height: 100%;
+    width: 5px;
+    background-color: rgb(112, 111, 111);
+    transform: skewY(-45deg);
+}
+
+.kor:before{
+    content: '';
+    position: absolute;
+    left: -3px;
+    bottom: -5px;
+    height: 5px;
+    width: 100%;
+    background-color: rgb(112, 111, 111);
+    transform: skewX(-45deg);
+}
+
+.korFull{
+    grid-column: 1 / -1;
+}
+
+#et3 .kor,#et2 .kor{
+    
+    grid-column: 2 / -1;
+}
+
+.openWindows, .openWindows:hover{
+    background-color: red;
+}
+
+.kab{
+    transition: 0.3s ease all;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.kab:hover{
+    transform: translate(20px, -20px);
+    box-shadow: -20px 20px 10px rgba(0,0,0,0.5);
+    z-index: 10;  
+}
+
+.kabUch{
+    background-color: rgb(111, 120, 250);
+}
+.kabUch:hover{
+    background-color: rgb(50, 63, 255);
+}
+
+.kabUch:after
+{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    left: -5px;
+    top: 2px;
+    background-color: rgb(93, 102, 233);
+    transform: skewY(-45deg);
+    transition: 0.3s ease all;
+}
+
+.kabUch:before{
+    content: '';
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    left: -3px;
+    bottom: -5px;
+    background-color: rgb(93, 102, 233);
+    transform: skewX(-45deg);
+    transition: 0.3s ease all;
+}
+
+.kabUch:hover:after
+{
+    background-color:  rgb(24, 35, 182);
+}
+
+.kabUch:hover:before{
+    background-color:  rgb(24, 35, 182);
+
+}
+
+.kabPrepod{
+    background-color: rgb(117, 253, 124);
+}
+.kabPrepod:hover{
+    background-color:rgb(89, 233, 96);
+}
+
+.kabPrepod:after{
+    content: '';
+    background-color: rgb(99, 212, 105);
+    position: absolute;
+    top: 2px;
+    left: -5px;
+    height: 100%;
+    width: 5px;
+    transform: skewY(-45deg);
+    transition: 0.3s ease all;
+}
+
+.kabPrepod:before{
+    content: '';
+    background-color: rgb(99, 212, 105);
+    position: absolute;
+    bottom: -5px;
+    left: -3px;
+    width: 100%;
+    height: 5px;
+    transform: skewX(-45deg);
+    transition: 0.3s ease all;
+}
