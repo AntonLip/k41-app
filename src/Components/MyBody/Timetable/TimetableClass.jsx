@@ -45,7 +45,6 @@ export class Timetable extends React.Component {
             </div>
         );
     }
-
 }
 
 const TT = (props) => {
