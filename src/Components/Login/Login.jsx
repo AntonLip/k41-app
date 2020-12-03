@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-import classes from './Login.module.css';
 import { reduxForm, Field } from 'redux-form';
 import { AuthMe } from '../../API/authAPI';
 

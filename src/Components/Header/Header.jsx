@@ -1,13 +1,32 @@
 import React from 'react';
-import classes from './Header.module.css'
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import Logout from './Auth/Logout/Logout'
 import { AuthClass } from './Auth/Auth';
 import AuthComponent from './Auth/AuthComponent';
 
+import logo from '../../assets/img/logo.png'
 
 const Header = () => {
 
     return (
+        <header class="header">
+            <div class="container">
+                <div class="header__wrapper">
+                    <Link to="/" class="header__logo">
+                        <img src={logo} alt="logo"></img>
+                    </Link>
+                    <h1 class="header__title">
+                        Кафедра автоматизированных систем управления войсками
+                    </h1>
+                    <div class="header__profile">
+                        <Logout/>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        /*
         <header className={classes.MyHeader}>
             <div className={classes.headerContent}>
                 <div className={classes.headerXZ}>                
@@ -38,6 +57,7 @@ const Header = () => {
             </div>
            
         </header>
+        */
     );
 }
 
