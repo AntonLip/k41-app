@@ -1,6 +1,4 @@
 import * as axios from "axios"
-import { GetUser, GetTokens } from "./authAPI";
-
 
 const instance = axios.create(
     {
@@ -12,7 +10,7 @@ const instance = axios.create(
     }
 );
 
-export const getUsersAPI = (token) => {
+export const getofficersAPI = (token) => {
 
     var config = {
         method: 'get',
