@@ -22,7 +22,7 @@ const who = [
 ]
 
 
-const TimeTable = () => {
+const TimeTable = (props) => {
     return (
         <div class="timetable">
             <Sort>
@@ -33,9 +33,6 @@ const TimeTable = () => {
                 <Date title="По какую дату"/>
             </Sort>
             <div class="timetable__wrapper">
-                <Item/>
-                <Item/>
-                <Item/>
                 <Item/>
             </div>
         </div>

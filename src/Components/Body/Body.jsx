@@ -9,6 +9,7 @@ import Comp404 from './404/Comp404'
 import History from './History/History'
 import LoginSuccessContainer from './../Login/LoginContainer'
 import TimetibleContainer from './Timetable/TimetableComponenta';
+import TimeTable from './Timetable/TimeTable';
 const Body = (props) => {
   return (
     <>

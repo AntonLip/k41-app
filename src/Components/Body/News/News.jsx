@@ -76,6 +76,7 @@ export class News extends React.Component {
   componentDidMount() {
     debugger;
     this.props.getNews();   
+    this.props.getUser();
 }
 
   render()  {
