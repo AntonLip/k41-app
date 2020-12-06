@@ -1,14 +1,16 @@
 import React from 'react';
-import classes from './LeftSide.module.css'
 
+import Ads from './Items/Ads/Ads'
+import Chat from './Items/Chat/Chat'
 
 const LeftSide = () => {
 
-    return (
-         <div className={classes.MainLeftSideStyle}>
-            Some text
-        </div>
-    );
+  return (
+    <div class="leftsitebar">
+      <Ads itemTitle="Объявления"/>
+      <Chat itemTitle="Быстрый чат"/>
+    </div>
+  )
 }
 
-export default LeftSide;
+export default LeftSide

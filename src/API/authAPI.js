@@ -40,14 +40,6 @@ export var GetUser = () => {
   });
 }
 
-export const GetTokens = () => {
-  return userManager.getUser().then(responce => {
-    console.log(responce)
-    if (responce) {
-      return responce
-    }
-  })
-}
 
 export var RedirectAuth = () => {
   userManager.signinRedirectCallback().then(function () {

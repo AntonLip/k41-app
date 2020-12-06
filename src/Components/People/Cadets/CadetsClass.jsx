@@ -3,28 +3,27 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
-import classes from './Cadets.module.css'
 
 const CadetsDisplay = (props) => {
     return (
         <div>
             <div key={props.u.id}>
-                <div className={classes.container}>
-                    <div id="card" className={classes.card}>
-                        <div className={classes.card__img}></div>
-                        <div className={classes.card__descr}>
-                            <div className={classes.card__descr_block}>{props.u.militaryRank}</div>
-                            <div className={classes.card__descr_block}>{props.u.firstName}</div>
-                            <div className={classes.card__descr_block}>{props.u.middleName}</div>
-                            <div className={classes.card__descr_block}>{props.u.lastName}</div>
-                            <div className={classes.card__descr_block}>{props.u.position}</div>
-                            <div className={classes.card__descr_block}>{props.u.groupNumber}</div>
+                <div >
+                    <div id="card" >
+                        <div ></div>
+                        <div >
+                            <div >{props.u.militaryRank}</div>
+                            <div >{props.u.firstName}</div>
+                            <div >{props.u.middleName}</div>
+                            <div >{props.u.lastName}</div>
+                            <div >{props.u.position}</div>
+                            <div >{props.u.groupNumber}</div>
                         </div>
 
-                        <button id="btn-more" className={classes.card__update_btn}>изменить</button>
+                        <button id="btn-more" >изменить</button>
                         <NavLink to={'/updateUser/' + props.u.id}
-                            className={classes.card__update_btn} >изменить</NavLink>
-                        <button id="btn-more" className={classes.card__del_btn} >удалить</button>
+                             >изменить</NavLink>
+                        <button id="btn-more"  >удалить</button>
 
                     </div>
                 </div>
@@ -83,9 +82,9 @@ debugger;
 
         if (this.IsInRole(this.props.role, "Admin")) {
             return (
-                <div className={classes.gridMain}>
-                    <div className={classes.gridLeftSide}>
-                        <NavLink to="/newUser" className={classes.card__more_btn}>Добавить</NavLink>
+                <div >
+                    <div >
+                        <NavLink to="/newUser" >Добавить</NavLink>
                         <SetFilterCadets optionsMilitaryRank={this.props.militaryRank}
                             optionsPositions={this.props.position} />
                     </div>
@@ -96,8 +95,8 @@ debugger;
         };
         if (this.IsInRole(this.props.role, "lectural")) {
             return (
-                <div className={classes.gridMain}>
-                    <div className={classes.gridLeftSide}>
+                <div >
+                    <div >
                         <SetFilterCadets optionsMilitaryRank={this.props.militaryRank}
                             optionsPositions={this.props.position} />
                     </div>

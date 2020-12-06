@@ -1,44 +1,32 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/Header/Header';
 import { Redirect, Route } from 'react-router-dom';
-import Footer from './Components/Footer/Footer';
-import TimetibleContainer from './Components/MyBody/Timetable/TimetableComponenta';
-import { MyNewsContainer } from './Components/MyBody/MyNews/MyNewsComponenta';
-import UsersContainer from './Components/People/Lectural/UsersContainer';
-import ProfileComponenta from './Components/People/Lectural/ProfileLectural/ProfileComponenta';
-import LoginSuccessContainer from './Components/Login/LoginContainer';
-import { EducationPart } from './Components/MyBody/EducationalPart/EducationalPart';
-import NewUserContainer from './Components/People/Lectural/newLectural/newLecturalContainer'
-import { HistoryOfChief } from './Components/MyBody/Chief/History/history';
-import  ChiefComponent  from './Components/MyBody/Chief/chiefComponent';
-import UpdateUserContainer from './Components/People/Lectural/updateLectural/updateLecturalContaineer';
-import CadetsComponent from './Components/People/Cadets/CadetsComponent';
-import СlassroomsContainer from './Components/MyBody/Сlassrooms/СlassroomsContainer'
+
+import Header from './Components/Header/Header';
+import NavBar from './Components/Navbar/Navbar'
+import LeftSide from './Components/LeftSide/LeftSide'
+import Body from './Components/Body/Body'
+
+
 
 const App = (props) => {
   return (
-    <div className='app-wrapper'>
+    <>
       <Header />
-
-      <div className='app_wrapper_content'>
-        <Route exact path='/'  render={() => <Redirect to={"/MyNews"}/>}/>
-        <Route path="/EducationPage" render={() => { return <EducationPart/> }} />
-        <Route path="/Chief" render={() => { return <ChiefComponent/> }} />
-
-        <Route path="/MyNews" render={() => { return <MyNewsContainer /> }} />
-        <Route path="/Users" render={()=>{return <UsersContainer/>}}/>
-        <Route path="/Profile/:id"  render={()=>{return <ProfileComponenta />} } />
-        <Route path="/signin-oidc"  render={()=>{return <LoginSuccessContainer />} } />
-        <Route path="/Timetable"  render={()=>{return <TimetibleContainer />} } />
-        <Route path="/Cadets" render={()=>{return <CadetsComponent />} }/>
-        <Route path="/History" render={()=>{return <HistoryOfChief />} }/>
-        <Route path="/newUser" render={()=>{return <NewUserContainer />} }/>
-        <Route path="/updateUser/:id" render={()=>{return <UpdateUserContainer />} }/>
-        <Route path="/Сlassrooms" render={()=>{return <СlassroomsContainer/>} }/>
+      <NavBar />
+      <div class="main-content">
+        <div class="container">
+          <div class="main-content__wrapper">
+            <div class="main-content__left">
+              <LeftSide />
+            </div>
+            <div class="main-content__right">
+              <Body />
+            </div>
+          </div>
+        </div>
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 

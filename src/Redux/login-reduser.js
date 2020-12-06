@@ -23,6 +23,7 @@ export const LoginReduser = (state = initState, action) => {
     let copyState = {
         ...state
     }    
+    debugger;
     switch (action.type) {
         
         case SET_USER:
@@ -59,6 +60,7 @@ export const getUserInfoThunkCreator = () => {
 }
 
 export const RedirectCallback = () => {
+    debugger
     RedirectAuth();
 }
 
