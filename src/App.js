@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route} from 'react-router-dom';
 
 import Header from './Components/Header/Header';
 import NavBar from './Components/Navbar/Navbar'
@@ -21,7 +21,7 @@ const App = (props) => {
               <LeftSide />
             </div>
             <div class="main-content__right">
-              <Body />
+              <Body/>
             </div>
           </div>
         </div>

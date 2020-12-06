@@ -26,8 +26,6 @@ const who = [
 export class Timetable extends React.Component {
 
     componentDidMount() {
-        this.props.getUser();
-
     }
 
     getTT = (group, fullDate) => {
@@ -35,22 +33,25 @@ export class Timetable extends React.Component {
         this.props.getTimetable(group, fullDate);
     }
 
-
+    Submit = (group) => {
+        debugger
+        this.props.getTimetable(group.innerText, "")
+    }
     render() {
-        let allTT = this.props.timetable.map((u) => { return <Item u={u} delUser={this.props.deleteUser} role="lectural" /> });
-        
+        let allTT = this.props.timetable.map((u) => { return <Item u={u} /> })
+
         return (
             <div class="timetable">
                 <Sort>
-                    <Dropdown title="Учебный взвод" link={podr} size="10" />
+                    <Dropdown title="Учебный взвод" link={podr} size="10" onClick={this.Submit} />
                     <Dropdown title="Учебный предмет" link={pred} size="10" />
                     <Dropdown title="Преподаватель" link={who} size="10" />
                     <Date title="С какой даты" />
                     <Date title="По какую дату" />
                 </Sort>
                 <div class="timetable__wrapper">
-                    {allTT === null ? <Item /> : allTT}
-                    <Item />
+                    {allTT === null ? allTT : <Item />}
+                    {allTT}
                 </div>
             </div>
 
