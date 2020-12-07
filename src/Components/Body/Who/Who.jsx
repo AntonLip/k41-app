@@ -1,5 +1,6 @@
 import React from 'react'
 
+import MainContentWrapper from '../MainContentWrapper/MainContentWrapper'
 import {TableRow} from './Item/TableRow/TableRow'
 import Profile from './Item/Profile/Profile'
 import { Menu } from './Item/Menu/Menu'
@@ -15,20 +16,20 @@ const TableOfPerson = (props) => {
         }
     }
     return (
-        <div class="table__wrapper">
-            <table>
-                <tr>
-                    <th>Рег<br></br>номер</th>
-                    <th>Фамилия</th>
-                    <th>Имя</th>
-                    <th>Отчетсво</th>
-                    <th>Должность</th>
-                    <th>В/звание</th>
-                    <th>Подразделение</th>
-                </tr>
-                {allPerson}
-            </table>
-        </div>
+            <div class="table__wrapper">
+                <table>
+                    <tr>
+                        <th>Рег<br></br>номер</th>
+                        <th>Фамилия</th>
+                        <th>Имя</th>
+                        <th>Отчетсво</th>
+                        <th>Должность</th>
+                        <th>В/звание</th>
+                        <th>Подразделение</th>
+                    </tr>
+                    {allPerson}
+                </table>
+            </div>        
     )
 }
 
@@ -74,15 +75,18 @@ export class WHO extends React.Component {
 
         debugger
         return (
-            <div class="who">
-                <div class="who__wrapper">
-                    <div class="table who__table">
-                        <Menu />
-                        {this.props.IsOfficers ? <TableOfPerson persons={this.props.officers} onClick={this.submit}/> : <TableOfPerson persons={this.props.cadets} />}
+            <MainContentWrapper leftSideBar="true">
+                <Menu />
+                <div class="who">
+                    <div class="who__wrapper">
+                        <div class="table who__table">
+                            
+                            {this.props.IsOfficers ? <TableOfPerson persons={this.props.officers} onClick={this.submit}/> : <TableOfPerson persons={this.props.cadets} />}
+                        </div>
+                        <Profile info={this.state.profile}/>
                     </div>
-                    <Profile info={this.state.profile}/>
                 </div>
-            </div>
+            </MainContentWrapper>
         );
     }
 }

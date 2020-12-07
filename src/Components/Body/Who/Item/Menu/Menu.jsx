@@ -1,13 +1,16 @@
 import React from 'react'
 import SortItem from './../../../Sort/SortItem'
-import Sort from './../../../Sort/Items/Sort/Sort'
+
+import DropDown from '../../../Sort/Items/Dropdown/Dropdown'
+import Filter from '../../../Sort/Items/Filter/Filter'
+
 export const Menu = (props) => {
     return (
         <SortItem>
-            <Sort title="По алфавиту" />
-            <Sort title="По званию" />
-            <Sort title="По подразделению" />
-            <Sort title="По должности" />
+            <DropDown title="Звание" />
+            <DropDown title="Подразделение" />
+            <DropDown title="Должность" />
+            <Filter/>
         </SortItem>
     )
 }

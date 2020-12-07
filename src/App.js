@@ -1,11 +1,9 @@
 import React from 'react';
 import './App.css';
-
 import Header from './Components/Header/Header';
 import NavBar from './Components/Navbar/Navbar'
-import LeftSide from './Components/LeftSide/LeftSide'
 import Body from './Components/Body/Body'
-
+import Chat from './Components/Chat/Chat'
 
 
 const App = (props) => {
@@ -15,14 +13,8 @@ const App = (props) => {
       <NavBar />
       <div class="main-content">
         <div class="container">
-          <div class="main-content__wrapper">
-            <div class="main-content__left">
-              <LeftSide />
-            </div>
-            <div class="main-content__right">
-              <Body/>
-            </div>
-          </div>
+            <Body/>
+            <Chat/> 
         </div>
       </div>
     </>

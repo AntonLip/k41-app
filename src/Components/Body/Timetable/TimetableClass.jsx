@@ -4,7 +4,8 @@ import Sort from '../Sort/SortItem'
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Date from '../Sort/Items/Date/Date'
 import Item from './Item/Item'
-
+import MainContentWrapper from '../MainContentWrapper/MainContentWrapper';
+import Filter from '../Sort/Items/Filter/Filter'
 const podr = [
     { title: "413" },
     { title: "414" },
@@ -46,20 +47,21 @@ export class Timetable extends React.Component {
         let AllLessons
         this.props.timetable === undefined ? AllLessons = ()=>{return<Item />} : this.props.timetable.lenght !=0 ? AllLessons = ()=>{return<Item />} : AllLessons = this.props.timetable.map((u) => { return <Item u={u} /> });
         return (
-            <div>
+            <MainContentWrapper leftSideBar="true">
+                <Sort>
+                    <Dropdown title="Учебный взвод" link={podr} size="10" />
+                    <Dropdown title="Учебный предмет" link={pred} size="10" />
+                    <Dropdown title="Преподаватель" link={who} size="10" />
+                    <Date title="С какой даты" />
+                    <Date title="По какую дату" />
+                    <Filter/>
+                </Sort>
                 <div class="timetable">
-                    <Sort>
-                        <Dropdown title="Учебный взвод" link={podr} size="10" />
-                        <Dropdown title="Учебный предмет" link={pred} size="10" />
-                        <Dropdown title="Преподаватель" link={who} size="10" />
-                        <Date title="С какой даты" />
-                        <Date title="По какую дату" />
-                    </Sort>
                     <div class="timetable__wrapper">
                         {AllLessons}
                     </div>
                 </div>
-            </div>
+            </MainContentWrapper>
         );
     }
 
