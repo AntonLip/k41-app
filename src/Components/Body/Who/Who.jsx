@@ -3,6 +3,7 @@ import React from 'react'
 import {TableRow} from './Item/TableRow/TableRow'
 import Profile from './Item/Profile/Profile'
 import { Menu } from './Item/Menu/Menu'
+
 const TableOfPerson = (props) => {    
     let allPerson;
     if (props.persons === undefined) {
