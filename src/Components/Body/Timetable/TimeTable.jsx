@@ -24,18 +24,22 @@ const who = [
 
 const TimeTable = (props) => {
     return (
-        <div class="timetable">
-            <Sort>
-                <Dropdown title="Учебный взвод" link={podr} size="10"/>
-                <Dropdown title="Учебный предмет" link={pred} size="10"/>
-                <Dropdown title="Преподаватель" link={who} size="10"/>
-                <Date title="С какой даты"/>
-                <Date title="По какую дату"/>
-            </Sort>
-            <div class="timetable__wrapper">
-                <Item/>
+        <MainContentWrapper leftSideBar="true">
+            <div></div>
+            <div class="timetable">
+                <Sort>
+                    <Dropdown title="Учебный взвод" link={podr} size="10"/>
+                    <Dropdown title="Учебный предмет" link={pred} size="10"/>
+                    <Dropdown title="Преподаватель" link={who} size="10"/>
+                    <Date title="С какой даты"/>
+                    <Date title="По какую дату"/>
+                </Sort>
+                <div class="timetable__wrapper">
+                    <Item/>
+                </div>
             </div>
-        </div>
+        </MainContentWrapper>
+        
     )
 }
 
