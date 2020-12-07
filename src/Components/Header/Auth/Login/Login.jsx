@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD
 import classes from "./login.module.css"
 const Login = (props) => {
     return (
@@ -14,6 +15,13 @@ const Login = (props) => {
                 </div>
 
             </div>
+=======
+
+const Login = () => {
+    return (
+        <div>
+            
+>>>>>>> refs/remotes/origin/Tsarenkov
         </div>
     )
 }

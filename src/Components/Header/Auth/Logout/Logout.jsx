@@ -1,7 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
+<<<<<<< HEAD
 const Logout = (props) => {
+=======
+const Logout = () => {
+>>>>>>> refs/remotes/origin/Tsarenkov
     return (
         <div class="profile">
             <div class="profile-img profile__img">
@@ -16,7 +20,11 @@ const Logout = (props) => {
                 <li class="profile-menu__link"><Link to="#">Расписание</Link></li>
                 <li class="profile-menu__link"><Link to="#">Личные данные</Link></li>
             </ul>
+<<<<<<< HEAD
             <a href="#" class="profile__btn btn" onClick={props.logout}>Завершить сеанс</a>
+=======
+            <a href="#" class="profile__btn btn">Завершить сеанс</a>
+>>>>>>> refs/remotes/origin/Tsarenkov
         </div>
     )
 }
