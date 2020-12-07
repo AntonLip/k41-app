@@ -1,19 +1,37 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
-import Fileupload from '../../UploaderFile/Uploader';
 
+import Sort from '../Sort/SortItem'
+import Dropdown from '../Sort/Items/Dropdown/Dropdown'
+import Date from '../Sort/Items/Date/Date'
+import Item from './Item/Item'
+
+const podr = [
+    { title: "413" },
+    { title: "414" },
+    { title: "415" },
+]
+const pred = [
+    { title: "SAU" },
+    { title: "OIT" },
+    { title: "EPRET" },
+]
+const who = [
+    { title: "Шарак" },
+    { title: "Белоус" },
+    { title: "Куренев" },
+]
 
 
 
 export class Timetable extends React.Component {
 
     componentDidMount() {
-        this.props.getUser();
-        var day = new Date().getDay();
-        var month = new Date().getMonth();
-        var year = new Date().getFullYear();
-        var fullDate = year + "-" + month + "-" + day + " 00:00:00.0000000"
-        this.props.getTimetable(this.props.currGroup, fullDate);
+        // this.props.getUser();
+        // var day = new Date().getDay();
+        // var month = new Date().getMonth();
+        // var year = new Date().getFullYear();
+        // var fullDate = year + "-" + month + "-" + day + " 00:00:00.0000000"
+        // this.props.getTimetable(this.props.currGroup, fullDate);
     }
 
     getTT = (group, fullDate) => {
@@ -30,90 +48,23 @@ export class Timetable extends React.Component {
         this.getTT(group, fullDate)
     }
     render() {
+        let AllLessons = this.props.timetable.map((u) => { return <Item u={u} /> });
         return (
-            <div >
-                <div >
-                    <TimetableReduxForm onSubmit={this.submit} role={this.props.user.profile} />
-                </div>
-                <div>
-                    <Fileupload></Fileupload>
-                </div>
-                <div >
-                    <TT timetable={this.props.timetable} />
+            <div>
+                <div class="timetable">
+                    <Sort>
+                        <Dropdown title="Учебный взвод" link={podr} size="10" />
+                        <Dropdown title="Учебный предмет" link={pred} size="10" />
+                        <Dropdown title="Преподаватель" link={who} size="10" />
+                        <Date title="С какой даты" />
+                        <Date title="По какую дату" />
+                    </Sort>
+                    <div class="timetable__wrapper">
+                        <Item />
+                    </div>
                 </div>
             </div>
         );
     }
 
 }
-
-const TT = (props) => {
-    return (
-        <div>
-            {
-                props.timetable.map(u => {
-                    return (
-                        <div >
-                            <div  key={u.id}>
-                                <div >
-                                    <div >{u.numberOfLessonInDay}</div>
-                                    <div >
-                                        <div >{u.nameOfDiscipline}</div>
-
-                                        <div >
-                                            <div >{u.typeOfLesson}</div>
-                                            <div >{u.numberOfLesson}</div>
-                                        </div>
-                                        <div >{u.auditore}</div>
-                                        <div >{u.lectural}</div>
-                                        <div  style={{ backgroundColor: "#d9fbff" }}>
-                                            <div >
-                                                <div >
-                                                    ПОДРОБНЕЕ
-                                         </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div >
-
-                                        <div >{u.infoForCadets}</div>
-                                        <input  type="text" required placeholder="просьба преподавателю"></input>
-                                        <div  style={{ height: 38, backgroundColor: "#d9fbff" }}><div >
-                                            <div >
-                                                ОТПРАВИТЬ
-                                         </div>
-                                        </div></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    );
-                }
-                )
-            }
-        </div>
-    );
-}
-
-const TimetableFormRedux = (props) => {
-
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <div >
-                <div >
-                    <Field placeholder={"Enter number of group"} name={"group"} component={'input'} />
-                </div>
-                <div>
-                    <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"date"} />
-                </div>
-            </div>
-            <button >Расписание</button>
-        </form>
-    );
-}
-
-const TimetableReduxForm = reduxForm({
-    form: 'group'
-})(TimetableFormRedux)
-

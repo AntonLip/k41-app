@@ -13,6 +13,7 @@ export class LoginSuccess extends React.Component {
         this.props.redie();
     }
     render() {
+        console.log(this.AuthClass)
         return (
             <div >
                 <h1>Heloo</h1>

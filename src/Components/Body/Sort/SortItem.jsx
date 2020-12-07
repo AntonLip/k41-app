@@ -18,6 +18,3 @@ const SortItem = (props) => {
 
 export default SortItem
 
-/*
- 
-*/
