@@ -525,11 +525,7 @@ body {
 
 .sort-submenu__form{
   width: 100%;
-<<<<<<< HEAD
-  
-=======
   display: flex;
->>>>>>> refs/remotes/origin/Tsarenkov
 }
 
 .sort-submenu__select{

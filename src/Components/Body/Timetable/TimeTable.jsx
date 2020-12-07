@@ -22,11 +22,7 @@ const who = [
 ]
 
 
-<<<<<<< HEAD
 const TimeTable = (props) => {
-=======
-const TimeTable = () => {
->>>>>>> refs/remotes/origin/Tsarenkov
     return (
         <div class="timetable">
             <Sort>
@@ -38,12 +34,6 @@ const TimeTable = () => {
             </Sort>
             <div class="timetable__wrapper">
                 <Item/>
-<<<<<<< HEAD
-=======
-                <Item/>
-                <Item/>
-                <Item/>
->>>>>>> refs/remotes/origin/Tsarenkov
             </div>
         </div>
     )

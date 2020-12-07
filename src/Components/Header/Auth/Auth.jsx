@@ -27,47 +27,10 @@ export class AuthClass extends React.Component {
         var family_name = this.props.AuthClass.loginPage.user.family_name;
         var role = this.props.AuthClass.loginPage.user.role
         if (this.props.AuthClass.loginPage.isLoadingUser) {
-<<<<<<< HEAD
             return( <Logout logout={this.logout}/>);
         }
         else {
             return (<Login login={this.login} register={this.Register}/>);
-=======
-            return (
-                <div >
-                    <div >
-                        <div >
-                            <div  onClick={this.logout}>LogOut</div>
-                        </div>
-                        <div >
-                            <div><div ></div></div>
-                            <div >{name}</div>
-                            <div >{family_name}</div>
-                            <div >{role[0]}</div>
-                            
-                            <div >Задачи на сегодня:</div>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-        else {
-            return (
-                <div >
-                    <div >                   
-                        <div >
-                            <div >
-                                <div  onClick={this.login}>Login</div>
-                            </div>
-                            <div >
-                                <div  onClick={this.Register}>Registration</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div >
-            );
->>>>>>> refs/remotes/origin/Tsarenkov
         }
     }
 }
