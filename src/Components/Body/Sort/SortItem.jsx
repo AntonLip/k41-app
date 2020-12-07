@@ -9,7 +9,9 @@ import Input from './Items/Input/Input'
 const SortItem = (props) => {
     return (
       <div class="sort cards__sort">
-        {props.children}
+        <form class="sort-submenu__form">
+          {props.children}
+        </form>
       </div>
     )
 }

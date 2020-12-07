@@ -525,7 +525,7 @@ body {
 
 .sort-submenu__form{
   width: 100%;
-  
+  display: flex;
 }
 
 .sort-submenu__select{
