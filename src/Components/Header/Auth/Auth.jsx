@@ -20,14 +20,20 @@ export class AuthClass extends React.Component {
     Register() {
         window.location.href = "http://localhost:5001/Account/Register";
     }
+    changePhoto(){
+        console.log('change');
+    }
     render() {
         debugger
         console.log(this.props);
-        var name = this.props.AuthClass.loginPage.user.given_name;
+        var given_name = this.props.AuthClass.loginPage.user.given_name;
         var family_name = this.props.AuthClass.loginPage.user.family_name;
-        var role = this.props.AuthClass.loginPage.user.role
+        var position = this.props.AuthClass.loginPage.user.position;  
+        var picture = this.props.AuthClass.loginPage.user.picture;
         if (this.props.AuthClass.loginPage.isLoadingUser) {
-            return( <Logout logout={this.logout}/>);
+            return( <Logout logout={this.logout} changePhoto={this.changePhoto}
+                    family_name={family_name} picture={picture}
+                    given_name={given_name} position={position}/>);
         }
         else {
             return (<Login login={this.login} register={this.Register}/>);

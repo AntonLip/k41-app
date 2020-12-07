@@ -6,8 +6,7 @@ import { getUserInfoThunkCreator } from '../../../Redux/login-reduser';
 
 let maptoStateToProps = (state) => {
 
-  return {
-    value: state.newsReduser.newsPage.newPostText,
+  return {    
     allNews: state.newsReduser.newsPage.News
   }
 }

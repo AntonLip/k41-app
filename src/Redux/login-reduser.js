@@ -9,6 +9,7 @@ let initState =
             name: null,
             given_name: null,
             family_name: null,
+            position:null,
             email: null,
             role: []
         },
@@ -32,10 +33,12 @@ export const LoginReduser = (state = initState, action) => {
                 copyState.loginPage.access_token = action.userInfo.access_token;
                 copyState.loginPage.id_token = action.userInfo.id_token;
                 copyState.loginPage.refresh_token = action.userInfo.refresh_token;
-                copyState.loginPage.user.name = action.userInfo.profile.name;
-                copyState.loginPage.user.given_name = action.userInfo.profile.given_name;
-                copyState.loginPage.user.family_name = action.userInfo.profile.family_name;
-                copyState.loginPage.user.email = action.userInfo.profile.email;
+                copyState.loginPage.user = {...action.userInfo.profile};
+                // copyState.loginPage.user.name = action.userInfo.profile.name;
+                // copyState.loginPage.user.given_name = action.userInfo.profile.given_name;
+                // copyState.loginPage.user.family_name = action.userInfo.profile.family_name;
+                // copyState.loginPage.user.email = action.userInfo.profile.email;
+                // copyState.loginPage.user.position = action.userInfo.profile.position;
                 if (Array.isArray(action.userInfo.profile.role)) {
                     copyState.loginPage.user.role = [ ...action.userInfo.profile.role ];
                 } else {
@@ -43,7 +46,6 @@ export const LoginReduser = (state = initState, action) => {
                 }
             }
             return copyState;
-
         default:
             return state;
     }
@@ -60,7 +62,6 @@ export const getUserInfoThunkCreator = () => {
 }
 
 export const RedirectCallback = () => {
-    debugger
     RedirectAuth();
 }
 

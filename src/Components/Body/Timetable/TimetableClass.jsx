@@ -40,15 +40,11 @@ export class Timetable extends React.Component {
     }
 
     submit = values => {
-        // print the form values to the console
-        var fullDate = values.date + " 00:00:00.0000000";
-        var group = values.group;
 
-        console.log(values)
-        this.getTT(group, fullDate)
     }
     render() {
-        let AllLessons = this.props.timetable.map((u) => { return <Item u={u} /> });
+        let AllLessons
+        this.props.timetable === undefined ? AllLessons = ()=>{return<Item />} : this.props.timetable.lenght !=0 ? AllLessons = ()=>{return<Item />} : AllLessons = this.props.timetable.map((u) => { return <Item u={u} /> });
         return (
             <div>
                 <div class="timetable">
@@ -60,7 +56,7 @@ export class Timetable extends React.Component {
                         <Date title="По какую дату" />
                     </Sort>
                     <div class="timetable__wrapper">
-                        <Item />
+                        {AllLessons}
                     </div>
                 </div>
             </div>

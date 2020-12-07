@@ -24,58 +24,13 @@ const who = [
   }
 ]
 
-const SetFilter = (props) => {
- 
-  return (
-    <form onSubmit={props.handleSubmit}>
-
-      <div>
-        <label>от кого</label>
-        <div>
-          <Field name="formSec" component="select">
-            <option value={1}>Начальник кафедры</option>
-            <option value={2}>Начальник цикла</option>
-            <option value={3}>Преподаватель</option>
-          </Field>
-        </div>
-      </div>
-      <div>
-        <label>кому</label>
-        <div>
-          <Field name="academicDegree" component="select">
-            <option value={1}>Начальник кафедры</option>
-            <option value={2}>Начальник цикла</option>
-            <option value={3}>Преподаватель</option>
-          </Field>
-        </div>
-      </div>
-      <div>
-        <label>с какого </label>
-        <div>
-         
-          <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"start"} />
-         
-        </div>
-        <label>по какое</label>
-        <div>
-          
-          <Field component={'input'} type="date" data-date="" data-date-format="DD MMMM YYYY" name={"stop"} />
-        
-        </div>
-      </div>
-      <button >Show</button>
-    </form>);
-};
-
-const SetFilterR = reduxForm({
-  form: 'FilterNews'
-})(SetFilter)
-
 export class News extends React.Component {
+  state = {
 
-  componentDidMount() {
-    debugger;
-    this.props.getNews();   
+  }
+
+  componentDidMount() {    
+    //this.props.getNews();   
     this.props.getUser();
 }
 

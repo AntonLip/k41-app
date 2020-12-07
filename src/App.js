@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { Redirect, Route} from 'react-router-dom';
 
 import Header from './Components/Header/Header';
 import NavBar from './Components/Navbar/Navbar'
