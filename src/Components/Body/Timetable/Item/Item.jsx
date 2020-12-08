@@ -2,7 +2,7 @@ import React from 'react'
 
 import Text from './Text/Text'
 
-const Item = (props) => {
+const Item = (props) => {    
     if (props.u === undefined) {
         return (
             <div class="timetable-item timetable__item">

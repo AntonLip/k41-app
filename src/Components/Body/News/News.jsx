@@ -10,42 +10,45 @@ import Sort from '../Sort/SortItem'
 import Filter from '../Sort/Items/Filter/Filter'
 
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
-import Date from '../Sort/Items/Date/Date'
 import Input from '../Sort/Items/Input/Input'
+import DateQ from '../Sort/Items/Date/DateQ'
 
 const who = [
   {
-    title: "All"
+    name: "Всем"
   }, 
   {
-    title: "Шарак"
+    name: "Курсанты"
   }, 
   {
-    title: "Белоус"
+    name: "Постоянный состав"
   },
   {
-    title: "Куренев"
+    name: "Куренев"
   }
 ]
 
 export class News extends React.Component {
-  state = {
-
-  }
-
   componentDidMount() {    
-    //this.props.getNews();   
+    this.props.getPersons();  
+    this.props.getUnits();
     this.props.getUser();
+    this.props.getAcademicTitle();
+    this.props.getDisciplines();
+    this.props.getPosition();
+    this.props.getAcademicDegree();
+    this.props.getMilRank();
+    this.props.getGroups();
 }
 
   render()  {
     return (
     <MainContentWrapper leftSideBar="true">
       <Sort>
-          <Dropdown title="От кого новость" link={who} size="6"/>
+          <Dropdown title="От кого новость" link={this.props.persons} size="6"/>
           <Dropdown title="Кому новость" link={who} size="6"/>
-          <Date title="С какой даты"/>
-          <Date title="По какую дату"/>
+          <DateQ title="С какой даты"/>
+          <DateQ title="По какую дату"/>
           <Input title="Добавить новость" link={who} />
           <Filter/>
         </Sort>

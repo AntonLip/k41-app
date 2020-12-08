@@ -10,7 +10,7 @@ const Dropdown = (props) => {
         <Item img={<BsFillCaretDownFill/>} imgActive={<BsFillCaretUpFill/>} title={props.title}>
             <select name="who" size={props.size} class="sort-submenu__select">
                 {props.link && props.link.map(item => {
-                    return <option>{item.title}</option>
+                    return <option>{item.name}</option>
                 })}
             </select>
         </Item> 

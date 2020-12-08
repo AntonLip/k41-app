@@ -2,58 +2,70 @@ import React from 'react';
 
 import Sort from '../Sort/SortItem'
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
-import Date from '../Sort/Items/Date/Date'
 import Item from './Item/Item'
 import MainContentWrapper from '../MainContentWrapper/MainContentWrapper';
 import Filter from '../Sort/Items/Filter/Filter'
-const podr = [
-    { title: "413" },
-    { title: "414" },
-    { title: "415" },
-]
-const pred = [
-    { title: "SAU" },
-    { title: "OIT" },
-    { title: "EPRET" },
-]
-const who = [
-    { title: "Шарак" },
-    { title: "Белоус" },
-    { title: "Куренев" },
-]
-
-
+import DateQ from '../Sort/Items/Date/DateQ';
 
 export class Timetable extends React.Component {
 
     componentDidMount() {
-        // this.props.getUser();
-        // var day = new Date().getDay();
-        // var month = new Date().getMonth();
-        // var year = new Date().getFullYear();
-        // var fullDate = year + "-" + month + "-" + day + " 00:00:00.0000000"
-        // this.props.getTimetable(this.props.currGroup, fullDate);
+        this.props.getDisciplines();
+        this.props.getPersons(); 
+        this.props.getGroups();
+        var fullDate = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + " 00:00:00.0000000"
+       if(this.props.isAuth)
+       {                       
+        this.IsInRole(this.props.role, "Cadet") ? this.getTimetablePerData(443, fullDate, true) : 
+            this.IsInRole(this.props.role, "lectural") ? this.getTimetablePerData(this.props.family_name, fullDate, false) :     
+                this.getTimetablePerDay(fullDate)
+       }
+       else{
+        this.getTimetablePerDay(fullDate)
+       }
+    }
+    IsInRole(role, needRole) {
+        if ((Array.isArray(role))) {
+            for (let i = 0; i < role.length; i++) {
+                if (role[i] === needRole)
+                    return true;
+            }
+            return false;
+        } else {
+            if (role === needRole) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
-    getTT = (group, fullDate) => {
+    getTimetablePerData = (forWho, fullDate, isCadet) => {
+        this.props.getTimetablePerData(forWho, fullDate, isCadet);
+    }
 
-        this.props.getTimetable(group, fullDate);
+    getTimetablePerDay = (date) => {
+        this.props.getTimetablePerDay(date);
     }
 
     submit = values => {
 
     }
-    render() {
+
+    render() {        
         let AllLessons
-        this.props.timetable === undefined ? AllLessons = ()=>{return<Item />} : this.props.timetable.lenght !=0 ? AllLessons = ()=>{return<Item />} : AllLessons = this.props.timetable.map((u) => { return <Item u={u} /> });
+        this.props.timetable === undefined ? AllLessons = ()=>{return<Item />} :
+             this.props.timetable.length !=0 ?  AllLessons = this.props.timetable.map((u) => { return <Item u={u} type={this.props.position}/> }) :
+                 AllLessons = ()=>{return<Item />} ;
         return (
             <MainContentWrapper leftSideBar="true">
                 <Sort>
-                    <Dropdown title="Учебный взвод" link={podr} size="10" />
-                    <Dropdown title="Учебный предмет" link={pred} size="10" />
-                    <Dropdown title="Преподаватель" link={who} size="10" />
-                    <Date title="С какой даты" />
-                    <Date title="По какую дату" />
+                    <Dropdown title="Учебный взвод" link={this.props.groups} size="10" />
+                    <Dropdown title="Учебный предмет" link={this.props.disciplines} size="10" />
+                    <Dropdown title="Преподаватель" link={this.props.lecturals} size="10" />
+                    <DateQ title="С какой даты" />
+                    <DateQ title="По какую дату" />
                     <Filter/>
                 </Sort>
                 <div class="timetable">

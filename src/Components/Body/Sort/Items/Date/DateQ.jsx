@@ -4,7 +4,7 @@ import { BsCalendar } from "react-icons/bs";
 import Item from '../Item'
 
 
-const Date = (props) => {
+const DateQ = (props) => {
     return (
         <Item img={<BsCalendar/>} title={props.title}>
                 <input type="date" name="calendar" class="sort-submenu__select"/>
@@ -12,4 +12,4 @@ const Date = (props) => {
     )
 }
 
-export default Date
+export default DateQ

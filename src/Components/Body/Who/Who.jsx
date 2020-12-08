@@ -41,14 +41,15 @@ export class WHO extends React.Component {
 
     componentDidMount() {
         this.getData();
-        this.props.IsOfficers ? this.props.getUser() : this.props.getCadets()
-                
+        this.props.IsOfficers ? this.props.getUser() : this.props.getCadets()                
     }
+
     getData() {
         this.props.setPosition();
         this.props.setMilitaryRank();
         this.props.setAcademicDegree();
         this.props.setAcademicTittes();
+        this.props.getUnits();
     }
 
     IsInRole(role, needRole) {
@@ -67,20 +68,22 @@ export class WHO extends React.Component {
             }
         }
     }
+
     submit = values => {
         console.log(values);
         
     }
+
     render() {
 
         debugger
         return (
             <MainContentWrapper leftSideBar="true">
-                <Menu />
+                <Menu  position={this.props.position} militaryRank={this.props.militaryRank} units={this.props.units}
+                       academicTitle={this.props.academicTitle} academicDegree={this.props.academicDegree}/>
                 <div class="who">
                     <div class="who__wrapper">
-                        <div class="table who__table">
-                            
+                        <div class="table who__table">                            
                             {this.props.IsOfficers ? <TableOfPerson persons={this.props.officers} onClick={this.submit}/> : <TableOfPerson persons={this.props.cadets} />}
                         </div>
                         <Profile info={this.state.profile}/>

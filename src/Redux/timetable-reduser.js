@@ -1,4 +1,4 @@
-import { getTimetableAPI } from "../API/TimetibleAPI";
+import { getTimetableAPI, getTimetablePerDayAPI } from "../API/TimetibleAPI";
 
 const GET_TIMETABLE = 'GET_TIMETABLE'
 
@@ -28,20 +28,30 @@ export const timetableReduser = (state = initialState, action) => {
     }
 }
 
-export const getTimetableThunkCreator = (group, dateTime) => {
-
+export const getTimetableThunkCreator = (forWho, dateTime, isCadet) => {
     return (dispatch) => {
-        getTimetableAPI(group, dateTime).then(data => {
+        getTimetableAPI(forWho, dateTime, isCadet).then(data => {
             dispatch(setDataAC(data));
         });
     }
 }
+
+export const getTimetableThunkCreatorPerDay = (dateTime) => {
+    return (dispatch) => {
+        getTimetablePerDayAPI(dateTime).then(data => {
+            debugger
+            dispatch(setDataAC(data));
+        });
+    }
+}
+
 export const setDataAC = (data) => {
     return {
         type: GET_TIMETABLE,
         data
     }
 }
+
 export const setGroupAC = (data) => {
     return {
         type: GET_TIMETABLE,

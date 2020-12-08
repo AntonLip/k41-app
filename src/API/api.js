@@ -109,5 +109,35 @@ export const deleteUserAPI = (id) => {
     }).catch((error) => {
         console.log("Api call error");
         alert(error.message);
-    });;
+    });
+}
+
+export const getUnitAPI = () => {
+    var path = "/Units"
+    return instance.get(path).then(responce => {
+        return responce.data
+    }).catch((error) => {
+        console.log("Api Units call error");
+        alert(error.message);
+    });
+}
+
+export const getLecturalsNameAPI= () => {
+    var path = "/Lecturals/Names"
+    return instance.get(path).then(responce => {
+        return responce.data
+    }).catch((error) => {
+        console.log("Api Units call error");
+        alert(error.message);
+    });
+}
+
+export const getGroupsAPI= () => {
+    var path = "/GroupDBs/Numbers"
+    return instance.get(path).then(responce => {
+        return responce.data
+    }).catch((error) => {
+        console.log("Api Units call error");
+        alert(error.message);
+    });
 }
