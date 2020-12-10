@@ -7,8 +7,16 @@ const instance = axios.create(
         baseURL: "https://localhost:44351/api/DisciplineDBs"
     }
 );
+
 export const getDisciplineAPI = () => {
     return instance.get().then(responce => {
+        return responce.data
+    });
+}
+
+export const getDisciplineNamesAPI = () => {
+    var path = "/Names"
+    return instance.get(path).then(responce => {
         return responce.data
     });
 }

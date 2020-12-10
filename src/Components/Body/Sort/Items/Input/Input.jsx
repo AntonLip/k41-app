@@ -17,7 +17,7 @@ const Input = (props) => {
                 <div class="chat-input__text">Кому:</div>
                 <select name="who" size="1" class="sort-submenu__select">
                     {props.link && props.link.map(item => {
-                        return <option>{item.title}</option>
+                        return <option>{item.name}</option>
                     })}
                 </select>
                 

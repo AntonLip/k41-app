@@ -12,24 +12,19 @@ import Filter from '../Sort/Items/Filter/Filter'
 import Clear from '../Sort/Items/Clear/Clear'
 
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
-import Date from '../Sort/Items/Date/Date'
 import Input from '../Sort/Items/Input/Input'
 import Pagination from '../Pagination/Pagination'
 
 
-
 const who = [
   {
-    title: "VARB"
+    name: "Всем"
   }, 
   {
-    title: "All"
+    name: "Курсанты"
   }, 
   {
-    title: "Шарак"
-  }, 
-  {
-    title: "Белоус"
+    name: "Постоянный состав"
   },
   {
     title: "Куренев"
@@ -55,7 +50,15 @@ export class News extends React.Component {
   
   componentDidMount() {    
     this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
-    this.props.getUser();  
+    this.props.getPersons();  
+    this.props.getUnits();
+    this.props.getUser();
+    this.props.getAcademicTitle();
+    this.props.getDisciplines();
+    this.props.getPosition();
+    this.props.getAcademicDegree();
+    this.props.getMilRank();
+    this.props.getGroups();  
   }
 
   sort=(values)=>{

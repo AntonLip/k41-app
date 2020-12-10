@@ -1,28 +1,45 @@
 
-import { setDataAC, getTimetableThunkCreator } from '../../../Redux/timetable-reduser';
-import {Timetable} from './TimetableClass';
+import { setDataAC, getTimetableThunkCreator, getTimetableThunkCreatorPerDay } from '../../../Redux/timetable-reduser';
+import { Timetable } from './TimetableClass';
 import { connect } from 'react-redux';
-import { getUserInfoThunkCreator } from '../../../Redux/login-reduser';
+import { setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator } from '../../../Redux/generalInfo-reduser';
 
 
 let maptoStateToProps = (state) => {
-   
+
     return {
         timetable: state.timetableReduser.timetablePage.timetable,
-        user: state.LoginReduser
+
+        isAuth: state.LoginReduser.loginPage.isLoadingUser,
+        role: state.LoginReduser.loginPage.user.role,
+        position: state.LoginReduser.loginPage.user.position,
+        family_name: state.LoginReduser.loginPage.user.family_name,
+
+        groups: state.generalInfoReduser.info.groups,
+        lecturals: state.generalInfoReduser.info.lecturals,
+        disciplines: state.generalInfoReduser.info.disciplines,
     }
 }
 let mapDispatchToProps = (dispatch) => {
-    return {                
-        setData:(data)=>{
+    return {
+        setData: (data) => {
             dispatch(setDataAC(data));
         },
-        getUser:()=>{
-            dispatch(getUserInfoThunkCreator());
+        getTimetablePerData: (forWho, dateTime, isCadets) => {
+            dispatch(getTimetableThunkCreator(forWho, dateTime, isCadets));
         },
-        getTimetable:(group, dateTime)=>{
-           dispatch(getTimetableThunkCreator(group, dateTime));
-        }
+        getTimetablePerDay: (dateTime) => {
+            dispatch(getTimetableThunkCreatorPerDay(dateTime));
+        },
+        getGroups: () => {
+            dispatch(setGroupsThunkCreator());
+        },
+        getDisciplines: () => {
+            dispatch(setDisciplinesThunkCreator());
+        },
+        getPersons: () => {
+            dispatch(setLecturalsThunkCreator());
+        },
     }
 }
 const TimetibleContainer = connect(maptoStateToProps, mapDispatchToProps)(Timetable);

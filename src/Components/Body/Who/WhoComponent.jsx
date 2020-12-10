@@ -4,6 +4,7 @@ import { getofficersThunkCreator, getFilteredofficersThunkCreator, deleteUserThu
 import { compose } from 'redux';
 import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator } from "./../../../Redux/newUser-reduser";
 import { WHO } from './Who';
+import { setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
 
 let maptoStateToProps = (state) => {
     return {
@@ -13,7 +14,13 @@ let maptoStateToProps = (state) => {
 
         isAuth: state.LoginReduser.loginPage.isLoadingUser,
         role: state.LoginReduser.loginPage.user.role,
-        token: state.LoginReduser.loginPage.id_token
+        token: state.LoginReduser.loginPage.id_token,
+
+        militaryRank:state.generalInfoReduser.info.militaryRank,
+        position:state.generalInfoReduser.info.position,
+        units:state.generalInfoReduser.info.units,
+        academicDegree:state.generalInfoReduser.info.academicDegree,
+        academicTitle:state.generalInfoReduser.info.academicTitle
     }
 }
 
@@ -31,6 +38,9 @@ let mapDispatchToProps = (dispatch) => {
         setAcademicTittes: () => {
             dispatch(setAcademicTitleThunkCreator());
         },
+        getUnits: () => {
+            dispatch(setUnitThunkCreator());
+          },
         getUser: (token) => {
             dispatch(getofficersThunkCreator(token));
         },

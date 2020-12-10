@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 import Item from '../Item'
 
 
-const Date = (props) => {
+const DateQ = (props) => {
     return (
         <Item img={<BsCalendar/>} title={props.title}>
             <Field type="date" component="input" name={props.name} class="sort-submenu__select"/>
@@ -13,4 +13,4 @@ const Date = (props) => {
     )
 }
 
-export default Date
+export default DateQ
