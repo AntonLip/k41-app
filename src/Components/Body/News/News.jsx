@@ -10,6 +10,7 @@ import Item from '../Cards/Item'
 import Sort from '../Sort/SortItem'
 import Filter from '../Sort/Items/Filter/Filter'
 import Clear from '../Sort/Items/Clear/Clear'
+import Date from '../Sort/Items/Date/DateQ'
 
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Input from '../Sort/Items/Input/Input'

@@ -5,7 +5,7 @@ import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Item from './Item/Item'
 import MainContentWrapper from '../MainContentWrapper/MainContentWrapper';
 import Filter from '../Sort/Items/Filter/Filter'
-
+import Date from '../Sort/Items/Date/DateQ';
 import {reduxForm} from 'redux-form'
 const podr = [
     { title: "413" },
@@ -24,7 +24,7 @@ const who = [
 ]
 
 
-import DateQ from '../Sort/Items/Date/DateQ';
+
 
 export class Timetable extends React.Component {
 
