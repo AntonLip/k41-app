@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsCalendar } from "react-icons/bs";
+import { Field } from 'redux-form';
 
 import Item from '../Item'
 
@@ -7,7 +8,7 @@ import Item from '../Item'
 const Date = (props) => {
     return (
         <Item img={<BsCalendar/>} title={props.title}>
-                <input type="date" name="calendar" class="sort-submenu__select"/>
+            <Field type="date" component="input" name={props.name} class="sort-submenu__select"/>
         </Item>
     )
 }

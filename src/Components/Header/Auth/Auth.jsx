@@ -24,7 +24,7 @@ export class AuthClass extends React.Component {
         console.log('change');
     }
     render() {
-        debugger
+        
         console.log(this.props);
         var given_name = this.props.AuthClass.loginPage.user.given_name;
         var family_name = this.props.AuthClass.loginPage.user.family_name;

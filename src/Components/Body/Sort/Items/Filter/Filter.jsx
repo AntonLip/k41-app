@@ -8,8 +8,8 @@ import Item from '../Item'
 const Filter = () => {
     return (
         <>
-            <button class="sort__item sort__item--btn">
-                    <div class="sort__title">Отсортировать</div>
+            <button type="submit" class="sort__item sort__item--btn">
+                    <div class="sort__title">Отфильтровать</div>
                     <div class="sort__img">{<BiFilterAlt/>}</div>     
             </button>
         </>

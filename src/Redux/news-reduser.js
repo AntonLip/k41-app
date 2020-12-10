@@ -1,15 +1,35 @@
-import { getNewsAPI } from "../API/newsAPI";
+import { getNewsAPI, getSingleNewsAPI } from "../API/newsAPI";
 
 const GET_NEWS = 'GET_NEWS'
+const GET_SINGLE_NEWS = 'GET_SINGLE_NEWS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
+const SET_CURRENT_PORTION = 'SET_CURRENT_PORTION'
+const SET_SORT = 'SET_SORT'
+
 
 let initialState = {
     newsPage: {
-        News: [
-            { Header : "Freedom", Text: "I am a free man", _id: 1, data: "22.07.2020", From: " ", To : " ", Link : "" },
-            { Header : "Freedom", Text: "I am a free man", _id: 2, data: "22.07.2020", From: " ", To : " ", Link : "" }
-            
+        News: [            
 
         ]
+    },
+    currentNews: {
+        From: "",
+        To: "",
+        Date: "",
+        Header: "",
+        Link: "",
+    },
+    currentPage: 1,
+    itemsPerPage: 9,
+    totalCount: 0,
+    currentPortion: 0,
+    sort: {
+        From: "",
+        To: "",
+        DateFrom: "",
+        DateTo: ""
     }
 }
 
@@ -31,33 +51,30 @@ export const newsReduser = (state = initialState, action) => {
 
             }            
             return copyState;
-        case 'ADD-POST':
-            let newM = {
-                id: 5,
-                newM: state.newsPage.newPostText,
-            };
-            copyState.newsPage.News = [...state.newsPage.News];
-            copyState.newsPage.News.push(newM);
-            copyState.newsPage.newPostText = "enter text";
+        case 'GET_SINGLE_NEWS':
+            copyState.currentNews = {...copyState.currentNews,...action.data};
             return copyState;
-        case 'UPDATE-NEW-TEXT':
-            copyState.newsPage.newPostText = action.newText;
+        case 'SET_CURRENT_PAGE':
+            debugger
+            copyState.currentPage = action.data;
+            return copyState;
+        case 'SET_TOTAL_COUNT':
+            debugger
+            copyState.totalCount = action.data;
+            return copyState;
+        case 'SET_CURRENT_PORTION':
+            debugger
+            copyState.currentPortion = action.data;
+            return copyState;
+        case 'SET_SORT':
+            debugger
+            copyState.sort = {...copyState.sort, ...action.data};
             return copyState;
         default:
             return state;
     }
 }
-export const  getNewsThunkCreator = () => {
-    
-    return (dispatch) => {
-        debugger;
-        getNewsAPI().then(data => {
-    debugger;
 
-            dispatch(getNewsAC(data));
-        });
-    }
-}
 export const getNewsAC = (data) => {
     debugger
     
@@ -67,16 +84,82 @@ export const getNewsAC = (data) => {
     }
 }
 
-
-export const addPostActionCreator = () => {
+export const getSingleNewsAC = (data) => {
+    debugger
+    
     return {
-        type: 'ADD-POST'
+        type: GET_SINGLE_NEWS,
+        data
     }
 }
 
-export const updateTexttActionCreator = (newText) => {
+export const setCurrentPage = (data) => {
+    debugger
+    
     return {
-        type: 'UPDATE-NEW-TEXT',
-        newText
+        type: SET_CURRENT_PAGE,
+        data
+    }
+}
+
+export const setTotalCount = (data) => {
+    debugger
+    
+    return {
+        type: SET_TOTAL_COUNT,
+        data
+    }
+}
+
+export const setSort = (data) => {
+    debugger
+    
+    return {
+        type: SET_SORT,
+        data
+    }
+}
+export const setCurrentPortion = (data) => {
+    debugger
+    
+    return {
+        type: SET_CURRENT_PORTION,
+        data
+    }
+}
+
+export const  setCurrentPageThunkCreator = (page, count, sort) => {
+    
+    return (dispatch) => {
+        debugger;
+        getNewsAPI(page, count, sort).then(data => {
+    debugger;
+            dispatch(getNewsAC(data.news));
+            dispatch(setCurrentPage(page));
+        });
+    }
+}
+
+export const  getNewsThunkCreator = (page, count, sort) => {
+    
+    return (dispatch) => {
+    
+        getNewsAPI(page, count, sort).then(data => {
+    debugger;
+            dispatch(getNewsAC(data.news));
+            dispatch(setTotalCount(data.totalCount));
+        });
+    }
+}
+
+export const  getSingleNewsThunkCreator = (id) => {
+    
+    return (dispatch) => {
+        
+        getSingleNewsAPI(id).then(data => {
+    debugger;
+
+            dispatch(getSingleNewsAC(data));
+        });
     }
 }
