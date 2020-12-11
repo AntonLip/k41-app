@@ -4,7 +4,7 @@ import * as axios from "axios"
 const instance = axios.create(
     {
         //withCredentials :true,
-        baseURL: "https://localhost:44351/api/DisciplineDBs"
+        baseURL: "http://k41.kafedra41.local/WB/api/DisciplineDBs"
     }
 );
 

@@ -2,7 +2,7 @@ import react from 'react'
 import { connect } from 'react-redux'
 import { getofficersThunkCreator, getFilteredofficersThunkCreator, deleteUserThunkCreator, getCadetsThunkCreator } from './../../../Redux/whos-reduser'
 import { compose } from 'redux';
-import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator } from "./../../../Redux/newUser-reduser";
+import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator } from "./../../../Redux/generalInfo-reduser";
 import { WHO } from './Who';
 import { setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
 
