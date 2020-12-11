@@ -26,6 +26,10 @@ let initState =
 }
 
 export const generalInfoReduser = (state = initState, action) => {
+    if(action.data === undefined)
+    {
+        return state;
+    }
     let copyState = {
         ...state
     }

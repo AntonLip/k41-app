@@ -4,7 +4,7 @@ import * as axios from "axios"
 const instance = axios.create(
     {
         //withCredentials :true,
-        baseURL: "https://localhost:44351/api/TimetableDBs"
+        baseURL: "http://k41.kafedra41.local/WB/api/TimetableDBs"
     }
 );
 export const getTimetableAPI = (forWho, dateTime, isCadet)  =>{

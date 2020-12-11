@@ -6,29 +6,20 @@ const instance = axios.create(
         headers: {
             'Content-Type': 'application/json'
         },
-        baseURL: "https://localhost:44351/api/"
+        baseURL: "http://k41.kafedra41.local/WB/api/"
     }
 );
 
 export const getofficersAPI = (token) => {
-
-    var config = {
-        method: 'get',
-        url: 'https://localhost:44351/api/Lecturals/Min',
-        headers:
-        {
-            Authorization: 'Bearer ' + token,
-            
-        },
-    };
-
-    return axios(config)
-        .then(responce => {
-            return responce.data
-        }).catch((error) => {
-            console.log("Api call error");
-            alert(error.message);
-        });
+    let path = "Lecturals/Min";
+    debugger
+    return instance.get(path).then(responce => {
+        debugger
+        return responce.data
+    }).catch((error) => {
+        console.log("Api  Lecturals/Min error");
+        alert(error.message);
+    });;
 }
       
 
@@ -48,8 +39,7 @@ export const getUserbyIdAPI = (id) => {
 export const updateUserAPI = (data) => {
 
 }
-export const createUserAPI = (newUser) => {
-    debugger;
+export const createUserAPI = (newUser) => {  
     return instance.post("Lecturals/?", JSON.stringify(newUser)).then(responce => {
         if (responce.data != null)
             window.location = "/Users"
@@ -113,7 +103,7 @@ export const deleteUserAPI = (id) => {
 }
 
 export const getUnitAPI = () => {
-    var path = "/Units"
+    var path = "Units/"
     return instance.get(path).then(responce => {
         return responce.data
     }).catch((error) => {
@@ -123,7 +113,7 @@ export const getUnitAPI = () => {
 }
 
 export const getLecturalsNameAPI= () => {
-    var path = "/Lecturals/Names"
+    var path = "Lecturals/Names"
     return instance.get(path).then(responce => {
         return responce.data
     }).catch((error) => {
