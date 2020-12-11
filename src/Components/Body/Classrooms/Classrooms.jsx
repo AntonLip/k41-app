@@ -5,19 +5,23 @@ import Floor1 from './Floors/Floors1/Floor1'
 import Floor2 from './Floors/Floors2/Floors2'
 import Floor3 from './Floors/Floors3/Floors3'
 import Cab from './Cab/Cab'
+import MainContentWrapper from '../MainContentWrapper/MainContentWrapper'
+
 const Classrooms = () => {
     return (
-        <div class="classrooms">
-            <Route exact path="/classrooms">
-                    <Floor1/>
-                    <Floor2/>
-                    <Floor3/>
-            </Route>
-            <Route exact path="/classrooms/:numCab">
-                <Cab/>
-            </Route> 
+        <MainContentWrapper>
+                <div class="classrooms">
+                <Route exact path="/classrooms">
+                        <Floor1/>
+                        <Floor2/>
+                        <Floor3/>
+                </Route>
+                <Route exact path="/classrooms/:numCab">
+                    <Cab/>
+                </Route> 
 
-        </div>
+            </div>
+        </MainContentWrapper>
     )
 }
 

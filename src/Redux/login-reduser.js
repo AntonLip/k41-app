@@ -24,7 +24,7 @@ export const LoginReduser = (state = initState, action) => {
     let copyState = {
         ...state
     }    
-    debugger;
+    
     switch (action.type) {
         
         case SET_USER:
@@ -55,7 +55,7 @@ export const getUserInfoThunkCreator = () => {
 
     return (dispatch) => {
         GetUser().then(data => {
-            debugger
+            
             dispatch(setUserInfoAC(data));
         });
     }
@@ -66,7 +66,7 @@ export const RedirectCallback = () => {
 }
 
 const setUserInfoAC = (userInfo) => {
-    debugger
+    
     let action = { type: SET_USER, userInfo }
     return action;
 }

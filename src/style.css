@@ -454,7 +454,8 @@ button{
 
 .main-content__wrapper {
   min-height: calc(100vh - 309px);
-  padding: 15px 0; 
+  padding: 15px 15px; 
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .main-content__wrapper--left-side-bar{
@@ -503,6 +504,7 @@ button{
   border: none;
   background-color: transparent;
   outline: none;
+  border-bottom: 2px solid #fff;
 }
 
 .sort__item:hover {
@@ -553,26 +555,19 @@ button{
 .sort-submenu__select option:focus{
   background-color: red;
 }
-.sort-submenu__select::-webkit-scrollbar {
-  width: 0;
 
-}
-.sort-submenu__select:hover::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 5px;
 }
 
-.sort-submenu__select::-webkit-scrollbar-track-piece {
+::-webkit-scrollbar-track-piece {
   background-color: #ffffff;
 }
 
-.sort-submenu__select::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   height: 50px;
   background-color: #666;
   border-radius: 3px;
-}
-
-.sort-submenu__select select option:focus{
-  background-color: red;
 }
 
 .profile {
@@ -864,24 +859,6 @@ button{
   margin-bottom: 5px;
 }
 
-.chat__sms::-webkit-scrollbar {
-  transition: width 0.5s ease;
-  width: 0;
-}
-.chat__sms:hover::-webkit-scrollbar {
-  width: 5px;
-}
-
-.chat__sms::-webkit-scrollbar-track-piece {
-  background-color: #ffffff;
-}
-
-.chat__sms::-webkit-scrollbar-thumb {
-  height: 50px;
-  background-color: #666;
-  border-radius: 3px;
-}
-
 .chat__input {
   border-radius: 3px;
   background-color: #c4ddea;
@@ -910,7 +887,6 @@ button{
 }
 
 .chat-sms__text {
-  color: #fff;
   text-align: justify;
   background-color: #c4ddea;
   padding: 5px;
@@ -1430,15 +1406,8 @@ button{
   grid-row: 1 / span 2;
 }
 
-.classroom {
-
-}
-.classroom__wrapper {
-
-
-}
-
-.classroom__link {
+.classroom__link,
+.news__link {
   display: inline-block;
   padding: 5px 15px;
   font-size: 14px;
@@ -1455,4 +1424,94 @@ button{
   margin-bottom: 5px;
   text-indent: 20px;
   font-size: 14px;
+}
+
+.pagination{
+  display: grid;
+  grid-template-columns: 50px 400px 50px;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  font-size: 15px;
+}
+
+.pagination__page{
+  margin: 0px 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.5s ease all;
+}
+.pagination__page:hover{
+  background-color: #fff;
+}
+
+.pagination__page--active{
+  background-color: #fff;
+  padding: 5px 10px;
+}
+
+.pagination__page-wrapper{
+  display: flex;
+  justify-content: space-around;
+}
+
+.pagination__prev,
+.pagination__next{
+  font-size: 20px;
+  cursor: pointer;
+  color: #4f5050;
+  margin: 0 auto;
+  transition: 0.5s ease all;
+}
+.pagination__prev:hover,
+.pagination__next:hover{
+  transform: scale(1.2);
+}
+
+.news {
+  font-size: 14px;
+}
+.news__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  justify-items: start;
+}
+.news__link {
+  display: flex;
+  align-items: center;
+}
+
+.news__link:hover{
+  transform: scale(1.03);
+}
+
+.news__link-img{
+  margin-right: 10px;
+}
+
+.news__header {
+  text-align: center;
+  font-size: 20px;
+  justify-self: center;
+}
+.news__info {
+  text-indent: 30px;
+}
+
+.news__file{
+  transition: 0.5s ease all;
+  display: inline-block;
+  padding: 5px 10px;
+  background: #9dc0e7;
+  display: flex;
+  align-items: center;
+}
+
+.news__file:hover{
+  transform: scale(1.03);
+}
+
+.news__file-img{
+  margin-left: 10px;
 }

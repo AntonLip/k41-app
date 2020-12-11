@@ -1,17 +1,21 @@
 import React from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { reduxForm } from 'redux-form'
+import { parsDate } from '../../../help/help'
 
-import { Field, reduxForm } from 'redux-form'
 
 import MainContentWrapper from '../MainContentWrapper/MainContentWrapper'
-
 import Item from '../Cards/Item'
 import Sort from '../Sort/SortItem'
-
 import Filter from '../Sort/Items/Filter/Filter'
+import Clear from '../Sort/Items/Clear/Clear'
+import Date from '../Sort/Items/Date/DateQ'
 
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Input from '../Sort/Items/Input/Input'
-import DateQ from '../Sort/Items/Date/DateQ'
+import Pagination from '../Pagination/Pagination'
+
 
 const who = [
   {
@@ -24,12 +28,29 @@ const who = [
     name: "Постоянный состав"
   },
   {
-    name: "Куренев"
-  }
+    title: "Куренев"
+  },
+  {
+    title: "Кривецкий"
+  },
+  {
+    title: "Шелест"
+  },
+  {
+    title: "Царенков"
+  },
+  {
+    title: "Сергеенко"
+  },
+  {
+    title: "Бобров"
+  },
 ]
 
 export class News extends React.Component {
+  
   componentDidMount() {    
+    this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
     this.props.getPersons();  
     this.props.getUnits();
     this.props.getUser();
@@ -38,28 +59,47 @@ export class News extends React.Component {
     this.props.getPosition();
     this.props.getAcademicDegree();
     this.props.getMilRank();
-    this.props.getGroups();
-}
+    this.props.getGroups();  
+  }
+
+  sort=(values)=>{
+    this.props.setSort(values);
+    this.props.getNews(this.props.currentPage, this.props.itemsPerPage, values);
+  }
 
   render()  {
+    console.log(this.props)
     return (
     <MainContentWrapper leftSideBar="true">
-      <Sort>
-          <Dropdown title="От кого новость" link={this.props.persons} size="6"/>
-          <Dropdown title="Кому новость" link={who} size="6"/>
-          <DateQ title="С какой даты"/>
-          <DateQ title="По какую дату"/>
+      <SortForm onSubmit={this.sort} >
+          <Dropdown title="От кого новость" link={who} size="6" name="From"/>
+          <Dropdown title="Кому новость" link={who} size="6" name="To"/>
+          <Date title="С какой даты" name="DateFrom"/>
+          <Date title="По какую дату" name="DateTo"/>
           <Input title="Добавить новость" link={who} />
-          <Filter/>
-        </Sort>
+          <Filter />
+          <Clear clear={this.sort}/>
+      </SortForm>
       <div class="cards">
         <div class="cards__content">
-          <Item title="Заседание кафедры" from="Липлянин" to="All" date="30.11.2020"/>
-          <Item title="Заседание кафедры" from="Липлянин" to="All" date="30.11.2020"/>
-          <Item title="Заседание кафедры" from="Липлянин" to="All" date="30.11.2020"/>
-          <Item title="Заседание кафедры" from="Липлянин" to="All" date="30.11.2020"/>
+          {this.props.allNews.map(item => {
+            return  <Item path="/news/" id={item._id} title={item.Header} from={item.From} to={item.To} date={parsDate(item.Date)}/>
+          })}
         </div>
+        { 
+          (this.props.allNews != 0 )
+          ? <Pagination changePage={this.props.setPage} currentPage={this.props.currentPage} itemsPerPage={this.props.itemsPerPage}  totalCount={this.props.totalCount} sizePortion="6"/>
+          : "Sorry. News with this props not founded"
+        } 
+        
       </div>
     </MainContentWrapper>
 )}
 }
+
+const SortForm = compose(
+  connect(state => ({initialValues: state.newsReduser.sort })),
+  reduxForm({form: 'sortNews'})
+)
+(Sort)
+

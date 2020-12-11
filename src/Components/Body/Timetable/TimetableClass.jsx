@@ -5,7 +5,26 @@ import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Item from './Item/Item'
 import MainContentWrapper from '../MainContentWrapper/MainContentWrapper';
 import Filter from '../Sort/Items/Filter/Filter'
-import DateQ from '../Sort/Items/Date/DateQ';
+import Date from '../Sort/Items/Date/DateQ';
+import {reduxForm} from 'redux-form'
+const podr = [
+    { title: "413" },
+    { title: "414" },
+    { title: "415" },
+]
+const pred = [
+    { title: "SAU" },
+    { title: "OIT" },
+    { title: "EPRET" },
+]
+const who = [
+    { title: "Шарак" },
+    { title: "Белоус" },
+    { title: "Куренев" },
+]
+
+
+
 
 export class Timetable extends React.Component {
 
@@ -60,14 +79,14 @@ export class Timetable extends React.Component {
                  AllLessons = ()=>{return<Item />} ;
         return (
             <MainContentWrapper leftSideBar="true">
-                <Sort>
-                    <Dropdown title="Учебный взвод" link={this.props.groups} size="10" />
-                    <Dropdown title="Учебный предмет" link={this.props.disciplines} size="10" />
-                    <Dropdown title="Преподаватель" link={this.props.lecturals} size="10" />
-                    <DateQ title="С какой даты" />
-                    <DateQ title="По какую дату" />
-                    <Filter/>
-                </Sort>
+                <SortForm onSubmit={this.printInfo}>
+                    <Dropdown title="Учебный взвод" link={podr} size="10" name="department"/>
+                    <Dropdown title="Учебный предмет" link={pred} size="10" name="lesson"/>
+                    <Dropdown title="Преподаватель" link={who} size="10" name="lector"/>
+                    <Date title="С какой даты" name="dateFrom"/>
+                    <Date title="По какую дату" name="dateTo"/>
+                    <Filter />
+                </SortForm>
                 <div class="timetable">
                     <div class="timetable__wrapper">
                         {AllLessons}
@@ -78,3 +97,5 @@ export class Timetable extends React.Component {
     }
 
 }
+
+const SortForm = reduxForm({form: 'sortTimetable'})(Sort)

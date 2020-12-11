@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom'
+import {Route, withRouter} from 'react-router-dom'
 
 import NewsContainer from './News/NewsComponenta'
 import Lessons from './Lessons/Lessons'
@@ -9,11 +9,12 @@ import History from './History/History'
 import LoginSuccessContainer from './../Login/LoginContainer'
 import TimetibleContainer from './Timetable/TimetableComponenta';
 import WhoComponent from './Who/WhoComponent';
-
+import SingleNews from './News/SingleNews'
 const Body = (props) => {
   return (
     <>
       <Route exact path="/" render={()=><NewsContainer/>} />
+      <Route path="/news/:id" render={()=><SingleNews/>} />
       <Route path="/lessons" render={()=><Lessons/>} />
       <Route path="/timetable" render={()=><TimetibleContainer/>} />
       <Route path="/cadets" render={()=><WhoComponent IsOfficers={false}/>} /> 
