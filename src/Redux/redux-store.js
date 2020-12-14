@@ -7,6 +7,7 @@ import {updateUserReduser} from './updateuser-reduser.js'
 import {reducer as formReducer} from 'redux-form'
 import {WHOsReduser} from './whos-reduser.js'
 import {generalInfoReduser} from './generalInfo-reduser'
+import {disciplinesReduser} from './disciplines-reduser'
 let redusersBatch = combineReducers({
     newsReduser,
     timetableReduser,
@@ -14,6 +15,7 @@ let redusersBatch = combineReducers({
     updateUserReduser,
     WHOsReduser,
     generalInfoReduser,
+    disciplinesReduser,
     form: formReducer
 });
 

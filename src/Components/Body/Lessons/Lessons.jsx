@@ -7,46 +7,55 @@ import Sort from '../Sort/SortItem'
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Filter from '../Sort/Items/Filter/Filter'
 
-import {reduxForm} from 'redux-form'
+import { reduxForm } from 'redux-form'
 
 const year = [
-    {title: "3 курс"},
-    {title: "4 курс"},
-    {title: "5 курс"}
+    { title: "3 курс" },
+    { title: "4 курс" },
+    { title: "5 курс" }
 ]
 
-const SortForm = reduxForm({form: 'sortLessons'})(Sort)
+const SortForm = reduxForm({ form: 'sortLessons' })(Sort)
 
-const Lessons = () => {
-    const printInfo=(values)=>{
+export class Lessons extends React.Component {
+    printInfo = (values) => {
         console.log(values)
     }
-    return (
-        <MainContentWrapper leftSideBar="true">
-            <SortForm onSubmit={printInfo}>
-                <Dropdown title="САФ" link={year} size="3" name="SAF"/>
-                <Dropdown title="ОБИТО" link={year} size="3" name="OBITO"/>
-                <Dropdown title="АСУ ПС" link={year} size="3" name="ASUPS"/>
-                <Dropdown title="АСУ ЗРВ" link={year} size="3" name="ASUZRV"/>
-                <Dropdown title="АСУ РТВ" link={year} size="3" name="ASURTV"/>
-                <Dropdown title="АСУ ВВС" link={year} size="3" name="ASUVVS"/>
-                <Dropdown title="АСУ СВ" link={year} size="3" name="ASUSV"/>
-                <Filter/>
-            </SortForm>
-            <div class="cards">
-                <div class="cards__content">
-                    <Item title="Основы автоматики"/>
-                    <Item title="Основы автоматики"/>
-                    <Item title="Основы автоматики"/>
-                    <Item title="Основы автоматики"/>
-                </div>
-            </div>
-        </MainContentWrapper>
+    componentDidMount()
+    {
+        this.props.getDisciplinesName();
+        this.props.getSpec();
+    }
+
+    render() {
+        let AllLessons;
+        this.props.nameofDiscoplines === undefined ? AllLessons = ()=>{return<Item />} :
+            this.props.nameofDiscoplines.length !=0 ?  
+                AllLessons = this.props.nameofDiscoplines.map((u) => { return <Item u={u} path="/lessons/"/> }) : 
+                    AllLessons = ()=>{return<Item />} ;
         
-    )
+        let AllSpec;
+        this.props.nameofDiscoplines === undefined ? AllSpec = ()=>{return<Dropdown />} :
+            this.props.nameOfSpec.length !=0 ?  
+                AllSpec = this.props.nameOfSpec.map((u) => { return <Dropdown name={u.nameOfSpecialization} link={year} title={u.nameOfSpecialization}/> }) : 
+                    AllSpec = ()=>{return<Dropdown />} ;
+        return (
+            <MainContentWrapper leftSideBar="true">
+                <SortForm onSubmit={this.printInfo}>
+                    {AllSpec}
+                    <Filter />
+                </SortForm>
+                <div class="cards">
+                    <div class="cards__content">
+                       {AllLessons}
+                    </div>
+                </div>
+            </MainContentWrapper>
+
+        )
+    }
 }
 
 
 
-export default Lessons
 

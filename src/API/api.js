@@ -20,9 +20,7 @@ export const getofficersAPI = (token) => {
         console.log("Api  Lecturals/Min error");
         alert(error.message);
     });;
-}
-      
-
+}   
 
 export const getUserbyIdAPI = (id) => {
     let path = "Lecturals/" + id;
@@ -39,6 +37,7 @@ export const getUserbyIdAPI = (id) => {
 export const updateUserAPI = (data) => {
 
 }
+
 export const createUserAPI = (newUser) => {  
     return instance.post("Lecturals/?", JSON.stringify(newUser)).then(responce => {
         if (responce.data != null)
@@ -57,6 +56,7 @@ export const getAcademicDegreesAPI = () => {
         alert(error.message);
     });;
 }
+
 export const getAcademicTitlesAPI = () => {
     return instance.get("AcademicTitles/").then(responce => {
         return responce.data
@@ -130,4 +130,13 @@ export const getGroupsAPI= () => {
         console.log("Api Units call error");
         alert(error.message);
     });
+}
+
+export const getSpecAPI = () => {    
+    return instance.get("/SpecializationDBs").then(responce => {
+        return responce.data
+    }).catch((error) => {
+        console.log("Api call error SpecializationDBs");
+        alert(error.message);
+    });;
 }

@@ -4,7 +4,7 @@ import { News } from './News';
 import { connect } from 'react-redux';
 import { getUserInfoThunkCreator } from '../../../Redux/login-reduser';
 import { compose } from 'redux';
-import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator, setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
+import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator, setSpecThunkCreator, setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
 
 let maptoStateToProps = (state) => {
 
@@ -32,12 +32,6 @@ let mapDispatchToProps = (dispatch) => {
     getGroups: () => {
       dispatch(setGroupsThunkCreator());
     },
-    getMilRank: () => {
-      dispatch(setMilitaryRankThunkCreator());
-    },    
-    getAcademicDegree: () => {
-      dispatch(setAcademicDegreeThunkCreator());
-    },
     getPosition: () => {
       dispatch(setPositionThunkCreator());
     },
@@ -51,7 +45,6 @@ let mapDispatchToProps = (dispatch) => {
       dispatch(getUserInfoThunkCreator());
     },
     setSort: (data) => {
-      debugger
       dispatch(setSort(data));
     }
     }
