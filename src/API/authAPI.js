@@ -2,17 +2,17 @@ import { createUserManager } from 'redux-oidc'
 
 const config = {
   // the URL of our identity server
-  authority: "http://localhost:5001",
+  authority: "http://k41.Kafedra41.local/is4",
   // this ID maps to the client ID in the identity client configuration
   client_id: "SPA.client",
   // URL to redirect to after login
-  redirect_uri: "http://localhost:3000/signin-oidc",
+  redirect_uri: "http://192.168.7.32:3000/signin-oidc",
   response_type: "code",
   // the scopes or resources we would like access to
   scope: "openid profile email phone address family_name given_name api1 Role position",
   // URL to redirect to after logout http://localhost:3000/signout-callback-oidc
   client_secret: "secret",
-  post_logout_redirect_uri: "http://localhost:3000/signout-callback-oidc",
+  post_logout_redirect_uri: "http://192.168.7.32:3000/signout-callback-oidc",
   loadUserInfo: true
 };
 

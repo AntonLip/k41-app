@@ -15,6 +15,9 @@ import Date from '../Sort/Items/Date/DateQ'
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Input from '../Sort/Items/Input/Input'
 import Pagination from '../Pagination/Pagination'
+import TextArea from '../Sort/Items/Input/items/TextArea/TextArea'
+import InputFile from '../Sort/Items/Input/items/File/InputFile'
+import InputDropDown from '../Sort/Items/Input/items/InputDropDown/InputDropDown'
 
 
 export class News extends React.Component {
@@ -40,7 +43,13 @@ export class News extends React.Component {
           <Dropdown title="Кому новость" link={this.props.persons} size="6" name="To" />
           <Date title="С какой даты" name="DateFrom" />
           <Date title="По какую дату" name="DateTo" />
-          <Input title="Добавить новость" link={this.props.persons} />
+          <Input title="Добавить новость" link={this.props.persons} btnText="Добавить">
+            <TextArea title ="Заголовок" size="3"/>
+            <TextArea title ="Текст" size="5"/>
+            <InputFile title ="Изображение"/>
+            <InputFile title ="Файл"/>
+            <InputDropDown title="Кому" link={this.props.persons}/>
+          </Input>
           <Filter />
           <Clear clear={this.sort} />
         </SortForm>
