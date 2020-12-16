@@ -40,6 +40,7 @@ export class WHO extends React.Component {
     }
 
     componentDidMount() {
+        debugger
         this.getData();
         this.props.IsOfficers ? this.props.getUser() : this.props.getCadets()                
     }
@@ -70,8 +71,7 @@ export class WHO extends React.Component {
     }
 
     submit = values => {
-        console.log(values);
-        
+        console.log(values);        
     }
 
     render() {

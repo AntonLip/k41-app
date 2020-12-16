@@ -5,26 +5,8 @@ import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Item from './Item/Item'
 import MainContentWrapper from '../MainContentWrapper/MainContentWrapper';
 import Filter from '../Sort/Items/Filter/Filter'
-import Date from '../Sort/Items/Date/DateQ';
+import DateQ from '../Sort/Items/Date/DateQ';
 import {reduxForm} from 'redux-form'
-const podr = [
-    { title: "413" },
-    { title: "414" },
-    { title: "415" },
-]
-const pred = [
-    { title: "SAU" },
-    { title: "OIT" },
-    { title: "EPRET" },
-]
-const who = [
-    { title: "Шарак" },
-    { title: "Белоус" },
-    { title: "Куренев" },
-]
-
-
-
 
 export class Timetable extends React.Component {
 
@@ -32,6 +14,7 @@ export class Timetable extends React.Component {
         this.props.getDisciplines();
         this.props.getPersons(); 
         this.props.getGroups();
+        debugger
         var fullDate = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + " 00:00:00.0000000"
        if(this.props.isAuth)
        {                       
@@ -80,11 +63,11 @@ export class Timetable extends React.Component {
         return (
             <MainContentWrapper leftSideBar="true">
                 <SortForm onSubmit={this.printInfo}>
-                    <Dropdown title="Учебный взвод" link={podr} size="10" name="department"/>
-                    <Dropdown title="Учебный предмет" link={pred} size="10" name="lesson"/>
-                    <Dropdown title="Преподаватель" link={who} size="10" name="lector"/>
-                    <Date title="С какой даты" name="dateFrom"/>
-                    <Date title="По какую дату" name="dateTo"/>
+                    <Dropdown title="Учебный взвод" link={this.props.groups} size="10" name="department"/>
+                    <Dropdown title="Учебный предмет" link={this.props.disciplines} size="10" name="lesson"/>
+                    <Dropdown title="Преподаватель" link={this.props.lecturals} size="10" name="lector"/>
+                    <DateQ title="С какой даты" name="dateFrom"/>
+                    <DateQ title="По какую дату" name="dateTo"/>
                     <Filter />
                 </SortForm>
                 <div class="timetable">
@@ -95,7 +78,6 @@ export class Timetable extends React.Component {
             </MainContentWrapper>
         );
     }
-
 }
 
 const SortForm = reduxForm({form: 'sortTimetable'})(Sort)

@@ -10,7 +10,7 @@ const SET_SORT = 'SET_SORT'
 
 let initialState = {
     newsPage: {
-        News: [            
+        News: [
 
         ]
     },
@@ -40,19 +40,19 @@ export const newsReduser = (state = initialState, action) => {
     }
     copyState.newsPage = { ...state.newsPage };
     switch (action.type) {
-        case GET_NEWS :
+        case GET_NEWS:
             debugger
-            if(action.data === 'undefined')
+            if (action.data === 'undefined')
                 return copyState;
 
             if (Array.isArray(action.data)) {
                 copyState.newsPage.News = [...action.data];
             } else {
 
-            }            
+            }
             return copyState;
         case 'GET_SINGLE_NEWS':
-            copyState.currentNews = {...copyState.currentNews,...action.data};
+            copyState.currentNews = { ...copyState.currentNews, ...action.data };
             return copyState;
         case 'SET_CURRENT_PAGE':
             debugger
@@ -68,7 +68,7 @@ export const newsReduser = (state = initialState, action) => {
             return copyState;
         case 'SET_SORT':
             debugger
-            copyState.sort = {...copyState.sort, ...action.data};
+            copyState.sort = { ...copyState.sort, ...action.data };
             return copyState;
         default:
             return state;
@@ -76,8 +76,6 @@ export const newsReduser = (state = initialState, action) => {
 }
 
 export const getNewsAC = (data) => {
-    debugger
-    
     return {
         type: GET_NEWS,
         data
@@ -85,8 +83,6 @@ export const getNewsAC = (data) => {
 }
 
 export const getSingleNewsAC = (data) => {
-    debugger
-    
     return {
         type: GET_SINGLE_NEWS,
         data
@@ -94,8 +90,6 @@ export const getSingleNewsAC = (data) => {
 }
 
 export const setCurrentPage = (data) => {
-    debugger
-    
     return {
         type: SET_CURRENT_PAGE,
         data
@@ -104,7 +98,7 @@ export const setCurrentPage = (data) => {
 
 export const setTotalCount = (data) => {
     debugger
-    
+
     return {
         type: SET_TOTAL_COUNT,
         data
@@ -112,52 +106,55 @@ export const setTotalCount = (data) => {
 }
 
 export const setSort = (data) => {
-    debugger
-    
     return {
         type: SET_SORT,
         data
     }
 }
+
 export const setCurrentPortion = (data) => {
-    debugger
-    
     return {
         type: SET_CURRENT_PORTION,
         data
     }
 }
 
-export const  setCurrentPageThunkCreator = (page, count, sort) => {
-    
+export const setCurrentPageThunkCreator = (page, count, sort) => {
+
     return (dispatch) => {
         debugger;
         getNewsAPI(page, count, sort).then(data => {
-    debugger;
-            dispatch(getNewsAC(data.news));
-            dispatch(setCurrentPage(page));
+            if (data.news === undefined) {
+
+            }
+            else {
+                dispatch(getNewsAC(data.news));
+                dispatch(setCurrentPage(page));
+            }
         });
     }
 }
 
-export const  getNewsThunkCreator = (page, count, sort) => {
-    
+export const getNewsThunkCreator = (page, count, sort) => {
+
     return (dispatch) => {
-    
+
         getNewsAPI(page, count, sort).then(data => {
-    debugger;
+            if (data.news === undefined) {
+
+            }
             dispatch(getNewsAC(data.news));
             dispatch(setTotalCount(data.totalCount));
         });
     }
 }
 
-export const  getSingleNewsThunkCreator = (id) => {
-    
+export const getSingleNewsThunkCreator = (id) => {
+
     return (dispatch) => {
-        
+
         getSingleNewsAPI(id).then(data => {
-    debugger;
+            debugger;
 
             dispatch(getSingleNewsAC(data));
         });

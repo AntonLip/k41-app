@@ -41,11 +41,11 @@ let mapDispatchToProps = (dispatch) => {
         getUnits: () => {
             dispatch(setUnitThunkCreator());
           },
-        getUser: (token) => {
-            dispatch(getofficersThunkCreator(token));
+        getUser: () => {
+            dispatch(getofficersThunkCreator());
         },
-        getCadets: (token) => {
-            dispatch(getCadetsThunkCreator(token));
+        getCadets: () => {
+            dispatch(getCadetsThunkCreator());
         },
         getFilteredUser: (filter) => {
             dispatch(getFilteredofficersThunkCreator(filter));

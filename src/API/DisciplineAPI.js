@@ -8,8 +8,9 @@ const instance = axios.create(
     }
 );
 
-export const getDisciplineAPI = () => {
-    return instance.get().then(responce => {
+export const getDisciplineByIdAPI = (id) => {
+    var path = "/" + id 
+    return instance.get(path).then(responce => {
         return responce.data
     });
 }

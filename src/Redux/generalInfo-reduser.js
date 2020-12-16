@@ -1,4 +1,4 @@
-import { getAcademicDegreesAPI, getAcademicTitlesAPI, getGroupsAPI, getLecturalsNameAPI, getMilitaryRanksAPI, getPositionAPI, getUnitAPI} from "../API/api";
+import { getAcademicDegreesAPI, getAcademicTitlesAPI, getGroupsAPI, getLecturalsNameAPI, getMilitaryRanksAPI, getPositionAPI, getSpecAPI, getUnitAPI} from "../API/api";
 import { getDisciplineNamesAPI } from "../API/DisciplineAPI";
 
 const SET_MILITARY_RANK = 'SET_MILITARY_RANK'
@@ -9,6 +9,7 @@ const SET_GROUPS = 'SET_GROUPS'
 const SET_DISCIPLINES = 'SET_DISCIPLINES'
 const SET_LECTURAL = 'SET_LECTURAL'
 const SET_UNITS = 'SET_UNITS'
+const SET_SPEC = 'SET_SPEC'
 
 
 let initState =
@@ -22,6 +23,7 @@ let initState =
         units: [],
         disciplines: [],
         lecturals: [],
+        specializations:[]
     }
 }
 
@@ -57,6 +59,10 @@ export const generalInfoReduser = (state = initState, action) => {
             return copyState;
         case SET_UNITS:
             copyState.info.units = [...action.data];
+            return copyState;
+        case SET_SPEC:
+            debugger
+            copyState.info.specializations = [...action.data];
             return copyState;
         default:
             return state;
@@ -94,7 +100,6 @@ export const setAcademicTitleThunkCreator = () => {
         });
     }
 }
-
 export const setGroupsThunkCreator = () => {
     return (dispatch) => {
         getGroupsAPI().then(data => {
@@ -123,6 +128,14 @@ export const setUnitThunkCreator = () => {
     return (dispatch) => {
         getUnitAPI().then(data => {
             dispatch(setUnitAC(data));
+        });
+    }
+}
+
+export const setSpecThunkCreator = () => {
+    return (dispatch) => {
+        getSpecAPI().then(data => {
+            dispatch(setSpecAC(data));
         });
     }
 }
@@ -176,6 +189,12 @@ const setLecturalsAC = (data) => {
 const setUnitAC = (data) => {
     return {
         type: SET_UNITS,
+        data
+    }
+}
+const setSpecAC = (data) => {
+    return {
+        type: SET_SPEC,
         data
     }
 }

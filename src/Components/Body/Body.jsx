@@ -10,12 +10,13 @@ import LoginSuccessContainer from './../Login/LoginContainer'
 import TimetibleContainer from './Timetable/TimetableComponenta';
 import WhoComponent from './Who/WhoComponent';
 import SingleNews from './News/SingleNews'
+import LessonsComponent from './Lessons/LessonsComponent';
 const Body = (props) => {
   return (
     <>
       <Route exact path="/" render={()=><NewsContainer/>} />
       <Route path="/news/:id" render={()=><SingleNews/>} />
-      <Route path="/lessons" render={()=><Lessons/>} />
+      <Route path="/lessons" render={()=><LessonsComponent/>} />
       <Route path="/timetable" render={()=><TimetibleContainer/>} />
       <Route path="/cadets" render={()=><WhoComponent IsOfficers={false}/>} /> 
       <Route path="/officers" render={()=><WhoComponent IsOfficers={true}/>} /> 
