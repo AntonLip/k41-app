@@ -16,6 +16,7 @@ const Input = (props) => {
                 <input type="file"/>
                 <div class="chat-input__text">Кому:</div>
                 <select name="who" size="1" class="sort-submenu__select">
+                    <option>Всем</option>
                     {props.link && props.link.map(item => {
                         return <option>{item.name}</option>
                     })}

@@ -20,15 +20,15 @@ import Pagination from '../Pagination/Pagination'
 export class News extends React.Component {
 
   componentDidMount() {
-    //this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
+    this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
     this.props.getPersons();
     this.props.getUnits();
     this.props.getUser();
   }
 
   sort = (values) => {
-    //this.props.setSort(values);
-    //this.props.getNews(this.props.currentPage, this.props.itemsPerPage, values);
+    this.props.setSort(values);
+    this.props.getNews(this.props.currentPage, this.props.itemsPerPage, values);
   }
 
   render() {
