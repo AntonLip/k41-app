@@ -16,11 +16,11 @@ let maptoStateToProps = (state) => {
         role: state.LoginReduser.loginPage.user.role,
         token: state.LoginReduser.loginPage.id_token,
 
-        militaryRank:state.generalInfoReduser.info.militaryRank,
-        position:state.generalInfoReduser.info.position,
-        units:state.generalInfoReduser.info.units,
-        academicDegree:state.generalInfoReduser.info.academicDegree,
-        academicTitle:state.generalInfoReduser.info.academicTitle
+        militaryRank: state.generalInfoReduser.info.militaryRank,
+        position: state.generalInfoReduser.info.position,
+        units: state.generalInfoReduser.info.units,
+        academicDegree: state.generalInfoReduser.info.academicDegree,
+        academicTitle: state.generalInfoReduser.info.academicTitle
     }
 }
 
