@@ -140,11 +140,13 @@ export const getNewsThunkCreator = (page, count, sort) => {
     return (dispatch) => {
 
         getNewsAPI(page, count, sort).then(data => {
-            if (data.news === undefined) {
+            if (data === undefined) {
 
             }
-            dispatch(getNewsAC(data.news));
-            dispatch(setTotalCount(data.totalCount));
+            else {
+                dispatch(getNewsAC(data.news));
+                dispatch(setTotalCount(data.totalCount));
+            }
         });
     }
 }
@@ -154,7 +156,6 @@ export const getSingleNewsThunkCreator = (id) => {
     return (dispatch) => {
 
         getSingleNewsAPI(id).then(data => {
-            debugger;
 
             dispatch(getSingleNewsAC(data));
         });
