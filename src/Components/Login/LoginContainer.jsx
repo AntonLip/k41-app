@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { LoginSuccess } from './Login';
 import { getUserInfoThunkCreator } from '../../Redux/login-reduser';
-import { redirectSuccess } from 'redux-oidc';
 import { RedirectAuth } from '../../API/authAPI';
 
 
