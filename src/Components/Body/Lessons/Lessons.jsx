@@ -31,7 +31,7 @@ export class Lessons extends React.Component {
         let AllLessons;
         this.props.nameofDiscoplines === undefined ? AllLessons = ()=>{return<Item />} :
             this.props.nameofDiscoplines.length !=0 ?  
-                AllLessons = this.props.nameofDiscoplines.map((u) => { return <Item u={u} path="/lessons/"/> }) : 
+                AllLessons = this.props.nameofDiscoplines.map((u) => { return <Item u={u} path="/lesson/"/> }) : 
                     AllLessons = ()=>{return<Item />} ;
         
         let AllSpec;
@@ -50,6 +50,7 @@ export class Lessons extends React.Component {
                        {AllLessons}
                     </div>
                 </div>
+                
             </MainContentWrapper>
 
         )

@@ -11,12 +11,18 @@ import TimetibleContainer from './Timetable/TimetableComponenta';
 import WhoComponent from './Who/WhoComponent';
 import SingleNews from './News/SingleNews'
 import LessonsComponent from './Lessons/LessonsComponent';
+import LessonComponent from './Lessons/Lesson/LessonComponent';
+import VideoCoursesComponent from './Lessons/VideoCourses/VideoCoursesComponent';
+import VideoCourseComponent from './Lessons/VideoCourses/VideoCourse/VideoCourseComponent';
 const Body = (props) => {
   return (
     <>
       <Route exact path="/" render={()=><NewsContainer/>} />
       <Route path="/news/:id" render={()=><SingleNews/>} />
       <Route path="/lessons" render={()=><LessonsComponent/>} />
+      <Route path="/lesson/:id" render={()=><LessonComponent/>} />
+      <Route path="/VideoCourse/:id" render={()=><VideoCourseComponent/>} />
+      <Route path="/VideoCourses" render={()=><VideoCoursesComponent/>} />
       <Route path="/timetable" render={()=><TimetibleContainer/>} />
       <Route path="/cadets" render={()=><WhoComponent IsOfficers={false}/>} /> 
       <Route path="/officers" render={()=><WhoComponent IsOfficers={true}/>} /> 

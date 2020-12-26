@@ -23,7 +23,7 @@ import InputDropDown from '../Sort/Items/Input/items/InputDropDown/InputDropDown
 export class News extends React.Component {
 
   componentDidMount() {
-    this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
+    //this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
     this.props.getPersons();
     this.props.getUnits();
     this.props.getUser();
@@ -31,7 +31,7 @@ export class News extends React.Component {
 
   sort = (values) => {
     this.props.setSort(values);
-    this.props.getNews(this.props.currentPage, this.props.itemsPerPage, values);
+    //this.props.getNews(this.props.currentPage, this.props.itemsPerPage, values);
   }
 
   render() {
@@ -64,7 +64,6 @@ export class News extends React.Component {
               ? <Pagination changePage={this.props.setPage} currentPage={this.props.currentPage} itemsPerPage={this.props.itemsPerPage} totalCount={this.props.totalCount} sizePortion="6" />
               : "Sorry. News with this props not founded"
           }
-
         </div>
       </MainContentWrapper>
     )
