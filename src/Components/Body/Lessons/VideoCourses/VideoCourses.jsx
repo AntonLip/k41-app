@@ -31,7 +31,7 @@ export class VideoCourses extends React.Component {
         
         
         return (
-            <MainContentWrapper leftSideBar="true">               
+            <MainContentWrapper leftSideBar="false">               
                 <div class="cards">
                     <div class="cards__content">
                        {AllCourses}

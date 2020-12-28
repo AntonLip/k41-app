@@ -27,6 +27,7 @@ export class News extends React.Component {
     this.props.getPersons();
     this.props.getUnits();
     this.props.getUser();
+    // this.props.getWindowsStatus();
   }
 
   sort = (values) => {

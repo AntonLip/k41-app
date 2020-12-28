@@ -1,16 +1,16 @@
 
-import {getNewsThunkCreator, setSort } from '../../../Redux/news-reduser';
+import { getNewsThunkCreator, setSort } from '../../../Redux/news-reduser';
 import { News } from './News';
 import { connect } from 'react-redux';
 import { getUserInfoThunkCreator } from '../../../Redux/login-reduser';
 import { compose } from 'redux';
-import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator, setSpecThunkCreator, setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
+import { getWindowsStatusThunkCreator, setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator, setSpecThunkCreator, setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
 
 let maptoStateToProps = (state) => {
 
-  return {    
+  return {
     allNews: state.newsReduser.newsPage.News,
-    currentPage : state.newsReduser.currentPage,
+    currentPage: state.newsReduser.currentPage,
     itemsPerPage: state.newsReduser.itemsPerPage,
     totalCount: state.newsReduser.totalCount,
     sort: state.newsReduser.sort,
@@ -20,8 +20,11 @@ let maptoStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    getNews: (page, count,sort) => {
+    getNews: (page, count, sort) => {
       dispatch(getNewsThunkCreator(page, count, sort));
+    },
+    getWindowsStatus: () => {
+      dispatch(getWindowsStatusThunkCreator());
     },
     getPersons: () => {
       dispatch(setLecturalsThunkCreator());
@@ -47,8 +50,8 @@ let mapDispatchToProps = (dispatch) => {
     setSort: (data) => {
       dispatch(setSort(data));
     }
-    }
   }
+}
 
 export default compose(
   connect(maptoStateToProps, mapDispatchToProps),

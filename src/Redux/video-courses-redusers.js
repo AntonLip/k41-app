@@ -10,7 +10,7 @@ let initState =
 
     nameofCorses: [],
     countOfCourse: 0,
-    VideoCouse: []
+    VideoCouse: {}
 
 }
 
@@ -27,7 +27,7 @@ export const VideoCoursesReducers = (state = initState, action) => {
             copyState.countOfCourse = action.data.countCourse;
             return copyState;
         case GET_VIDEO_COURSE:
-            copyState.VideoCouse = [...action.data];
+            copyState.VideoCouse = {...action.data};
             return copyState;
 
         default:

@@ -1,5 +1,6 @@
 import { getAcademicDegreesAPI, getAcademicTitlesAPI, getGroupsAPI, getLecturalsNameAPI, getMilitaryRanksAPI, getPositionAPI, getSpecAPI, getUnitAPI} from "../API/api";
 import { getDisciplineNamesAPI } from "../API/DisciplineAPI";
+import { getWindowsStatusAPI } from "../API/windowsAPI";
 
 const SET_MILITARY_RANK = 'SET_MILITARY_RANK'
 const SET_ACAD_TITLE = 'SET_ACAD_TITLE'
@@ -10,6 +11,7 @@ const SET_DISCIPLINES = 'SET_DISCIPLINES'
 const SET_LECTURAL = 'SET_LECTURAL'
 const SET_UNITS = 'SET_UNITS'
 const SET_SPEC = 'SET_SPEC'
+const GET_WINDOWS_STATUS = 'GET_WINDOWS_STATUS'
 
 
 let initState =
@@ -23,7 +25,8 @@ let initState =
         units: [],
         disciplines: [],
         lecturals: [],
-        specializations:[]
+        specializations:[],
+        openCloseWindow: []
     }
 }
 
@@ -64,6 +67,8 @@ export const generalInfoReduser = (state = initState, action) => {
             debugger
             copyState.info.specializations = [...action.data];
             return copyState;
+        case GET_WINDOWS_STATUS:
+            copyState.info.openCloseWindow = [...action.data];
         default:
             return state;
     }
@@ -100,6 +105,7 @@ export const setAcademicTitleThunkCreator = () => {
         });
     }
 }
+
 export const setGroupsThunkCreator = () => {
     return (dispatch) => {
         getGroupsAPI().then(data => {
@@ -140,6 +146,13 @@ export const setSpecThunkCreator = () => {
     }
 }
 
+export const getWindowsStatusThunkCreator = () => {
+    return (dispatch) => {
+        getWindowsStatusAPI().then(data => {
+            dispatch(getWindowsStatusAC(data));
+        });
+    }
+}
 const setPositionAC = (data) => {
     return {
         type: SET_POSITION,
@@ -195,6 +208,12 @@ const setUnitAC = (data) => {
 const setSpecAC = (data) => {
     return {
         type: SET_SPEC,
+        data
+    }
+}
+const getWindowsStatusAC = (data) => {
+    return {
+        type: GET_WINDOWS_STATUS,
         data
     }
 }

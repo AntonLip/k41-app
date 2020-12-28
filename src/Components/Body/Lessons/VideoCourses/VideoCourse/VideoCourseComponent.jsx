@@ -1,5 +1,6 @@
 
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { getVideoCourseThunkCreator } from '../../../../../Redux/video-courses-redusers';
 import { VideoCourse } from './VideoCourse';
@@ -16,7 +17,7 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
-
+let WithURL = withRouter(VideoCourse);
 export default compose(
     connect(maptoStateToProps, mapDispatchToProps),
-)(VideoCourse)
+)(WithURL)

@@ -11,17 +11,23 @@ const year = [
 ]
 
 export class VideoCourse extends React.Component {
-    printInfo = (values) => {
-        console.log(values)
-    }
+
     componentDidMount() {
+        let id = this.props.match.params.id;
+        this.props.getVideoCourse(id);
 
     }
 
     render() {
         return (
             <div>
-                <PlayerControlExample />
+                <div>
+                    {this.props.VideoCourse.name}
+                </div>
+                <div>
+                    {this.props.VideoCourse.info}
+                </div>
+                <PlayerControlExample sources={this.props.VideoCourse.videos} id={this.props.match.params.id}/>
             </div>)
     }
 }

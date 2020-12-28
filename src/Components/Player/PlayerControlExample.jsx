@@ -2,21 +2,36 @@ import React, { Component } from 'react';
 import { Player, ControlBar, BigPlayButton, VolumeMenuButton } from 'video-react';
 import { Button } from 'reactstrap';
 import { className } from './../../../node_modules/video-react/styles/scss/video-react.scss'
+import { getVideoCourseAPI } from '../../API/VideoCourse';
 const sources = {
-  sintelTrailer: 'http://media.w3.org/2010/05/sintel/trailer.mp4',
-  bunnyTrailer: 'http://media.w3.org/2010/05/bunny/trailer.mp4',
-  bunnyMovie: 'https://localhost:44383/Vieo/GetVideos?name=Entered.mp4',
-  test: 'http://media.w3.org/2010/05/video/movie_300.webm'
+  bunnyMovie: 'https://localhost:44383/Vieo/GetVideos?name=Content/Entered.mp4',
 };
+const SourseButton = (props) => {
+  if (props.u != undefined) {
+    return (
+      <Button onClick={props.funncInClick(props.u.id)} className="mr-3">
+        {props.u.name}
+      </Button>);
+  }
+}
+
 
 export class PlayerControlExample extends Component {
   constructor(props, context) {
     super(props, context);
-
-    this.state = {
-      source: sources.bunnyMovie
-    };
-
+    debugger
+    if (props.sources != undefined) {
+      this.state = {
+        source: props.sources[0],
+        sources: props.sources
+      };
+    }
+    else {
+      this.state = {
+        source: sources.bunnyMovie,
+        sources: []
+      };
+    }
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
     this.load = this.load.bind(this);
@@ -28,8 +43,16 @@ export class PlayerControlExample extends Component {
   }
 
   componentDidMount() {
-    // subscribe state change
     this.player.subscribeToStateChange(this.handleStateChange.bind(this));
+    getVideoCourseAPI(this.props.id).then((data)=>
+    {
+      debugger
+      this.setState({
+        sources: [...data.videos]
+      })
+    }
+    
+    )
   }
 
   setMuted(muted) {
@@ -86,14 +109,20 @@ export class PlayerControlExample extends Component {
 
   changeSource(name) {
     return () => {
+      debugger
+      var video = this.u;      
       this.setState({
-        source: sources[name]
+        source: video
       });
       this.player.load();
     };
   }
 
   render() {
+    debugger;
+    let AllSeries;
+    this.state.sources != undefined ? AllSeries = this.state.sources.map((u) => { return <SourseButton u={u} funncInClick={this.changeSource} /> }) :
+      AllSeries = () => { return <SourseButton /> };
     return (
       <div>
         <Player
@@ -103,11 +132,9 @@ export class PlayerControlExample extends Component {
           fluid={false}
           width={640}
           height={480}
-          >
-            
-          <source src={this.state.source} />
-          <width width={320}/>
-          <width width={320}/>
+        >
+          <source src={"https://localhost:44383/Vieo/GetVideos?name=" + this.state.source.path} />
+          
           <BigPlayButton position="center" />
           <ControlBar autoHide={false} className="my-class">
             <VolumeMenuButton vertical />
@@ -115,15 +142,7 @@ export class PlayerControlExample extends Component {
           </ControlBar>
         </Player>
         <div className="pb-3">
-          <Button onClick={this.changeSource('sintelTrailer')} className="mr-3">
-            Sintel teaser
-          </Button>
-          <Button onClick={this.changeSource('bunnyTrailer')} className="mr-3">
-            Bunny trailer
-          </Button>
-          <Button onClick={this.changeSource('bunnyMovie')} className="mr-3">
-            Bunny movie
-          </Button>
+          {AllSeries}
         </div>
         <div>State</div>
       </div>
