@@ -21,12 +21,15 @@ export class ImageUpload extends React.Component {
     const config = {
       headers: {
         'content-type': 'multipart/form-data',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS","proxy": "http://localhost:3000"
       },
     };
     return post(this.state.url, formData, config).then(responce => {
       console.log("upload files success");
       return responce.data
     }).catch((error) => {
+      debugger
       console.log("upload files error");
       alert(error.message);
     });

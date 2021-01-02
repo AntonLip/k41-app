@@ -44,14 +44,13 @@ export class PlayerControlExample extends Component {
 
   componentDidMount() {
     this.player.subscribeToStateChange(this.handleStateChange.bind(this));
-    getVideoCourseAPI(this.props.id).then((data)=>
-    {
+    getVideoCourseAPI(this.props.id).then((data) => {
       debugger
       this.setState({
         sources: [...data.videos]
       })
     }
-    
+
     )
   }
 
@@ -107,21 +106,30 @@ export class PlayerControlExample extends Component {
     };
   }
 
-  changeSource(name) {
+  changeSource(id) {
     return () => {
       debugger
-      var video = this.u;      
-      this.setState({
-        source: video
+      var regExp = new RegExp(this.props.id, "i");
+      let video = this.props.sources.find(function (item, index, array) {
+        debugger
+        //var regExp = new RegExp(this.props.id, "i");
+        var guid = "{" + item.id + "}"
+        return regExp.test(guid);
       });
-      this.player.load();
+      if (video != undefined) {
+        this.setState({
+          source: video
+        });
+        this.player.load();
+      }
+
     };
   }
 
   render() {
     debugger;
     let AllSeries;
-    this.state.sources != undefined ? AllSeries = this.state.sources.map((u) => { return <SourseButton u={u} funncInClick={this.changeSource} /> }) :
+    this.state.sources != undefined ? AllSeries = this.state.sources.map((u) => { return <SourseButton u={u} funncInClick={this.changeSource.bind(this)} /> }) :
       AllSeries = () => { return <SourseButton /> };
     return (
       <div>
@@ -134,17 +142,15 @@ export class PlayerControlExample extends Component {
           height={480}
         >
           <source src={"https://localhost:44383/Vieo/GetVideos?name=" + this.state.source.path} />
-          
+
           <BigPlayButton position="center" />
           <ControlBar autoHide={false} className="my-class">
             <VolumeMenuButton vertical />
-
           </ControlBar>
         </Player>
         <div className="pb-3">
           {AllSeries}
         </div>
-        <div>State</div>
       </div>
     );
   }
