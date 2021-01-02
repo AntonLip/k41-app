@@ -19,7 +19,7 @@ const SourseButton = (props) => {
 export class PlayerControlExample extends Component {
   constructor(props, context) {
     super(props, context);
-    debugger
+   
     if (props.sources != undefined) {
       this.state = {
         source: props.sources[0],
@@ -45,7 +45,6 @@ export class PlayerControlExample extends Component {
   componentDidMount() {
     this.player.subscribeToStateChange(this.handleStateChange.bind(this));
     getVideoCourseAPI(this.props.id).then((data) => {
-      debugger
       this.setState({
         sources: [...data.videos]
       })
@@ -106,13 +105,11 @@ export class PlayerControlExample extends Component {
     };
   }
 
-  changeSource(id) {
+  changeSource(u) {
     return () => {
       debugger
-      var regExp = new RegExp(this.props.id, "i");
+      var regExp = new RegExp(u.id, "i");      
       let video = this.props.sources.find(function (item, index, array) {
-        debugger
-        //var regExp = new RegExp(this.props.id, "i");
         var guid = "{" + item.id + "}"
         return regExp.test(guid);
       });
@@ -127,9 +124,14 @@ export class PlayerControlExample extends Component {
   }
 
   render() {
-    debugger;
     let AllSeries;
-    this.state.sources != undefined ? AllSeries = this.state.sources.map((u) => { return <SourseButton u={u} funncInClick={this.changeSource.bind(this)} /> }) :
+    this.state.sources != undefined ? AllSeries = this.state.sources.map(
+      (u) => {
+        return (
+          <Button onClick={this.changeSource(u)} className="mr-3">
+            {u.name}
+          </Button>)
+      }) :
       AllSeries = () => { return <SourseButton /> };
     return (
       <div>
