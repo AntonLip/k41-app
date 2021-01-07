@@ -8,7 +8,6 @@ import Item from '../Item'
 
 
 const Dropdown = (props) => {
-    debugger
     return (
         <Item img={<BsFillCaretDownFill/>} imgActive={<BsFillCaretUpFill/>} title={props.title}>
             <Field name={props.name} size={props.size} component="select" class="sort-submenu__select">

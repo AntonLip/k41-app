@@ -6,25 +6,24 @@ import Item from './Item/Item'
 import MainContentWrapper from '../MainContentWrapper/MainContentWrapper';
 import Filter from '../Sort/Items/Filter/Filter'
 import DateQ from '../Sort/Items/Date/DateQ';
-import {reduxForm} from 'redux-form'
+import { reduxForm } from 'redux-form'
 
 export class Timetable extends React.Component {
 
     componentDidMount() {
         this.props.getDisciplines();
-        this.props.getPersons(); 
+        this.props.getPersons();
         this.props.getGroups();
         debugger
         var fullDate = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + " 00:00:00.0000000"
-       if(this.props.isAuth)
-       {                       
-        this.IsInRole(this.props.role, "Cadet") ? this.getTimetablePerData(443, fullDate, true) : 
-            this.IsInRole(this.props.role, "lectural") ? this.getTimetablePerData(this.props.family_name, fullDate, false) :     
-                this.getTimetablePerDay(fullDate)
-       }
-       else{
-        this.getTimetablePerDay(fullDate)
-       }
+        if (this.props.isAuth) {
+            this.IsInRole(this.props.role, "Cadet") ? this.getTimetablePerData(443, fullDate, true) :
+                this.IsInRole(this.props.role, "lectural") ? this.getTimetablePerData(this.props.family_name, fullDate, false) :
+                    this.getTimetablePerDay(fullDate)
+        }
+        else {
+            this.getTimetablePerDay(fullDate)
+        }
     }
     IsInRole(role, needRole) {
         if ((Array.isArray(role))) {
@@ -52,22 +51,26 @@ export class Timetable extends React.Component {
     }
 
     submit = values => {
-
+        debugger;
+        let dataStart, dataStop;
+        values.dateFrom === undefined ? dataStart = '1991-10-11' : dataStart = values.dateFrom;
+        values.dateTo === undefined ? dataStop = '1991-10-11' : dataStop = values.dateTo;
+        this.props.getFilteredTimetable(values.lector, values.lesson, values.department, dataStart, dataStop);
     }
 
-    render() {        
+    render() {
         let AllLessons
-        this.props.timetable === undefined ? AllLessons = ()=>{return<Item />} :
-             this.props.timetable.length !=0 ?  AllLessons = this.props.timetable.map((u) => { return <Item u={u} type={this.props.position}/> }) :
-                 AllLessons = ()=>{return<Item />} ;
+        this.props.timetable === undefined ? AllLessons = () => { return <Item /> } :
+            this.props.timetable.length != 0 ? AllLessons = this.props.timetable.map((u) => { return <Item u={u} type={this.props.position} /> }) :
+                AllLessons = () => { return <Item /> };
         return (
             <MainContentWrapper leftSideBar="true">
-                <SortForm onSubmit={this.printInfo}>
-                    <Dropdown title="Учебный взвод" link={this.props.groups} size="10" name="department"/>
-                    <Dropdown title="Учебный предмет" link={this.props.disciplines} size="10" name="lesson"/>
-                    <Dropdown title="Преподаватель" link={this.props.lecturals} size="10" name="lector"/>
-                    <DateQ title="С какой даты" name="dateFrom"/>
-                    <DateQ title="По какую дату" name="dateTo"/>
+                <SortForm onSubmit={this.submit}>
+                    <Dropdown title="Учебный взвод" link={this.props.groups} size="10" name="department" />
+                    <Dropdown title="Учебный предмет" link={this.props.disciplines} size="10" name="lesson" />
+                    <Dropdown title="Преподаватель" link={this.props.lecturals} size="10" name="lector" />
+                    <DateQ title="С какой даты" name="dateFrom" />
+                    <DateQ title="По какую дату" name="dateTo" />
                     <Filter />
                 </SortForm>
                 <div class="timetable">
@@ -80,4 +83,4 @@ export class Timetable extends React.Component {
     }
 }
 
-const SortForm = reduxForm({form: 'sortTimetable'})(Sort)
+const SortForm = reduxForm({ form: 'sortTimetable' })(Sort)

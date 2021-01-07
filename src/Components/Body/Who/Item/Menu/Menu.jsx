@@ -7,7 +7,7 @@ import { reduxForm } from 'redux-form'
 export const Menu = (props) => {
     debugger
     return (
-        <SortItemForm>
+        <SortItemForm onSubmit={props.onSubmit}>
             <DropDown title="Звание" link={props.militaryRank}/>
             <DropDown title="Подразделение" link={props.units}/>
             <DropDown title="Должность" link={props.position}/>

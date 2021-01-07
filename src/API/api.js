@@ -78,11 +78,11 @@ export const getMilitaryRanksAPI = () => {
         alert(error.message);
     });;
 }
-export const getUserDataByFilter = (filters) => {
+export const getUserDataByFilter = (values) => {
     debugger;
-    var path = "/Lecturals/filtered?firstName=" + filters.firstName + "&middleName=" + filters.middleName +
-        "&lastName=" + filters.lastName + "&militaryRank=" + filters.militaryRank + "&position=" + filters.position
-        + "&academicTitle=" + filters.academicTitle + "&academicDegree=" + filters.academicDegree + "&formSec=" + filters.formSec;
+    var path = "/Lecturals/filtered?militaryRank=" + values.militaryRank + "&position=" + values.position
+        + "&academicTitle=" + values.academicTitle + "&academicDegree=" + values.academicDegree + "&formSec=" + values.formSec
+        + "&unit=" + values.unit;
     return instance.get(path).then(responce => {
         return responce.data
     }).catch((error) => {

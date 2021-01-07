@@ -19,7 +19,16 @@ isCadet === true ?  path = "/forGroup?groupDTO=" + forWho + "&dateTime=" + dateT
          return responce.data
     });
 }
-
+export const getFilteredTimetableAPI = (lectural, discipline, group,  startDate, stopDate) =>{
+    let path = "/GetFileteredTimetable?lectural=" + lectural +
+               "&discipline=" + discipline +
+               "&group=" + group +
+               "&startDate=" + startDate +
+               "&stopDate=" + stopDate;
+    return instance.get(path).then(responce =>{
+        return responce.data
+   });
+}
 
 export const getTimetablePerDayAPI = (dateTime)  =>{
 
