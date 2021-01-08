@@ -5,6 +5,7 @@ const Clear = (props) => {
     const resForm = () =>{
         props.parentProps.reset();
         props.clear({From: "", To: "", DateFrom: "", DateTo: ""})
+        
     }
     return (
         <>

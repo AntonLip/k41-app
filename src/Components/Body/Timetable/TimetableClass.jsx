@@ -7,6 +7,7 @@ import MainContentWrapper from '../MainContentWrapper/MainContentWrapper';
 import Filter from '../Sort/Items/Filter/Filter'
 import DateQ from '../Sort/Items/Date/DateQ';
 import { reduxForm } from 'redux-form'
+import Clear from '../Sort/Items/Clear/Clear'
 
 export class Timetable extends React.Component {
 
@@ -14,16 +15,7 @@ export class Timetable extends React.Component {
         this.props.getDisciplines();
         this.props.getPersons();
         this.props.getGroups();
-        debugger
-        var fullDate = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + " 00:00:00.0000000"
-        if (this.props.isAuth) {
-            this.IsInRole(this.props.role, "Cadet") ? this.getTimetablePerData(443, fullDate, true) :
-                this.IsInRole(this.props.role, "lectural") ? this.getTimetablePerData(this.props.family_name, fullDate, false) :
-                    this.getTimetablePerDay(fullDate)
-        }
-        else {
-            this.getTimetablePerDay(fullDate)
-        }
+        this.getTimetable();
     }
     IsInRole(role, needRole) {
         if ((Array.isArray(role))) {
@@ -42,13 +34,19 @@ export class Timetable extends React.Component {
         }
     }
 
-    getTimetablePerData = (forWho, fullDate, isCadet) => {
-        this.props.getTimetablePerData(forWho, fullDate, isCadet);
+    getTimetable = () => {
+        var fullDate = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + " 00:00:00.0000000"
+        if (this.props.isAuth) {
+            this.IsInRole(this.props.role, "Cadet") ? this.props.getTimetablePerData(443, fullDate, true) :
+                this.IsInRole(this.props.role, "lectural") ? this.props.getTimetablePerData(this.props.family_name, fullDate, false) :
+                    this.props.getTimetablePerDay(fullDate)
+        }
+        else {
+            this.props.getTimetablePerDay(fullDate)
+        }
     }
 
-    getTimetablePerDay = (date) => {
-        this.props.getTimetablePerDay(date);
-    }
+    
 
     submit = values => {
         debugger;
@@ -72,6 +70,7 @@ export class Timetable extends React.Component {
                     <DateQ title="С какой даты" name="dateFrom" />
                     <DateQ title="По какую дату" name="dateTo" />
                     <Filter />
+                    <Clear clear={this.getTimetable.bind(this)} />
                 </SortForm>
                 <div class="timetable">
                     <div class="timetable__wrapper">

@@ -55,8 +55,9 @@ let mapDispatchToProps = (dispatch) => {
             IsOfficers ? dispatch(getFilteredofficersThunkCreator(values)) :
                       dispatch(getFilteredCadetsThunkCreator(values));
         },       
-        deleteUser:(id)=>{
-            dispatch(deleteUserThunkCreator(id));
+        deletePerson:(id, IsOfficers)=>{
+            IsOfficers ? dispatch(deleteUserThunkCreator(id)):
+                         dispatch(deleteUserThunkCreator(id));
         }
     }
 }

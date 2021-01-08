@@ -106,8 +106,7 @@ export class PlayerControlExample extends Component {
   }
 
   changeSource(u) {
-    return () => {
-      debugger
+    return () => {      
       var regExp = new RegExp(u.id, "i");      
       let video = this.props.sources.find(function (item, index, array) {
         var guid = "{" + item.id + "}"

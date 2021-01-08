@@ -21,3 +21,9 @@ export const getFilteredCadetsAPI = (values) =>{
          return responce.data
     });
 }
+export const deleteCadetsAPI = (id) =>{  
+    let path = "/" + id; 
+    return instance.delete(path).then(responce =>{
+         return responce.data
+    });
+}

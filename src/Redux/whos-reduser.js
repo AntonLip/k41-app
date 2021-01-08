@@ -1,7 +1,7 @@
 
 import { getUserDataByFilter, deleteUserAPI, updateUserAPI, getofficersAPI } from './../API/api'
 import { useDispatch } from 'react-redux'
-import { getCadetsAPI, getFilteredCadetsAPI } from '../API/CadetsAPI'
+import { deleteCadetsAPI, getCadetsAPI, getFilteredCadetsAPI } from '../API/CadetsAPI'
 
 const DELETE_USER = 'DELETE_USER'
 const SET_USER = 'SET_USER'
@@ -74,7 +74,6 @@ export const WHOsReduser = (state = initState, action) => {
 }
 
 export const getofficersThunkCreator = (token) => {
-    debugger
     return (dispatch) => {
         getofficersAPI(token).then(data => {
             console.log("getUsersThunkCreator");
@@ -121,11 +120,22 @@ export const getFilteredCadetsThunkCreator = (values) => {
         });
     }
 }
+
 export const deleteUserThunkCreator = (id) => {
     return (dispatch) => {
         deleteUserAPI(id).then(data => {
             if (data === id)
                 dispatch(deleteUserAC(data));
+        })
+    }
+
+}
+
+export const deleteCadetsThunkCreator = (id) => {
+    return (dispatch) => {
+        deleteCadetsAPI(id).then(data => {
+            if (data === id)
+                dispatch(deleteCadetsAC(data));
         })
     }
 
