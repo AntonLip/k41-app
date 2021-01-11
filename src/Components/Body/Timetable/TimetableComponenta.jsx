@@ -1,5 +1,5 @@
 
-import { setDataAC, getTimetableThunkCreator, getTimetableThunkCreatorPerDay } from '../../../Redux/timetable-reduser';
+import { setDataAC, getTimetableThunkCreator, getTimetableThunkCreatorPerDay, getFilteredTimetableThunkCreator } from '../../../Redux/timetable-reduser';
 import { Timetable } from './TimetableClass';
 import { connect } from 'react-redux';
 import { setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator } from '../../../Redux/generalInfo-reduser';
@@ -40,6 +40,9 @@ let mapDispatchToProps = (dispatch) => {
         getPersons: () => {
             dispatch(setLecturalsThunkCreator());
         },
+        getFilteredTimetable: (lectural, discipline, group, startDate, stopDate) => {
+            dispatch(getFilteredTimetableThunkCreator(lectural, discipline, group, startDate, stopDate));
+        }
     }
 }
 const TimetibleContainer = connect(maptoStateToProps, mapDispatchToProps)(Timetable);

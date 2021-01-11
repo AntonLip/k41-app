@@ -17,6 +17,10 @@ const navLinks = [
         title: "Дисциплины кафедры",
         link: "/lessons"
       },
+      {
+        title: "Видеоуроки",
+        link: "/VideoCourses"
+      }
     ]
   },
   {

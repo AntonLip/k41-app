@@ -13,7 +13,7 @@ const Floor1 = () => {
                 <div class="classrooms__kor"></div>
                 <Link to="/classrooms/194" id="k194" class="classrooms__kab classrooms__kab--Uch"><span>194</span></Link>
                 <Link to="/classrooms/192" id="k192" class="classrooms__kab classrooms__kab--Uch"><span>192</span></Link>
-                <Link to="/classrooms/193" id="k193" class="classrooms__kab classrooms__kab--Prepod"><span>193</span></Link>
+                <Link to="/classrooms/193" id="k193" class="classrooms__kab classrooms__kab--Prepod"><span>190</span></Link>
                 <div class="classrooms__kor classrooms__kor--Full"></div>
                 <div class="classrooms__kor classrooms__kor--Full"></div>
                 <Link to="/classrooms/203" id="k203" class="classrooms__kab classrooms__kab--Uch"><span>203</span></Link>

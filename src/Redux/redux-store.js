@@ -8,6 +8,7 @@ import {reducer as formReducer} from 'redux-form'
 import {WHOsReduser} from './whos-reduser.js'
 import {generalInfoReduser} from './generalInfo-reduser'
 import {disciplinesReduser} from './disciplines-reduser'
+import {VideoCoursesReducers} from './video-courses-redusers'
 let redusersBatch = combineReducers({
     newsReduser,
     timetableReduser,
@@ -16,6 +17,7 @@ let redusersBatch = combineReducers({
     WHOsReduser,
     generalInfoReduser,
     disciplinesReduser,
+    VideoCoursesReducers,
     form: formReducer
 });
 

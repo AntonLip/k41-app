@@ -1,26 +1,33 @@
 import React from 'react'
 import ProfileGroup from './ProfileGroup/ProfileGroup'
 
-const Profile = () => {
-    return (
-        <div class="profile">
-            <div class="profile-img profile__img">
-                <img src="img/Моисеев.jpg" alt="user"></img>
+const Profile = (props) => {
+    debugger
+    let birthDay, unit;
+    let path = "https://localhost:44383/Vieo/Image?filename="
+    props.info.birthDay === undefined ? birthDay = null :  birthDay = props.info.birthDay.split("T")[0]
+    props.info.pathPhotoSmall === undefined ? path = null :  path = path + props.info.pathPhotoSmall
+    props.info.unit === "undefined" ? unit="Кафедра АСУВ" : unit = props.info.unit;
+        return (
+            <div class="profile">
+                <div class="profile-img profile__img">
+                    <img src={path} alt="user"></img>
             </div>
-            <div class="profile__name">Сокол Виктор</div>
-            <div class="profile__info">
-                <div class="profile__text profile__text--center">
-                    Личные данные:
+                <div class="profile__name">{props.info.lastName} {props.info.firstName} {props.info.middleName}</div>
+                <div class="profile__info">
+                    <div class="profile__text profile__text--center">
+                        Личные данные:
                 </div>
-                <ProfileGroup title="Должность:" value="курсант"/>
-                <ProfileGroup title="Воинское звание:" value="рядовой"/>
-                <ProfileGroup title="Дата рождения:" value="11.10.1991"/>
-                <ProfileGroup title="Подразделение:" value="453"/>
-                <ProfileGroup title="Контактный телефон:" value="+375295046859"/>
+                    <ProfileGroup title="Должность:" value={props.info.position} />
+                    <ProfileGroup title="Воинское звание:" value={props.info.militaryRank} />
+                    <ProfileGroup title="Дата рождения:" value={birthDay} />
+                    {props.IsOfficers ? <ProfileGroup title="Подразделение:" value={unit} /> : <ProfileGroup title="Подразделение:" value={props.info.groupNumber} />}
+                    
+                    <ProfileGroup title="Контактный телефон:" value={props.info.telephoneNumber} />
+                </div>
+                <a href="#" class="profile__btn btn">Редактировать</a>
             </div>
-            <a href="#" class="profile__btn btn">Редактировать</a>
-        </div>
-    )
+        )    
 }
 
 export default Profile

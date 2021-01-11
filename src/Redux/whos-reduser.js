@@ -1,7 +1,7 @@
 
-import { getUserDataByFilter,  deleteUserAPI, updateUserAPI, getofficersAPI } from './../API/api'
+import { getUserDataByFilter, deleteUserAPI, updateUserAPI, getofficersAPI } from './../API/api'
 import { useDispatch } from 'react-redux'
-import { getCadetsAPI } from '../API/CadetsAPI'
+import { deleteCadetsAPI, getCadetsAPI, getFilteredCadetsAPI } from '../API/CadetsAPI'
 
 const DELETE_USER = 'DELETE_USER'
 const SET_USER = 'SET_USER'
@@ -51,8 +51,12 @@ export const WHOsReduser = (state = initState, action) => {
             }
             return copyState;
         case SET_FILTERED_CADET_DATA:
-            copyState.whosPage.cadets.length = 0;
-            copyState.whosPage.cadets = [...action.officers];
+            debugger
+            if (Array.isArray(action.data)) {
+                copyState.whosPage.cadets.length = 0;
+                copyState.whosPage.cadets = [...action.data];
+            }
+
             return copyState;
         case DELETE_CADET:
             debugger
@@ -70,7 +74,6 @@ export const WHOsReduser = (state = initState, action) => {
 }
 
 export const getofficersThunkCreator = (token) => {
-    debugger
     return (dispatch) => {
         getofficersAPI(token).then(data => {
             console.log("getUsersThunkCreator");
@@ -94,13 +97,25 @@ export const updateUserThunkCreator = (data) => {
     }
 }
 
-export const getFilteredofficersThunkCreator = (filter) => {
+export const getFilteredofficersThunkCreator = (values) => {
     return (dispatch) => {
-        getUserDataByFilter(filter).then(data => {
+        getUserDataByFilter(values).then(data => {
             console.log("getFilteredofficersThunkCreator");
             console.log(data);
             if (data) {
                 dispatch(setFilteredDataofficersAC(data));
+            }
+        });
+    }
+}
+
+export const getFilteredCadetsThunkCreator = (values) => {
+    return (dispatch) => {
+        getFilteredCadetsAPI(values).then(data => {
+            console.log("getFilteredCadets");
+            console.log(data);
+            if (data) {
+                dispatch(setFilteredDataCadetsAC(data));
             }
         });
     }
@@ -111,6 +126,16 @@ export const deleteUserThunkCreator = (id) => {
         deleteUserAPI(id).then(data => {
             if (data === id)
                 dispatch(deleteUserAC(data));
+        })
+    }
+
+}
+
+export const deleteCadetsThunkCreator = (id) => {
+    return (dispatch) => {
+        deleteCadetsAPI(id).then(data => {
+            if (data === id)
+                dispatch(deleteCadetsAC(data));
         })
     }
 
@@ -135,17 +160,16 @@ const setCadetsAC = (data) => {
     return action;
 }
 
-
 const deleteCadetsAC = (id) => {
     console.log('deleteCadetsAC ' + id);
     let action = { type: DELETE_CADET, id }
     return action;
 }
 
-const setFilteredDataCadetsAC = (users) => {
+const setFilteredDataCadetsAC = (data) => {
     console.log('setFilteredDataCadetsAC');
-    console.log(users);
-    let action = { type: SET_FILTERED_CADET_DATA, users }
+    console.log(data);
+    let action = { type: SET_FILTERED_CADET_DATA, data }
     return action;
 }
 

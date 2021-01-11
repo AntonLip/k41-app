@@ -2,7 +2,7 @@ import { createUserManager } from 'redux-oidc'
 
 const config = {
   // the URL of our identity server
-  authority: "http://localhost:5001", //http://k41.Kafedra41.local/is4
+  authority: "http://localhost:5001/",
   // this ID maps to the client ID in the identity client configuration
   client_id: "SPA.client",
   // URL to redirect to after login
