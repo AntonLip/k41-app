@@ -6,7 +6,7 @@ const instance = axios.create(
         headers: {
             'Content-Type': 'application/json'
         },
-        baseURL: "http://k41.kafedra41.local/WB/api/"
+        baseURL: "http://k41.kafedra41.local:90/WB/api/"
     }
 );
 
