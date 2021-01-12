@@ -1,15 +1,17 @@
 import React from 'react'
+import { Field } from 'redux-form'
 import InputItem from '../InputItem'
 
 const InputDropDown = (props) => {
     return (
         <InputItem title={props.title}>
-            <select name="who" size="1" class="sort-submenu__select">
+            <Field name={props.name} size={props.size} component="select" class="sort-submenu__select">            
                 <option>Всем</option>
                 {props.link && props.link.map(item => {
                     return <option>{item.name}</option>
-                })}
-            </select>
+                })}           
+            </Field>
+            
         </InputItem>
     )
 }

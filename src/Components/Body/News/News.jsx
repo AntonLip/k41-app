@@ -13,7 +13,7 @@ import Clear from '../Sort/Items/Clear/Clear'
 import Date from '../Sort/Items/Date/DateQ'
 
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
-import Input from '../Sort/Items/Input/Input'
+import {Input} from '../Sort/Items/Input/Input'
 import Pagination from '../Pagination/Pagination'
 import TextArea from '../Sort/Items/Input/items/TextArea/TextArea'
 import InputFile from '../Sort/Items/Input/items/File/InputFile'
@@ -23,16 +23,16 @@ import InputDropDown from '../Sort/Items/Input/items/InputDropDown/InputDropDown
 export class News extends React.Component {
 
   componentDidMount() {
-    //this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
+    this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
     this.props.getPersons();
     this.props.getUnits();
     this.props.getUser();
-    // this.props.getWindowsStatus();
+    
   }
 
   sort = (values) => {
     this.props.setSort(values);
-    //this.props.getNews(this.props.currentPage, this.props.itemsPerPage, values);
+    this.props.getNews(this.props.currentPage, this.props.itemsPerPage, values);
   }
 
   render() {

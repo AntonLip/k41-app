@@ -7,7 +7,6 @@ export class ImageUpload extends React.Component {
     this.state =
     {
       file: '',
-      imagePreviewUrl: '',
       url: 'https://localhost:44383/Vieo/Image'
     };
   }

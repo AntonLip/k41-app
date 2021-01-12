@@ -4,7 +4,7 @@ import ProfileGroup from './ProfileGroup/ProfileGroup'
 const Profile = (props) => {
     debugger
     let birthDay, unit;
-    let path = "https://localhost:44383/Vieo/Image?filename="
+    let path = "http://k41.kafedra41.local/Video/Vieo/Image?filename="
     props.info.birthDay === undefined ? birthDay = null :  birthDay = props.info.birthDay.split("T")[0]
     props.info.pathPhotoSmall === undefined ? path = null :  path = path + props.info.pathPhotoSmall
     props.info.unit === "undefined" ? unit="Кафедра АСУВ" : unit = props.info.unit;

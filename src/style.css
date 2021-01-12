@@ -534,7 +534,7 @@ button{
   background-color: #8db0d4;
 }
 .sort__item--active + .sort-submenu{
-  max-height: 450px;
+  max-height: 900px;
 }
 
 .sort__img{

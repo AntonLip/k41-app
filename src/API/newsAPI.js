@@ -5,7 +5,7 @@ const instance = axios.create(
         headers: {
             'Content-Type': 'application/json'
         },
-        baseURL: "http://192.168.7.32:5000/api/news/"
+        baseURL: "http://192.168.7.2:1998/api/news/"
     }
 );
 

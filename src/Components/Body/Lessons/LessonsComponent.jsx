@@ -7,7 +7,8 @@ import { Lessons } from './Lessons';
 let maptoStateToProps = (state) => {
     return {
         nameofDiscoplines: state.disciplinesReduser.DisciplinesPage.nameofDiscoplines,
-        nameOfSpec: state.generalInfoReduser.info.specializations
+        nameOfSpec: state.generalInfoReduser.info.specializations,
+        role: state.LoginReduser.loginPage.user.role,
     }
 }
 

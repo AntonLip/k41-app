@@ -5,7 +5,7 @@ const instance = axios.create(
         headers: {
             'Content-Type': 'application/json'
         },
-        baseURL: "https://localhost:44383/api/VideoCourses"
+        baseURL: "http://k41.kafedra41.local/Video/api/VideoCourses"
     }
 );
 export const getVideoCoursesNamesAPI = () => {    
