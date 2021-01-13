@@ -25,7 +25,8 @@ const Profile = (props) => {
                     
                     <ProfileGroup title="Контактный телефон:" value={props.info.telephoneNumber} />
                 </div>
-                <a href="#" class="profile__btn btn">Редактировать</a>
+                <a href="#" class="profile__btn profile__btn--mb btn">Редактировать</a>
+                <a href="#" class="profile__btn  btn">Удалить</a>
             </div>
         )    
 }

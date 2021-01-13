@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { reduxForm } from 'redux-form'
+import { reduxForm, reset } from 'redux-form'
 import { parsDate } from '../../../help/help'
 
 
@@ -23,16 +23,22 @@ import InputDropDown from '../Sort/Items/Input/items/InputDropDown/InputDropDown
 export class News extends React.Component {
 
   componentDidMount() {
-    //this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
-    this.props.getPersons();
-    this.props.getUnits();
-    this.props.getUser();
-    // this.props.getWindowsStatus();
+    this.props.getNews(this.props.currentPage, this.props.itemsPerPage, this.props.sort);   
+    //this.props.getPersons();
+    //this.props.getUnits();
+    //this.props.getUser();
   }
 
   sort = (values) => {
-    this.props.setSort(values);
-    //this.props.getNews(this.props.currentPage, this.props.itemsPerPage, values);
+    this.props.setSort(1, this.props.itemsPerPage,values);
+  }
+
+  post = (data) => {
+    
+    data["From"]="Админ"
+    data["To"]="Всем"
+    this.props.postNews(data);
+    this.props.getNews(1, this.props.itemsPerPage, {From: "", To: "", DateFrom: "", DateTo: ""});
   }
 
   render() {
@@ -40,24 +46,22 @@ export class News extends React.Component {
     return (
       <MainContentWrapper leftSideBar="true">
         <SortForm onSubmit={this.sort} >
-          <Dropdown title="От кого новость" link={this.props.persons} size="6" name="From" />
-          <Dropdown title="Кому новость" link={this.props.persons} size="6" name="To" />
+          <Dropdown title="От кого новость" link={this.props.persons} size="1" name="From" />
+          <Dropdown title="Кому новость" link={this.props.persons} size="1" name="To" />
           <Date title="С какой даты" name="DateFrom" />
           <Date title="По какую дату" name="DateTo" />
-          <Input title="Добавить новость" link={this.props.persons} btnText="Добавить">
-            <TextArea title ="Заголовок" size="3"/>
-            <TextArea title ="Текст" size="5"/>
-            <InputFile title ="Изображение"/>
-            <InputFile title ="Файл"/>
-            <InputDropDown title="Кому" link={this.props.persons}/>
-          </Input>
+          <InputForm title="Добавить новость" link={this.props.persons} btnText="Добавить" onSubmit={this.post}>
+            <TextArea title ="Заголовок" size="3" name="Header"/>
+            <TextArea title ="Текст" size="5" name="Text"/>
+            <InputDropDown title="Кому" link={this.props.persons} name="To"/>
+          </InputForm>
           <Filter />
           <Clear clear={this.sort} />
         </SortForm>
         <div class="cards">
           <div class="cards__content">
             {this.props.allNews.map(item => {
-              return <Item path="/news/" id={item._id} title={item.Header} from={item.From} to={item.To} date={parsDate(item.Date)} />
+              return <Item path="/news/" id={item._id} title={item.Header} from={item.From} to={item.To} date={parsDate(item.Date)}/>
             })}
           </div>
           {
@@ -74,6 +78,14 @@ export class News extends React.Component {
 const SortForm = compose(
   connect(state => ({ initialValues: state.newsReduser.sort })),
   reduxForm({ form: 'sortNews' })
-)
-  (Sort)
+)(Sort)
 
+const InputForm = compose(
+  reduxForm({ 
+    form: 'inputNews' , 
+    onSubmitSuccess: (rezult, dispatch) => {dispatch(reset('inputNews'))},
+    })
+)(Input)  
+
+//<InputFile title ="Изображение"/>
+//<InputFile title ="Файл"/>

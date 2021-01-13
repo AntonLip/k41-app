@@ -1,10 +1,13 @@
 import React from 'react'
+import { Field } from 'redux-form'
 import InputItem from '../InputItem'
+
+
 
 const TextArea = (props) => {
     return (
         <InputItem title={props.title}>
-            <textarea class="chat-input__text" rows={props.size}></textarea>
+            <Field name={props.name} class="chat-input__text" rows={props.size} component="textarea"></Field>
         </InputItem> 
     )
 }

@@ -16,8 +16,6 @@ const SortItem = (props) => {
       })
     })
   }
-  
-  console.log(props)
     return (
       <div class="sort cards__sort">
         <form class="sort-submenu__form" onSubmit={props.handleSubmit}>

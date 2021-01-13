@@ -28,7 +28,6 @@ const Pagination = (props) => {
     for(let index= 0; index< MaxPage; index++){
         allPage.push(index)
     }
-    console.log(props)
     return (
         <div class="pagination">
             {portion != 0 ? <GrLinkPrevious class="pagination__prev" onClick={decPort}/> : <div></div>}

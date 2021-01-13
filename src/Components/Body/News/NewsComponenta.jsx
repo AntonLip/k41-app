@@ -1,5 +1,5 @@
 
-import { getNewsThunkCreator, setSort } from '../../../Redux/news-reduser';
+import { setNewsThunkCreator, setSortThunkCreator, postNewsThunkCreator } from '../../../Redux/news-reduser';
 import { News } from './News';
 import { connect } from 'react-redux';
 import { getUserInfoThunkCreator } from '../../../Redux/login-reduser';
@@ -21,7 +21,7 @@ let maptoStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     getNews: (page, count, sort) => {
-      dispatch(getNewsThunkCreator(page, count, sort));
+      dispatch(setNewsThunkCreator(page, count, sort));
     },
     getWindowsStatus: () => {
       dispatch(getWindowsStatusThunkCreator());
@@ -47,8 +47,11 @@ let mapDispatchToProps = (dispatch) => {
     getUser: () => {
       dispatch(getUserInfoThunkCreator());
     },
-    setSort: (data) => {
-      dispatch(setSort(data));
+    setSort: (currentPage, itemsPerPage, sort) => {
+      dispatch(setSortThunkCreator(currentPage, itemsPerPage, sort));
+    },
+    postNews: (data) => {
+      dispatch(postNewsThunkCreator(data));
     }
   }
 }

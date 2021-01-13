@@ -9,9 +9,9 @@ import TextArea from './items/TextArea/TextArea';
 const Input = (props) => {
     return (
         <Item img={<BsFillCaretDownFill/>} imgActive={<BsFillCaretUpFill/>} title={props.title}>
-            <form class="chat-input chat__input">
+            <form class="chat-input chat__input" onSubmit={props.handleSubmit}>
                 {props.children}
-                <input type="submit" class="chat-input__submit btn" value={props.btnText}></input>
+                <button type="submit" class="chat-input__submit btn">{props.btnText}</button>
             </form>
         </Item> 
     )

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import bgimg from "../../../assets/img/news/img.png"
 
 const Item = (props) => {
-  debugger
+  
   if (props.u === undefined) {
     return (
       <Link to={props.path + props.id} class="cards-item cards__item">
         <div class="cards-item__bg">
-          <img src="assets/img/news/img.png" alt=""></img>
+          <img src={bgimg} alt=""></img>
         </div>
         <div class="cards-item__title">
           {props.title}
@@ -30,7 +31,7 @@ const Item = (props) => {
     return (
       <Link to={props.path + props.u.id} class="cards-item cards__item">
         <div class="cards-item__bg">
-          <img src="assets/img/news/img.png" alt=""></img>
+          <img src={bgimg} alt=""></img>
         </div>
         <div class="cards-item__title">
           {props.u.name}

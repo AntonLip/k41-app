@@ -4,7 +4,6 @@ import {getAuthAC} from './../../../Redux/auth-reduser'
 import { AuthClass } from './Auth.jsx'
 
 let maptoStateToProps = (state) => {
-   console.log(state);
     return {        
         AuthClass: state.LoginReduser
     }
