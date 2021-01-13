@@ -37,6 +37,7 @@ export class News extends React.Component {
     
     data["From"]="Админ"
     data["To"]="Всем"
+    this.props.postNews(data);
     this.props.getNews(1, this.props.itemsPerPage, {From: "", To: "", DateFrom: "", DateTo: ""});
   }
 
