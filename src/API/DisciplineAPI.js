@@ -21,7 +21,26 @@ export const getDisciplineNamesAPI = () => {
         return responce.data
     });
 }
-
+export const createDisciplineNamesAPI = (values) => {
+    debugger
+    var dataTo = JSON.stringify(values);
+    var config = {
+        method: 'post',
+        url: 'http://k41.kafedra41.local/WB/api/DisciplineDBs/?',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : dataTo
+      };
+      
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+}
 export const uploadFilePlan = (id, file, type) => {
     let url = 'https://localhost:44351/api/DisciplineDBs?id=' + id + '&type=' + type;
     const formData = new FormData();

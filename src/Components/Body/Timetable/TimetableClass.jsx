@@ -46,7 +46,7 @@ export class Timetable extends React.Component {
         }
     }
 
-    
+
 
     submit = values => {
         debugger;
@@ -71,6 +71,7 @@ export class Timetable extends React.Component {
                     <DateQ title="По какую дату" name="dateTo" />
                     <Filter />
                     <Clear clear={this.getTimetable.bind(this)} />
+                    
                 </SortForm>
                 <div class="timetable">
                     <div class="timetable__wrapper">
