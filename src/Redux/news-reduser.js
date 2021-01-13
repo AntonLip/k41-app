@@ -198,3 +198,9 @@ export const putNewsThunkCreator = (id,data) => {
         })
     }
 }
+
+export const cleanCurrentNewsThunkCreator = () => {
+    return (dispatch) => {
+        dispatch(setCurrentNewsAC({From: "",To: "",Date: "",Header: "",Link: ""}));
+    }
+}

@@ -9,7 +9,7 @@ import MainContentWrapper from '../MainContentWrapper/MainContentWrapper'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
-import {deleteNewsThunkCreator, setNewsThunkCreator, setCurrentNewsThunkCreator, putNewsThunkCreator} from '../../../Redux/news-reduser'
+import {deleteNewsThunkCreator, setNewsThunkCreator, setCurrentNewsThunkCreator, putNewsThunkCreator, cleanCurrentNewsThunkCreator} from '../../../Redux/news-reduser'
 import {FiEdit} from "react-icons/fi";
 import {AiOutlineDelete} from "react-icons/ai";
 import { Field, initialize, reduxForm, reset } from 'redux-form'
@@ -56,7 +56,7 @@ class SingleNews extends React.Component {
             <MainContentWrapper>
                 <div class="news">
                   <div class="news__wrapper">
-                    <Link to="/" class="news__link"><GrLinkPrevious class="news__link-img"/>Назад ко всем новостям</Link>
+                    <Link to="/" class="news__link" onClick={this.props.clearCurrentNews}><GrLinkPrevious class="news__link-img"/>Назад ко всем новостям</Link>
                     <Route exact path={"/news/"+this.props.match.params.id}>
                       <Link to={this.props.match.url+"/edit"} class="news__link" onClick={this.startEditForm}>Редактировать <FiEdit class="news__link-img news__link-img--ml"/></Link>
                       <Link class="news__link" onClick={this.delete}>Удалить <AiOutlineDelete class="news__link-img news__link-img--ml"/></Link>
@@ -111,6 +111,9 @@ let maptoStateToProps = (state) => {
       },
       putNews: (id, data) => {
         dispatch(putNewsThunkCreator(id, data))
+      },
+      clearCurrentNews: () => {
+        dispatch(cleanCurrentNewsThunkCreator())
       }
     }
   }
