@@ -1,6 +1,6 @@
 import react from 'react'
 import { connect } from 'react-redux'
-import { getofficersThunkCreator, getFilteredofficersThunkCreator, deleteUserThunkCreator, getCadetsThunkCreator, getFilteredCadetsThunkCreator } from './../../../Redux/whos-reduser'
+import { getofficersThunkCreator, getFilteredofficersThunkCreator, deleteUserThunkCreator, getCadetsThunkCreator, getFilteredCadetsThunkCreator, createOficerThunkCreator, deleteCadetsThunkCreator, createCadetsThunkCreator } from './../../../Redux/whos-reduser'
 import { compose } from 'redux';
 import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setGroupsThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator } from "./../../../Redux/generalInfo-reduser";
 import { WHO } from './Who';
@@ -8,7 +8,7 @@ import { setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
 
 let maptoStateToProps = (state) => {
     return {
-        
+
         officers: state.WHOsReduser.whosPage.officers,
         cadets: state.WHOsReduser.whosPage.cadets,
 
@@ -21,7 +21,8 @@ let maptoStateToProps = (state) => {
         units: state.generalInfoReduser.info.units,
         academicDegree: state.generalInfoReduser.info.academicDegree,
         groups: state.generalInfoReduser.info.groups,
-        academicTitle: state.generalInfoReduser.info.academicTitle
+        academicTitle: state.generalInfoReduser.info.academicTitle,
+        nameOfSpec: state.generalInfoReduser.info.specializations
     }
 }
 
@@ -44,7 +45,7 @@ let mapDispatchToProps = (dispatch) => {
         },
         getUnits: () => {
             dispatch(setUnitThunkCreator());
-          },
+        },
         getUser: () => {
             dispatch(getofficersThunkCreator());
         },
@@ -53,11 +54,15 @@ let mapDispatchToProps = (dispatch) => {
         },
         getFilteredPerson: (values, IsOfficers) => {
             IsOfficers ? dispatch(getFilteredofficersThunkCreator(values)) :
-                      dispatch(getFilteredCadetsThunkCreator(values));
-        },       
-        deletePerson:(id, IsOfficers)=>{
-            IsOfficers ? dispatch(deleteUserThunkCreator(id)):
-                         dispatch(deleteUserThunkCreator(id));
+                dispatch(getFilteredCadetsThunkCreator(values));
+        },
+        deletePerson: (id, IsOfficers) => {
+            IsOfficers ? dispatch(deleteUserThunkCreator(id)) :
+                dispatch(deleteCadetsThunkCreator(id));
+        },
+        createPerson: (person, IsOfficers) => {
+            IsOfficers ? dispatch(createOficerThunkCreator(person)) :
+                dispatch(createCadetsThunkCreator(person));
         }
     }
 }

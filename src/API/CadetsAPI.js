@@ -27,3 +27,13 @@ export const deleteCadetsAPI = (id) =>{
          return responce.data
     });
 }
+
+export const  createCadetAPI = (person) =>{
+    return instance.post("/?", JSON.stringify(person)).then(responce => {
+        if (responce.data != null)
+            window.location = "/Users"
+    }).catch((error) => {
+        console.log("Api createOficerAPI error");
+        
+    });
+}

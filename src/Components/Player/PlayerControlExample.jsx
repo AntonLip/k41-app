@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 import { className } from './../../../node_modules/video-react/styles/scss/video-react.scss'
 import { getVideoCourseAPI } from '../../API/VideoCourse';
 const sources = {
-  bunnyMovie: 'https://localhost:44383/Vieo/GetVideos?name=Content/Entered.mp4',
+  bunnyMovie: 'http://k41.kafedra41.local/Video/Vieo/GetVideos?name=Content/Entered.mp4',
 };
 const SourseButton = (props) => {
   if (props.u != undefined) {

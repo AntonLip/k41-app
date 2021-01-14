@@ -8,12 +8,22 @@ import Filter from '../Sort/Items/Filter/Filter'
 import { reduxForm } from 'redux-form'
 import SortItem from '../Sort/SortItem'
 import Clear from '../Sort/Items/Clear/Clear'
+import InputFile from '../Sort/Items/Input/items/File/InputFile'
+import InputDropDown from '../Sort/Items/Input/items/InputDropDown/InputDropDown'
+import { InputDate } from '../Sort/Items/Date/InputDate'
+import { CheckboxArea } from '../Sort/Items/Input/items/Checkdox/InputCheckbox'
+
+import { Input, validate, warn } from '../Sort/Items/Input/Input';
+import TextArea from '../Sort/Items/Input/items/TextArea/TextArea';
+import { deleteCadetsThunkCreator } from '../../../Redux/whos-reduser'
+
+const InputForm = reduxForm({ form: 'inputWho' })(Input)
 
 export class TableOfPerson extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.setState({
-            profile:{...this.props.persons[1]}
+            profile: { ...this.props.persons[1] }
         })
     }
     state = {
@@ -21,7 +31,7 @@ export class TableOfPerson extends React.Component {
     }
     setActiveElement = (u) => {
         this.setState({
-            profile: {...u}
+            profile: { ...u }
         })
     }
 
@@ -36,7 +46,7 @@ export class TableOfPerson extends React.Component {
             }
         }
         debugger
-        return (            
+        return (
             <div class="who__wrapper">
                 <div class="table who__table">
                     <div class="table__wrapper">
@@ -54,7 +64,7 @@ export class TableOfPerson extends React.Component {
                         </table>
                     </div>
                 </div>
-                {this.state.profile ? <Profile info={this.state.profile} IsOfficers={this.props.IsOfficers}/> : null}
+                {this.state.profile ? <Profile info={this.state.profile} IsOfficers={this.props.IsOfficers} /> : null}
 
             </div>
         )
@@ -99,11 +109,83 @@ export class WHO extends React.Component {
     submit = (values) => {
         this.props.getFilteredPerson(values, this.props.IsOfficers);
     }
-
+    submitInput = values => {
+debugger
+        let person = {}
+        person.militaryRank = values.militaryRank
+        person.position = values.position
+        person.firstName = values.firstName
+        person.middleName = values.middleName
+        person.lastName = values.lastName
+        person.birthDay = values.birthDay
+        person.dateOfStartService = values.dateOfStartService
+        this.props.IsOfficers ? person.nameOFVoinkom = values.nameOFVoinkom : person.groupName = values.groupName        
+        this.props.IsOfficers ?  person.unit = values.unit : person.groupNumber = values.groupNumber
+        if(this.props.IsOfficers)
+        {
+            person.serialAndNumderMilitaryDocs = values.serialAndNumderMilitaryDocs
+            person.serialAndNumderCivilyDocs = values.serialAndNumderCivilyDocs
+            person.whoGetPassport = values.whoGetPassport
+            person.dateOfIssue = values.dateOfIssue
+            person.dateOfExpiry = values.dateOfExpiry
+            person.isMarried = values.isMarried
+            person.FormSec = Number(values.FormSec)
+            person.isMarried = values.isMarried
+            person.info = values.info
+        }
+        person.pathPhotoBig = "null"
+        person.pathPhotoSmall = "null"
+        this.props.createPerson(person, this.props.IsOfficers);
+    }
     render() {
+        debugger
         return (
             <MainContentWrapper leftSideBar="true">
+
+                <InputForm title="Добавить" btnText="Добавить" onSubmit={this.submitInput}>
+
+                    <InputDropDown title="Воинское звание" link={this.props.militaryRank} name="militaryRank" />
+                    <InputDropDown title="Должность" link={this.props.position} name="position" />
+
+                    <TextArea title="Имя" size="1" name="firstName" />
+                    <TextArea title="Отчество" size="1" name="middleName" />
+                    <TextArea title="Фамилия" size="1" name="lastName" />
+
+                    <InputDate title="Дата рождения" name="birthDay" />
+                    <InputDate title="Дата призыва" name="dateOfStartService" />
+                    {this.props.IsOfficers ?
+                        <TextArea title="Кем призван" name="nameOFVoinkom" /> : <div></div>}
+                    {this.props.IsOfficers ?
+                        <TextArea title="Серия и номер удостоверения" name="serialAndNumderMilitaryDocs" /> : <div></div>}
+                    {this.props.IsOfficers ? <div></div> :
+                        <InputDropDown title="Специализация" link={this.props.nameOfSpec} name="groupName" />}
+                    {this.props.IsOfficers ?
+                        <InputDropDown title="Подразделение" link={this.props.units} name="unit" /> :
+                        <InputDropDown title="Номер группы" link={this.props.groups} name="groupNumber" />}
+
+                    {this.props.IsOfficers ?
+                        <TextArea title="Паспорт (серия и номер)" size="1" name="serialAndNumderCivilyDocs" /> : <div></div>}
+                    {this.props.IsOfficers ?
+                        <TextArea title="Кем выдан" size="1" name="whoGetPassport" /> : <div></div>}
+                    {this.props.IsOfficers ?
+                        <InputDate title="Дата выдачи" name="dateOfIssue" /> : <div></div>}
+                    {this.props.IsOfficers ?
+                        <InputDate title="Действителен до" name="dateOfExpiry" /> : <div></div>}
+
+                    {this.props.IsOfficers ?
+                        <TextArea title="Форма" size="1" name="FormSec" /> : <div></div>}
+                    {this.props.IsOfficers ?
+                        <InputDate title="Дата окончания формы" name="DateFormSec" /> : <div></div>}
+
+                    <InputFile title="Фото" name="pathPhotoSmall" />
+                    <CheckboxArea title="Женат (замужем)" size="1" name="isMarried" />
+
+                    <TextArea title="Информация" size="3" name="info" />
+                </InputForm>
+
                 <SortItemForm onSubmit={this.submit}>
+
+
                     <Dropdown title="Звание" name="militaryRank" link={this.props.militaryRank} />
                     {this.props.IsOfficers ?
                         <Dropdown title="Подразделение" name="unit" link={this.props.units} /> :

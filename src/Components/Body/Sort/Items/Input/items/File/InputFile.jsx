@@ -9,5 +9,4 @@ const InputFile = (props) => {
         </InputItem>
     )
 }
-
 export default InputFile
