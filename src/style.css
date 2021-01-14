@@ -548,6 +548,7 @@ button{
 }
 .sort__img--ml{
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .sort-submenu__form{
@@ -1546,4 +1547,16 @@ button{
   width: 500px;
   display: flex;
   flex-direction: column;
+}
+
+.d-f{
+ display: flex;
+} 
+
+.ai-c{
+ align-items: center;
+}
+
+.w-100{
+  width: 100%;
 }

@@ -8,17 +8,23 @@ import Filter from '../Sort/Items/Filter/Filter'
 import { reduxForm } from 'redux-form'
 import SortItem from '../Sort/SortItem'
 import Clear from '../Sort/Items/Clear/Clear'
+import { isEmpty } from '../../../help/help'
+import { Route, withRouter } from 'react-router-dom'
+import { compose } from 'redux'
+import WhoEdit from './WhoEdit/WhoEdit'
 
-export class TableOfPerson extends React.Component {
+class TableOfPerson extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.setState({
             profile:{...this.props.persons[1]}
         })
     }
+
     state = {
         profile: {}
     }
+    
     setActiveElement = (u) => {
         this.setState({
             profile: {...u}
@@ -35,33 +41,31 @@ export class TableOfPerson extends React.Component {
                 allPerson = this.props.persons.map((u) => { return <TableRow u={u} IsOfficers={this.props.IsOfficers} setActiveElement={this.setActiveElement} /> });
             }
         }
-        debugger
-        return (            
-            <div class="who__wrapper">
-                <div class="table who__table">
-                    <div class="table__wrapper">
-                        <table>
-                            <tr>
-                                <th>Рег<br></br>номер</th>
-                                <th>Фамилия</th>
-                                <th>Имя</th>
-                                <th>Отчетсво</th>
-                                <th>Должность</th>
-                                <th>В/звание</th>
-                                <th>Подразделение</th>
-                            </tr>
-                            {allPerson}
-                        </table>
-                    </div>
+        return (
+            <div class={!isEmpty(this.state.profile) ? "who__wrapper" : null}>
+            <div class="table who__table">
+                <div class="table__wrapper">
+                    <table>
+                        <tr>
+                            <th>Рег<br></br>номер</th>
+                            <th>Фамилия</th>
+                            <th>Имя</th>
+                            <th>Отчетсво</th>
+                            <th>Должность</th>
+                            <th>В/звание</th>
+                            <th>Подразделение</th>
+                        </tr>
+                        {allPerson}
+                    </table>
                 </div>
-                {this.state.profile ? <Profile info={this.state.profile} IsOfficers={this.props.IsOfficers}/> : null}
-
             </div>
+            { !isEmpty(this.state.profile) ? <Profile info={this.state.profile} IsOfficers={this.props.IsOfficers}/> : <div></div>}
+        </div>
         )
     }
 }
 
-export class WHO extends React.Component {
+class WHO extends React.Component {
 
     componentDidMount() {
         this._getMainData();
@@ -102,7 +106,10 @@ export class WHO extends React.Component {
 
     render() {
         return (
+            <>
+        <Route exact path={this.props.match.path}>
             <MainContentWrapper leftSideBar="true">
+                
                 <SortItemForm onSubmit={this.submit}>
                     <Dropdown title="Звание" name="militaryRank" link={this.props.militaryRank} />
                     {this.props.IsOfficers ?
@@ -125,9 +132,14 @@ export class WHO extends React.Component {
                     {this.props.IsOfficers ? <TableOfPerson persons={this.props.officers} IsOfficers={true} /> :
                         <TableOfPerson persons={this.props.cadets} IsOfficers={false} />}
                 </div>
+
             </MainContentWrapper>
+        </Route>
+        <Route path={this.props.match.path + "/:id/edit"} render={()=>{return <WhoEdit pathBack={this.props.match.path}/>}}/>
+        </>
         );
     }
 }
 const SortItemForm = reduxForm({ form: 'sortWho' })(SortItem)
 
+export default compose(withRouter)(WHO)

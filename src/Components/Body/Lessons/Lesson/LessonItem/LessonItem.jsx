@@ -12,17 +12,22 @@ const LessonItem = (props) => {
     }
     return (
         <>
-            <div class={"sort__item sort__item--mt" + " "+ (isActive ? "sort__item--active" : "")} onClick={toggleActive}>
-                <div class="sort__title">{props.title}</div>
-                <div class="sort__nav"> 
-                    <div class="sort__img"><FiEdit/></div>
-                    <div class="sort__img sort__img--ml"><AiOutlineDelete/></div>
-                    <div class="sort__img sort__img--ml">{isActive ? <BsFillCaretUpFill/> : <BsFillCaretDownFill/>}</div>
-                </div>   
+            
+            <div class="d-f ai-c ">
+                <div class="w-100">
+                    <div class={"sort__item sort__item--mt" + " "+ (isActive ? "sort__item--active" : "")} onClick={toggleActive}>
+                        <div class="sort__title">{props.title}</div>
+                        <div class="sort__nav"> 
+                            <div class="sort__img sort__img--ml">{isActive ? <BsFillCaretUpFill/> : <BsFillCaretDownFill/>}</div>
+                        </div>
+                    </div>
+                    <div class="sort-submenu sort__submenu">             
+                        {props.children}
+                    </div> 
+                </div>
+                <div class="sort__img sort__img--ml"><FiEdit onClick={()=>alert("Edit")}/></div>
+                <div class="sort__img sort__img--ml"><AiOutlineDelete onClick={()=>alert("Delite")}/></div>
             </div>
-            <div class="sort-submenu sort__submenu">             
-                {props.children}
-            </div> 
         </> 
     )
 }

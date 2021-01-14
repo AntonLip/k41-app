@@ -6,7 +6,8 @@ import { getVideoCourseThunkCreator } from '../../../../../Redux/video-courses-r
 import { VideoCourse } from './VideoCourse';
 let maptoStateToProps = (state) => {
     return {
-        VideoCourse: state.VideoCoursesReducers.VideoCouse
+        VideoCourse: state.VideoCoursesReducers.VideoCouse,
+        nameofDiscoplines: state.disciplinesReduser.DisciplinesPage.nameofDiscoplines
     }
 }
 

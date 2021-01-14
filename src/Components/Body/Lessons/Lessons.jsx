@@ -9,13 +9,14 @@ import Filter from '../Sort/Items/Filter/Filter'
 
 import {Input,validate, warn } from '../Sort/Items/Input/Input';
 import TextArea from '../Sort/Items/Input/items/TextArea/TextArea';
-import { reduxForm } from 'redux-form'
+import { reduxForm, reset } from 'redux-form'
 import InputDropDown from '../Sort/Items/Input/items/InputDropDown/InputDropDown'
 import {InputDate} from '../Sort/Items/Date/InputDate'
 import { CheckboxArea } from '../Sort/Items/Input/items/Checkdox/InputCheckbox'
 import InputItem from '../Sort/Items/Input/items/InputItem'
 import InputFile from '../Sort/Items/Input/items/File/InputFile'
 import { createDisciplineNamesAPI } from '../../../API/DisciplineAPI'
+import Clear from '../Sort/Items/Clear/Clear'
 
 const year = [
     { title: "5 семестр" },
@@ -25,7 +26,7 @@ const year = [
 ]
 
 const SortForm = reduxForm({ form: 'sortLessons' })(Sort)
-const InputForm = reduxForm({ form: 'inputDis' })(Input)
+const InputForm = reduxForm({ form: 'inputDis', onSubmitSuccess: (rezult, dispatch) => {dispatch(reset('inputDis'))}})(Input)
 export class Lessons extends React.Component {
 
     componentDidMount() {
@@ -79,29 +80,29 @@ export class Lessons extends React.Component {
         return (
             <MainContentWrapper leftSideBar="true">
                 <SortForm onSubmit={this.submit}>
-                   
-                        <InputForm title="Добавить дисциплину"  btnText="Добавить" onSubmit={this.submitInput}>
-                            <TextArea title="Сокращенное название" size="1" name="name"/>
-                            <TextArea title="Полное название" size="2" name="fullName"/>
-                            <TextArea title="Всего часов по дисциплине" size="1" name="countHours"/>
-                            <TextArea title="Всего лекций" size="1" name="countHoursLeck"/>
-                            <TextArea title="Всего ПЗ" size="1" name="countHoursPZ"/>
-                            <TextArea title="Всего ГЗ" size="1" name="countHoursGZ"/>
-                            <TextArea title="Всего МЗ" size="1" name="countHoursMZ"/>
-                            <TextArea title="Всего СРП" size="1" name="countHoursSWZ"/>
-                            <TextArea title="Всего семинаров" size="1" name="countHoursSEM"/>
-                            <TextArea title="Всего лабораторных работ" size="1" name="countHoursLR"/>
-                            <TextArea title="Всего контрольных работ" size="1" name="countHoursСontrolWork"/>
-                            <TextArea title="Всего зачетов" size="1" name="countHoursTest"/>
-                            <TextArea title="Семестр" size="1" name="Semestr"/>
-                            <TextArea title="Норма часов" size="1" name="countNorm"/>
-                            <CheckboxArea title="Проводиться экзамен" size="1" name="isExam"/>
-                            <InputDate title="Дата учебного плана" name="DateTo" />
-                            <InputFile title="Выберите учебный план" name="Plan"/>
-                            <InputDropDown title="Для специализации" link={this.props.nameOfSpec}  name="NameOfSpec"/>
-                        </InputForm> 
+                    <InputForm title="Добавить дисциплину"  btnText="Добавить" onSubmit={this.submitInput}>
+                        <TextArea title="Сокращенное название" size="1" name="name"/>
+                        <TextArea title="Полное название" size="2" name="fullName"/>
+                        <TextArea title="Всего часов по дисциплине" size="1" name="countHours"/>
+                        <TextArea title="Всего лекций" size="1" name="countHoursLeck"/>
+                        <TextArea title="Всего ПЗ" size="1" name="countHoursPZ"/>
+                        <TextArea title="Всего ГЗ" size="1" name="countHoursGZ"/>
+                        <TextArea title="Всего МЗ" size="1" name="countHoursMZ"/>
+                        <TextArea title="Всего СРП" size="1" name="countHoursSWZ"/>
+                        <TextArea title="Всего семинаров" size="1" name="countHoursSEM"/>
+                        <TextArea title="Всего лабораторных работ" size="1" name="countHoursLR"/>
+                        <TextArea title="Всего контрольных работ" size="1" name="countHoursСontrolWork"/>
+                        <TextArea title="Всего зачетов" size="1" name="countHoursTest"/>
+                        <TextArea title="Семестр" size="1" name="Semestr"/>
+                        <TextArea title="Норма часов" size="1" name="countNorm"/>
+                        <CheckboxArea title="Проводиться экзамен" size="1" name="isExam"/>
+                        <InputDate title="Дата учебного плана" name="DateTo" />
+                        <InputFile title="Выберите учебный план" name="Plan"/>
+                        <InputDropDown title="Для специализации" link={this.props.nameOfSpec}  name="NameOfSpec"/>
+                    </InputForm> 
                     {AllSpec}
                     <Filter />
+                    <Clear clear={this.sort} />
                 </SortForm>
 
                 <div class="cards">

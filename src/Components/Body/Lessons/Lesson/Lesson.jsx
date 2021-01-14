@@ -16,7 +16,6 @@ export class Lesson extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <MainContentWrapper leftSideBar="true">
                 <div class="sort cards__sort">
@@ -36,7 +35,7 @@ export class Lesson extends React.Component {
                 <div>
                     <div class="card__nav">
                         <Link to="/lessons" class="news__link news__link--mr"><GrLinkPrevious class="news__link-img"/>Назад ко всем дисциплинам</Link>
-                        <div class="news__link">Добавить <GrAdd/></div>
+                        <Link class="news__link">Добавить <GrAdd/></Link>
                     </div>
                     <Route exact path="/lesson/:id" render={()=><Study/>} />
                     <Route path="/lesson/:id/video" render={()=><div>Hello world</div>} />

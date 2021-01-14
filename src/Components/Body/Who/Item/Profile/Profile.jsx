@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import ProfileGroup from './ProfileGroup/ProfileGroup'
 
 const Profile = (props) => {
-    debugger
+    console.log(props)
     let birthDay, unit;
     let path = "http://k41.kafedra41.local/Video/Vieo/Image?filename="
     props.info.birthDay === undefined ? birthDay = null :  birthDay = props.info.birthDay.split("T")[0]
@@ -25,10 +27,14 @@ const Profile = (props) => {
                     
                     <ProfileGroup title="Контактный телефон:" value={props.info.telephoneNumber} />
                 </div>
-                <a href="#" class="profile__btn profile__btn--mb btn">Редактировать</a>
-                <a href="#" class="profile__btn  btn">Удалить</a>
+                <Link to={props.match.url+"/"+props.info.id+"/edit"} class="profile__btn profile__btn--mb btn">Редактировать</Link>
+                <Link class="profile__btn  btn">Удалить</Link>
             </div>
         )    
 }
 
-export default Profile
+
+
+export default compose(
+    withRouter
+  )(Profile)
