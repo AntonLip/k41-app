@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getofficersThunkCreator, getFilteredofficersThunkCreator, deleteUserThunkCreator, getCadetsThunkCreator, getFilteredCadetsThunkCreator, createOficerThunkCreator, deleteCadetsThunkCreator, createCadetsThunkCreator } from './../../../Redux/whos-reduser'
 import { compose } from 'redux';
 import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setGroupsThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator } from "./../../../Redux/generalInfo-reduser";
-import { WHO } from './Who';
+import  WHO  from './Who';
 import { setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
 
 let maptoStateToProps = (state) => {

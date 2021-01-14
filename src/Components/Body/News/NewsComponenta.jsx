@@ -14,7 +14,9 @@ let maptoStateToProps = (state) => {
     itemsPerPage: state.newsReduser.itemsPerPage,
     totalCount: state.newsReduser.totalCount,
     sort: state.newsReduser.sort,
-    persons: state.generalInfoReduser.info.lecturals
+    persons: state.generalInfoReduser.info.lecturals,
+    isAuth: state.LoginReduser.loginPage.isLoadingUser,
+            role: state.LoginReduser.loginPage.user.role,
   }
 }
 

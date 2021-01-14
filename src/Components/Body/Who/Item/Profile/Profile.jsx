@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import ProfileGroup from './ProfileGroup/ProfileGroup'
 
 const Profile = (props) => {
@@ -29,10 +31,14 @@ const Profile = (props) => {
                     
                     <ProfileGroup title="Контактный телефон:" value={props.info.telephoneNumber} />
                 </div>
-                <a href="#" class="profile__btn profile__btn--mb btn">Редактировать</a>
-                <a href="#" class="profile__btn  btn" onClick={props.delete}>Удалить</a>
+                <Link to={props.match.url+"/"+props.info.id+"/edit"} class="profile__btn profile__btn--mb btn">Редактировать</Link>
+                <Link class="profile__btn  btn">Удалить</Link>
             </div>
         )    
 }
 
-export default Profile
+
+
+export default compose(
+    withRouter
+  )(Profile)

@@ -63,8 +63,9 @@ export const validate = values => {
   Number(values.countHoursСontrolWork) + Number(values.countHoursSWZ) + Number(values.countHoursTest)) {
     errors.Activ = true;
     errors.countHours = 'Часы не совпадают!!'
-}
 
+}
+  debugger
   return errors
 }
 

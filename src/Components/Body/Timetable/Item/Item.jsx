@@ -11,9 +11,7 @@ const Item = (props) => {
                         <tr>
                             <td width="80">№<br></br>пары</td>
                             <td colspan="2">Название<br></br>дисциплины</td>
-                            <td rowspan="3" width="300">
-                                <Text />
-                            </td>
+                            
                         </tr>
                         <tr>
                             <td rowspan="4">1</td>
@@ -25,9 +23,7 @@ const Item = (props) => {
                         </tr>
                         <tr>
                             <td colspan="2">Фамилия <br></br> преподавателя</td>
-                            <td rowspan="2" width="300">
-                                <Text />
-                            </td>
+                            
                         </tr>
                         <tr>
                             <td colspan="2"><a href="#" class="timetable-item__link">Задать вопрос <br></br> преподавателю</a></td>
@@ -45,26 +41,22 @@ const Item = (props) => {
                         <tr>
                             <td width="80">№<br></br>пары</td>
                             <td colspan="2">{props.u.nameOfDiscipline}</td>
-                            <td rowspan="3" width="300">
-                                <Text />
-                            </td>
+                            
                         </tr>
                         <tr>
                             <td rowspan="4">{props.u.numberOfLessonInDay}</td>
-                            <td rowspan="2" width="150">{props.u.typeOfLesson}</td>
-                            <td width="50">№</td>
+                            <td rowspan="2" width="150">{props.u.numberOfLesson == 0 ? props.u.typeOfLesson : props.u.typeOfLesson + " " + props.u.numberOfLesson}</td>
+                            <td width="50">№ гр</td>
                         </tr>
                         <tr>
-                            <td>{props.u.numberOfLesson}</td>
+                            <td>{props.u.numberOfGroup}</td>
                         </tr>
                         <tr>
                             <td colspan="2">{props.u.lectural}</td>
-                            <td rowspan="2" width="300">
-                                <Text />
-                            </td>
+                            
                         </tr>
                         <tr>
-                            <td colspan="2"><a href="#" class="timetable-item__link">Задать вопрос <br></br> преподавателю</a></td>
+                            <td colspan="2"><a href="#" class="timetable-item__link">Редактировать</a></td>
                         </tr>
                     </table>
                 </div>

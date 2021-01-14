@@ -18,17 +18,23 @@ import TextArea from '../Sort/Items/Input/items/TextArea/TextArea';
 import { deleteCadetsThunkCreator } from '../../../Redux/whos-reduser'
 
 const InputForm = reduxForm({ form: 'inputWho' })(Input)
+import { isEmpty } from '../../../help/help'
+import { Route, withRouter } from 'react-router-dom'
+import { compose } from 'redux'
+import WhoEdit from './WhoEdit/WhoEdit'
 
-export class TableOfPerson extends React.Component {
+class TableOfPerson extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.setState({
             profile: { ...this.props.persons[1] }
         })
     }
+
     state = {
         profile: {}
     }
+    
     setActiveElement = (u) => {
         this.setState({
             profile: { ...u }
@@ -66,15 +72,16 @@ debugger
                         </table>
                     </div>
                 </div>
-                {this.state.profile ? <Profile info={this.state.profile} IsOfficers={this.props.IsOfficers}
+                {!isEmpty(this.state.profile) ? <Profile info={this.state.profile} IsOfficers={this.props.IsOfficers}
                                          delete={this.deletePerson.bind(this.state.profile.id)}/> : null}
 
             </div>
+           
         )
     }
 }
 
-export class WHO extends React.Component {
+class WHO extends React.Component {
 
     componentDidMount() {
         this._getMainData();
@@ -143,6 +150,8 @@ debugger
     render() {
         debugger
         return (
+            <>
+        <Route exact path={this.props.match.path}>
             <MainContentWrapper leftSideBar="true">
 
                 <InputForm title="Добавить" btnText="Добавить" onSubmit={this.submitInput}>
@@ -210,9 +219,14 @@ debugger
                     {this.props.IsOfficers ? <TableOfPerson persons={this.props.officers} IsOfficers={true} delete={this.props.deletePerson}/> :
                         <TableOfPerson persons={this.props.cadets} IsOfficers={false} delete={this.props.deletePerson}/>}
                 </div>
+
             </MainContentWrapper>
+        </Route>
+        <Route path={this.props.match.path + "/:id/edit"} render={()=>{return <WhoEdit pathBack={this.props.match.path}/>}}/>
+        </>
         );
     }
 }
 const SortItemForm = reduxForm({ form: 'sortWho' })(SortItem)
 
+export default compose(withRouter)(WHO)

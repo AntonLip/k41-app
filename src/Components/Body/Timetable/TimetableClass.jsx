@@ -33,7 +33,6 @@ export class Timetable extends React.Component {
             }
         }
     }
-
     getTimetable = () => {
         var fullDate = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + " 00:00:00.0000000"
         if (this.props.isAuth) {
@@ -45,9 +44,6 @@ export class Timetable extends React.Component {
             this.props.getTimetablePerDay(fullDate)
         }
     }
-
-
-
     submit = values => {
         debugger;
         let dataStart, dataStop;
@@ -55,14 +51,14 @@ export class Timetable extends React.Component {
         values.dateTo === undefined ? dataStop = '1991-10-11' : dataStop = values.dateTo;
         this.props.getFilteredTimetable(values.lector, values.lesson, values.department, dataStart, dataStop);
     }
-
     render() {
+        console.log(this.props.timetable)
         let AllLessons
         this.props.timetable === undefined ? AllLessons = () => { return <Item /> } :
             this.props.timetable.length != 0 ? AllLessons = this.props.timetable.map((u) => { return <Item u={u} type={this.props.position} /> }) :
                 AllLessons = () => { return <Item /> };
         return (
-            <MainContentWrapper leftSideBar="true">
+            <MainContentWrapper leftSideBar={true}>
                 <SortForm onSubmit={this.submit}>
                     <Dropdown title="Учебный взвод" link={this.props.groups} size="10" name="department" />
                     <Dropdown title="Учебный предмет" link={this.props.disciplines} size="10" name="lesson" />
