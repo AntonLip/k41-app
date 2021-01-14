@@ -1,10 +1,11 @@
 import * as axios from "axios"
+import { basePAth } from "./api";
 
 
 const instance = axios.create(
     {
         //withCredentials :true,
-        baseURL: "http://k41.kafedra41.local:90/WB/api/Cadets"
+        baseURL: basePAth + "/Cadets"
     }
 );
 export const getCadetsAPI = () =>{   

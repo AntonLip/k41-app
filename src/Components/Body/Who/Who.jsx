@@ -34,7 +34,9 @@ export class TableOfPerson extends React.Component {
             profile: { ...u }
         })
     }
-
+deletePerson = (id) => {
+debugger
+}
     render() {
         let allPerson;
         if (this.props.persons === undefined) {
@@ -64,7 +66,8 @@ export class TableOfPerson extends React.Component {
                         </table>
                     </div>
                 </div>
-                {this.state.profile ? <Profile info={this.state.profile} IsOfficers={this.props.IsOfficers} /> : null}
+                {this.state.profile ? <Profile info={this.state.profile} IsOfficers={this.props.IsOfficers}
+                                         delete={this.deletePerson.bind(this.state.profile.id)}/> : null}
 
             </div>
         )
@@ -204,8 +207,8 @@ debugger
                 </SortItemForm>
 
                 <div class="who">
-                    {this.props.IsOfficers ? <TableOfPerson persons={this.props.officers} IsOfficers={true} /> :
-                        <TableOfPerson persons={this.props.cadets} IsOfficers={false} />}
+                    {this.props.IsOfficers ? <TableOfPerson persons={this.props.officers} IsOfficers={true} delete={this.props.deletePerson}/> :
+                        <TableOfPerson persons={this.props.cadets} IsOfficers={false} delete={this.props.deletePerson}/>}
                 </div>
             </MainContentWrapper>
         );

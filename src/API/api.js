@@ -1,12 +1,12 @@
 import * as axios from "axios"
-
+export const basePAth = "https://localhost:44351/api"
 const instance = axios.create(
     {
         //withCredentials :true,
         headers: {
             'Content-Type': 'application/json'
         },
-        baseURL: "http://k41.kafedra41.local:90/WB/api/"
+        baseURL: basePAth
     }
 );
 
