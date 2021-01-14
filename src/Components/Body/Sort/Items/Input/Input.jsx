@@ -94,8 +94,8 @@ export const Input = (props) => {
     return (
         <Item img={<BsFillCaretDownFill/>} imgActive={<BsFillCaretUpFill/>} title={props.title}>
             <form class="chat-input chat__input" onSubmit={props.handleSubmit}>
-                {renderChildren()}
-                <input type="submit" class="chat-input__submit btn" value={props.btnText}></input>
+                {props.children}
+                <button type="submit" class="chat-input__submit btn">{props.btnText}</button>
             </form>
         </Item> 
     )

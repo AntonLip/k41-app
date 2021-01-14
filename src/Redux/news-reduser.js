@@ -1,12 +1,11 @@
-import { getNewsAPI, getSingleNewsAPI } from "../API/newsAPI";
+import { deleteSingleNewsAPI, getNewsAPI, getSingleNewsAPI, postNewsAPI, putSingleNewsAPI } from "../API/newsAPI";
 
-const GET_NEWS = 'GET_NEWS'
-const GET_SINGLE_NEWS = 'GET_SINGLE_NEWS'
+const SET_NEWS = 'SET_NEWS'
+const SET_CURRENT_NEWS = 'SET_CURRENT_NEWS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
 const SET_CURRENT_PORTION = 'SET_CURRENT_PORTION'
 const SET_SORT = 'SET_SORT'
-
 
 let initialState = {
     newsPage: {
@@ -40,7 +39,7 @@ export const newsReduser = (state = initialState, action) => {
     }
     copyState.newsPage = { ...state.newsPage };
     switch (action.type) {
-        case GET_NEWS:
+        case SET_NEWS:
             debugger
             if (action.data === 'undefined')
                 return copyState;
@@ -51,7 +50,7 @@ export const newsReduser = (state = initialState, action) => {
 
             }
             return copyState;
-        case 'GET_SINGLE_NEWS':
+        case 'SET_CURRENT_NEWS':
             copyState.currentNews = { ...copyState.currentNews, ...action.data };
             return copyState;
         case 'SET_CURRENT_PAGE':
@@ -67,7 +66,6 @@ export const newsReduser = (state = initialState, action) => {
             copyState.currentPortion = action.data;
             return copyState;
         case 'SET_SORT':
-            debugger
             copyState.sort = { ...copyState.sort, ...action.data };
             return copyState;
         default:
@@ -75,16 +73,16 @@ export const newsReduser = (state = initialState, action) => {
     }
 }
 
-export const getNewsAC = (data) => {
+export const setNewsAC = (data) => {
     return {
-        type: GET_NEWS,
+        type: SET_NEWS,
         data
     }
 }
 
-export const getSingleNewsAC = (data) => {
+export const setCurrentNewsAC = (data) => {
     return {
-        type: GET_SINGLE_NEWS,
+        type: SET_CURRENT_NEWS,
         data
     }
 }
@@ -128,14 +126,14 @@ export const setCurrentPageThunkCreator = (page, count, sort) => {
 
             }
             else {
-                dispatch(getNewsAC(data.news));
+                dispatch(setNewsAC(data.news));
                 dispatch(setCurrentPage(page));
             }
         });
     }
 }
 
-export const getNewsThunkCreator = (page, count, sort) => {
+export const setNewsThunkCreator = (page, count, sort) => {
 
     return (dispatch) => {
 
@@ -144,20 +142,65 @@ export const getNewsThunkCreator = (page, count, sort) => {
 
             }
             else {
-                dispatch(getNewsAC(data.news));
+                dispatch(setNewsAC(data.news));
                 dispatch(setTotalCount(data.totalCount));
             }
         });
     }
 }
 
-export const getSingleNewsThunkCreator = (id) => {
+export const setCurrentNewsThunkCreator = (id) => {
 
     return (dispatch) => {
 
         getSingleNewsAPI(id).then(data => {
 
-            dispatch(getSingleNewsAC(data));
+            dispatch(setCurrentNewsAC(data));
         });
+    }
+}
+
+export const setSortThunkCreator = (page, count, sort) => {
+
+    return (dispatch) => {
+        dispatch(setSort(sort));
+        dispatch(setCurrentPage(page));
+        getNewsAPI(page, count, sort).then(data => {
+            dispatch(setNewsAC(data.news));
+            dispatch(setTotalCount(data.totalCount));
+        });
+    }
+}
+
+export const postNewsThunkCreator = (data) => {
+    return (dispatch) => {
+        postNewsAPI(data)
+    }
+}
+
+export const deleteNewsThunkCreator = (id, isDelete) => {
+    return (dispatch) => {
+        debugger
+        deleteSingleNewsAPI(id, isDelete).then(resp => {
+            if (resp == 200){
+               
+            }
+        })
+    }
+}
+
+export const putNewsThunkCreator = (id,data) => {
+    return (dispatch) => {
+        putSingleNewsAPI(id,data).then(resp => {
+            if (resp == 204){
+                dispatch(setCurrentNewsAC(data));
+            }
+        })
+    }
+}
+
+export const cleanCurrentNewsThunkCreator = () => {
+    return (dispatch) => {
+        dispatch(setCurrentNewsAC({From: "",To: "",Date: "",Header: "",Link: ""}));
     }
 }

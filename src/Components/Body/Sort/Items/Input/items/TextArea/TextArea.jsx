@@ -15,9 +15,8 @@ const TextArea = (props) => {
         </div>
       )
     return (
-        <InputItem title={props.title} >
-            <Field name={props.name} size={props.size} component="input" type="text" class="chat-input__text">                
-            </Field>
+        <InputItem title={props.title}>
+            <Field name={props.name} class="chat-input__text" rows={props.size} component="textarea"></Field>
         </InputItem> 
     )
 }

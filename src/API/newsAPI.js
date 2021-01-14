@@ -11,16 +11,16 @@ const instance = axios.create(
 
 
 export const getNewsAPI = (page, count, sort) => {    
-    debugger
+    
     const path = "?KeyApi=77411ed966176c9dc37d5b3b82097018&Page="+page
                 +"&Count="+count 
                 + (sort.From ? "&From=" + sort.From : "")
                 + (sort.To ?  "&To=" + sort.To : "")
                 + (sort.DateFrom ? "&DateFrom=" + sort.DateFrom : "")
                 + (sort.DateTo ? "&DateTo=" + sort.DateTo : "")
-                debugger            
+                           
     return instance.get(path).then(responce => {
-        debugger
+        
         return responce.data
     }).catch((error)=>{
         console.log("Api news call error");
@@ -29,9 +29,39 @@ export const getNewsAPI = (page, count, sort) => {
 }
 export const getSingleNewsAPI = (id) => {    
     
-    return instance.get(id + "/?KeyApi=77411ed966176c9dc37d5b3b82097018").then(responce => {
+    return instance.get(id+"/?KeyApi=77411ed966176c9dc37d5b3b82097018").then(responce => {
         debugger
         return responce.data
+    }).catch((error)=>{
+        console.log("Api news call error");
+        alert(error.message);
+     });
+}
+
+export const postNewsAPI = (data) => {    
+    
+    return instance.post("?KeyApi=77411ed966176c9dc37d5b3b82097018", data).then(responce => {
+        debugger
+        return responce.status
+    }).catch((error)=>{
+        console.log("Api news call error");
+        alert(error.message);
+     });
+}
+
+export const deleteSingleNewsAPI = (id, isDelete="False") => {    
+    return instance.delete(id+"/?KeyApi=77411ed966176c9dc37d5b3b82097018" + "&isDelete=" + isDelete).then(responce => {
+        debugger
+        return responce.status
+    }).catch((error)=>{
+        console.log("Api news call error");
+        alert(error.message);
+     });
+}
+export const putSingleNewsAPI = (id, data) => {    
+    return instance.put(id+"/?KeyApi=77411ed966176c9dc37d5b3b82097018", data).then(responce => {
+        debugger
+        return responce.status
     }).catch((error)=>{
         console.log("Api news call error");
         alert(error.message);
