@@ -34,8 +34,7 @@ export class News extends React.Component {
   }
 
   post = (data) => {
-    
-    data["From"]="Админ"
+    this.props.user == undefined ? data["From"]="Админ" : data["From"] = this.props.user.family_name    
     data["To"]="Всем"
     this.props.postNews(data);
     this.props.getNews(1, this.props.itemsPerPage, {From: "", To: "", DateFrom: "", DateTo: ""});
@@ -50,11 +49,11 @@ export class News extends React.Component {
           <Dropdown title="Кому новость" link={this.props.persons} size="1" name="To" />
           <Date title="С какой даты" name="DateFrom" />
           <Date title="По какую дату" name="DateTo" />
-          <InputForm title="Добавить новость" link={this.props.persons} btnText="Добавить" onSubmit={this.post}>
+          {this.props.isAuth ? <InputForm title="Добавить новость" link={this.props.persons} btnText="Добавить" onSubmit={this.post}>
             <TextArea title ="Заголовок" size="3" name="Header"/>
             <TextArea title ="Текст" size="5" name="Text"/>
             <InputDropDown title="Кому" link={this.props.persons} name="To"/>
-          </InputForm>
+          </InputForm> : <div></div>}
           <Filter />
           <Clear clear={this.sort} />
         </SortForm>

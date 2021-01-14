@@ -1072,9 +1072,6 @@ button{
   align-items: start;
 }
 
-.timetable__item {
-}
-
 .timetable-item__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;

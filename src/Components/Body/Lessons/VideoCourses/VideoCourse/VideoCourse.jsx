@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './VideoCourse.module.css'
 import { PlayerControlExample } from './../../../../Player/PlayerControlExample'
+import MainContentWrapper from '../../../MainContentWrapper/MainContentWrapper';
 
 export class VideoCourse extends React.Component {
 
@@ -10,8 +11,9 @@ export class VideoCourse extends React.Component {
     }
 
     render() {
-        return (
-            <div>
+        return (<MainContentWrapper >
+            <div></div>
+             <div>
                 <div>
                     {this.props.VideoCourse.name}
                 </div>
@@ -22,7 +24,9 @@ export class VideoCourse extends React.Component {
 
                 </div>
                 <PlayerControlExample sources={this.props.VideoCourse.videos} id={this.props.match.params.id} />
-            </div>)
+            </div>
+        </MainContentWrapper>
+           )
     }
 }
 

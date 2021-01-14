@@ -5,7 +5,7 @@ const Logout = (props) => {
     return (
         <div class="profile">
             <div class="profile-img profile__img">
-                <img src={"http://localhost:5001/api/GetAvatar?filename=" + props.picture} alt="user"></img>
+                <img src={"http://k41.Kafedra41.local/is4/api/GetAvatar?filename=" + props.picture} alt="user"></img>
                 <div class="profile-img__btn" onClick={props.changePhoto}>Изменить фото</div>
             </div>
             <div class="profile__name">{props.family_name} {props.given_name}</div>

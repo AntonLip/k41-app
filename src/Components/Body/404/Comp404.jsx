@@ -1,6 +1,7 @@
 import React from 'react'
 import MainContentWrapper from '../MainContentWrapper/MainContentWrapper'
 import { ImageUpload } from '../Sort/Items/Input/items/File/ImageUploader'
+import InputFile from '../Sort/Items/Input/items/File/InputFile'
 
 const Comp404 = () => {
     return (
@@ -13,6 +14,7 @@ const Comp404 = () => {
             <div>
                 Sorry. This part of websity is not found. 
             </div>
+
             
         </MainContentWrapper>
         

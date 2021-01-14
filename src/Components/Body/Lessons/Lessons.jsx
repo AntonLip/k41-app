@@ -55,6 +55,7 @@ export class Lessons extends React.Component {
         var err = validate(values)
         if(!err.Activ)
         {
+            debugger
             createDisciplineNamesAPI(values);
         }
     }

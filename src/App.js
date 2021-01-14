@@ -14,7 +14,7 @@ const App = (props) => {
       <div class="main-content">
         <div class="container">
             <Body/>
-            <Chat/> 
+            
         </div>
       </div>
     </>
