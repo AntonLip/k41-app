@@ -539,7 +539,7 @@ button{
   background-color: #8db0d4;
 }
 .sort__item--active + .sort-submenu{
-  max-height: 900px;
+  max-height: 1500px;
 }
 
 .sort__img{
@@ -1499,7 +1499,6 @@ button{
   justify-items: start;
 }
 .news__link {
-  display: flex;
   align-items: center;
 }
 
@@ -1559,4 +1558,11 @@ button{
 
 .w-100{
   width: 100%;
+}
+
+.editForm{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
 }

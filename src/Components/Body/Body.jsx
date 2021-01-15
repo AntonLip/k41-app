@@ -14,6 +14,7 @@ import LessonsComponent from './Lessons/LessonsComponent';
 import LessonComponent from './Lessons/Lesson/LessonComponent';
 import VideoCoursesComponent from './Lessons/VideoCourses/VideoCoursesComponent';
 import VideoCourseComponent from './Lessons/VideoCourses/VideoCourse/VideoCourseComponent';
+import WhoEdit from './Who/WhoEdit/WhoEdit';
 const Body = (props) => {
   return (
     <>
@@ -25,7 +26,9 @@ const Body = (props) => {
       <Route path="/VideoCourses" render={()=><VideoCoursesComponent/>} />
       <Route path="/timetable" render={()=><TimetibleContainer/>} />
       <Route path="/cadets" render={()=><WhoComponent IsOfficers={false}/>} /> 
+      <Route path="/cadets/:id/edit" render={() => { return <WhoEdit IsOfficers={false} pathBack="/cadets"/> }} />
       <Route path="/officers" render={()=><WhoComponent IsOfficers={true}/>} /> 
+      <Route path="/officers/:id/edit" render={() => { return <WhoEdit IsOfficers={true} pathBack="/officers"/> }} />
       <Route path="/classrooms" render={()=><Classrooms/>} /> 
       <Route path="/tech" render={()=><Comp404/>} />
       <Route path="/science" render={()=><Comp404/>} />

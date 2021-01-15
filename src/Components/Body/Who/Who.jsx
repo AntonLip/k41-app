@@ -25,6 +25,7 @@ import WhoEdit from './WhoEdit/WhoEdit'
 
 
 const InputForm = reduxForm({ form: 'inputWho' })(Input)
+
 class TableOfPerson extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -221,7 +222,7 @@ class WHO extends React.Component {
 
                     </MainContentWrapper>
                 </Route>
-                <Route path={this.props.match.path + "/:id/edit"} render={() => { return <WhoEdit pathBack={this.props.match.path} /> }} />
+                
             </>
         );
     }

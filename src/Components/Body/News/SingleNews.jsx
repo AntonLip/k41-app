@@ -56,7 +56,7 @@ class SingleNews extends React.Component {
       <MainContentWrapper>
         <div class="news">
           <div class="news__wrapper">
-            <Link to="/" class="news__link" onClick={this.props.clearCurrentNews}><GrLinkPrevious class="news__link-img" />Назад ко всем новостям</Link>
+            <Link to="/" class="news__link d-f" onClick={this.props.clearCurrentNews}><GrLinkPrevious class="news__link-img" />Назад ко всем новостям</Link>
             <Route exact path={"/news/" + this.props.match.params.id}>
               <Link to={this.props.match.url + "/edit"} class="news__link" onClick={this.startEditForm}>
                 Редактировать<FiEdit class="news__link-img news__link-img--ml" />

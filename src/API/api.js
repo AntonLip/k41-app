@@ -1,5 +1,6 @@
 import * as axios from "axios"
-export const basePAth = "https://localhost:44351/api"
+//export const basePAth = "https://localhost:44351/api"
+export const basePAth = "http://k41.kafedra41.local/WB/api"
 const instance = axios.create(
     {
         //withCredentials :true,

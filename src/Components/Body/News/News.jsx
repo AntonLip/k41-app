@@ -41,7 +41,6 @@ export class News extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <MainContentWrapper leftSideBar="true">
         <SortForm onSubmit={this.sort} >

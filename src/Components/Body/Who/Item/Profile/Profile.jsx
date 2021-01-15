@@ -5,7 +5,7 @@ import ProfileGroup from './ProfileGroup/ProfileGroup'
 
 const Profile = (props) => {
     debugger
-
+    console.log(props)
 
 
 
