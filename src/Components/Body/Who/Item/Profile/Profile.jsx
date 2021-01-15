@@ -4,7 +4,11 @@ import { compose } from 'redux';
 import ProfileGroup from './ProfileGroup/ProfileGroup'
 
 const Profile = (props) => {
-    console.log(props)
+    debugger
+
+
+
+
     let birthDay, unit;
     let path = "http://k41.kafedra41.local/Video/Vieo/Image?filename="
     props.info.birthDay === undefined ? birthDay = null :  birthDay = props.info.birthDay.split("T")[0]

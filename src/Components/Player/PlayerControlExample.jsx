@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 import { className } from './../../../node_modules/video-react/styles/scss/video-react.scss'
 import { getVideoCourseAPI } from '../../API/VideoCourse';
 const sources = {
-  bunnyMovie: 'https://localhost:44383/Vieo/GetVideos?name=Content/Entered.mp4',
+  bunnyMovie: 'http://k41.kafedra41.local/Video/Vieo/GetVideos?name=Content/Entered.mp4',
 };
 const SourseButton = (props) => {
   if (props.u != undefined) {
@@ -123,6 +123,7 @@ export class PlayerControlExample extends Component {
   }
 
   render() {
+    debugger
     let AllSeries;
     this.state.sources != undefined ? AllSeries = this.state.sources.map(
       (u) => {
@@ -132,6 +133,8 @@ export class PlayerControlExample extends Component {
           </Button>)
       }) :
       AllSeries = () => { return <SourseButton /> };
+      let path ;
+      this.state.source.path == undefined ?  path="null" : path=this.state.source.path 
     return (
       <div>
         <Player
@@ -142,7 +145,7 @@ export class PlayerControlExample extends Component {
           width={640}
           height={480}
         >
-          <source src={"http://k41.kafedra41.local/Video/Vieo/GetVideos?name=" + this.state.source.path} />
+          <source src={"http://k41.kafedra41.local/Video/Vieo/GetVideos?name=" + path} />
 
           <BigPlayButton position="center" />
           <ControlBar autoHide={false} className="my-class">

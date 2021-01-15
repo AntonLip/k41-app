@@ -1,10 +1,11 @@
 import * as axios from "axios"
+import { basePAth } from "./api";
 
 
 const instance = axios.create(
     {
         //withCredentials :true,
-        baseURL: "http://k41.kafedra41.local/WB/api/Cadets"
+        baseURL: basePAth + "/Cadets"
     }
 );
 export const getCadetsAPI = () =>{   
@@ -27,3 +28,15 @@ export const deleteCadetsAPI = (id) =>{
          return responce.data
     });
 }
+export const createCadetAPI = (values) =>{  
+    let path = "/?"
+    return instance.post(path, JSON.stringify(values)).then(responce => {
+        if (responce.data != null)
+            window.location = "/Users"
+    }).catch((error) => {
+        console.log("Api createOficerAPI error");
+        
+    });
+}
+
+  

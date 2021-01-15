@@ -1,12 +1,12 @@
 import * as axios from "axios"
-
+export const basePAth = "https://localhost:44351/api"
 const instance = axios.create(
     {
         //withCredentials :true,
         headers: {
             'Content-Type': 'application/json'
         },
-        baseURL: "http://k41.kafedra41.local/WB/api/"
+        baseURL: basePAth
     }
 );
 
@@ -38,14 +38,14 @@ export const updateUserAPI = (data) => {
 
 }
 
-export const createUserAPI = (newUser) => {  
-    return instance.post("Lecturals/?", JSON.stringify(newUser)).then(responce => {
+export const createOficerAPI = (person) => {  
+    return instance.post("Lecturals/?", JSON.stringify(person)).then(responce => {
         if (responce.data != null)
             window.location = "/Users"
     }).catch((error) => {
-        console.log("Api call error");
-        alert(error.message);
-    });;
+        console.log("Api createOficerAPI error");
+        
+    });
 }
 
 export const getAcademicDegreesAPI = () => {
