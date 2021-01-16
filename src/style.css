@@ -1566,3 +1566,7 @@ button{
   width: 50%;
   margin: 0 auto;
 }
+
+.mr{
+  margin-right: 15px;
+}

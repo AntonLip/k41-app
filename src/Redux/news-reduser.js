@@ -190,10 +190,12 @@ export const deleteNewsThunkCreator = (id, isDelete) => {
 }
 
 export const putNewsThunkCreator = (id,data) => {
+    debugger
     return (dispatch) => {
         putSingleNewsAPI(id,data).then(resp => {
             if (resp == 204){
                 dispatch(setCurrentNewsAC(data));
+                debugger
             }
         })
     }

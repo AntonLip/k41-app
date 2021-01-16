@@ -15,11 +15,14 @@ import LessonComponent from './Lessons/Lesson/LessonComponent';
 import VideoCoursesComponent from './Lessons/VideoCourses/VideoCoursesComponent';
 import VideoCourseComponent from './Lessons/VideoCourses/VideoCourse/VideoCourseComponent';
 import WhoEdit from './Who/WhoEdit/WhoEdit';
+import EditNews  from './News/EditNews/EditNews';
+
 const Body = (props) => {
   return (
     <>
       <Route exact path="/" render={()=><NewsContainer/>} />
-      <Route path="/news/:id" render={()=><SingleNews/>} />
+      <Route exact path="/news/:id" render={()=><SingleNews/>} />
+      <Route path="/news/:id/edit" render={()=><EditNews/>} />
       <Route path="/lessons" render={()=><LessonsComponent/>} />
       <Route path="/lesson/:id" render={()=><LessonComponent/>} />
       <Route path="/VideoCourse/:id" render={()=><VideoCourseComponent/>} />
