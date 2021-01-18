@@ -1,11 +1,14 @@
 import * as axios from "axios"
+let path = "https://localhost:44383/api/VideoCourses"
+
+//let path = "http://k41.kafedra41.local/Video/api/VideoCourses"
 const instance = axios.create(
     {
         //withCredentials :true,
         headers: {
             'Content-Type': 'application/json'
         },
-        baseURL: "https://localhost:44383/api/VideoCourses"
+        baseURL: path
     }
 );
 export const getVideoCoursesNamesAPI = () => {    

@@ -13,6 +13,12 @@ export const getCadetsAPI = () =>{
          return responce.data
     });
 }
+export const getCadetsByIdAPI = (id) =>{   
+    let path = "/" + id 
+    return instance.get(path).then(responce =>{
+         return responce.data
+    });
+}
 export const getFilteredCadetsAPI = (values) =>{   
     debugger
     let path = "/FilteredCadet?militaryRank=" + values.militaryRank +

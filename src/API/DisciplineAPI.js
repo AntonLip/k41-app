@@ -24,24 +24,42 @@ export const getDisciplineNamesAPI = () => {
 }
 export const createDisciplineNamesAPI = (values) => {
     debugger
-    const formData = new FormData();
-    formData.append('body', values.Plan[File]);
-    delete values.Plan;
-    let url = 'http://k41.kafedra41.local/WB/api/DisciplineDBs/?';
-    var dataTo = JSON.stringify(values);
-    var config = {
-        method: 'post',
+    let dataTO = {
+        name : values.name,
+        fullName : values.fullName,
+        countHours : Number(values.countHours) ,        
+        countHoursGZ :  Number(values.countHoursGZ),        
+        countHoursPZ :  Number(values.countHoursPZ),        
+        countHoursLeck :  Number(values.countHoursLeck),        
+        countHoursSEM :  Number(values.countHoursSEM),        
+        countHoursLR :  Number(values.countHoursLR),        
+        countHoursMZ :  Number(values.countHoursMZ),        
+        countHoursTest : Number(values.countHoursTest),        
+        countHoursСontrolWork :  Number(values.countHoursСontrolWork),       
+        countHoursSWZ :  Number(values.countHoursSWZ),       
+        isExam : values.isExam,
+        dateOfPlan : values.dateOfPlan + "T00:00:00.000",
+        countNorm :  Number(values.countNorm),
+        Semester :  Number(values.Semester),
+        SpecializationDB : values.SpecializationDB
+    } 
+
+    delete values.Plan;   
+    const config = {
         headers: {
-            'Content-Type': 'multipart/form-data'
+            'content-type': 'application/json',
         },
-        data: dataTo
     };
-    
-    return instance.post(url, formData, config).then(responce => {
-        return responce.data
+    var s = JSON.stringify(dataTO);
+    return instance.post('/?', s, config).then(responce => {
+        if (responce.data != null)
+        {
+
+        }
+            window.location = "/lessons"
     }).catch((error) => {
-        console.log("create disciplines error");
-        alert(error.message);
+        console.log("Api lessons error");
+        
     });
     
 }
@@ -59,5 +77,13 @@ export const uploadFilePlan = (id, file, type) => {
     }).catch((error) => {
         console.log("upload files error");
         alert(error.message);
+    });
+}
+
+export const getAllLessonsinDisciplines = (id) => {
+    var path = "/" + id + "/lessons"
+    return instance.get(path).then(responce => {
+        debugger
+        return responce.data
     });
 }

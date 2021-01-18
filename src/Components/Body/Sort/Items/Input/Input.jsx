@@ -64,8 +64,7 @@ export const validate = values => {
     errors.Activ = true;
     errors.countHours = 'Часы не совпадают!!'
 
-}
-  debugger
+}  
   return errors
 }
 
