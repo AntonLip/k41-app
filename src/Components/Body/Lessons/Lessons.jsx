@@ -52,11 +52,9 @@ export class Lessons extends React.Component {
         }
     }
     submitInput = values => {
-        debugger
         var err = validate(values)
         if(!err.Activ)
-        {
-            debugger
+        {            
             createDisciplineNamesAPI(values);
         }
     }
@@ -93,12 +91,11 @@ export class Lessons extends React.Component {
                         <TextArea title="Всего лабораторных работ" size="1" name="countHoursLR"/>
                         <TextArea title="Всего контрольных работ" size="1" name="countHoursСontrolWork"/>
                         <TextArea title="Всего зачетов" size="1" name="countHoursTest"/>
-                        <TextArea title="Семестр" size="1" name="Semestr"/>
+                        <TextArea title="Семестр" size="1" name="Semester"/>
                         <TextArea title="Норма часов" size="1" name="countNorm"/>
                         <CheckboxArea title="Проводиться экзамен" size="1" name="isExam"/>
-                        <InputDate title="Дата учебного плана" name="DateTo" />
-                        <InputFile title="Выберите учебный план" name="Plan"/>
-                        <InputDropDown title="Для специализации" link={this.props.nameOfSpec}  name="NameOfSpec"/>
+                        <InputDate title="Дата учебного плана" name="dateOfPlan" />                        
+                        <InputDropDown title="Для специализации" link={this.props.nameOfSpec}  name="SpecializationDB"/>
                     </InputForm> 
                     {AllSpec}
                     <Filter />
