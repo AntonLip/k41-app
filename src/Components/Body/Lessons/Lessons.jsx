@@ -72,7 +72,7 @@ export class Lessons extends React.Component {
         let AllSpec;
         this.props.nameofDiscoplines === undefined ? AllSpec = () => { return <Dropdown /> } :
             this.props.nameOfSpec.length != 0 ?
-                AllSpec = this.props.nameOfSpec.map((u) => { return <Dropdown name={u.name} link={year} title={u.name} /> }) :
+                AllSpec = this.props.nameOfSpec.map((u) => { return <Dropdown name={u.name} link={yearLink} title={u.name} /> }) :
                 AllSpec = () => { return <Dropdown /> };
         
         return (
@@ -112,6 +112,11 @@ export class Lessons extends React.Component {
     }
 }
 
+const yearLink = [
+    {name: "3 курс"},
+    {name: "4 курс"},
+    {name: "5 курс"},
 
+]
 
 

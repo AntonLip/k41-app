@@ -4,13 +4,13 @@ import InputItem from '../InputItem'
 
 
 
-const TextArea = (props) => {
+const TextInput = (props) => {
       
     return (
         <InputItem title={props.title}>
-            <Field name={props.name} class="chat-input__text" rows={props.size} component="textarea"></Field>
+            <Field name={props.name} class="chat-input__text" component="input" type="text"></Field>
         </InputItem> 
     )
 }
 
-export default TextArea
+export default TextInput

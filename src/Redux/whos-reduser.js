@@ -11,12 +11,14 @@ const DELETE_CADET = 'DELETE_CADET'
 const SET_CADET = 'SET_CADET'
 const SET_FILTERED_CADET_DATA = 'SET_FILTERED_CADET_DATA'
 const UPDATE_CADET_DATA = 'UPDATE_CADET_DATA'
+const SET_CURRENT_USER = 'SET_CURRENT_USER'
 
 let initState =
 {
     whosPage: {
         officers: [],
-        cadets: []
+        cadets: [],
+        currentUser: {}
     }
 }
 
@@ -67,7 +69,11 @@ export const WHOsReduser = (state = initState, action) => {
                 }
             }
             return copyState;
-
+        case SET_CURRENT_USER:
+            debugger
+            copyState.whosPage.currentUser = action.data
+            return copyState;
+        
         default:
             return state;
     }
@@ -156,10 +162,11 @@ export const getCadetsThunkCreator = () => {
 export const getCadetsByIdThunkCreator = (id) => {
     return (dispatch) => {
         getCadetsByIdAPI(id).then(data => {
+            debugger
             console.log("getCadetsByIdThunkCreator");
             console.log(data);
             if (data) {
-                dispatch(setCadetsAC(data));
+                dispatch(setCurrentUserAC(data));
             }
         });
     }
@@ -227,5 +234,12 @@ const updateDataAC = (data) => {
     console.log('updateDataAC');
     console.log(data);
     let action = { type: UPDATE_USER_DATA, data }
+    return action;
+}
+
+const setCurrentUserAC = (data) => {
+    console.log('updateDataAC');
+    console.log(data);
+    let action = { type: SET_CURRENT_USER, data }
     return action;
 }

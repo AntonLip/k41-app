@@ -4,7 +4,7 @@ import InputItem from '../InputItem'
 
 const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);
 
-const FileInput = ({ 
+export const FileInput = ({ 
   input: { value: omitValue, onChange, onBlur, ...inputProps }, 
   meta: omitMeta, 
   ...props 

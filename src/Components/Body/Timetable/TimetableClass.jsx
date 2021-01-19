@@ -8,6 +8,7 @@ import Filter from '../Sort/Items/Filter/Filter'
 import DateQ from '../Sort/Items/Date/DateQ';
 import { reduxForm } from 'redux-form'
 import Clear from '../Sort/Items/Clear/Clear'
+import Day from './Day/Day';
 
 export class Timetable extends React.Component {
 
@@ -52,7 +53,6 @@ export class Timetable extends React.Component {
         this.props.getFilteredTimetable(values.lector, values.lesson, values.department, dataStart, dataStop);
     }
     render() {
-        console.log(this.props.timetable)
         let AllLessons
         this.props.timetable === undefined ? AllLessons = () => { return <Item /> } :
             this.props.timetable.length != 0 ? AllLessons = this.props.timetable.map((u) => { return <Item u={u} type={this.props.position} /> }) :
@@ -70,9 +70,9 @@ export class Timetable extends React.Component {
                     
                 </SortForm>
                 <div class="timetable">
-                    <div class="timetable__wrapper">
+                    <Day date="19.01.2021">
                         {AllLessons}
-                    </div>
+                    </Day>
                 </div>
             </MainContentWrapper>
         );
@@ -80,3 +80,5 @@ export class Timetable extends React.Component {
 }
 
 const SortForm = reduxForm({ form: 'sortTimetable' })(Sort)
+
+

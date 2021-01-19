@@ -16,6 +16,7 @@ import VideoCoursesComponent from './Lessons/VideoCourses/VideoCoursesComponent'
 import VideoCourseComponent from './Lessons/VideoCourses/VideoCourse/VideoCourseComponent';
 import WhoEdit from './Who/WhoEdit/WhoEdit';
 import EditNews  from './News/EditNews/EditNews';
+import AddLessonItem from './Lessons/Lesson/EditLessonItem/Add/AddLessonItem';
 
 const Body = (props) => {
   return (
@@ -24,7 +25,8 @@ const Body = (props) => {
       <Route exact path="/news/:id" render={()=><SingleNews/>} />
       <Route path="/news/:id/edit" render={()=><EditNews/>} />
       <Route path="/lessons" render={()=><LessonsComponent/>} />
-      <Route path="/lesson/:id" render={()=><LessonComponent/>} />
+      <Route exact path="/lesson/:id" render={()=><LessonComponent/>} />
+      <Route path="/lesson/:id/add" render={() => <AddLessonItem/>} />
       <Route path="/VideoCourse/:id" render={()=><VideoCourseComponent/>} />
       <Route path="/VideoCourses" render={()=><VideoCoursesComponent/>} />
       <Route path="/timetable" render={()=><TimetibleContainer/>} />
