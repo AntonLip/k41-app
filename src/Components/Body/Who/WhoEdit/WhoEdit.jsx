@@ -12,6 +12,7 @@ import InputFile from '../../Sort/Items/Input/items/File/InputFile'
 import { CheckboxArea } from '../../Sort/Items/Input/items/Checkdox/InputCheckbox'
 import { initialize, reduxForm } from 'redux-form'
 import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setGroupsThunkCreator, setMilitaryRankThunkCreator, setUnitThunkCreator } from '../../../../Redux/generalInfo-reduser'
+import TextInput from '../../Sort/Items/Input/items/TextInput/TextInput'
 
 class WhoEdit extends React.Component {
 
@@ -48,16 +49,16 @@ class WhoEdit extends React.Component {
                     <InputDropDown title="Воинское звание" link={this.props.militaryRank} name="militaryRank" />
                     <InputDropDown title="Должность" link={this.props.position} name="position" />
 
-                    <TextArea title="Имя" size="1" name="firstName" />
-                    <TextArea title="Отчество" size="1" name="middleName" />
-                    <TextArea title="Фамилия" size="1" name="lastName" />
+                    <TextInput title="Имя" size="1" name="firstName" />
+                    <TextInput title="Отчество" size="1" name="middleName" />
+                    <TextInput title="Фамилия" size="1" name="lastName" />
 
                     <InputDate title="Дата рождения" name="birthDay" />
                     <InputDate title="Дата призыва" name="dateOfStartService" />
                     {this.props.IsOfficers ?
                         <TextArea title="Кем призван" name="nameOFVoinkom" /> : <div></div>}
                     {this.props.IsOfficers ?
-                        <TextArea title="Серия и номер удостоверения" name="serialAndNumderMilitaryDocs" /> : <div></div>}
+                        <TextInput title="Серия и номер удостоверения" name="serialAndNumderMilitaryDocs" /> : <div></div>}
                     {this.props.IsOfficers ? <div></div> :
                         <InputDropDown title="Специализация" link={this.props.nameOfSpec} name="groupName" />}
                     {this.props.IsOfficers ?
@@ -65,16 +66,16 @@ class WhoEdit extends React.Component {
                         <InputDropDown title="Номер группы" link={this.props.groups} name="groupNumber" />}
 
                     {this.props.IsOfficers ?
-                        <TextArea title="Паспорт (серия и номер)" size="1" name="serialAndNumderCivilyDocs" /> : <div></div>}
+                        <TextInput title="Паспорт (серия и номер)" size="1" name="serialAndNumderCivilyDocs" /> : <div></div>}
                     {this.props.IsOfficers ?
-                        <TextArea title="Кем выдан" size="1" name="whoGetPassport" /> : <div></div>}
+                        <TextInput title="Кем выдан" size="1" name="whoGetPassport" /> : <div></div>}
                     {this.props.IsOfficers ?
                         <InputDate title="Дата выдачи" name="dateOfIssue" /> : <div></div>}
                     {this.props.IsOfficers ?
                         <InputDate title="Действителен до" name="dateOfExpiry" /> : <div></div>}
 
                     {this.props.IsOfficers ?
-                        <TextArea title="Форма" size="1" name="FormSec" /> : <div></div>}
+                        <TextInput title="Форма" size="1" name="FormSec" /> : <div></div>}
                     {this.props.IsOfficers ?
                         <InputDate title="Дата окончания формы" name="DateFormSec" /> : <div></div>}
 

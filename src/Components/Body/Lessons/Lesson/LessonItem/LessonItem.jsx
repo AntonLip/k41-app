@@ -12,10 +12,9 @@ const LessonItem = (props) => {
     }
     return (
         <>
-            
-            <div class="d-f ai-c ">
+            <div class="d-f ai-c mb">
                 <div class="w-100">
-                    <div class={"sort__item sort__item--mt" + " "+ (isActive ? "sort__item--active" : "")} onClick={toggleActive}>
+                    <div class={"sort__item" + " "+ (isActive ? "sort__item--active" : "")} onClick={toggleActive}>
                         <div class="sort__title">{props.title}</div>
                         <div class="sort__nav"> 
                             <div class="sort__img sort__img--ml">{isActive ? <BsFillCaretUpFill/> : <BsFillCaretDownFill/>}</div>

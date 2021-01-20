@@ -502,8 +502,8 @@ button{
   background-color: #9fc2e8;
 }
 
-.sort__item--mt{
-  margin-top: 10px;
+.sort__item--mb{
+  margin-bottom: 15px;
 }
 
 .sort__item--btn{
@@ -1580,4 +1580,8 @@ button{
 
 .mb{
   margin-bottom: 15px;
+}
+
+.d-ib{
+  display: inline-block;
 }

@@ -17,6 +17,7 @@ import InputItem from '../Sort/Items/Input/items/InputItem'
 import InputFile from '../Sort/Items/Input/items/File/InputFile'
 import { createDisciplineNamesAPI } from '../../../API/DisciplineAPI'
 import Clear from '../Sort/Items/Clear/Clear'
+import TextInput from '../Sort/Items/Input/items/TextInput/TextInput'
 
 const year = [
     { title: "5 семестр" },
@@ -79,20 +80,20 @@ export class Lessons extends React.Component {
             <MainContentWrapper leftSideBar="true">
                 <SortForm onSubmit={this.submit}>
                     <InputForm title="Добавить дисциплину"  btnText="Добавить" onSubmit={this.submitInput}>
-                        <TextArea title="Сокращенное название" size="1" name="name"/>
+                        <TextInput title="Сокращенное название" size="1" name="name"/>
                         <TextArea title="Полное название" size="2" name="fullName"/>
-                        <TextArea title="Всего часов по дисциплине" size="1" name="countHours"/>
-                        <TextArea title="Всего лекций" size="1" name="countHoursLeck"/>
-                        <TextArea title="Всего ПЗ" size="1" name="countHoursPZ"/>
-                        <TextArea title="Всего ГЗ" size="1" name="countHoursGZ"/>
-                        <TextArea title="Всего МЗ" size="1" name="countHoursMZ"/>
-                        <TextArea title="Всего СРП" size="1" name="countHoursSWZ"/>
-                        <TextArea title="Всего семинаров" size="1" name="countHoursSEM"/>
-                        <TextArea title="Всего лабораторных работ" size="1" name="countHoursLR"/>
-                        <TextArea title="Всего контрольных работ" size="1" name="countHoursСontrolWork"/>
-                        <TextArea title="Всего зачетов" size="1" name="countHoursTest"/>
-                        <TextArea title="Семестр" size="1" name="Semester"/>
-                        <TextArea title="Норма часов" size="1" name="countNorm"/>
+                        <TextInput title="Всего часов по дисциплине" size="1" name="countHours"/>
+                        <TextInput title="Всего лекций" size="1" name="countHoursLeck"/>
+                        <TextInput title="Всего ПЗ" size="1" name="countHoursPZ"/>
+                        <TextInput title="Всего ГЗ" size="1" name="countHoursGZ"/>
+                        <TextInput title="Всего МЗ" size="1" name="countHoursMZ"/>
+                        <TextInput title="Всего СРП" size="1" name="countHoursSWZ"/>
+                        <TextInput title="Всего семинаров" size="1" name="countHoursSEM"/>
+                        <TextInput title="Всего лабораторных работ" size="1" name="countHoursLR"/>
+                        <TextInput title="Всего контрольных работ" size="1" name="countHoursСontrolWork"/>
+                        <TextInput title="Всего зачетов" size="1" name="countHoursTest"/>
+                        <TextInput title="Семестр" size="1" name="Semester"/>
+                        <TextInput title="Норма часов" size="1" name="countNorm"/>
                         <CheckboxArea title="Проводиться экзамен" size="1" name="isExam"/>
                         <InputDate title="Дата учебного плана" name="dateOfPlan" />                        
                         <InputDropDown title="Для специализации" link={this.props.nameOfSpec}  name="SpecializationDB"/>
