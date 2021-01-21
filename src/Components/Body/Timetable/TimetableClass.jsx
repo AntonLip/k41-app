@@ -53,10 +53,20 @@ export class Timetable extends React.Component {
         this.props.getFilteredTimetable(values.lector, values.lesson, values.department, dataStart, dataStop);
     }
     render() {
-        let AllLessons
+        debugger
+        let AllLessons = [];
         this.props.timetable === undefined ? AllLessons = () => { return <Item /> } :
-            this.props.timetable.length != 0 ? AllLessons = this.props.timetable.map((u) => { return <Item u={u} type={this.props.position} /> }) :
-                AllLessons = () => { return <Item /> };
+            this.props.timetable.length != 0 ? AllLessons = this.props.timetable.map((u) => {
+                let timetableByDay = u.map((x) => { return <Item u={x} type={this.props.position} /> })
+                return (
+                    <Day date={u[0].date.split("T")[0]}>
+                        {timetableByDay}
+                    </Day>
+                )
+            }) :  AllLessons = () => { return <Item /> };
+
+
+
         return (
             <MainContentWrapper leftSideBar={true}>
                 <SortForm onSubmit={this.submit}>
@@ -67,12 +77,11 @@ export class Timetable extends React.Component {
                     <DateQ title="По какую дату" name="dateTo" />
                     <Filter />
                     <Clear clear={this.getTimetable.bind(this)} />
-                    
+
                 </SortForm>
                 <div class="timetable">
-                    <Day date="19.01.2021">
-                        {AllLessons}
-                    </Day>
+                    {AllLessons}
+
                 </div>
             </MainContentWrapper>
         );

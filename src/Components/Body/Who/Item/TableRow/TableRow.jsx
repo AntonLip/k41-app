@@ -12,7 +12,6 @@ export const TableRow = (props) => {
         let gr = props.u.groupNumber;
         let toH
         props.IsOfficers ? toH = Unit : toH = gr;
-
         return (
             <tr key={props.u.id} onClick={() => props.setActiveElement(props.u)}>
                 <td >{props.u.id.split("-")[0]}</td>

@@ -1,6 +1,6 @@
 import * as axios from "axios"
-//export const basePAth = "https://localhost:44351/api"
-export const basePAth = "http://k41.kafedra41.local/WB/api"
+export const basePAth = "https://localhost:44351/api"
+//export const basePAth = "http://k41.kafedra41.local/WB/api"
 const instance = axios.create(
     {
         //withCredentials :true,
@@ -40,7 +40,12 @@ export const updateUserAPI = (data) => {
 }
 
 export const createOficerAPI = (person) => {  
-    return instance.post("Lecturals/?", JSON.stringify(person)).then(responce => {
+    const config = {
+        headers: {
+            'content-type': 'application/json',
+        },
+    };
+    return instance.post("Lecturals/?", JSON.stringify(person), config).then(responce => {
         if (responce.data != null)
             window.location = "/Users"
     }).catch((error) => {

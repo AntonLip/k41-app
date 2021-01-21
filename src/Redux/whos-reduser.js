@@ -1,5 +1,5 @@
 
-import { getUserDataByFilter, deleteUserAPI, updateUserAPI, getofficersAPI, createOficerAPI } from './../API/api'
+import { getUserDataByFilter, deleteUserAPI, updateUserAPI, getofficersAPI, createOficerAPI, getUserbyIdAPI } from './../API/api'
 import { useDispatch } from 'react-redux'
 import { createCadetAPI, deleteCadetsAPI, getCadetsAPI, getCadetsByIdAPI, getFilteredCadetsAPI } from '../API/CadetsAPI'
 
@@ -86,6 +86,18 @@ export const getofficersThunkCreator = (token) => {
             console.log(data);
             if (data) {
                 dispatch(setofficersAC(data));
+            }
+        });
+    }
+}
+
+export const getofficersBuIdThunkCreator = (id) => {
+    return (dispatch) => {
+        getUserbyIdAPI(id).then(data => {
+            console.log("getUsersThunkCreator");
+            console.log(data);
+            if (data) {
+                dispatch(setCurrentUserAC(data));
             }
         });
     }
@@ -182,6 +194,7 @@ export const createOficerThunkCreator = (person) =>{
 }
 
 export const createCadetsThunkCreator= (person) =>{
+    debugger
     return (dispatch) => {
         createCadetAPI(person).catch((error) => {
             console.log("createCadetsThunkCreator error" + error);
