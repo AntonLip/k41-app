@@ -14,7 +14,6 @@ import InputDropDown from '../Sort/Items/Input/items/InputDropDown/InputDropDown
 import {InputDate} from '../Sort/Items/Date/InputDate'
 import { CheckboxArea } from '../Sort/Items/Input/items/Checkdox/InputCheckbox'
 import InputItem from '../Sort/Items/Input/items/InputItem'
-import InputFile from '../Sort/Items/Input/items/File/InputFile'
 import { createDisciplineNamesAPI } from '../../../API/DisciplineAPI'
 import Clear from '../Sort/Items/Clear/Clear'
 import TextInput from '../Sort/Items/Input/items/TextInput/TextInput'
@@ -61,7 +60,7 @@ export class Lessons extends React.Component {
     }
     submit = values => {
         debugger;
-       
+       console.log(values)
     }
     render() {
         let AllLessons;

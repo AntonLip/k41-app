@@ -56,7 +56,6 @@ class TableOfPerson extends React.Component {
                 allPerson = this.props.persons.map((u) => { return <TableRow u={u} IsOfficers={this.props.IsOfficers} setActiveElement={this.setActiveElement} /> });
             }
         }
-        debugger
         return (
             <div class={!isEmpty(this.state.profile) ? "who__wrapper" : null}>
 
@@ -102,6 +101,7 @@ class WHO extends React.Component {
         this.props.setMilitaryRank();
         this.props.setAcademicDegree();
         this.props.setAcademicTittes();
+        this.props.getSpec();
     }
     IsInRole(role, needRole) {
         if ((Array.isArray(role))) {
@@ -126,6 +126,7 @@ class WHO extends React.Component {
     submitInput = values => {
         debugger
         let person = {}
+        person.info = null
         person.militaryRank = values.militaryRank
         person.position = values.position
         person.firstName = values.firstName
@@ -146,12 +147,12 @@ class WHO extends React.Component {
             person.isMarried = values.isMarried
             person.info = values.info
         }
+        person.info = values.info
         person.pathPhotoBig = "null"
         person.pathPhotoSmall = "null"
         this.props.createPerson(person, this.props.IsOfficers);
     }
     render() {
-        debugger
         return (
             <>
                 <Route exact path={this.props.match.path}>
@@ -178,7 +179,10 @@ class WHO extends React.Component {
                                 {this.props.IsOfficers ?
                                     <InputDropDown title="Подразделение" link={this.props.units} name="unit" /> :
                                     <InputDropDown title="Номер группы" link={this.props.groups} name="groupNumber" />}
-
+                                {this.props.IsOfficers ?
+                                    <InputDropDown title="Научное звание" link={this.props.academicTitle} name="academicTitle" /> : <div></div>}
+                                {this.props.IsOfficers ?
+                                    <InputDropDown title="Научная степень" link={this.props.academicDegree} name="academicDegree" /> : <div></div>}
                                 {this.props.IsOfficers ?
                                     <TextArea title="Паспорт (серия и номер)" size="1" name="serialAndNumderCivilyDocs" /> : <div></div>}
                                 {this.props.IsOfficers ?
@@ -205,6 +209,7 @@ class WHO extends React.Component {
                             }
 
                             <Dropdown title="Должность" name="position" link={this.props.position} />
+
                             {this.props.IsOfficers ?
                                 <Dropdown title="Научное звание" name="academicTitle" link={this.props.academicTitle} /> : <div></div>
                             }
@@ -222,7 +227,7 @@ class WHO extends React.Component {
 
                     </MainContentWrapper>
                 </Route>
-                
+
             </>
         );
     }
