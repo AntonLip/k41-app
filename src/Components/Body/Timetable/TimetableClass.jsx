@@ -55,18 +55,18 @@ export class Timetable extends React.Component {
     render() {
         debugger
         let AllLessons = [];
-        this.props.timetable === undefined ? AllLessons = () => { return <Item /> } :
-            this.props.timetable.length != 0 ? AllLessons = this.props.timetable.map((u) => {
+        this.props.timetable === undefined ? AllLessons = () => { return <div>Пар с такими параметрами нет</div> } :
+            this.props.timetable.length !== 0 ? AllLessons = this.props.timetable.map((u) => {
                 let timetableByDay = u.map((x) => { return <Item u={x} type={this.props.position} /> })
                 return (
                     <Day date={u[0].date.split("T")[0]}>
                         {timetableByDay}
                     </Day>
                 )
-            }) :  AllLessons = () => { return <Item /> };
+            }) :  AllLessons = () => { return <div>Пар с такими параметрами нет</div> };
 
 
-
+        console.log(this.props.timetable)
         return (
             <MainContentWrapper leftSideBar={true}>
                 <SortForm onSubmit={this.submit}>
@@ -80,7 +80,7 @@ export class Timetable extends React.Component {
 
                 </SortForm>
                 <div class="timetable">
-                    {AllLessons}
+                    {Array(AllLessons).isArray ? AllLessons : AllLessons()}
 
                 </div>
             </MainContentWrapper>

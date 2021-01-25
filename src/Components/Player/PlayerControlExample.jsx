@@ -128,7 +128,7 @@ export class PlayerControlExample extends Component {
     this.state.sources != undefined ? AllSeries = this.state.sources.map(
       (u) => {
         return (
-          <Button onClick={this.changeSource(u)} className="mr-3">
+          <Button onClick={this.changeSource(u)} class="mr-3">
             {u.name}
           </Button>)
       }) :
@@ -141,7 +141,7 @@ export class PlayerControlExample extends Component {
           ref={player => {
             this.player = player;
           }}
-          fluid={false}
+          fluid={true}
           width={640}
           height={480}
         >

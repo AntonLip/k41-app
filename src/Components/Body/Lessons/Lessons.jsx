@@ -17,6 +17,7 @@ import InputItem from '../Sort/Items/Input/items/InputItem'
 import { createDisciplineNamesAPI } from '../../../API/DisciplineAPI'
 import Clear from '../Sort/Items/Clear/Clear'
 import TextInput from '../Sort/Items/Input/items/TextInput/TextInput'
+import InputFile from '../Sort/Items/Input/items/File/InputFile'
 
 const year = [
     { title: "5 семестр" },
@@ -94,6 +95,7 @@ export class Lessons extends React.Component {
                         <TextInput title="Семестр" size="1" name="Semester"/>
                         <TextInput title="Норма часов" size="1" name="countNorm"/>
                         <CheckboxArea title="Проводиться экзамен" size="1" name="isExam"/>
+                        <InputFile title="Учебный план" name="lan"/>
                         <InputDate title="Дата учебного плана" name="dateOfPlan" />                        
                         <InputDropDown title="Для специализации" link={this.props.nameOfSpec}  name="SpecializationDB"/>
                     </InputForm> 

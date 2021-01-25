@@ -36,6 +36,7 @@ class EditNews extends React.Component {
                     <form onSubmit={this.props.handleSubmit(this.update)} class="editFrom">
                         <div>Кому:</div>
                         <Field name="To" size="1" component="select">
+                            <option value="Всем">Всем</option>
                             {this.props.persons.map((item) => {
                                 return <option value={item.name}>{item.name}</option>
                             })}

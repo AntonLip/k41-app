@@ -47,23 +47,33 @@ class SingleNews extends React.Component {
     });
   }
 
+  back = () => {
+    this.props.clearCurrentNews()
+    this.props.history.goBack()
+  }
+
   render() {
     return (
       <MainContentWrapper>
         <div class="news">
           <div class="news__wrapper">
             <div class="d-f">
-              <Link to="/" class="news__link d-f mr" onClick={this.props.clearCurrentNews}><GrLinkPrevious class="news__link-img" />Назад ко всем новостям</Link>
+              <Link class="news__link d-f mr" onClick={this.back}><GrLinkPrevious class="news__link-img" />Назад ко всем новостям</Link>
               {
                 this.props.news.From == "ВА РБ" ? <div></div> :
-                  <Link to={this.props.match.url + "/edit"} class="news__link mr" onClick={this.startEditForm}>
-                    Редактировать<FiEdit class="news__link-img news__link-img--ml" />
-                  </Link>
+                  <>
+                    <Link to={this.props.match.url + "/edit"} class="news__link mr" onClick={this.startEditForm}>
+                      Редактировать<FiEdit class="news__link-img news__link-img--ml" />
+                    </Link>
+                    <Link class="news__link" onClick={this.delete}>
+                      Удалить <AiOutlineDelete class="news__link-img news__link-img--ml" />
+                    </Link>
+                  </>
               }
 
-              <Link class="news__link" onClick={this.delete}>
-                Удалить <AiOutlineDelete class="news__link-img news__link-img--ml" />
-              </Link>
+
+
+
             </div>
             <p class="news__date">Дата и время: {parsDate(this.props.news.Date)}</p>
             <p class="news__from">От: {this.props.news.From}</p>

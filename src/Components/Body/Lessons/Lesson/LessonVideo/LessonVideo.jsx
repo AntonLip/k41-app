@@ -18,6 +18,8 @@ const LessonVideo = (props) => {
     )
 }
 
+
+
 export default compose(
     withRouter
 )(LessonVideo)

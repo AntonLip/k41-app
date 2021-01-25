@@ -6,9 +6,13 @@ import TextInput from '../../../../Sort/Items/Input/items/TextInput/TextInput'
 import { CheckboxArea } from '../../../../Sort/Items/Input/items/Checkdox/InputCheckbox'
 
 const EditLessonItem = (props) => {
+    const add = (value)=>
+    {
+        console.log(value)
+    }
     return (
         <>
-            <form class="editForm">
+            <form class="editForm" onSubmit={props.handleSubmit(add)}>
                 <TextInput title="Название занятия" name="Header" />
                 <FieldArray name="Item" component={renderMembers} />
                 <button type="submit" class="chat-input__submit btn">Добавить занятие</button>

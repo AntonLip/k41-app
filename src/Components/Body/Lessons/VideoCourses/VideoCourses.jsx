@@ -5,17 +5,15 @@ import MainContentWrapper from '../../MainContentWrapper/MainContentWrapper'
 import Item from './../../../Body/Cards/Item'
 import Sort from '../../Sort/SortItem'
 
-import { Field, reduxForm, reset } from 'redux-form'
+import { Field, FieldArray, reduxForm, reset } from 'redux-form'
 import { Link, Route } from 'react-router-dom'
 import { Input } from '../../Sort/Items/Input/Input'
-import InputFile from '../../Sort/Items/Input/items/File/InputFile'
+import InputFile, { FileInput } from '../../Sort/Items/Input/items/File/InputFile'
 import TextInput from '../../Sort/Items/Input/items/TextInput/TextInput'
-
-const year = [
-    { title: "3 курс" },
-    { title: "4 курс" },
-    { title: "5 курс" }
-]
+import TextArea from '../../Sort/Items/Input/items/TextArea/TextArea'
+import { AiFillDelete } from 'react-icons/ai'
+import InputItem from '../../Sort/Items/Input/items/InputItem'
+import VideoCorsForm from './VideoCorsForm'
 
 export class VideoCourses extends React.Component {
     printInfo = (values) => {
@@ -38,8 +36,7 @@ export class VideoCourses extends React.Component {
             <MainContentWrapper leftSideBar="false">
                 <div class="sort cards__sort">
                     <InputForm title="Добавить видео" link={this.props.persons} btnText="Добавить" onSubmit={this.post}>
-                        <TextInput title="Название" name="Header" />
-                        <InputFile title="Файл" name="VideoFile" />
+                        <VideoCorsForm/>
                     </InputForm>
                     <Link to="/VideoCourses" class="sort__item">
                         <div class="sort__title">Все</div>
@@ -66,6 +63,8 @@ export class VideoCourses extends React.Component {
         )
     }
 }
+
+
 
 const InputForm = compose(
     reduxForm({

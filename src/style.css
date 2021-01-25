@@ -1440,7 +1440,7 @@ button{
 }
 
 .news__link--mr{
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .classroom__img  img{
@@ -1584,4 +1584,14 @@ button{
 
 .d-ib{
   display: inline-block;
+}
+
+.fs-14{
+  font-size: 14px;
+}
+
+.btn-secondary{
+  margin: 15px 15px 0 0;
+  padding: 5px 15px;
+  cursor: pointer;
 }
