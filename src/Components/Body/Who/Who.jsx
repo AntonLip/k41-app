@@ -21,7 +21,6 @@ import { deleteCadetsThunkCreator } from '../../../Redux/whos-reduser'
 import { isEmpty } from '../../../help/help'
 import { Route, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
-import WhoEdit from './WhoEdit/WhoEdit'
 
 
 const InputForm = reduxForm({ form: 'inputWho' })(Input)

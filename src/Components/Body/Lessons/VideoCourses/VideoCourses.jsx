@@ -3,16 +3,10 @@ import { compose } from 'redux'
 import MainContentWrapper from '../../MainContentWrapper/MainContentWrapper'
 
 import Item from './../../../Body/Cards/Item'
-import Sort from '../../Sort/SortItem'
 
 import { Field, FieldArray, reduxForm, reset } from 'redux-form'
 import { Link, Route } from 'react-router-dom'
 import { Input } from '../../Sort/Items/Input/Input'
-import InputFile, { FileInput } from '../../Sort/Items/Input/items/File/InputFile'
-import TextInput from '../../Sort/Items/Input/items/TextInput/TextInput'
-import TextArea from '../../Sort/Items/Input/items/TextArea/TextArea'
-import { AiFillDelete } from 'react-icons/ai'
-import InputItem from '../../Sort/Items/Input/items/InputItem'
 import VideoCorsForm from './VideoCorsForm'
 
 export class VideoCourses extends React.Component {
@@ -35,7 +29,7 @@ export class VideoCourses extends React.Component {
         return (
             <MainContentWrapper leftSideBar="false">
                 <div class="sort cards__sort">
-                    <InputForm title="Добавить видео" link={this.props.persons} btnText="Добавить" onSubmit={this.post}>
+                    <InputForm title="Добавить видеокурс" link={this.props.persons} btnText="Добавить" onSubmit={this.post}>
                         <VideoCorsForm/>
                     </InputForm>
                     <Link to="/VideoCourses" class="sort__item">

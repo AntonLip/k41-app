@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, withRouter} from 'react-router-dom'
 
 import NewsContainer from './News/NewsComponenta'
-import Classrooms from './Classrooms/Classrooms'
+import { Classrooms}   from './Classrooms/Classrooms'
 import Comp404 from './404/Comp404'
 import History from './History/History'
 import LoginSuccessContainer from './../Login/LoginContainer'

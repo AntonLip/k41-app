@@ -20,21 +20,15 @@ export class Lesson extends React.Component {
     printInfo = (values) => {
         console.log(values)
     }
-    componentDidMount() {
-        debugger
-        var data = getAllLessonsinDisciplines(this.props.match.params.id)
-
-        this.setState({
-            lessons: data
-        })
-
+    componentDidMount() {        
+       this.props.getLessons(this.props.match.params.id);        
     }
 
     render() {
         console.log(this.props)
         return (
             <>
-                <Route exact path="/lesson/:id" render={() => <Study />} />
+                <Route exact path="/lesson/:id" render={() => <Study data={this.props.lessons}/>} />
                 <Route path="/lesson/:id/edit" render={() => <EditLessonItem />} />
                 <Route path="/lesson/:id/video" render={() => <LessonVideo/>} />
 

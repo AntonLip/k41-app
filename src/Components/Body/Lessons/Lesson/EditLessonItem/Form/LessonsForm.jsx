@@ -28,9 +28,9 @@ const renderMembers = ({ fields, meta: { error, submitFailed } }) => {
             {fields.map((member, index) => (
                 <div class="d-f ai-c mb">
                     <div class="w-100 mr">
-                        <h4>Материал №{index + 1}</h4>
+                        
                         <TextInput title="Название" name={`${member}.header`} />
-                        <InputFile title="Файл" name={`${member}.file`} />
+                        
                     </div>
                     <AiFillDelete onClick={() => fields.remove(index)} />
                 </div>

@@ -18,6 +18,7 @@ export class Timetable extends React.Component {
         this.props.getGroups();
         this.getTimetable();
     }
+
     IsInRole(role, needRole) {
         if ((Array.isArray(role))) {
             for (let i = 0; i < role.length; i++) {
@@ -34,6 +35,7 @@ export class Timetable extends React.Component {
             }
         }
     }
+
     getTimetable = () => {
         var fullDate = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + " 00:00:00.0000000"
         if (this.props.isAuth) {
@@ -80,7 +82,7 @@ export class Timetable extends React.Component {
 
                 </SortForm>
                 <div class="timetable">
-                    {Array(AllLessons).isArray ? AllLessons : AllLessons()}
+                    {AllLessons}
 
                 </div>
             </MainContentWrapper>

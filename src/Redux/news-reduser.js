@@ -40,7 +40,6 @@ export const newsReduser = (state = initialState, action) => {
     copyState.newsPage = { ...state.newsPage };
     switch (action.type) {
         case SET_NEWS:
-            debugger
             if (action.data === 'undefined')
                 return copyState;
 
@@ -54,15 +53,12 @@ export const newsReduser = (state = initialState, action) => {
             copyState.currentNews = { ...copyState.currentNews, ...action.data };
             return copyState;
         case 'SET_CURRENT_PAGE':
-            debugger
             copyState.currentPage = action.data;
             return copyState;
         case 'SET_TOTAL_COUNT':
-            debugger
             copyState.totalCount = action.data;
             return copyState;
         case 'SET_CURRENT_PORTION':
-            debugger
             copyState.currentPortion = action.data;
             return copyState;
         case 'SET_SORT':

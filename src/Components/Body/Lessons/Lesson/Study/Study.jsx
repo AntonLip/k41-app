@@ -6,17 +6,20 @@ import LessonItem from '../LessonItem/LessonItem'
 import LessonPage from '../LessonPage/LessonPage'
 
 const Study = (props) => {
+    debugger
+    let allLessons;
+     allLessons = props.data.map(
+        (u) => 
+        {
+            return <LessonItem title={u.lessonType + " " + u.currentNumberOflessonsType}>
+                 <div>{u.themeName}</div>
+                 <div>{u.name}</div>
+            </LessonItem>
+        }) 
     return (
         <LessonPage>
             <Link to={props.match.url + "/edit"} class="news__link mb">Добавить <GrAdd /></Link>
-            <LessonItem title="Лекция 1">
-                <div>{props.themeName}</div>
-                <div>HELLO</div>
-            </LessonItem>
-            <LessonItem title="Лекция 1">
-                <div>{props.themeName}</div>
-                <div>HELLO</div>
-            </LessonItem>
+            {allLessons}
         </LessonPage>
 
     )

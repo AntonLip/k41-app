@@ -1,5 +1,5 @@
 import * as axios from "axios"
-import { basePAth } from "./api";
+import { basePAth, saveFile } from "./api";
 
 
 const instance = axios.create(
@@ -22,6 +22,7 @@ export const getDisciplineNamesAPI = () => {
         return responce.data
     });
 }
+
 export const createDisciplineNamesAPI = (values) => {
     debugger
     let dataTO = {
@@ -44,17 +45,18 @@ export const createDisciplineNamesAPI = (values) => {
         SpecializationDB : values.SpecializationDB
     } 
 
-    delete values.Plan;   
+    let file = values.lan;   
     const config = {
         headers: {
             'content-type': 'application/json',
         },
     };
     var s = JSON.stringify(dataTO);
-    return instance.post('/?', s, config).then(responce => {
+    return instance.post('/?', s, config).then((responce,file) => {
+        debugger
         if (responce.data != null)
         {
-
+            saveFile(file);
         }
             window.location = "/lessons"
     }).catch((error) => {
@@ -63,6 +65,7 @@ export const createDisciplineNamesAPI = (values) => {
     });
     
 }
+
 export const uploadFilePlan = (id, file, type) => {
     let url = 'https://localhost:44351/api/DisciplineDBs?id=' + id + '&type=' + type;
     const formData = new FormData();
@@ -81,6 +84,7 @@ export const uploadFilePlan = (id, file, type) => {
 }
 
 export const getAllLessonsinDisciplines = (id) => {
+    debugger
     var path = "/" + id + "/lessons"
     return instance.get(path).then(responce => {
         debugger

@@ -11,7 +11,6 @@ const VideoCorsForm = () => {
         <>
             <TextInput title="Название видеокурса" name="name" />
             <TextArea title="Описание видеокурса" name="info" />
-            <FieldArray name="Item" component={renderMembers} />
         </>
 
     )

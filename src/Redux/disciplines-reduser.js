@@ -1,14 +1,16 @@
-import { getDisciplineByIdAPI, getDisciplineNamesAPI } from "../API/DisciplineAPI"
+import { getAllLessonsinDisciplines, getDisciplineByIdAPI, getDisciplineNamesAPI } from "../API/DisciplineAPI"
 
 const GET_DISCIPLINES_NAME = 'GET_DISCIPLINES_NAME'
 const GET_DISCIPLINE = 'GET_DISCIPLINE'
+const GET_DISCIPLINE_LESSONS = 'GET_DISCIPLINE_LESSONS'
 
 
 let initState =
 {
     DisciplinesPage: {
         nameofDiscoplines: [],
-        discipline: []
+        discipline: [],
+        lessons: []
     }
 }
 
@@ -26,7 +28,9 @@ export const disciplinesReduser = (state = initState, action) => {
         case GET_DISCIPLINE:
             copyState.DisciplinesPage.discipline = [...action.data];
             return copyState;
-
+        case GET_DISCIPLINE_LESSONS:
+            copyState.DisciplinesPage.lessons = [...action.data];
+            return copyState;
         default:
             return state;
     }
@@ -47,6 +51,14 @@ export const getDisciplineThunkCreator = (id) => {
     }
 }
 
+export const getDisciplineLessonsThunkCreator = (id) =>{
+    return (dispatch) => {
+        getAllLessonsinDisciplines(id).then(data => {
+            dispatch(setLessonsAC(data));
+        });
+    }
+}
+
 const setDisciplinesNameAC = (data) => {
     return {
         type: GET_DISCIPLINES_NAME,
@@ -57,6 +69,12 @@ const setDisciplinesNameAC = (data) => {
 const setDisciplineAC = (data) => {
     return {
         type: GET_DISCIPLINE,
+        data
+    }
+}
+const setLessonsAC = (data) => {
+    return {
+        type: GET_DISCIPLINE_LESSONS,
         data
     }
 }

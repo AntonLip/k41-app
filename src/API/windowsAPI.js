@@ -11,10 +11,10 @@ const instance = axios.create(
 );
 
 export const getWindowsStatusAPI = () => {  
-    return instance.get({crossDomain:true}).then(responce => {
+    return instance.get().then(responce => {
         return responce.data
     }).catch((error)=>{
         console.log("Api windows status call error");
         alert(error.message);
      });
-}
+}//{crossDomain:true}

@@ -53,6 +53,7 @@ export class Lessons extends React.Component {
         }
     }
     submitInput = values => {
+        debugger
         var err = validate(values)
         if(!err.Activ)
         {            

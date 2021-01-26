@@ -145,7 +145,7 @@ export class PlayerControlExample extends Component {
           width={640}
           height={480}
         >
-          <source src={"http://k41.kafedra41.local/Video/Vieo/GetVideos?name=" + path} />
+          <source src={"https://localhost:44383/Vieo/GetVideos?name=" + path} />
 
           <BigPlayButton position="center" />
           <ControlBar autoHide={false} className="my-class">

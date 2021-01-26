@@ -1,6 +1,6 @@
 import * as axios from "axios"
-//export const basePAth = "https://localhost:44351/api"
-export const basePAth = "http://k41.kafedra41.local/WB/api"
+export const basePAth = "https://localhost:44351/api"
+//export const basePAth = "http://k41.kafedra41.local/WB/api"
 const instance = axios.create(
     {
         //withCredentials :true,
@@ -10,6 +10,26 @@ const instance = axios.create(
         baseURL: basePAth
     }
 );
+
+export const saveFile = (file, path) =>{
+    const formData = new FormData();
+    formData.append('body', file);    
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    }
+    let myPath = "https://localhost:44383/Vieo/Image"
+    return instance.post(myPath, formData, config).then(responce => {
+      console.log("upload files success");
+      return responce.data
+    }).catch((error) => {
+      debugger
+      console.log("upload files error");
+      alert(error.message);
+    });
+}
+
 
 export const getofficersAPI = (token) => {
     let path = "Lecturals/Min";
@@ -71,8 +91,10 @@ export const getAcademicTitlesAPI = () => {
         alert(error.message);
     });;
 }
-export const getPositionAPI = () => {
+export const getPositionAPI = (f) => {
+    debugger
     return instance.get("Positions/").then(responce => {
+        f()
         return responce.data
     });
 }

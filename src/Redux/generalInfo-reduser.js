@@ -64,7 +64,6 @@ export const generalInfoReduser = (state = initState, action) => {
             copyState.info.units = [...action.data];
             return copyState;
         case SET_SPEC:
-            debugger
             copyState.info.specializations = [...action.data];
             return copyState;
         case GET_WINDOWS_STATUS:
@@ -76,7 +75,7 @@ export const generalInfoReduser = (state = initState, action) => {
 
 export const setPositionThunkCreator = () => {
     return (dispatch) => {
-        getPositionAPI().then(data => {
+        getPositionAPI(()=>console.log("HELLO")).then(data => {
             dispatch(setPositionAC(data));
         });
     }
