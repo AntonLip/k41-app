@@ -1,43 +1,30 @@
 import React, { useState } from 'react'
-import { Field, FieldArray, reduxForm } from 'redux-form'
-import InputFile, { FileInput } from '../../../../Sort/Items/Input/items/File/InputFile'
+import { reduxForm } from 'redux-form'
 import { AiFillDelete } from 'react-icons/ai'
 import TextInput from '../../../../Sort/Items/Input/items/TextInput/TextInput'
-import { CheckboxArea } from '../../../../Sort/Items/Input/items/Checkdox/InputCheckbox'
+import { ImageUpload } from '../../../../Sort/Items/Input/items/File/ImageUploader'
+import { basePAth } from '../../../../../../API/api'
+import InputDropDown from '../../../../Sort/Items/Input/items/InputDropDown/InputDropDown'
 
 const EditLessonItem = (props) => {
-    const add = (value)=>
-    {
-        console.log(value)
-    }
+      let url = basePAth + "/LessonDTOes/upload";
     return (
-        <>
-            <form class="editForm" onSubmit={props.handleSubmit(add)}>
-                <TextInput title="Название занятия" name="Header" />
-                <FieldArray name="Item" component={renderMembers} />
+        <div>
+            <form class="editForm" onSubmit={props.handleSubmit}>
+                <TextInput title="Название раздела" name="sectionName" />
+                <TextInput title="Название темы" name="themeName" />
+                <TextInput title="Название занятия" name="name" />
+                <InputDropDown title="Тип занятия"  link={props.lessonType}  name="lessonType" />
+                <TextInput title="Номер занятия" name="currentNumberOflessonsType" />
+                <TextInput title="Количество часов" name="countHours" />
                 <button type="submit" class="chat-input__submit btn">Добавить занятие</button>
             </form>
-        </>
+            <ImageUpload class="editForm" title={"Методическая разработка"} url={url}/>
+            <ImageUpload class="editForm" title={"Дополнительные материалы"} url={url}/>
+            <ImageUpload class="editForm" title={"Презентация"} url={url}/>
+        </div>
     )
 }
 
-const renderMembers = ({ fields, meta: { error, submitFailed } }) => {
-    return (
-        <>
-            <button type="button" class="chat-input__submit btn" onClick={() => fields.push({})}>Добавить материал</button>
-            {fields.map((member, index) => (
-                <div class="d-f ai-c mb">
-                    <div class="w-100 mr">
-                        
-                        <TextInput title="Название" name={`${member}.header`} />
-                        
-                    </div>
-                    <AiFillDelete onClick={() => fields.remove(index)} />
-                </div>
-            ))}
-        </>
-    )
-
-}
 
 export default reduxForm({ form: 'editLessonItem' })(EditLessonItem)

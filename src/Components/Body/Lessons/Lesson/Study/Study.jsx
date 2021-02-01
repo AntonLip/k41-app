@@ -11,14 +11,14 @@ const Study = (props) => {
      allLessons = props.data.map(
         (u) => 
         {
-            return <LessonItem title={u.lessonType + " " + u.currentNumberOflessonsType}>
+            return <LessonItem lessonId={u.id} title={u.lessonType + " " + u.currentNumberOflessonsType}>
                  <div>{u.themeName}</div>
                  <div>{u.name}</div>
             </LessonItem>
         }) 
     return (
         <LessonPage>
-            <Link to={props.match.url + "/edit"} class="news__link mb">Добавить <GrAdd /></Link>
+            <Link to={props.match.url + "/edit"} class="news__link mb" >Добавить <GrAdd /></Link>
             {allLessons}
         </LessonPage>
 

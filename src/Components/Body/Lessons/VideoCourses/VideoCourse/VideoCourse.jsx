@@ -1,14 +1,11 @@
 import React from 'react'
-import classes from './VideoCourse.module.css'
 import { PlayerControlExample } from './../../../../Player/PlayerControlExample'
 import MainContentWrapper from '../../../MainContentWrapper/MainContentWrapper';
 import { Link, Route, withRouter } from 'react-router-dom';
-import { GrAdd, GrLinkPrevious } from 'react-icons/gr';
-import TextInput from '../../../Sort/Items/Input/items/TextInput/TextInput';
+import { GrLinkPrevious } from 'react-icons/gr';
 import { FiEdit } from "react-icons/fi";
 import { reduxForm } from 'redux-form';
 import VideoCorsForm from '../VideoCorsForm';
-import { compose } from 'redux';
 
 export class VideoCourse extends React.Component {
 
@@ -22,7 +19,6 @@ export class VideoCourse extends React.Component {
         return (
             <MainContentWrapper>
                 <div class="fs-14">
-
                     <Route exact path="/VideoCourse/:id">
                         <Link to="/VideoCourses" class="news__link news__link--mr mb"><GrLinkPrevious class="news__link-img" />Назад ко всем видеокурсам</Link>
                         <Link to={this.props.match.url + "/edit"} class="news__link mb">Редактировать <FiEdit /></Link>
@@ -32,11 +28,8 @@ export class VideoCourse extends React.Component {
                     </Route>
                     <Route path="/VideoCourse/:id/edit">
                         <Link onClick={this.props.history.goBack} class="news__link news__link--mr mb"><GrLinkPrevious class="news__link-img" />Назад к видеокурсу</Link>
-
                         <VideoCors />
-
                     </Route>
-
                 </div>
             </MainContentWrapper >
         )

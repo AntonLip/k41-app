@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getDisciplineNamesThunkCreator, getDisciplineThunkCreator } from '../../../Redux/disciplines-reduser';
+import { getDisciplineNamesThunkCreator, getDisciplineThunkCreator, getFilteredDisciplinesThunkCreator } from '../../../Redux/disciplines-reduser';
 import { setSpecThunkCreator } from '../../../Redux/generalInfo-reduser';
 import { Lessons } from './Lessons';
 let maptoStateToProps = (state) => {
@@ -23,6 +23,9 @@ let mapDispatchToProps = (dispatch) => {
         getSpec: () => {
           dispatch(setSpecThunkCreator());
         },
+        getFilteredNames: (nameOfSpec, year) => {
+            dispatch(getFilteredDisciplinesThunkCreator(nameOfSpec, year));
+        }
     }
 }
 

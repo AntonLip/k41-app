@@ -19,16 +19,11 @@ class WhoEdit extends React.Component {
         return (
             <MainContentWrapper>
                 <Link onClick={this.back} class="news__link"><GrLinkPrevious class="news__link-img" />Назад</Link>
-                <WhoEditForm onSubmit={this.submit}/>
+                <WhoEditForm onSubmit={this.submit} IsOfficers={this.props.IsOfficers}/>
             </MainContentWrapper>
         )
     }
 }
-
-
-
-
-
 export default compose(
     withRouter,
 )(WhoEdit)

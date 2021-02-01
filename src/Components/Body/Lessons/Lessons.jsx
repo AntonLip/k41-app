@@ -61,8 +61,11 @@ export class Lessons extends React.Component {
         }
     }
     submit = values => {
-        debugger;
+        debugger
+       let nameOfSpec
+       let year
        console.log(values)
+       this.props.getFilteredNames(nameOfSpec, year);
     }
     render() {
         let AllLessons;
@@ -74,7 +77,7 @@ export class Lessons extends React.Component {
         let AllSpec;
         this.props.nameofDiscoplines === undefined ? AllSpec = () => { return <Dropdown /> } :
             this.props.nameOfSpec.length != 0 ?
-                AllSpec = this.props.nameOfSpec.map((u) => { return <Dropdown name={u.name} link={yearLink} title={u.name} /> }) :
+                AllSpec = this.props.nameOfSpec.map((u) => { return <Dropdown name={u.id} link={yearLink} title={u.name} /> }) :
                 AllSpec = () => { return <Dropdown /> };
         
         return (

@@ -7,28 +7,38 @@ export class ImageUpload extends React.Component {
     this.state =
     {
       file: '',
-      url: 'https://localhost:44383/Vieo/Image'
+      url: 'https://localhost:44383/Vieo/addvideo',
+      title: 'Загрузить'
     };
+    
+   
+  }
+  componentDidMount(){
+    if(this.props.url != undefined)
+    {
+      this.setState({
+        url: this.props.url
+      })
+    }
+    if(this.props.title != undefined)
+    {
+      this.setState({title: this.props.title})
+    }   
   }
 
   _handleSubmit(e) {
     e.preventDefault();
-    debugger
     const formData = new FormData();
     formData.append('body', this.state.file);
     
     const config = {
       headers: {
-        'content-type': 'multipart/form-data',
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS","proxy": "http://localhost:3000"
       },
     };
-    return post(this.state.url, formData, config).then(responce => {
+    return post(this.state.url + this.props.id, formData, config).then(responce => {
       console.log("upload files success");
       return responce.data
     }).catch((error) => {
-      debugger
       console.log("upload files error");
       alert(error.message);
     });
@@ -53,27 +63,16 @@ export class ImageUpload extends React.Component {
   }
 
   render() {
-    let { imagePreviewUrl } = this.state;
-    let $imagePreview = null;
-    if (imagePreviewUrl) {
-      $imagePreview = (<img src={imagePreviewUrl} />);
-    } else {
-      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-    }
-
     return (
-      <div >
+      <div>
         <form onSubmit={(e) => this._handleSubmit(e)}>
           <input
             type="file"
             onChange={(e) => this._handleImageChange(e)} />
           <button
             type="submit"
-            onClick={(e) => this._handleSubmit(e)}>Upload Image</button>
+            onClick={(e) => this._handleSubmit(e)}>{this.state.title}</button>
         </form>
-        <div >
-          {$imagePreview}
-        </div>
       </div>
     )
   }

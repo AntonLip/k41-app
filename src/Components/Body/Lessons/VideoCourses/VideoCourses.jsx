@@ -1,10 +1,8 @@
 import React from 'react'
 import { compose } from 'redux'
 import MainContentWrapper from '../../MainContentWrapper/MainContentWrapper'
-
 import Item from './../../../Body/Cards/Item'
-
-import { Field, FieldArray, reduxForm, reset } from 'redux-form'
+import { reduxForm, reset } from 'redux-form'
 import { Link, Route } from 'react-router-dom'
 import { Input } from '../../Sort/Items/Input/Input'
 import VideoCorsForm from './VideoCorsForm'
@@ -25,7 +23,7 @@ export class VideoCourses extends React.Component {
                 AllCourses = this.props.videocourses.map((u) => { return <Item u={u} path="/VideoCourse/" /> }) :
                 AllCourses = () => { return <Item /> };
 
-        console.log(this.props)
+      
         return (
             <MainContentWrapper leftSideBar="false">
                 <div class="sort cards__sort">
@@ -57,8 +55,6 @@ export class VideoCourses extends React.Component {
         )
     }
 }
-
-
 
 const InputForm = compose(
     reduxForm({

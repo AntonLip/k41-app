@@ -15,7 +15,6 @@ import { CheckboxArea } from '../Sort/Items/Input/items/Checkdox/InputCheckbox'
 
 import { Input, validate, warn } from '../Sort/Items/Input/Input';
 import TextArea from '../Sort/Items/Input/items/TextArea/TextArea';
-import { deleteCadetsThunkCreator } from '../../../Redux/whos-reduser'
 
 
 import { isEmpty } from '../../../help/help'

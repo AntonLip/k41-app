@@ -11,29 +11,39 @@ export class Lesson extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-
-        this.state = {
-            lessons: []
-        }
-
     }
     printInfo = (values) => {
         console.log(values)
     }
-    componentDidMount() {        
-       this.props.getLessons(this.props.match.params.id);        
+    componentDidMount() {
+        this.props.getLessons(this.props.match.params.id);
+        this.props.getLessonType();
     }
+    add = (values) => {
 
+        let value = {};
+
+        value.name = values.name
+        value.themeName = values.themeName
+        value.sectionName = values.sectionName
+        value.lessonType = values.lessonType
+        value.DisciplineId = this.props.match.params.id
+        value.countHours = Number(values.countHours)
+        value.currentNumberOflessonsType = Number(values.currentNumberOflessonsType)
+        
+        debugger
+        this.props.addLesson(this.props.match.params.id, value);
+
+    }
     render() {
-        console.log(this.props)
+
         return (
             <>
-                <Route exact path="/lesson/:id" render={() => <Study data={this.props.lessons}/>} />
-                <Route path="/lesson/:id/edit" render={() => <EditLessonItem />} />
-                <Route path="/lesson/:id/video" render={() => <LessonVideo/>} />
-
-                <Route path="/lesson/:id/else" render={() => <LessonOther/>} />
-                <Route path="/lesson/:id/plan" render={() => <LessonPlan/>} />
+                <Route exact path="/lesson/:id" render={() => <Study data={this.props.lessons} />} />
+                <Route path="/lesson/:id/edit" render={() => <EditLessonItem onSubmit={this.add} lessonType={this.props.lessonType} />} />
+                <Route path="/lesson/:id/video" render={() => <LessonVideo />} />
+                <Route path="/lesson/:id/else" render={() => <LessonOther />} />
+                <Route path="/lesson/:id/plan" render={() => <LessonPlan />} />
             </>
         )
     }

@@ -1,4 +1,4 @@
-import { getAcademicDegreesAPI, getAcademicTitlesAPI, getGroupsAPI, getLecturalsNameAPI, getMilitaryRanksAPI, getPositionAPI, getSpecAPI, getUnitAPI} from "../API/api";
+import { getAcademicDegreesAPI, getAcademicTitlesAPI, getGroupsAPI, getLecturalsNameAPI, getLessonTypeAPI, getMilitaryRanksAPI, getPositionAPI, getSpecAPI, getUnitAPI } from "../API/api";
 import { getDisciplineNamesAPI } from "../API/DisciplineAPI";
 import { getWindowsStatusAPI } from "../API/windowsAPI";
 
@@ -11,6 +11,7 @@ const SET_DISCIPLINES = 'SET_DISCIPLINES'
 const SET_LECTURAL = 'SET_LECTURAL'
 const SET_UNITS = 'SET_UNITS'
 const SET_SPEC = 'SET_SPEC'
+const SET_LESSON_TYPE = 'SET_LESSON_TYPE'
 const GET_WINDOWS_STATUS = 'GET_WINDOWS_STATUS'
 
 
@@ -25,14 +26,14 @@ let initState =
         units: [],
         disciplines: [],
         lecturals: [],
-        specializations:[],
+        specializations: [],
+        lessonType: [],
         openCloseWindow: []
     }
 }
 
 export const generalInfoReduser = (state = initState, action) => {
-    if(action.data === undefined)
-    {
+    if (action.data === undefined) {
         return state;
     }
     let copyState = {
@@ -41,6 +42,9 @@ export const generalInfoReduser = (state = initState, action) => {
     switch (action.type) {
         case SET_POSITION:
             copyState.info.position = [...action.data];
+            return copyState;
+        case SET_LESSON_TYPE:
+            copyState.info.lessonType = [...action.data];
             return copyState;
         case SET_MILITARY_RANK:
             copyState.info.militaryRank = [...action.data];
@@ -75,7 +79,7 @@ export const generalInfoReduser = (state = initState, action) => {
 
 export const setPositionThunkCreator = () => {
     return (dispatch) => {
-        getPositionAPI(()=>console.log("HELLO")).then(data => {
+        getPositionAPI(() => console.log("HELLO")).then(data => {
             dispatch(setPositionAC(data));
         });
     }
@@ -152,6 +156,15 @@ export const getWindowsStatusThunkCreator = () => {
         });
     }
 }
+
+export const getLessonTypeThunkCreator = () => {
+    return (dispatch) => {
+        getLessonTypeAPI().then(data => {
+            dispatch(setLessonTypeAC(data));
+        });
+    }
+}
+
 const setPositionAC = (data) => {
     return {
         type: SET_POSITION,
@@ -182,6 +195,13 @@ const setAcadTitleAC = (data) => {
 const setGroupsAC = (data) => {
     return {
         type: SET_GROUPS,
+        data
+    }
+}
+
+const setLessonTypeAC = (data) => {
+    return {
+        type: SET_LESSON_TYPE,
         data
     }
 }

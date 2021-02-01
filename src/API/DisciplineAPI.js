@@ -5,19 +5,26 @@ import { basePAth, saveFile } from "./api";
 const instance = axios.create(
     {
         //withCredentials :true,
-        baseURL: basePAth + "/DisciplineDBs"
+        baseURL: basePAth 
     }
 );
 
 export const getDisciplineByIdAPI = (id) => {
-    var path = "/" + id
+    var path = "/DisciplineDBs/" + id
     return instance.get(path).then(responce => {
         return responce.data
     });
 }
 
 export const getDisciplineNamesAPI = () => {
-    var path = "/Names"
+    var path = "/DisciplineDBs/Names"
+    return instance.get(path).then(responce => {
+        return responce.data
+    });
+}
+
+export const getFilteredDisciplineNamesAPI = (specName, year) => {
+    var path = "/DisciplineDBs/filter?" + "specName=" + specName + "&year=" + year;
     return instance.get(path).then(responce => {
         return responce.data
     });
@@ -52,11 +59,11 @@ export const createDisciplineNamesAPI = (values) => {
         },
     };
     var s = JSON.stringify(dataTO);
-    return instance.post('/?', s, config).then((responce,file) => {
+    return instance.post('/DisciplineDBs/?', s, config).then((responce,file) => {
         debugger
         if (responce.data != null)
         {
-            saveFile(file);
+            uploadFilePlan(responce.data.id, file, "Plan");
         }
             window.location = "/lessons"
     }).catch((error) => {
@@ -67,7 +74,7 @@ export const createDisciplineNamesAPI = (values) => {
 }
 
 export const uploadFilePlan = (id, file, type) => {
-    let url = 'https://localhost:44351/api/DisciplineDBs?id=' + id + '&type=' + type;
+    let url = '/DisciplineDBs?id=' + id + '&type=' + type;
     const formData = new FormData();
     formData.append('body', file);
     const config = {
@@ -85,8 +92,22 @@ export const uploadFilePlan = (id, file, type) => {
 
 export const getAllLessonsinDisciplines = (id) => {
     debugger
-    var path = "/" + id + "/lessons"
-    return instance.get(path).then(responce => {
+    var path = "/DisciplineDBs/" + id + "/lessons"
+    return instance.get(path).then(responce => {        
+        return responce.data
+    });
+}
+
+export const createLessonInDisciplineAPI = (values) => {
+    debugger
+    var path = "/LessonDTOes/"
+    const config = {
+        headers: {
+            'content-type': 'application/json',
+        },
+    };
+    var s = JSON.stringify(values);
+    return instance.post(path, s, config).then(responce => {
         debugger
         return responce.data
     });
