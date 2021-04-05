@@ -86,7 +86,6 @@ export const uploadFilePlan = (id, file, type) => {
         return responce.data
     }).catch((error) => {
         console.log("upload files error");
-        alert(error.message);
     });
 }
 

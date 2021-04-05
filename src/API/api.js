@@ -24,9 +24,7 @@ export const saveFile = (file, path) =>{
       console.log("upload files success");
       return responce.data
     }).catch((error) => {
-      debugger
       console.log("upload files error");
-      alert(error.message);
     });
 }
 
@@ -39,7 +37,6 @@ export const getofficersAPI = (token) => {
         return responce.data
     }).catch((error) => {
         console.log("Api  Lecturals/Min error");
-        alert(error.message);
     });;
 }   
 
@@ -47,11 +44,9 @@ export const getUserbyIdAPI = (id) => {
     let path = "Lecturals/" + id;
     debugger
     return instance.get(path).then(responce => {
-        debugger
         return responce.data
     }).catch((error) => {
         console.log("Api call error");
-        alert(error.message);
     });;
 }
 
@@ -79,7 +74,6 @@ export const getAcademicDegreesAPI = () => {
         return responce.data
     }).catch((error) => {
         console.log("Api call error");
-        alert(error.message);
     });;
 }
 
@@ -88,7 +82,6 @@ export const getAcademicTitlesAPI = () => {
         return responce.data
     }).catch((error) => {
         console.log("Api call error");
-        alert(error.message);
     });;
 }
 export const getPositionAPI = (f) => {
@@ -103,7 +96,6 @@ export const getMilitaryRanksAPI = () => {
         return responce.data
     }).catch((error) => {
         console.log("Api call error");
-        alert(error.message);
     });;
 }
 export const getUserDataByFilter = (values) => {
@@ -115,8 +107,7 @@ export const getUserDataByFilter = (values) => {
         return responce.data
     }).catch((error) => {
         console.log("Api call error");
-        alert(error.message);
-    });;
+    });
 }
 export const deleteUserAPI = (id) => {
 
@@ -126,7 +117,6 @@ export const deleteUserAPI = (id) => {
         return responce.data
     }).catch((error) => {
         console.log("Api call error");
-        alert(error.message);
     });
 }
 
@@ -136,7 +126,6 @@ export const getUnitAPI = () => {
         return responce.data
     }).catch((error) => {
         console.log("Api Units call error");
-        alert(error.message);
     });
 }
 
@@ -146,7 +135,6 @@ export const getLecturalsNameAPI= () => {
         return responce.data
     }).catch((error) => {
         console.log("Api Units call error");
-        alert(error.message);
     });
 }
 
@@ -156,7 +144,6 @@ export const getGroupsAPI= () => {
         return responce.data
     }).catch((error) => {
         console.log("Api Units call error");
-        alert(error.message);
     });
 }
 
@@ -165,7 +152,6 @@ export const getSpecAPI = () => {
         return responce.data
     }).catch((error) => {
         console.log("Api call error SpecializationDBs");
-        alert(error.message);
     });;
 }
 

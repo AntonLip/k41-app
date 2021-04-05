@@ -17,7 +17,6 @@ export const getVideoCoursesNamesAPI = () => {
         return responce.data
     }).catch((error)=>{
         console.log("Api VideoCourses call error");
-        alert(error.message);
      });
 }
 export const getVideoCourseAPI = (id) => {    
@@ -26,6 +25,5 @@ export const getVideoCourseAPI = (id) => {
         return responce.data
     }).catch((error)=>{
         console.log("Api VideoCourses call error");
-        alert(error.message);
      });
 }

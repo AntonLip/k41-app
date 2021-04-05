@@ -49,7 +49,6 @@ export const getTimetableForClassromAPI = (dateTime) => {
     var path = "/" + dateTime;
 
     return instance.get(path).then(responce => {
-        debugger
         return responce.data
     });
 }

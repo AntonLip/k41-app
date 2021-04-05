@@ -24,7 +24,6 @@ export const getNewsAPI = (page, count, sort) => {
         return responce.data
     }).catch((error)=>{
         console.log("Api news call error");
-        alert(error.message);
      });
 }
 export const getSingleNewsAPI = (id) => {    
@@ -34,7 +33,6 @@ export const getSingleNewsAPI = (id) => {
         return responce.data
     }).catch((error)=>{
         console.log("Api news call error");
-        alert(error.message);
      });
 }
 
@@ -45,7 +43,6 @@ export const postNewsAPI = (data) => {
         return responce.status
     }).catch((error)=>{
         console.log("Api news call error");
-        alert(error.message);
      });
 }
 
@@ -55,7 +52,6 @@ export const deleteSingleNewsAPI = (id, isDelete="False") => {
         return responce.status
     }).catch((error)=>{
         console.log("Api news call error");
-        alert(error.message);
      });
 }
 export const putSingleNewsAPI = (id, data) => {    
@@ -64,6 +60,5 @@ export const putSingleNewsAPI = (id, data) => {
         return responce.status
     }).catch((error)=>{
         console.log("Api news call error");
-        alert(error.message);
      });
 }

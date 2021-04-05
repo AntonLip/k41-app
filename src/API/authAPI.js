@@ -1,18 +1,18 @@
 import { createUserManager } from 'redux-oidc'
-let path = "http://localhost:5001/" //"http://k41.kafedra41.local/IS4"
+let path = "http://k41.kafedra41.local/IS"//"http://localhost:5001/" 
 const config = {
   // the URL of our identity server
   authority: path,
   // this ID maps to the client ID in the identity client configuration
-  client_id: "SPA.client",
+  client_id: "mvc",
   // URL to redirect to after login
-  redirect_uri: "http://localhost:3000/signin-oidc",//http://k41.Kafedra41.local:90/signin-oidc
+  redirect_uri: 'http://k41.Kafedra41.local:90/signin-oidc' ,   //"http://localhost:3000/signin-oidc"
   response_type: "id_token token",
   // the scopes or resources we would like access to
-  scope: "openid profile email phone address family_name given_name api1 Role position",
+  scope: "openid profile  api1 ", //email phone address family_name given_name Role position
   // URL to redirect to after logout http://localhost:3000/signout-callback-oidc
   client_secret: "secret",
-  post_logout_redirect_uri: "http://localhost:3000/signout-callback-oidc",//http://k41.Kafedra41.local:90/signout-callback-oidc
+  post_logout_redirect_uri: "http://k41.Kafedra41.local:90/signout-callback-oidc" ,//"http://localhost:3000/signout-callback-oidc"
   loadUserInfo: true
 };
 
@@ -23,7 +23,7 @@ export var AuthMe = (props) => {
   
   userManager.signinRedirect();
 }
-export var LogOutMe = () => {
+export var LogOutMe = () => {       
   userManager.signoutRedirect();
 }
 
