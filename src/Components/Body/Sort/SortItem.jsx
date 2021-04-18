@@ -1,9 +1,5 @@
 import React from 'react'
 
-import Dropdown from './Items/Dropdown/Dropdown'
-import Date from './Items/Date/DateQ'
-import Input from './Items/Input/Input'
-import { compose } from 'redux'
 
 
 

@@ -15,6 +15,5 @@ export const getWindowsStatusAPI = () => {
         return responce.data
     }).catch((error)=>{
         console.log("Api windows status call error");
-        alert(error.message);
      });
 }//{crossDomain:true}
