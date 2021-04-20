@@ -35,7 +35,7 @@ export class ImageUpload extends React.Component {
       headers: {
       },
     };
-    return post(this.state.url + this.props.id, formData, config).then(responce => {
+    return post(this.state.url, formData, config).then(responce => {
       console.log("upload files success");
       return responce.data
     }).catch((error) => {

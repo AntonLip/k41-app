@@ -9,6 +9,9 @@ import DateQ from '../Sort/Items/Date/DateQ';
 import { reduxForm } from 'redux-form'
 import Clear from '../Sort/Items/Clear/Clear'
 import Day from './Day/Day';
+import InputFile from '../Sort/Items/Input/items/File/InputFile';
+import { FileInput } from '../Sort/Items/Input/items/File/InputImageDrop';
+import { ImageUpload } from '../Sort/Items/Input/items/File/ImageUploader';
 
 export class Timetable extends React.Component {
 
@@ -77,13 +80,17 @@ export class Timetable extends React.Component {
                     <Dropdown title="Преподаватель" link={this.props.lecturals} size="10" name="lector" />
                     <DateQ title="С какой даты" name="dateFrom" />
                     <DateQ title="По какую дату" name="dateTo" />
+                    
                     <Filter />
                     <Clear clear={this.getTimetable.bind(this)} />
-
+                    {this.IsInRole( this.role, "Admin") ?
+                         <div></div> : <div>
+                         <ImageUpload url="http://localhost:56224/api/Timetable"/>
+                     </div> 
+                    }
                 </SortForm>
                 <div class="timetable">
                     {AllLessons}
-
                 </div>
             </MainContentWrapper>
         );

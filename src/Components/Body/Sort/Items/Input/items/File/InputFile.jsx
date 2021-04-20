@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import InputItem from '../InputItem'
+import { ImageUpload } from './ImageUploader';
 
 const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);
 
@@ -19,11 +20,11 @@ export const FileInput = ({
     />
   );
 };
-
+//"http://localhost:56224/api/Timetable"
 const InputFile = (props) => {
     return (
         <InputItem title={props.title}>
-            <Field name={props.name} component={FileInput} type="file" class="chat-input__text"/>
+             <ImageUpload url={props.url}/> 
         </InputItem>
     )
 }
