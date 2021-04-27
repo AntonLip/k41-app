@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getofficersThunkCreator, getFilteredofficersThunkCreator, deleteUserThunkCreator, getCadetsThunkCreator, getFilteredCadetsThunkCreator, createOficerThunkCreator, deleteCadetsThunkCreator, createCadetsThunkCreator } from './../../../Redux/whos-reduser'
 import { compose } from 'redux';
 import { setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setGroupsThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator, setSpecThunkCreator } from "./../../../Redux/generalInfo-reduser";
-import  WHO  from './Who';
+import WHO from './Who';
 import { setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
 
 let maptoStateToProps = (state) => {
@@ -28,11 +28,11 @@ let maptoStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        setPosition: () => {
-            dispatch(setPositionThunkCreator());
+        setPosition: (IsOfficers) => {
+            dispatch(setPositionThunkCreator(IsOfficers));
         },
-        setMilitaryRank: () => {
-            dispatch(setMilitaryRankThunkCreator());
+        setMilitaryRank: (IsOfficers) => {
+            dispatch(setMilitaryRankThunkCreator(IsOfficers));
         },
         setAcademicDegree: () => {
             dispatch(setAcademicDegreeThunkCreator());
@@ -52,9 +52,6 @@ let mapDispatchToProps = (dispatch) => {
         getCadets: () => {
             dispatch(getCadetsThunkCreator());
         },
-        getSpec: () => {
-            dispatch(setSpecThunkCreator());
-          },
         getFilteredPerson: (values, IsOfficers) => {
             IsOfficers ? dispatch(getFilteredofficersThunkCreator(values)) :
                 dispatch(getFilteredCadetsThunkCreator(values));

@@ -9,19 +9,16 @@ import DateQ from '../Sort/Items/Date/DateQ';
 import { reduxForm } from 'redux-form'
 import Clear from '../Sort/Items/Clear/Clear'
 import Day from './Day/Day';
-import InputFile from '../Sort/Items/Input/items/File/InputFile';
-import { FileInput } from '../Sort/Items/Input/items/File/InputImageDrop';
 import { ImageUpload } from '../Sort/Items/Input/items/File/ImageUploader';
 
 export class Timetable extends React.Component {
 
     componentDidMount() {
-        this.props.getDisciplines();
+       // this.props.getDisciplines();
         this.props.getPersons();
         this.props.getGroups();
         this.getTimetable();
     }
-
     IsInRole(role, needRole) {
         if ((Array.isArray(role))) {
             for (let i = 0; i < role.length; i++) {
@@ -38,9 +35,12 @@ export class Timetable extends React.Component {
             }
         }
     }
-
     getTimetable = () => {
-        var fullDate = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + " 00:00:00.0000000"
+        var year = new Date().getFullYear();
+        var month = new Date().getMonth() + 1;
+        var day = new Date().getDate()
+        var fullDate =  year + "-" + "0"+ month + "-" + day
+        debugger
         if (this.props.isAuth) {
             this.IsInRole(this.props.role, "Cadet") ? this.props.getTimetablePerData(443, fullDate, true) :
                 this.IsInRole(this.props.role, "lectural") ? this.props.getTimetablePerData(this.props.family_name, fullDate, false) :
@@ -54,17 +54,19 @@ export class Timetable extends React.Component {
         debugger;
         let dataStart, dataStop;
         values.dateFrom === undefined ? dataStart = '1991-10-11' : dataStart = values.dateFrom;
+        values.lector === undefined ? values.lector = null : dataStart = dataStart;
+        values.lesson === undefined ? values.lesson = null : dataStart = dataStart;
+        values.department === undefined ? values.department = null : dataStart = dataStart;
         values.dateTo === undefined ? dataStop = '1991-10-11' : dataStop = values.dateTo;
         this.props.getFilteredTimetable(values.lector, values.lesson, values.department, dataStart, dataStop);
     }
-    render() {
-        debugger
+    render() {        
         let AllLessons = [];
         this.props.timetable === undefined ? AllLessons = () => { return <div>Пар с такими параметрами нет</div> } :
             this.props.timetable.length !== 0 ? AllLessons = this.props.timetable.map((u) => {
                 let timetableByDay = u.map((x) => { return <Item u={x} type={this.props.position} /> })
                 return (
-                    <Day date={u[0].date.split("T")[0]}>
+                    <Day date={u[0].lessonDate.split("T")[0]}>
                         {timetableByDay}
                     </Day>
                 )

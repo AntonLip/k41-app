@@ -58,7 +58,6 @@ export const WHOsReduser = (state = initState, action) => {
                 copyState.whosPage.cadets.length = 0;
                 copyState.whosPage.cadets = [...action.data];
             }
-
             return copyState;
         case DELETE_CADET:
             debugger
@@ -116,6 +115,7 @@ export const updateUserThunkCreator = (data) => {
 }
 
 export const getFilteredofficersThunkCreator = (values) => {
+    debugger
     return (dispatch) => {
         getUserDataByFilter(values).then(data => {
             console.log("getFilteredofficersThunkCreator");

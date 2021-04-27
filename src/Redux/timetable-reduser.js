@@ -5,8 +5,8 @@ const GET_TIMETABLE = 'GET_TIMETABLE'
 let initialState = {
     timetablePage: {
         timetable: [
-            
-         ]
+
+        ]
 
     }
 }
@@ -19,8 +19,9 @@ export const timetableReduser = (state = initialState, action) => {
 
         case GET_TIMETABLE:
             console.log('timetableReduser GET TIMETABLE');
-            copyState.timetablePage.timetable = [...action.data];
-            console.log(...action.data);
+
+            copyState.timetablePage.timetable = [...action.data.value];
+            console.log(...action.data.value);
 
             return copyState;
         default:
@@ -28,32 +29,16 @@ export const timetableReduser = (state = initialState, action) => {
     }
 }
 
-export const getTimetableThunkCreator = (forWho, dateTime, isCadet) => {
+
+
+export const getFilteredTimetableThunkCreator = (lectural, discipline, group, startDate, stopDate) => {
     return (dispatch) => {
-        getTimetableAPI(forWho, dateTime, isCadet).then(data => {
+        getFilteredTimetableAPI(lectural, discipline, group, startDate, stopDate).then(data => {
             dispatch(setDataAC(data));
         });
     }
 }
 
-
-export const getFilteredTimetableThunkCreator = (lectural, discipline, group,  startDate, stopDate) => {
-    return (dispatch) => {
-        debugger
-        getFilteredTimetableAPI(lectural, discipline, group,  startDate, stopDate).then(data => {
-            dispatch(setDataAC(data));
-        });
-    }
-}
-
-export const getTimetableThunkCreatorPerDay = (dateTime) => {
-    return (dispatch) => {
-        getTimetablePerDayAPI(dateTime).then(data => {
-            debugger
-            dispatch(setDataAC(data));
-        });
-    }
-}
 
 export const setDataAC = (data) => {
     return {

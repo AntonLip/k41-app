@@ -95,11 +95,11 @@ class WHO extends React.Component {
 
     }
     _getSecondaryData() {
-        this.props.setPosition();
-        this.props.setMilitaryRank();
-        this.props.setAcademicDegree();
-        this.props.setAcademicTittes();
-        this.props.getSpec();
+        this.props.setPosition(this.props.IsOfficers);
+        this.props.setMilitaryRank(this.props.IsOfficers);
+        // this.props.setAcademicDegree();
+        // this.props.setAcademicTittes();
+        //this.props.getSpec();
     }
     IsInRole(role, needRole) {
         if ((Array.isArray(role))) {
@@ -124,7 +124,6 @@ class WHO extends React.Component {
     submitInput = values => {
         debugger
         let person = {}
-        person.info = null
         person.militaryRank = values.militaryRank
         person.position = values.position
         person.firstName = values.firstName
@@ -143,10 +142,7 @@ class WHO extends React.Component {
             person.isMarried = values.isMarried
             person.FormSec = Number(values.FormSec)
             person.isMarried = values.isMarried
-            person.info = values.info
         }
-        person.info = values.info
-        person.pathPhotoBig = "null"
         person.pathPhotoSmall = "null"
         this.props.createPerson(person, this.props.IsOfficers);
     }
@@ -165,22 +161,22 @@ class WHO extends React.Component {
                                 <TextArea title="Имя" size="1" name="firstName" />
                                 <TextArea title="Отчество" size="1" name="middleName" />
                                 <TextArea title="Фамилия" size="1" name="lastName" />
-
+                                <TextArea title="Номер телефона" size="1" name="phoneNumber" />
                                 <InputDate title="Дата рождения" name="birthDay" />
                                 <InputDate title="Дата призыва" name="dateOfStartService" />
                                 {this.props.IsOfficers ?
                                     <TextArea title="Кем призван" name="nameOFVoinkom" /> : <div></div>}
                                 {this.props.IsOfficers ?
                                     <TextArea title="Серия и номер удостоверения" name="serialAndNumderMilitaryDocs" /> : <div></div>}
-                                {this.props.IsOfficers ? <div></div> :
-                                    <InputDropDown title="Специализация" link={this.props.nameOfSpec} name="groupName" />}
+                                {/* {this.props.IsOfficers ? <div></div> :
+                                    <InputDropDown title="Специализация" link={this.props.nameOfSpec} name="groupName" />} */}
                                 {this.props.IsOfficers ?
                                     <InputDropDown title="Подразделение" link={this.props.units} name="unit" /> :
                                     <InputDropDown title="Номер группы" link={this.props.groups} name="groupNumber" />}
-                                {this.props.IsOfficers ?
+                                {/* {this.props.IsOfficers ?
                                     <InputDropDown title="Научное звание" link={this.props.academicTitle} name="academicTitle" /> : <div></div>}
                                 {this.props.IsOfficers ?
-                                    <InputDropDown title="Научная степень" link={this.props.academicDegree} name="academicDegree" /> : <div></div>}
+                                    <InputDropDown title="Научная степень" link={this.props.academicDegree} name="academicDegree" /> : <div></div>} */}
                                 {this.props.IsOfficers ?
                                     <TextArea title="Паспорт (серия и номер)" size="1" name="serialAndNumderCivilyDocs" /> : <div></div>}
                                 {this.props.IsOfficers ?
@@ -197,8 +193,8 @@ class WHO extends React.Component {
 
                                 <InputFile title="Фото" name="pathPhotoSmall" />
                                 <CheckboxArea title="Женат (замужем)" size="1" name="isMarried" />
-
-                                <TextArea title="Информация" size="3" name="info" />
+{/* 
+                                <TextArea title="Информация" size="3" name="info" /> */}
                             </InputForm>
                             <Dropdown title="Звание" name="militaryRank" link={this.props.militaryRank} />
                             {this.props.IsOfficers ?
@@ -208,12 +204,12 @@ class WHO extends React.Component {
 
                             <Dropdown title="Должность" name="position" link={this.props.position} />
 
-                            {this.props.IsOfficers ?
+                            {/* {this.props.IsOfficers ?
                                 <Dropdown title="Научное звание" name="academicTitle" link={this.props.academicTitle} /> : <div></div>
                             }
                             {this.props.IsOfficers ?
                                 <Dropdown title="Научная степень" name="academicDegree" link={this.props.academicDegree} /> : <div></div>
-                            }
+                            } */}
                             <Filter />
                             <Clear clear={this._getMainData.bind(this)} />
                         </SortItemForm>

@@ -6,12 +6,7 @@ export const TableRow = (props) => {
             <tr><td>1</td><td>Сокол</td><td>Виктор</td><td>Виктор</td><td>Курсант</td><td>рядовой</td><td>453</td></tr>
         )
     }
-    else {
-        let Unit = props.u.unit;
-        Unit === "undefined" ? Unit = "Кафедра АСУВ" : Unit = props.u.unit;
-        let gr = props.u.groupNumber;
-        let toH
-        props.IsOfficers ? toH = Unit : toH = gr;
+    else {       
         return (
             <tr key={props.u.id} onClick={() => props.setActiveElement(props.u)}>
                 <td >{props.u.id.split("-")[0]}</td>
@@ -20,7 +15,7 @@ export const TableRow = (props) => {
                 <td>{props.u.middleName}</td>
                 <td>{props.u.position}</td>
                 <td>{props.u.militaryRank}</td>
-                <td>{toH}</td>
+                <td>{props.u.unit}</td>
             </tr>
         )
     }

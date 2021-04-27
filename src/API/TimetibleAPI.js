@@ -1,54 +1,40 @@
 import * as axios from "axios"
-import { basePAth } from "./api";
-
 
 const instance = axios.create(
     {
         //withCredentials :true,
-        baseURL:  basePAth + "/TimetableDBs"
+        baseURL:  "http://192.168.5.251:8081"
     }
 );
-export const getTimetableAPI = (forWho, dateTime, isCadet) => {
 
-    //"/forGroup?groupDTO="
-    //"/forLectural?lectural="
-    var path;
-    isCadet === true ? path = "/forGroup?groupDTO=" + forWho + "&dateTime=" + dateTime :
-        path = "/forLectural?lectural=" + forWho + "&dateTime=" + dateTime
-
-    return instance.get(path).then(responce => {
-        return responce.data
-    });
-}
 export const getFilteredTimetableAPI = (lectural, discipline, group, startDate, stopDate) => {
-    let path = "/GetFileteredTimetable?lectural=" + lectural +
-        "&discipline=" + discipline +
-        "&group=" + group +
-        "&startDate=" + startDate +
-        "&stopDate=" + stopDate;
-    return instance.get(path).then(responce => {
-        return responce.data
-    });
-}
+    
+    var values = 
+        {
+            "filterBy": {
+              "lectural": lectural,
+              "auditoreNumber": null,
+              "discipline": discipline,
+              "group": group,
+              "dateStart": startDate,
+              "dateEnd": stopDate
+            },
+            "sortBy": null
+          }
+    debugger;
+    let path = "/api/Timetable/lesson/filtered"
+    const config = {
+        headers: {
+            'content-type': 'application/json',
+        },
+    };
 
-export const getTimetablePerDayAPI = (dateTime) => {
-
-    //"/forGroup?groupDTO="
-    //"/forLectural?lectural="
-    var path = "/" + dateTime;
-
-    return instance.get(path).then(responce => {
+    var s = JSON.stringify(values)
+    return instance.post(path,s , config).then(responce => {
         debugger
         return responce.data
-    });
-}
-export const getTimetableForClassromAPI = (dateTime) => {
-
-    //"/forGroup?groupDTO="
-    //"/forLectural?lectural="
-    var path = "/" + dateTime;
-
-    return instance.get(path).then(responce => {
-        return responce.data
+    }).catch((error) => {
+        debugger
+        console.log("Api createOficerAPI error");        
     });
 }

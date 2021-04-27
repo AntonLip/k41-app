@@ -26,10 +26,15 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(setDataAC(data));
         },
         getTimetablePerData: (forWho, dateTime, isCadets) => {
-            dispatch(getTimetableThunkCreator(forWho, dateTime, isCadets));
+            if(isCadets){
+                dispatch(getFilteredTimetableThunkCreator(null, null, forWho, dateTime, dateTime));
+            }
+            else{
+                dispatch(getFilteredTimetableThunkCreator(forWho, null, null, dateTime, dateTime));
+            }
         },
         getTimetablePerDay: (dateTime) => {
-            dispatch(getTimetableThunkCreatorPerDay(dateTime));
+            dispatch(getFilteredTimetableThunkCreator(null, null, null, dateTime, dateTime));
         },
         getGroups: () => {
             dispatch(setGroupsThunkCreator());

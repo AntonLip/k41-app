@@ -40,19 +40,19 @@ const Item = (props) => {
                     <table>
                         <tr>
                             <td width="80">№<br></br>пары</td>
-                            <td colspan="2">{props.u.nameOfDiscipline}</td>
+                            <td colspan="2">{props.u.disciplineName}</td>
                             
                         </tr>
                         <tr>
-                            <td rowspan="4">{props.u.numberOfLessonInDay}</td>
-                            <td rowspan="2" width="150">{props.u.numberOfLesson == 0 ? props.u.typeOfLesson : props.u.typeOfLesson + " " + props.u.numberOfLesson}</td>
+                            <td rowspan="4">{props.u.lessonInDayNumber}</td>
+                            <td rowspan="2" width="150">{props.u.lessonNumber == 0 ? props.u.lessonType : props.u.lessonType + " " + props.u.lessonNumber}</td>
                             <td width="50">№ гр</td>
                         </tr>
                         <tr>
-                            <td>{props.u.numberOfGroup}</td>
+                            <td>{props.u.groupNumber}</td>
                         </tr>
                         <tr>
-                            <td colspan="2">{props.u.lectural}</td>
+                            <td colspan="2">{props.u.lecturalName}</td>
                             
                         </tr>
                         <tr>

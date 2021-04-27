@@ -77,17 +77,17 @@ export const generalInfoReduser = (state = initState, action) => {
     }
 }
 
-export const setPositionThunkCreator = () => {
+export const setPositionThunkCreator = (IsOfficers) => {
     return (dispatch) => {
-        getPositionAPI(() => console.log("HELLO")).then(data => {
+        getPositionAPI(IsOfficers).then(data => {
             dispatch(setPositionAC(data));
         });
     }
 }
 
-export const setMilitaryRankThunkCreator = () => {
+export const setMilitaryRankThunkCreator = (IsOfficers) => {
     return (dispatch) => {
-        getMilitaryRanksAPI().then(data => {
+        getMilitaryRanksAPI(IsOfficers).then(data => {
             dispatch(setMilitaryRankAC(data));
         });
     }

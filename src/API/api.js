@@ -1,73 +1,183 @@
 import * as axios from "axios"
-export const basePAth = "https://localhost:44351/api"
+export const basePAth = "http://192.168.5.251:8080/api"
 //export const basePAth = "http://k41.kafedra41.local/WB/api"
 const instance = axios.create(
     {
-        //withCredentials :true,
-        headers: {
-            'Content-Type': 'application/json'
-        },
         baseURL: basePAth
     }
 );
 
-export const saveFile = (file, path) =>{
-    const formData = new FormData();
-    formData.append('body', file);    
+
+
+
+export const updateUserAPI = (data) => {
+
+}
+
+export const createOficerAPI = (person) => {
     const config = {
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
-    }
-    let myPath = "https://localhost:44383/Vieo/Image"
-    return instance.post(myPath, formData, config).then(responce => {
-      console.log("upload files success");
-      return responce.data
+        headers: {
+            'content-type': 'application/json',
+        },
+    };
+    return instance.post("/Oficer", JSON.stringify(person), config).then(responce => {
+        if (responce.data != null)
+            window.location = "/Users"
     }).catch((error) => {
-      console.log("upload files error");
+        console.log("Api createOficerAPI error");
     });
 }
 
 
-export const getofficersAPI = (token) => {
-    let path = "Lecturals/Min";
-    debugger
-    return instance.get(path).then(responce => {
-        debugger
-        return responce.data
-    }).catch((error) => {
-        console.log("Api  Lecturals/Min error");
-    });;
-}   
+
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++
 
 export const getUserbyIdAPI = (id) => {
-    let path = "Lecturals/" + id;
-    debugger
+    let path = "/Oficer/" + id;
     return instance.get(path).then(responce => {
         return responce.data
     }).catch((error) => {
         console.log("Api call error");
     });;
 }
+export const getofficersAPI = (token) => {
+    let path = "/Oficer";
 
-export const updateUserAPI = (data) => {
+    return instance.get(path).then(responce => {
 
-}
-
-export const createOficerAPI = (person) => {  
-    const config = {
-        headers: {
-            'content-type': 'application/json',
-        },
-    };
-    return instance.post("Lecturals/?", JSON.stringify(person), config).then(responce => {
-        if (responce.data != null)
-            window.location = "/Users"
+        return responce.data.value
     }).catch((error) => {
-        console.log("Api createOficerAPI error");
-        
+        console.log("Api  Lecturals/Min error");
+    });;
+}
+export const getGroupsAPI = () => {
+
+    var path = "/Unit/cadets"
+    return instance.get(path).then(responce => {
+        return responce.data.value
+    }).catch((error) => {
+        console.log("Api Units call error");
     });
 }
+export const getUnitAPI = () => {
+    var path = "Unit/oficers"
+    return instance.get(path).then(responce => {
+        return responce.data.value
+    }).catch((error) => {
+        console.log("Api Units call error");
+    });
+}
+export const getLecturalsNameAPI = () => {
+    var path = "/Oficer/lecturals"
+    return instance.get(path).then(responce => {
+        return responce.data.value
+    }).catch((error) => {
+        console.log("Api Units call error");
+    });
+}
+export const getPositionAPI = (IsOfficers) => {
+    let path = "";
+    IsOfficers ? path = "/Position/oficers" : path = "/Position/cadets"
+    return instance.get(path).then(responce => {
+        
+        return responce.data.value
+    });
+}
+export const getMilitaryRanksAPI = (IsOfficers) => {
+    let path = "";
+    IsOfficers ? path = "/MilitaryRank/oficers" : path = "/MilitaryRank/cadets"
+    return instance.get(path).then(responce => {
+        return responce.data.value
+    }).catch((error) => {
+        console.log("Api call error");
+    });;
+}
+export const getUserDataByFilter = (values) => {
+    const config = {
+            headers: {
+                'content-type': 'application/json',
+            },
+        };
+        debugger;
+    var values =
+    {
+        "MilitaryRank": values.militaryRank === undefined ? null : values.militaryRank,
+        "Position": values.position === undefined ? null : values.position,
+        "Unit": values.unit === undefined ? null : values.unit
+
+    }
+    
+    let path = "/Oficer/filtered/"
+    
+
+    var s = JSON.stringify(values)
+    return instance.post(path, s, config).then(responce => {
+        debugger
+        return responce.data.value
+    }).catch((error) => {
+        debugger
+        console.log("Api createOficerAPI error");
+    });
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const deleteUserAPI = (id) => {
+
+    var path = "Lecturals/" + id;
+    return instance.delete(path).then(responce => {
+        return responce.data
+    }).catch((error) => {
+        console.log("Api call error");
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const getAcademicDegreesAPI = () => {
     return instance.get("AcademicDegrees/").then(responce => {
@@ -84,70 +194,7 @@ export const getAcademicTitlesAPI = () => {
         console.log("Api call error");
     });;
 }
-export const getPositionAPI = (f) => {
-    debugger
-    return instance.get("Positions/").then(responce => {
-        f()
-        return responce.data
-    });
-}
-export const getMilitaryRanksAPI = () => {
-    return instance.get("MilitaryRanks/").then(responce => {
-        return responce.data
-    }).catch((error) => {
-        console.log("Api call error");
-    });;
-}
-export const getUserDataByFilter = (values) => {
-    debugger;
-    var path = "/Lecturals/filtered?militaryRank=" + values.militaryRank + "&position=" + values.position
-        + "&academicTitle=" + values.academicTitle + "&academicDegree=" + values.academicDegree + "&formSec=" + values.formSec
-        + "&unit=" + values.unit;
-    return instance.get(path).then(responce => {
-        return responce.data
-    }).catch((error) => {
-        console.log("Api call error");
-    });
-}
-export const deleteUserAPI = (id) => {
-
-    var path = "Lecturals/" + id;
-    return instance.delete(path).then(responce => {
-
-        return responce.data
-    }).catch((error) => {
-        console.log("Api call error");
-    });
-}
-
-export const getUnitAPI = () => {
-    var path = "Units/"
-    return instance.get(path).then(responce => {
-        return responce.data
-    }).catch((error) => {
-        console.log("Api Units call error");
-    });
-}
-
-export const getLecturalsNameAPI= () => {
-    var path = "Lecturals/Names"
-    return instance.get(path).then(responce => {
-        return responce.data
-    }).catch((error) => {
-        console.log("Api Units call error");
-    });
-}
-
-export const getGroupsAPI= () => {
-    var path = "/GroupDBs/Numbers"
-    return instance.get(path).then(responce => {
-        return responce.data
-    }).catch((error) => {
-        console.log("Api Units call error");
-    });
-}
-
-export const getSpecAPI = () => {    
+export const getSpecAPI = () => {
     return instance.get("/SpecializationDBs").then(responce => {
         return responce.data
     }).catch((error) => {
@@ -155,10 +202,10 @@ export const getSpecAPI = () => {
     });;
 }
 
-export const getLessonTypeAPI = () => {    
+export const getLessonTypeAPI = () => {
     return instance.get("/LessonType").then(responce => {
         return responce.data
     }).catch((error) => {
-        console.log("Api call error LessonType");        
+        console.log("Api call error LessonType");
     });;
 }

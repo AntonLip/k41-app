@@ -5,7 +5,7 @@ import { basePAth, saveFile } from "./api";
 const instance = axios.create(
     {
         //withCredentials :true,
-        baseURL: basePAth 
+        baseURL: "https://localhost:44351/api"
     }
 );
 
@@ -18,14 +18,16 @@ export const getDisciplineByIdAPI = (id) => {
 
 export const getDisciplineNamesAPI = () => {
     var path = "/DisciplineDBs/Names"
+    debugger
     return instance.get(path).then(responce => {
+        debugger
         return responce.data
     });
 }
 
 export const getFilteredDisciplineNamesAPI = (specName, year) => {
     var path = "/DisciplineDBs/filter?" + "specName=" + specName + "&year=" + year;
-    return instance.get(path).then(responce => {
+    return instance.get().then(responce => {
         return responce.data
     });
 }
