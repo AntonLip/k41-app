@@ -7,17 +7,18 @@ import Sort from '../Sort/SortItem'
 import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Filter from '../Sort/Items/Filter/Filter'
 
-import {Input,validate, warn } from '../Sort/Items/Input/Input';
+import { Input, validate, warn } from '../Sort/Items/Input/Input';
 import TextArea from '../Sort/Items/Input/items/TextArea/TextArea';
 import { reduxForm, reset } from 'redux-form'
 import InputDropDown from '../Sort/Items/Input/items/InputDropDown/InputDropDown'
-import {InputDate} from '../Sort/Items/Date/InputDate'
+import { InputDate } from '../Sort/Items/Date/InputDate'
 import { CheckboxArea } from '../Sort/Items/Input/items/Checkdox/InputCheckbox'
 import InputItem from '../Sort/Items/Input/items/InputItem'
 import { createDisciplineNamesAPI } from '../../../API/DisciplineAPI'
 import Clear from '../Sort/Items/Clear/Clear'
 import TextInput from '../Sort/Items/Input/items/TextInput/TextInput'
 import InputFile from '../Sort/Items/Input/items/File/InputFile'
+import Pagination from '../Pagination/Pagination'
 
 const year = [
     { title: "5 семестр" },
@@ -26,13 +27,22 @@ const year = [
     { title: "8 семестр" }
 ]
 
+const yearLink = [
+    { name: "3 курс" },
+    { name: "4 курс" },
+    { name: "5 курс" },
+
+]
+
+
+
 const SortForm = reduxForm({ form: 'sortLessons' })(Sort)
-const InputForm = reduxForm({ form: 'inputDis', onSubmitSuccess: (rezult, dispatch) => {dispatch(reset('inputDis'))}})(Input)
+const InputForm = reduxForm({ form: 'inputDis', onSubmitSuccess: (rezult, dispatch) => { dispatch(reset('inputDis')) } })(Input)
 export class Lessons extends React.Component {
 
     componentDidMount() {
         this.props.getDisciplinesName();
-        this.props.getSpec();
+        this.props.getCountDisciplines();
     }
     IsInRole(needRole) {
         debugger
@@ -55,17 +65,16 @@ export class Lessons extends React.Component {
     submitInput = values => {
         debugger
         var err = validate(values)
-        if(!err.Activ)
-        {            
+        if (!err.Activ) {
             createDisciplineNamesAPI(values);
         }
     }
     submit = values => {
         debugger
-       let nameOfSpec
-       let year
-       console.log(values)
-       this.props.getFilteredNames(nameOfSpec, year);
+        let nameOfSpec
+        let year
+        console.log(values)
+        this.props.getFilteredNames(nameOfSpec, year);
     }
     render() {
         let AllLessons;
@@ -74,36 +83,36 @@ export class Lessons extends React.Component {
                 AllLessons = this.props.nameofDiscoplines.map((u) => { return <Item u={u} path="/lesson/" /> }) :
                 AllLessons = () => { return <Item /> };
 
-        let AllSpec;
-        this.props.nameofDiscoplines === undefined ? AllSpec = () => { return <Dropdown /> } :
-            this.props.nameOfSpec.length != 0 ?
-                AllSpec = this.props.nameOfSpec.map((u) => { return <Dropdown name={u.id} link={yearLink} title={u.name} /> }) :
-                AllSpec = () => { return <Dropdown /> };
-        
+        // let AllSpec;
+        // this.props.nameofDiscoplines === undefined ? AllSpec = () => { return <Dropdown /> } :
+        //     this.props.nameOfSpec.length != 0 ?
+        //         AllSpec = this.props.nameOfSpec.map((u) => { return <Dropdown name={u.id} link={yearLink} title={u.name} /> }) :
+        //         AllSpec = () => { return <Dropdown /> };
+
         return (
             <MainContentWrapper leftSideBar="true">
                 <SortForm onSubmit={this.submit}>
-                    <InputForm title="Добавить дисциплину"  btnText="Добавить" onSubmit={this.submitInput}>
-                        <TextInput title="Сокращенное название" size="1" name="name"/>
-                        <TextArea title="Полное название" size="2" name="fullName"/>
-                        <TextInput title="Всего часов по дисциплине" size="1" name="countHours"/>
-                        <TextInput title="Всего лекций" size="1" name="countHoursLeck"/>
-                        <TextInput title="Всего ПЗ" size="1" name="countHoursPZ"/>
-                        <TextInput title="Всего ГЗ" size="1" name="countHoursGZ"/>
-                        <TextInput title="Всего МЗ" size="1" name="countHoursMZ"/>
-                        <TextInput title="Всего СРП" size="1" name="countHoursSWZ"/>
-                        <TextInput title="Всего семинаров" size="1" name="countHoursSEM"/>
-                        <TextInput title="Всего лабораторных работ" size="1" name="countHoursLR"/>
-                        <TextInput title="Всего контрольных работ" size="1" name="countHoursСontrolWork"/>
-                        <TextInput title="Всего зачетов" size="1" name="countHoursTest"/>
-                        <TextInput title="Семестр" size="1" name="Semester"/>
-                        <TextInput title="Норма часов" size="1" name="countNorm"/>
-                        <CheckboxArea title="Проводиться экзамен" size="1" name="isExam"/>
-                        <InputFile title="Учебный план" name="lan"/>
-                        <InputDate title="Дата учебного плана" name="dateOfPlan" />                        
-                        <InputDropDown title="Для специализации" link={this.props.nameOfSpec}  name="SpecializationDB"/>
-                    </InputForm> 
-                    {AllSpec}
+                    <InputForm title="Добавить дисциплину" btnText="Добавить" onSubmit={this.submitInput}>
+                        <TextInput title="Сокращенное название" size="1" name="name" />
+                        <TextArea title="Полное название" size="2" name="fullName" />
+                        <TextInput title="Всего часов по дисциплине" size="1" name="countHours" />
+                        <TextInput title="Всего лекций" size="1" name="countHoursLeck" />
+                        <TextInput title="Всего ПЗ" size="1" name="countHoursPZ" />
+                        <TextInput title="Всего ГЗ" size="1" name="countHoursGZ" />
+                        <TextInput title="Всего МЗ" size="1" name="countHoursMZ" />
+                        <TextInput title="Всего СРП" size="1" name="countHoursSWZ" />
+                        <TextInput title="Всего семинаров" size="1" name="countHoursSEM" />
+                        <TextInput title="Всего лабораторных работ" size="1" name="countHoursLR" />
+                        <TextInput title="Всего контрольных работ" size="1" name="countHoursСontrolWork" />
+                        <TextInput title="Всего зачетов" size="1" name="countHoursTest" />
+                        <TextInput title="Семестр" size="1" name="Semester" />
+                        <TextInput title="Норма часов" size="1" name="countNorm" />
+                        <CheckboxArea title="Проводиться экзамен" size="1" name="isExam" />
+                        {/* <InputFile title="Учебный план" name="lan" /> */}
+                        <InputDate title="Дата учебного плана" name="dateOfPlan" />
+                        {/* <InputDropDown title="Для специализации" link={this.props.nameOfSpec} name="SpecializationDB" /> */}
+                    </InputForm>
+                    {/* {AllSpec} */}
                     <Filter />
                     <Clear clear={this.sort} />
                 </SortForm>
@@ -112,17 +121,16 @@ export class Lessons extends React.Component {
                     <div class="cards__content">
                         {AllLessons}
                     </div>
+                    {
+                        (this.props.AllLessons != 0)
+                            ? <Pagination changePage={this.props.setPage} currentPage={this.props.currentPage} 
+                                    itemsPerPage={this.props.itemsPerPage} totalCount={this.props.countDisciplines} 
+                                    IsNews = {false} sizePortion="6" />
+                            : "Sorry. News with this props not founded"
+                    }
                 </div>
             </MainContentWrapper>
         )
     }
 }
-
-const yearLink = [
-    {name: "3 курс"},
-    {name: "4 курс"},
-    {name: "5 курс"},
-
-]
-
 

@@ -1,5 +1,5 @@
-import { getAcademicDegreesAPI, getAcademicTitlesAPI, getGroupsAPI, getLecturalsNameAPI, getLessonTypeAPI, getMilitaryRanksAPI, getPositionAPI, getSpecAPI, getUnitAPI } from "../API/api";
-import { getDisciplineNamesAPI } from "../API/DisciplineAPI";
+import { getAcademicDegreesAPI, getAcademicTitlesAPI, getGroupsAPI, getLecturalsNameAPI,  getMilitaryRanksAPI, getPositionAPI, getSpecAPI, getUnitAPI } from "../API/api";
+import { getDisciplineNamesAPI, getLessonTypeAPI } from "../API/DisciplineAPI";
 import { getWindowsStatusAPI } from "../API/windowsAPI";
 
 const SET_MILITARY_RANK = 'SET_MILITARY_RANK'
@@ -44,6 +44,7 @@ export const generalInfoReduser = (state = initState, action) => {
             copyState.info.position = [...action.data];
             return copyState;
         case SET_LESSON_TYPE:
+            debugger
             copyState.info.lessonType = [...action.data];
             return copyState;
         case SET_MILITARY_RANK:

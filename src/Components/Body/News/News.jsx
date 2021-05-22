@@ -70,7 +70,7 @@ export class News extends React.Component {
           </div>
           {
             (this.props.allNews != 0)
-              ? <Pagination changePage={this.props.setPage} currentPage={this.props.currentPage} itemsPerPage={this.props.itemsPerPage} totalCount={this.props.totalCount} sizePortion="6" />
+              ? <Pagination changePage={this.props.setPage} currentPage={this.props.currentPage}  IsNews = {true} itemsPerPage={this.props.itemsPerPage} totalCount={this.props.totalCount} sizePortion="6" />
               : "Sorry. News with this props not founded"
           }
         </div>

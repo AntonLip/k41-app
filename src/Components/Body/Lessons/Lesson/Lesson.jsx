@@ -20,7 +20,7 @@ export class Lesson extends React.Component {
         this.props.getLessonType();
     }
     add = (values) => {
-
+        debugger
         let value = {};
 
         value.name = values.name
@@ -36,7 +36,7 @@ export class Lesson extends React.Component {
 
     }
     render() {
-
+debugger
         return (
             <>
                 <Route exact path="/lesson/:id" render={() => <Study data={this.props.lessons} />} />

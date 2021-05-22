@@ -1,27 +1,36 @@
 import * as axios from "axios"
-import { basePAth, saveFile } from "./api";
 
 
 const instance = axios.create(
     {
-        //withCredentials :true,
-        baseURL: "https://localhost:44351/api"
+        baseURL: "http://192.168.5.250/api/"
     }
 );
 
 export const getDisciplineByIdAPI = (id) => {
-    var path = "/DisciplineDBs/" + id
+    var path = "Disciplines/" + id
     return instance.get(path).then(responce => {
         return responce.data
     });
 }
 
-export const getDisciplineNamesAPI = () => {
-    var path = "/DisciplineDBs/Names"
+export const getDisciplineNamesAPI = (page, count) => {
+    if(page === undefined )
+        {page = 0}
+    if(count === undefined)
+        {count = 9}
+    var path = "Disciplines?"  + "count=" + count + "&page=" + page;
+    return instance.get(path).then(responce => {        
+        return responce.data.value
+    });
+}
+
+export const GetCountDisciplines = () => {
+    var path = "Disciplines/Count"
     debugger
     return instance.get(path).then(responce => {
         debugger
-        return responce.data
+        return responce.data.value
     });
 }
 
@@ -61,7 +70,7 @@ export const createDisciplineNamesAPI = (values) => {
         },
     };
     var s = JSON.stringify(dataTO);
-    return instance.post('/DisciplineDBs/?', s, config).then((responce,file) => {
+    return instance.post('/Disciplines/?', s, config).then((responce,file) => {
         debugger
         if (responce.data != null)
         {
@@ -93,15 +102,15 @@ export const uploadFilePlan = (id, file, type) => {
 
 export const getAllLessonsinDisciplines = (id) => {
     debugger
-    var path = "/DisciplineDBs/" + id + "/lessons"
+    var path = "Lessons/discipline/" + id
     return instance.get(path).then(responce => {        
-        return responce.data
+        return responce.data.value
     });
 }
 
 export const createLessonInDisciplineAPI = (values) => {
     debugger
-    var path = "/LessonDTOes/"
+    var path = "Lessons"
     const config = {
         headers: {
             'content-type': 'application/json',
@@ -112,4 +121,12 @@ export const createLessonInDisciplineAPI = (values) => {
         debugger
         return responce.data
     });
+}
+
+export const getLessonTypeAPI = () => {
+    return instance.get("LessonType").then(responce => {
+        return responce.data.value
+    }).catch((error) => {
+        console.log("Api call error LessonType");
+    });;
 }

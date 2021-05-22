@@ -202,10 +202,3 @@ export const getSpecAPI = () => {
     });;
 }
 
-export const getLessonTypeAPI = () => {
-    return instance.get("/LessonType").then(responce => {
-        return responce.data
-    }).catch((error) => {
-        console.log("Api call error LessonType");
-    });;
-}

@@ -4,7 +4,7 @@ import { News } from './News';
 import { connect } from 'react-redux';
 import { getUserInfoThunkCreator } from '../../../Redux/login-reduser';
 import { compose } from 'redux';
-import { getWindowsStatusThunkCreator, setAcademicDegreeThunkCreator, setAcademicTitleThunkCreator, setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator, setMilitaryRankThunkCreator, setPositionThunkCreator, setSpecThunkCreator, setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
+import { getWindowsStatusThunkCreator,  setAcademicTitleThunkCreator, setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator,  setPositionThunkCreator,  setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
 
 let maptoStateToProps = (state) => {
 
