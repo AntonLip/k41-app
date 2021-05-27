@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getUserInfoThunkCreator } from '../../../Redux/login-reduser';
 import { compose } from 'redux';
 import { getWindowsStatusThunkCreator,  setAcademicTitleThunkCreator, setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator,  setPositionThunkCreator,  setUnitThunkCreator } from '../../../Redux/generalInfo-reduser';
+import { getCountDisciplinesThunkCreator } from '../../../Redux/disciplines-reduser';
 
 let maptoStateToProps = (state) => {
 
@@ -54,7 +55,10 @@ let mapDispatchToProps = (dispatch) => {
     },
     postNews: (data) => {
       dispatch(postNewsThunkCreator(data));
-    }
+    },
+    getCountOfDisciplines:() => {
+        dispatch(getCountDisciplinesThunkCreator());
+    },
   }
 }
 

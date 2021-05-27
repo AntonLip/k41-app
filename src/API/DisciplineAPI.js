@@ -20,7 +20,8 @@ export const getDisciplineNamesAPI = (page, count) => {
     if(count === undefined)
         {count = 9}
     var path = "Disciplines?"  + "count=" + count + "&page=" + page;
-    return instance.get(path).then(responce => {        
+    return instance.get(path).then(responce => {
+        console.log(responce.data.value);        
         return responce.data.value
     });
 }
@@ -30,6 +31,7 @@ export const GetCountDisciplines = () => {
     debugger
     return instance.get(path).then(responce => {
         debugger
+        console.log(responce.data.value);        
         return responce.data.value
     });
 }
@@ -37,6 +39,8 @@ export const GetCountDisciplines = () => {
 export const getFilteredDisciplineNamesAPI = (specName, year) => {
     var path = "/DisciplineDBs/filter?" + "specName=" + specName + "&year=" + year;
     return instance.get().then(responce => {
+        console.log(responce.data.value);       
+
         return responce.data
     });
 }
