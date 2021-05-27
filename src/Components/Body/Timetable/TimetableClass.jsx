@@ -14,10 +14,11 @@ import { ImageUpload } from '../Sort/Items/Input/items/File/ImageUploader';
 export class Timetable extends React.Component {
 
     componentDidMount() {
-       // this.props.getDisciplines();
+        this.props. getCountOfDisciplines();
         this.props.getPersons();
         this.props.getGroups();
         this.getTimetable();
+        this.props.getDisciplines(this.props.countDisciplines);
     }
     IsInRole(role, needRole) {
         if ((Array.isArray(role))) {
@@ -50,6 +51,8 @@ export class Timetable extends React.Component {
             this.props.getTimetablePerDay(fullDate)
         }
     }
+    
+
     submit = values => {
         debugger;
         let dataStart, dataStop;

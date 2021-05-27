@@ -24,7 +24,6 @@ let initState =
         academicDegree: [],
         groups: [],
         units: [],
-        disciplines: [],
         lecturals: [],
         specializations: [],
         lessonType: [],
@@ -58,9 +57,6 @@ export const generalInfoReduser = (state = initState, action) => {
             return copyState;
         case SET_GROUPS:
             copyState.info.groups = [...action.data];
-            return copyState;
-        case SET_DISCIPLINES:
-            copyState.info.disciplines = [...action.data];
             return copyState;
         case SET_LECTURAL:
             copyState.info.lecturals = [...action.data];

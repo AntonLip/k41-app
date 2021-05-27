@@ -2,7 +2,8 @@
 import { setDataAC, getTimetableThunkCreator, getTimetableThunkCreatorPerDay, getFilteredTimetableThunkCreator } from '../../../Redux/timetable-reduser';
 import { Timetable } from './TimetableClass';
 import { connect } from 'react-redux';
-import { setDisciplinesThunkCreator, setGroupsThunkCreator, setLecturalsThunkCreator } from '../../../Redux/generalInfo-reduser';
+import { setGroupsThunkCreator, setLecturalsThunkCreator } from '../../../Redux/generalInfo-reduser';
+import { getCountDisciplinesThunkCreator, getDisciplineNamesThunkCreator } from '../../../Redux/disciplines-reduser';
 
 
 let maptoStateToProps = (state) => {
@@ -17,7 +18,9 @@ let maptoStateToProps = (state) => {
 
         groups: state.generalInfoReduser.info.groups,
         lecturals: state.generalInfoReduser.info.lecturals,
-        disciplines: state.generalInfoReduser.info.disciplines,
+
+        disciplines: state.disciplinesReduser.DisciplinesPage.nameofDiscoplines,
+        countDisciplines: state.disciplinesReduser.DisciplinesPage.count
     }
 }
 let mapDispatchToProps = (dispatch) => {
@@ -39,8 +42,11 @@ let mapDispatchToProps = (dispatch) => {
         getGroups: () => {
             dispatch(setGroupsThunkCreator());
         },
-        getDisciplines: () => {
-            dispatch(setDisciplinesThunkCreator());
+        getDisciplines: (count) => {
+            dispatch(getDisciplineNamesThunkCreator(0, count));
+        },
+        getCountOfDisciplines:() => {
+            dispatch(getCountDisciplinesThunkCreator());
         },
         getPersons: () => {
             dispatch(setLecturalsThunkCreator());
