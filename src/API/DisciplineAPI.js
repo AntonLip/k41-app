@@ -134,3 +134,12 @@ export const getLessonTypeAPI = () => {
         console.log("Api call error LessonType");
     });;
 }
+
+export const deleteLessonAPI = (id) => {
+    let path = "Lessons/" + id 
+    return instance.delete(path).then(responce => {
+        return responce.data.value
+    }).catch((error) => {
+        console.log("Api call error LessonType");
+    });;
+}

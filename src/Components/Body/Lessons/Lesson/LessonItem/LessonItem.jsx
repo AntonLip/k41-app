@@ -11,7 +11,9 @@ const LessonItem = (props) => {
     function toggleActive(){
         setIsActive(!isActive)
     }
+    debugger
     return (
+        
         <>
             <div class="d-f ai-c mb">
                 <div class="w-100">
@@ -27,7 +29,7 @@ const LessonItem = (props) => {
                 </div>
                 <Link to={props.lessonId + "/edit"} class="sort__img sort__img--ml" ><FiEdit /></Link>
                 
-                <div class="sort__img sort__img--ml"><AiOutlineDelete onClick={()=>alert("Delite")}/></div>
+                <div class="sort__img sort__img--ml"><AiOutlineDelete onClick={() => {props.deleteLesson(props.lessonId)}}/></div>
             </div>
         </> 
     )

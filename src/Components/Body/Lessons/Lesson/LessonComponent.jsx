@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { createLessonInDisciplineThunkCreator, getDisciplineLessonsThunkCreator } from '../../../../Redux/disciplines-reduser';
+import { createLessonInDisciplineThunkCreator, deleteLessonThunkCreator, getDisciplineLessonsThunkCreator } from '../../../../Redux/disciplines-reduser';
 import { getLessonTypeThunkCreator } from '../../../../Redux/generalInfo-reduser';
 import { Lesson } from './Lesson';
 let maptoStateToProps = (state) => {
@@ -26,6 +26,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         getLessonType:()=>{
             dispatch(getLessonTypeThunkCreator());
+        },
+        deleteLesson:(id)=>{
+            dispatch(deleteLessonThunkCreator(id));
         }
     }
 }

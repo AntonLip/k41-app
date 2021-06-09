@@ -18,7 +18,7 @@ export class AuthClass extends React.Component {
         LogOutMe();
     }
     Register() {
-        window.location.href = "http://k41.Kafedra41.local/is4/Account/Register";
+        window.location.href = "http://192.168.5.250:56200/Account/Register";
     }
     changePhoto(){
         console.log('change');

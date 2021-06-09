@@ -1,10 +1,11 @@
-import { createLessonInDisciplineAPI, getAllLessonsinDisciplines, GetCountDisciplines, getDisciplineByIdAPI, getDisciplineNamesAPI, getFilteredDisciplineNamesAPI } from "../API/DisciplineAPI"
+import { createLessonInDisciplineAPI, deleteLessonAPI, getAllLessonsinDisciplines, GetCountDisciplines, getDisciplineByIdAPI, getDisciplineNamesAPI, getFilteredDisciplineNamesAPI } from "../API/DisciplineAPI"
 
 const GET_DISCIPLINES_NAME = 'GET_DISCIPLINES_NAME'
 const GET_COUNT_DISCIPLINE = 'GET_COUNT_DISCIPLINE'
 const GET_DISCIPLINE = 'GET_DISCIPLINE'
 const GET_DISCIPLINE_LESSONS = 'GET_DISCIPLINE_LESSONS'
 const ADD_DISCIPLINE_LESSONS = 'ADD_DISCIPLINE_LESSONS'
+const DELETE_DISCIPLINE_LESSONS = 'DELETE_DISCIPLINE_LESSONS'
 const SET_PAGE = 'SET_PAGE'
 
 
@@ -41,6 +42,15 @@ export const disciplinesReduser = (state = initState, action) => {
         case ADD_DISCIPLINE_LESSONS:
             debugger
             copyState.DisciplinesPage.lessons[copyState.DisciplinesPage.lessons.length] = action.data;
+            return copyState;
+        case DELETE_DISCIPLINE_LESSONS:
+            debugger
+            copyState.DisciplinesPage.lessons = [...state.DisciplinesPage.lessons]
+            for (let i = 0; i < copyState.DisciplinesPage.lessons.length; i++) {
+                if (copyState.DisciplinesPage.lessons[i].id === action.data.id) {
+                    copyState.DisciplinesPage.lessons.splice(i, 1);
+                }
+            }
             return copyState;
         default:
             return state;
@@ -94,12 +104,20 @@ export const createLessonInDisciplineThunkCreator = (values) => {
     }
 }
 
+export const deleteLessonThunkCreator = (id) => {
+    return (dispatch) => {
+        deleteLessonAPI(id).then(data => {
+            dispatch(deleteLessonsAC(data));
+        });
+    }
+}
+
 export const setCurrentPageDisciplinesThunkCreator = (page, count) => {
-    return (dispatch) => {       
-        getDisciplineNamesAPI(page, count).then(data => {           
-                dispatch(setDisciplinesNameAC(data));
-                dispatch(setCurrentPageAC(page));
-            }
+    return (dispatch) => {
+        getDisciplineNamesAPI(page, count).then(data => {
+            dispatch(setDisciplinesNameAC(data));
+            dispatch(setCurrentPageAC(page));
+        }
         );
     }
 }
@@ -138,6 +156,12 @@ const setLessonsAC = (data) => {
 const addLessonsAC = (data) => {
     return {
         type: ADD_DISCIPLINE_LESSONS,
+        data
+    }
+}
+const deleteLessonsAC = (data) => {
+    return {
+        type: DELETE_DISCIPLINE_LESSONS,
         data
     }
 }

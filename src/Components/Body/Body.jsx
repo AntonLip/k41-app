@@ -37,7 +37,7 @@ const Body = (props) => {
       <Route path="/science" render={()=><Comp404/>} />
       <Route path="/history" render={()=><History/>} />
 
-      <Route path="/signin-oidc"  render={()=>{return <LoginSuccessContainer />} } />
+      <Route strict  path="/signin-oidc"  render={()=>{return <LoginSuccessContainer />} } />
     </>
   );
 }

@@ -11,9 +11,9 @@ const Study = (props) => {
      allLessons = props.data.map(
         (u) => 
         {
-            return <LessonItem lessonId={u.id} title={u.lessonType + " " + u.currentNumberOflessonsType}>
-                 <div>{u.themeName}</div>
-                 <div>{u.name}</div>
+            return <LessonItem lessonId={u.id} title={u.lessonType + " " + u.currentNumberOflessonsType} deleteLesson={props.deleteLesson}>
+                 <div>Тема: {u.themeName}</div>
+                 <div>Занятие: {u.name}</div>
             </LessonItem>
         }) 
     return (

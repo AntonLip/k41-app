@@ -20,7 +20,7 @@ export class Lesson extends React.Component {
         this.props.getLessonType();
     }
     add = (values) => {
-        debugger
+        
         let value = {};
 
         value.name = values.name
@@ -30,16 +30,20 @@ export class Lesson extends React.Component {
         value.DisciplineId = this.props.match.params.id
         value.countHours = Number(values.countHours)
         value.currentNumberOflessonsType = Number(values.currentNumberOflessonsType)
-        
-        debugger
+               
         this.props.addLesson(this.props.match.params.id, value);
-
     }
+
+    delete = (id) => {
+        debugger
+        this.props.deleteLesson(id)
+    }
+
     render() {
-debugger
+
         return (
             <>
-                <Route exact path="/lesson/:id" render={() => <Study data={this.props.lessons} />} />
+                <Route exact path="/lesson/:id" render={() => <Study data={this.props.lessons} deleteLesson={this.delete}/>} />
                 <Route path="/lesson/:id/edit" render={() => <EditLessonItem onSubmit={this.add} lessonType={this.props.lessonType} />} />
                 <Route path="/lesson/:id/video" render={() => <LessonVideo />} />
                 <Route path="/lesson/:id/else" render={() => <LessonOther />} />
