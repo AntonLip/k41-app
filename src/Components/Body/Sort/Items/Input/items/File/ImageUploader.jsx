@@ -33,6 +33,7 @@ export class ImageUpload extends React.Component {
     
     const config = {
       headers: {
+        'content-type': 'multipart/form-data',
       },
     };
     return post(this.state.url, formData, config).then(responce => {

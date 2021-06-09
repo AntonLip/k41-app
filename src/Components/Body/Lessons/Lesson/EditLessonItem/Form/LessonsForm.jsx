@@ -7,7 +7,7 @@ import { basePAth } from '../../../../../../API/api'
 import InputDropDown from '../../../../Sort/Items/Input/items/InputDropDown/InputDropDown'
 
 const EditLessonItem = (props) => {
-      let url = basePAth + "/LessonDTOes/upload";
+    debugger
     return (
         <div>
             <form class="editForm" onSubmit={props.handleSubmit}>
@@ -19,9 +19,9 @@ const EditLessonItem = (props) => {
                 <TextInput title="Количество часов" name="countHours" />
                 <button type="submit" class="chat-input__submit btn">Добавить занятие</button>
             </form>
-            <ImageUpload class="editForm" title={"Методическая разработка"} url={url}/>
-            <ImageUpload class="editForm" title={"Дополнительные материалы"} url={url}/>
-            <ImageUpload class="editForm" title={"Презентация"} url={url}/>
+            <ImageUpload class="editForm" title={"Методическая разработка"} url={"http://localhost:5000/api/Lessons/" + props.lesonId + "/methodic"} />
+            <ImageUpload class="editForm" title={"Дополнительные материалы"} url={"http://localhost:5000/api/Lessons/" + props.lesonId + "/additional"} />
+            <ImageUpload class="editForm" title={"Презентация"} url={"http://localhost:5000/api/Lessons/" + props.lesonId + "/presentation"} />
         </div>
     )
 }

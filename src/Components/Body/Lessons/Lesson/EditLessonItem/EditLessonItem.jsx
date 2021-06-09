@@ -11,11 +11,11 @@ import LessonsPlanForm from './Form/LessonsPlanForm'
 
 
 const EditLesson =(props)=> {    
-  
+  debugger
         return (
             <MainContentWrapper>
                 <Link onClick={props.history.goBack} class="news__link news__link--mr"><GrLinkPrevious class="news__link-img" />Назад к дисциплине</Link>
-                <Route exact path="/lesson/:id/edit" render={()=><LessonForm onSubmit={props.onSubmit} lessonType={props.lessonType}/>} />
+                <Route exact path="/lesson/:id/edit" render={()=><LessonForm onSubmit={props.onSubmit} lessonType={props.lessonType} lesonId={props.match.params.id}/>} />
                 <Route path="/lesson/:id/edit/video" render={()=><LessonsVideoForm/>} />
                 <Route path="/lesson/:id/edit/plan" render={()=><LessonsPlanForm/>} />
                 
