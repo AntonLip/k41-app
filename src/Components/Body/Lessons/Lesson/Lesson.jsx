@@ -1,16 +1,18 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Study from './Study/Study'
-import { getAllLessonsinDisciplines } from '../../../../API/DisciplineAPI'
 import EditLessonItem from './EditLessonItem/EditLessonItem'
 import LessonVideo from './LessonVideo/LessonVideo'
 import LessonPlan from './LessonPlan/LessonPlan'
 import LessonOther from './LessonOther/LessonOther'
+import { getDisciplineByIdAPI } from '../../../../API/DisciplineAPI'
 
 export class Lesson extends React.Component {
     constructor(props, context) {
         super(props, context);
-
+        this.setState({
+            discipline: {  }
+        })
     }
     printInfo = (values) => {
         console.log(values)
@@ -18,6 +20,7 @@ export class Lesson extends React.Component {
     componentDidMount() {
         this.props.getLessons(this.props.match.params.id);
         this.props.getLessonType();
+        this._setActivDisciplines();
     }
     add = (values) => {
         
@@ -33,9 +36,16 @@ export class Lesson extends React.Component {
                
         this.props.addLesson(this.props.match.params.id, value);
     }
-
-    delete = (id) => {
+    _setActivDisciplines = () => {
+        debugger
+        getDisciplineByIdAPI(this.props.match.params.id).then(data => {
+            this.setState({
+                discipline: { ...data.value }
+            })
+        });
         
+    }
+    delete = (id) => {        
         this.props.deleteLesson(id)
     }
 
@@ -47,7 +57,7 @@ export class Lesson extends React.Component {
                 <Route path="/lesson/:id/edit" render={() => <EditLessonItem onSubmit={this.add} lessonType={this.props.lessonType} />} />
                 <Route path="/lesson/:id/video" render={() => <LessonVideo />} />
                 <Route path="/lesson/:id/else" render={() => <LessonOther />} />
-                <Route path="/lesson/:id/plan" render={() => <LessonPlan />} />
+                <Route path="/lesson/:id/plan" render={() => <LessonPlan  discipline = {this.state.discipline}/>} />
             </>
         )
     }

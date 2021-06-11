@@ -1710,3 +1710,38 @@ Styles for history
 .content__paragraph-left-content .content__text {
 	padding-right: 20px;
 }
+
+.table_dark {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
+	width: 640px;
+	text-align: left;
+	border-collapse: collapse;
+	background: #6e94f3;
+	margin: 10px;
+  }
+  .table_dark th {
+	color: #050208;
+	border-bottom: 1px solid #f5f5f5;
+	padding: 12px 17px;
+  }
+  .table_dark td {
+	color: #fdfdfd;
+	border-bottom: 1px solid #ffffff;
+	border-right:1px solid #ffffff;
+	padding: 7px 17px;
+  }
+  .table_dark tr:last-child td {
+	border-bottom: none;
+  }
+  .table_dark td:last-child {
+	border-right: none;
+  }
+  .table_dark tr:hover td {
+	text-decoration: underline;
+  }
+
+  .disciplines_info {
+	text-align: center;
+	margin: 2%;
+  }

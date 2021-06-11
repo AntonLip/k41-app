@@ -17,8 +17,7 @@ const EditLesson =(props)=> {
                 <Link onClick={props.history.goBack} class="news__link news__link--mr"><GrLinkPrevious class="news__link-img" />Назад к дисциплине</Link>
                 <Route exact path="/lesson/:id/edit" render={()=><LessonForm onSubmit={props.onSubmit} lessonType={props.lessonType} lesonId={props.match.params.id}/>} />
                 <Route path="/lesson/:id/edit/video" render={()=><LessonsVideoForm/>} />
-                <Route path="/lesson/:id/edit/plan" render={()=><LessonsPlanForm/>} />
-                
+                <Route path="/lesson/:id/edit/plan" render={()=><LessonsPlanForm desciplineId={props.match.params.id}/>} />
             </MainContentWrapper>
         )
     } 

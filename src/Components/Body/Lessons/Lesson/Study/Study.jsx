@@ -14,15 +14,14 @@ const Study = (props) => {
                 <div>Тема: {u.themeName}</div>
                 <div>Занятие: {u.name}</div>
                 <div>
-                    <a href={"http://192.168.5.250/api/Lessons/" + u.id + "/methodic"}>Методическая разработка</a>
+                    <a href={"http://localhost:5000/api/Lessons/" + u.id + "/methodic"}>Методическая разработка</a>
                 </div>
                 <div>
-                    <a href={"http://192.168.5.250/api/Lessons/" + u.id + "/presentation"}>Презентация</a>
+                    <a href={"http://localhost:5000/api/Lessons/" + u.id + "/presentation"}>Презентация</a>
                 </div>
                 <div>
-                    <a href={"http://192.168.5.250/api/Lessons/" + u.id + "/additionalMaterial"}>Дополнительные материалы</a>
+                    <a href={"http://localhost:5000/api/Lessons/" + u.id + "/additionalMaterial"}>Дополнительные материалы</a>
                 </div>
-
             </LessonItem>
         })
     return (

@@ -11,7 +11,7 @@ const LessonItem = (props) => {
     function toggleActive(){
         setIsActive(!isActive)
     }
-    debugger
+    
     return (
         
         <>

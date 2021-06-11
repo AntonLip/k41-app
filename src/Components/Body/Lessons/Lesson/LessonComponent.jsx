@@ -6,8 +6,7 @@ import { createLessonInDisciplineThunkCreator, deleteLessonThunkCreator, getDisc
 import { getLessonTypeThunkCreator } from '../../../../Redux/generalInfo-reduser';
 import { Lesson } from './Lesson';
 let maptoStateToProps = (state) => {
-    return {
-        nameofDiscoplines: state.disciplinesReduser.DisciplinesPage.nameofDiscoplines,
+    return {       
         lessons : state.disciplinesReduser.DisciplinesPage.lessons,
         lessonType : state.generalInfoReduser.info.lessonType
     }
@@ -20,7 +19,7 @@ let mapDispatchToProps = (dispatch) => {
         },
         getLessons:(id)=>{
             dispatch(getDisciplineLessonsThunkCreator(id));
-        },
+        },        
         addLesson: (id, values)=>{
             dispatch(createLessonInDisciplineThunkCreator(values));
         },

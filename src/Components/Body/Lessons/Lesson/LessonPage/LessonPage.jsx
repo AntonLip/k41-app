@@ -20,11 +20,11 @@ const LessonPage = (props) => {
                     <div class="sort__img"><MdOndemandVideo /></div>
                 </Link>
                 <Link to={"/lesson/" + props.match.params.id + "/plan"} class="sort__item">
-                    <div class="sort__title">Учебный план</div>
+                    <div class="sort__title">О дисциплине</div>
                     <div class="sort__img"></div>
                 </Link>
                 <Link to={"/lesson/" + props.match.params.id + "/else"} class="sort__item">
-                    <div class="sort__title">Другое</div>
+                    <div class="sort__title">Тестирование</div>
                     <div class="sort__img"></div>
                 </Link>
 
