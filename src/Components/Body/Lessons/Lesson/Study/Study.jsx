@@ -6,22 +6,21 @@ import LessonItem from '../LessonItem/LessonItem'
 import LessonPage from '../LessonPage/LessonPage'
 
 const Study = (props) => {
-    debugger
+    
     let allLessons;
     allLessons = props.data.map(
         (u) => {
-            debugger
             return <LessonItem lessonId={u.id} title={u.lessonType + " " + u.currentNumberOflessonsType} deleteLesson={props.deleteLesson}>
                 <div>Тема: {u.themeName}</div>
                 <div>Занятие: {u.name}</div>
                 <div>
-                    <a href={"http://localhost:5000/api/Lessons/" + u.id + "/methodic"}>Методическая разработка</a>
+                    <a href={"http://192.168.5.250/api/Lessons/" + u.id + "/methodic"}>Методическая разработка</a>
                 </div>
                 <div>
-                    <a href={"http://localhost:5000/api/Lessons/" + u.id + "/presentation"}>Презентация</a>
+                    <a href={"http://192.168.5.250/api/Lessons/" + u.id + "/presentation"}>Презентация</a>
                 </div>
                 <div>
-                    <a href={"http://localhost:5000/api/Lessons/" + u.id + "/additionalMaterial"}>Дополнительные материалы</a>
+                    <a href={"http://192.168.5.250/api/Lessons/" + u.id + "/additionalMaterial"}>Дополнительные материалы</a>
                 </div>
 
             </LessonItem>

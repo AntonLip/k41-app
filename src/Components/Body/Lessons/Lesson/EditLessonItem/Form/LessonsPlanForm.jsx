@@ -9,6 +9,7 @@ const video = [
 ]
 
 const LessonsPlanForm = (props) => {
+    debugger
     return (
         <>
             <form class="editForm">

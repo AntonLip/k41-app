@@ -35,12 +35,12 @@ export class Lesson extends React.Component {
     }
 
     delete = (id) => {
-        debugger
+        
         this.props.deleteLesson(id)
     }
 
     render() {
-
+        debugger
         return (
             <>
                 <Route exact path="/lesson/:id" render={() => <Study data={this.props.lessons} deleteLesson={this.delete}/>} />
