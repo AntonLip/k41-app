@@ -97,9 +97,6 @@ class WHO extends React.Component {
     _getSecondaryData() {
         this.props.setPosition(this.props.IsOfficers);
         this.props.setMilitaryRank(this.props.IsOfficers);
-        // this.props.setAcademicDegree();
-        // this.props.setAcademicTittes();
-        //this.props.getSpec();
     }
     IsInRole(role, needRole) {
         if ((Array.isArray(role))) {
