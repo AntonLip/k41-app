@@ -14,7 +14,12 @@ export const getDisciplineByIdAPI = (id) => {
         return responce.data
     });
 }
-
+export const deleteDisciplines = (id) => {
+    var path = "Disciplines/" + id
+    return instance.delete(path).then(responce => {
+        return responce.data
+    });
+}
 export const getDisciplineNamesAPI = (page, count) => {
     if(page === undefined )
         {page = 0}
@@ -143,4 +148,27 @@ export const deleteLessonAPI = (id) => {
     }).catch((error) => {
         console.log("Api call error LessonType");
     });;
+}
+
+export const getTest = (disciplineId) =>{
+    let path = "Questions/Test/" + disciplineId + "?countQuestions=25"
+    return instance.get(path).then(responce => {
+        return responce.data.value
+    }).catch((error) => {
+        console.log(error);
+    });
+}
+export const checkTest = (test) =>{
+    let path = "Questions/CheckTest" 
+    const config = {
+        headers: {
+            'content-type': 'application/json',
+        },
+    };
+    var s = JSON.stringify(test);
+    return instance.post(path, s, config).then(responce => {        
+        return responce.data
+    }).catch((error) => {
+        console.log(error);
+    });
 }

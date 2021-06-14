@@ -4,7 +4,7 @@ import Study from './Study/Study'
 import EditLessonItem from './EditLessonItem/EditLessonItem'
 import LessonVideo from './LessonVideo/LessonVideo'
 import LessonPlan from './LessonPlan/LessonPlan'
-import LessonOther from './LessonOther/LessonOther'
+import { LessonTest } from './LessonOther/LessonOther'
 import { getDisciplineByIdAPI } from '../../../../API/DisciplineAPI'
 
 export class Lesson extends React.Component {
@@ -37,7 +37,6 @@ export class Lesson extends React.Component {
         this.props.addLesson(this.props.match.params.id, value);
     }
     _setActivDisciplines = () => {
-        debugger
         getDisciplineByIdAPI(this.props.match.params.id).then(data => {
             this.setState({
                 discipline: { ...data.value }
@@ -56,7 +55,7 @@ export class Lesson extends React.Component {
                 <Route exact path="/lesson/:id" render={() => <Study data={this.props.lessons} deleteLesson={this.delete}/>} />
                 <Route path="/lesson/:id/edit" render={() => <EditLessonItem onSubmit={this.add} lessonType={this.props.lessonType} />} />
                 <Route path="/lesson/:id/video" render={() => <LessonVideo />} />
-                <Route path="/lesson/:id/else" render={() => <LessonOther />} />
+                <Route path="/lesson/:id/test" render={() => <LessonTest id = {this.props.match.params.id}/>} />
                 <Route path="/lesson/:id/plan" render={() => <LessonPlan  discipline = {this.state.discipline}/>} />
             </>
         )
