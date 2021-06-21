@@ -4,20 +4,16 @@ import MainContentWrapper from '../MainContentWrapper/MainContentWrapper'
 
 import Item from '../Cards/Item'
 import Sort from '../Sort/SortItem'
-import Dropdown from '../Sort/Items/Dropdown/Dropdown'
 import Filter from '../Sort/Items/Filter/Filter'
 
-import { Input, validate, warn } from '../Sort/Items/Input/Input';
+import { Input, validate } from '../Sort/Items/Input/Input';
 import TextArea from '../Sort/Items/Input/items/TextArea/TextArea';
 import { reduxForm, reset } from 'redux-form'
-import InputDropDown from '../Sort/Items/Input/items/InputDropDown/InputDropDown'
 import { InputDate } from '../Sort/Items/Date/InputDate'
 import { CheckboxArea } from '../Sort/Items/Input/items/Checkdox/InputCheckbox'
-import InputItem from '../Sort/Items/Input/items/InputItem'
 import { createDisciplineNamesAPI } from '../../../API/DisciplineAPI'
 import Clear from '../Sort/Items/Clear/Clear'
 import TextInput from '../Sort/Items/Input/items/TextInput/TextInput'
-import InputFile from '../Sort/Items/Input/items/File/InputFile'
 import Pagination from '../Pagination/Pagination'
 
 const year = [

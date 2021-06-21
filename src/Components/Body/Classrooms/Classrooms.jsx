@@ -18,9 +18,9 @@ export class Classrooms extends React.Component {
     }
 
     state = {
-       flore1:[],
-       flore2:[],
-       flore3:[]
+       flore1:{},
+       flore2:{},
+       flore3:{}
     }
     componentDidMount(){
         getWindowsStatusAPI().then(data => {
@@ -31,13 +31,14 @@ export class Classrooms extends React.Component {
                 {
                     data.lenght > 1 ? 
                     this.setState({
-                        flore3: [...data] 
+                        flore3: {...data} 
                     }) : this.setState({
                         flore3: data 
                     })
                 }
+                debugger
                 this.setState({
-                    flore3: data 
+                    flore3: {...data} 
                 })
             }
             console.log(this.state);
