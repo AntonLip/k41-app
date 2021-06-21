@@ -6,19 +6,9 @@ import { ImageUpload } from '../Sort/Items/Input/items/File/ImageUploader'
 import InputFile from '../Sort/Items/Input/items/File/InputFile'
 
 const Comp404 = () => {
-    const post = (data) => {
-        console.log(data)
-
-    }
+    
     return (
-        <MainContentWrapper>
-
-
-            <div>
-                <ImageUpload url="http://localhost:56224/api/Timetable"/>
-            </div>
-
-           
+        <MainContentWrapper>           
 
 
 

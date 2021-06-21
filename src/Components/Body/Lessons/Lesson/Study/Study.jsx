@@ -2,6 +2,7 @@ import React from 'react'
 import { GrAdd, GrLinkPrevious } from 'react-icons/gr'
 import { Link, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
+import { deleteDisciplines } from '../../../../../API/DisciplineAPI'
 import LessonItem from '../LessonItem/LessonItem'
 import LessonPage from '../LessonPage/LessonPage'
 
@@ -24,9 +25,14 @@ const Study = (props) => {
                 </div>
             </LessonItem>
         })
+
+    let deleteDiscipline = () =>{
+        deleteDisciplines(props.match.params.id)
+    } 
     return (
         <LessonPage>
             <Link to={props.match.url + "/edit"} class="news__link mb" >Добавить <GrAdd /></Link>
+            <button  class="news__link mb" onClick={deleteDiscipline}>Удалить дисциплину</button>
             {allLessons}
         </LessonPage>
 

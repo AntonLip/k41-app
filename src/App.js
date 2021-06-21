@@ -3,7 +3,6 @@ import './App.css';
 import Header from './Components/Header/Header';
 import NavBar from './Components/Navbar/Navbar'
 import Body from './Components/Body/Body'
-import Chat from './Components/Chat/Chat'
 
 
 const App = (props) => {
