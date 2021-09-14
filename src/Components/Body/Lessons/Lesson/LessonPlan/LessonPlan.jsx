@@ -12,9 +12,9 @@ const LessonPlan = (props) => {
             <div class="disciplines_info">  {props.discipline.fullName} читается в {props.discipline.semester} семестре </div>
             <div class="disciplines_info">Последние правки плана {props.discipline.dateOfPlan}</div>
             <div class="disciplines_info">
-            <a  href={"http://localhost:5000/api/Disciplines/" + props.match.params.id + "/plan"}
+            <a  href={"http://192.168.5.250/api/Disciplines/" + props.match.params.id + "/plan"}
                 class="news__file d-ib">Скачать план <GrDocumentDownload class="news__file-img" /> </a>
-            <a  href={"http://localhost:5000/api/Disciplines/" + props.match.params.id + "/gpid"}
+            <a  href={"http://192.168.5.250/api/Disciplines/" + props.match.params.id + "/gpid"}
                 class="news__file d-ib">Скачать ГПИД <GrDocumentDownload class="news__file-img" /> </a>
             </div>         
 

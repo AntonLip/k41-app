@@ -21,7 +21,6 @@ export const getFilteredTimetableAPI = (lectural, discipline, group, startDate, 
             },
             "sortBy": null
           }
-    debugger;
     let path = "/api/Timetable/lesson/filtered"
     const config = {
         headers: {

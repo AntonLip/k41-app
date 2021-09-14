@@ -49,7 +49,7 @@ export class News extends React.Component {
       <MainContentWrapper leftSideBar="true">
         <SortForm onSubmit={this.sort} >
           {
-            !this.props.isAuth ? <InputForm title="Добавить новость" link={this.props.persons} btnText="Добавить" onSubmit={this.post}>
+            this.props.isAuth ? <InputForm title="Добавить новость" link={this.props.persons} btnText="Добавить" onSubmit={this.post}>
               <TextArea title="Заголовок" size="3" name="Header" />
               <TextArea title="Текст" size="5" name="Text" />
               <InputDropDown title="Кому" link={this.props.persons} name="To" other={[{name: "Всем", value:"Всем"}, {name: "Курсантам", value:"Курсантам"}]}/>

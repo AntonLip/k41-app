@@ -69,7 +69,8 @@ export const generalInfoReduser = (state = initState, action) => {
             return copyState;
         case GET_WINDOWS_STATUS:
             copyState.info.openCloseWindow = [...action.data];
-        default:   return state;
+        default:
+               return state;
     }
 }
 
