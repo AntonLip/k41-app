@@ -14,7 +14,7 @@ import { ImageUpload } from '../Sort/Items/Input/items/File/ImageUploader';
 export class Timetable extends React.Component {
 
     componentDidMount() {
-        this.props. getCountOfDisciplines();
+        this.props.getCountOfDisciplines();
         this.props.getPersons();
         this.props.getGroups();
         this.getTimetable();
@@ -38,23 +38,22 @@ export class Timetable extends React.Component {
     }
     getTimetable = () => {
         var year = new Date().getFullYear();
-        var month = new Date().getMonth() + 1;
+        var month = new Date().getMonth();
         var day = new Date().getDate()
-        var fullDate =  year + "-" + "0"+ month + "-" + day
-        debugger
+        var fullDate = year + "-" + "0" + (month + 1) + "-" + (day)
+        var fullDateFinish = year + "-" + "0" + (month + 1) + "-" + (day + 1)
         if (this.props.isAuth) {
             this.IsInRole(this.props.role, "Cadet") ? this.props.getTimetablePerData(443, fullDate, true) :
                 this.IsInRole(this.props.role, "lectural") ? this.props.getTimetablePerData(this.props.family_name, fullDate, false) :
-                    this.props.getTimetablePerDay(fullDate)
+                    this.props.getTimetablePerDay(fullDate, fullDateFinish)
         }
         else {
-            this.props.getTimetablePerDay(fullDate)
+            this.props.getTimetablePerDay(fullDate, fullDateFinish)
         }
     }
-    
+
 
     submit = values => {
-        debugger;
         let dataStart, dataStop;
         values.dateFrom === undefined ? dataStart = '1991-10-11' : dataStart = values.dateFrom;
         values.lector === undefined ? values.lector = null : dataStart = dataStart;
@@ -63,7 +62,7 @@ export class Timetable extends React.Component {
         values.dateTo === undefined ? dataStop = '1991-10-11' : dataStop = values.dateTo;
         this.props.getFilteredTimetable(values.lector, values.lesson, values.department, dataStart, dataStop);
     }
-    render() {        
+    render() {
         let AllLessons = [];
         this.props.timetable === undefined ? AllLessons = () => { return <div>Пар с такими параметрами нет</div> } :
             this.props.timetable.length !== 0 ? AllLessons = this.props.timetable.map((u) => {
@@ -73,7 +72,7 @@ export class Timetable extends React.Component {
                         {timetableByDay}
                     </Day>
                 )
-            }) :  AllLessons = () => { return <div>Пар с такими параметрами нет</div> };
+            }) : AllLessons = () => { return <div>Пар с такими параметрами нет</div> };
 
 
         console.log(this.props.timetable)
@@ -85,13 +84,16 @@ export class Timetable extends React.Component {
                     <Dropdown title="Преподаватель" link={this.props.lecturals} size="10" name="lector" />
                     <DateQ title="С какой даты" name="dateFrom" />
                     <DateQ title="По какую дату" name="dateTo" />
-                    
+
                     <Filter />
                     <Clear clear={this.getTimetable.bind(this)} />
-                    {this.IsInRole( this.role, "Admin") ?
-                         <div></div> : <div>
-                         <ImageUpload url="http://localhost:56224/api/Timetable"/>
-                     </div> 
+                    {
+                        this.props.isAuth ?
+                            this.IsInRole(this.role, "Admin") ? 
+                                 <div>
+                                    <ImageUpload url="http://192.168.5.251:8081/api/Timetable" />
+                                </div> : <div></div>
+                            : <div></div>
                     }
                 </SortForm>
                 <div class="timetable">

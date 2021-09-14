@@ -19,7 +19,8 @@ export const timetableReduser = (state = initialState, action) => {
 
         case GET_TIMETABLE:
             console.log('timetableReduser GET TIMETABLE');
-
+            if(action.data === undefined)
+                return copyState;
             copyState.timetablePage.timetable = [...action.data.value];
             console.log(...action.data.value);
 

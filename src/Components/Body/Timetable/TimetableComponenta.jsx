@@ -36,8 +36,8 @@ let mapDispatchToProps = (dispatch) => {
                 dispatch(getFilteredTimetableThunkCreator(forWho, null, null, dateTime, dateTime));
             }
         },
-        getTimetablePerDay: (dateTime) => {
-            dispatch(getFilteredTimetableThunkCreator(null, null, null, dateTime, dateTime));
+        getTimetablePerDay: (dateTime, dateTimeFinish) => {
+            dispatch(getFilteredTimetableThunkCreator(null, null, null, dateTime, dateTimeFinish));
         },
         getGroups: () => {
             dispatch(setGroupsThunkCreator());

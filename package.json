@@ -33,7 +33,7 @@
     "redux-form": "^8.3.6",
     "redux-oidc": "^4.0.0-beta1",
     "redux-thunk": "^2.3.0",
-    "swiper": "^6.5.0",
+    "swiper": "^6.7.0",
     "video-react": "^0.14.1"
   },
   "scripts": {

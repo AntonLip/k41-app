@@ -17,10 +17,10 @@ const navLinks = [
         title: "Дисциплины кафедры",
         link: "/lessons"
       },
-      {
-        title: "Видеоуроки",
-        link: "/VideoCourses"
-      }
+      // {
+      //   title: "Видеоуроки",
+      //   link: "/VideoCourses"
+      // }
     ]
   },
   {
@@ -38,20 +38,20 @@ const navLinks = [
         title: "Аудитории",
         link: "/classrooms"
       },
-      {
-        title: "Техника",
-        link: "/tech"
-      },
+      // {
+      //   title: "Техника",
+      //   link: "/tech"
+      // },
       {
         title: "История",
         link: "/history"
       },
     ]
   },
-  {
-    title: "Наука",
-    link: "/science",
-  },
+  // {
+  //   title: "Наука",
+  //   link: "/science",
+  // },
 ]
 
 const Navbar = () => {

@@ -88,27 +88,26 @@ export class Lessons extends React.Component {
         return (
             <MainContentWrapper leftSideBar="true">
                 <SortForm onSubmit={this.submit}>
-                    <InputForm title="Добавить дисциплину" btnText="Добавить" onSubmit={this.submitInput}>
-                        <TextInput title="Сокращенное название" size="1" name="name" />
-                        <TextArea title="Полное название" size="2" name="fullName" />
-                        <TextInput title="Всего часов по дисциплине" size="1" name="countHours" />
-                        <TextInput title="Всего лекций" size="1" name="countHoursLeck" />
-                        <TextInput title="Всего ПЗ" size="1" name="countHoursPZ" />
-                        <TextInput title="Всего ГЗ" size="1" name="countHoursGZ" />
-                        <TextInput title="Всего МЗ" size="1" name="countHoursMZ" />
-                        <TextInput title="Всего СРП" size="1" name="countHoursSWZ" />
-                        <TextInput title="Всего семинаров" size="1" name="countHoursSEM" />
-                        <TextInput title="Всего лабораторных работ" size="1" name="countHoursLR" />
-                        <TextInput title="Всего контрольных работ" size="1" name="countHoursСontrolWork" />
-                        <TextInput title="Всего зачетов" size="1" name="countHoursTest" />
-                        <TextInput title="Семестр" size="1" name="Semester" />
-                        <TextInput title="Норма часов" size="1" name="countNorm" />
-                        <CheckboxArea title="Проводиться экзамен" size="1" name="isExam" />
-                        {/* <InputFile title="Учебный план" name="lan" /> */}
-                        <InputDate title="Дата учебного плана" name="dateOfPlan" />
-                        {/* <InputDropDown title="Для специализации" link={this.props.nameOfSpec} name="SpecializationDB" /> */}
-                    </InputForm>
-                    {/* {AllSpec} */}
+                    {
+                        this.props.isAuth ? <InputForm title="Добавить дисциплину" btnText="Добавить" onSubmit={this.submitInput}>
+                            <TextInput title="Сокращенное название" size="1" name="name" />
+                            <TextArea title="Полное название" size="2" name="fullName" />
+                            <TextInput title="Всего часов по дисциплине" size="1" name="countHours" />
+                            <TextInput title="Всего лекций" size="1" name="countHoursLeck" />
+                            <TextInput title="Всего ПЗ" size="1" name="countHoursPZ" />
+                            <TextInput title="Всего ГЗ" size="1" name="countHoursGZ" />
+                            <TextInput title="Всего МЗ" size="1" name="countHoursMZ" />
+                            <TextInput title="Всего СРП" size="1" name="countHoursSWZ" />
+                            <TextInput title="Всего семинаров" size="1" name="countHoursSEM" />
+                            <TextInput title="Всего лабораторных работ" size="1" name="countHoursLR" />
+                            <TextInput title="Всего контрольных работ" size="1" name="countHoursСontrolWork" />
+                            <TextInput title="Всего зачетов" size="1" name="countHoursTest" />
+                            <TextInput title="Семестр" size="1" name="Semester" />
+                            <TextInput title="Норма часов" size="1" name="countNorm" />
+                            <CheckboxArea title="Проводиться экзамен" size="1" name="isExam" />
+                            <InputDate title="Дата учебного плана" name="dateOfPlan" />
+                        </InputForm> : <div></div>
+                    }
                     <Filter />
                     <Clear clear={this.sort} />
                 </SortForm>
@@ -119,9 +118,9 @@ export class Lessons extends React.Component {
                     </div>
                     {
                         (this.props.AllLessons != 0)
-                            ? <Pagination changePage={this.props.setPage} currentPage={this.props.currentPage} 
-                                    itemsPerPage={this.props.itemsPerPage} totalCount={this.props.countDisciplines} 
-                                    IsNews = {false} sizePortion="6" />
+                            ? <Pagination changePage={this.props.setPage} currentPage={this.props.currentPage}
+                                itemsPerPage={this.props.itemsPerPage} totalCount={this.props.countDisciplines}
+                                IsNews={false} sizePortion="6" />
                             : "Sorry. News with this props not founded"
                     }
                 </div>
